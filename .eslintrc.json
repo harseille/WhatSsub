@@ -33,6 +33,9 @@
     "require-await": "error",
     "arrow-parens": ["error", "as-needed"], // a => {}
     "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "import/extensions": "never",
+    "import/prefer-default-export": "off",
     "no-unused-expressions": [
       "error",
       {

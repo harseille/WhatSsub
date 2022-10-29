@@ -1,17 +1,22 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.js'),
+  entry: path.join(__dirname, 'src', 'index.tsx'),
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.tsx?$/i,
+        exclude: /node_modules/,
         use: [
           'babel-loader',
           {
@@ -21,7 +26,6 @@ module.exports = {
             },
           },
         ],
-        exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
@@ -33,14 +37,12 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   devServer: {
     hot: true,
