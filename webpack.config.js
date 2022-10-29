@@ -11,17 +11,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.?(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+        test: /\.(ts|tsx)$/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
           },
-        },
-        resolve: {
-          extensions: ['', '.js', '.jsx'],
-        },
+        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
@@ -33,6 +33,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
@@ -41,7 +44,7 @@ module.exports = {
   ],
   devServer: {
     hot: true,
-    devMiddleware: { publicPath: '/dist' },
+    // devMiddleware: { publicPath: '/dist' },
     static: { directory: path.resolve(__dirname, 'dist') },
     host: 'localhost',
     port: 3001,
