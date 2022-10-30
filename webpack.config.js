@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: path.join(__dirname, 'src', 'index.js'),
+  entry: path.join(__dirname, 'src', 'index.tsx'),
 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,30 +14,37 @@ module.exports = {
 
   devtool: 'eval-source-map',
 
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+
   module: {
     rules: [
       {
-        test: /\.?(js|jsx)$/,
+        test: /\.?(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  targets: {
-                    browsers: ['>= 1% in KR'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      browsers: ['>= 1% in KR'],
+                    },
                   },
-                },
+                ],
+                '@babel/preset-react',
+                '@babel/preset-typescript',
               ],
-              '@babel/preset-react',
-            ],
+            },
           },
-        },
-        resolve: {
-          extensions: ['.js', '.jsx'],
-        },
+          {
+            loader: 'ts-loader',
+          },
+        ],
       },
       {
         test: /\.css$/i,
@@ -55,6 +62,9 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
   ],
 
   devServer: {
