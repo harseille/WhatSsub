@@ -3,11 +3,17 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'index.js'),
   mode: 'development',
+  entry: path.join(__dirname, 'src', 'index.js'),
+
   output: {
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
+
+  devtool: 'eval-source-map',
+
   module: {
     rules: [
       {
@@ -16,11 +22,21 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    browsers: ['>= 1% in KR'],
+                  },
+                },
+              ],
+              '@babel/preset-react',
+            ],
           },
         },
         resolve: {
-          extensions: ['', '.js', '.jsx'],
+          extensions: ['.js', '.jsx'],
         },
       },
       {
@@ -29,21 +45,21 @@ module.exports = {
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
     ],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+
   devServer: {
-    hot: true,
-    devMiddleware: { publicPath: '/dist' },
-    static: { directory: path.resolve(__dirname, 'dist') },
-    host: 'localhost',
-    port: 3001,
+    // static: { directory: path.resolve(__dirname, 'dist') },
+    // host: 'localhost',
+    port: 3000,
   },
 };
