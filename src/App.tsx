@@ -1,34 +1,18 @@
-import img from './img.png';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import RootLayout from './pages/RootLayout';
 
-const Description = styled.p`
-  font-size: 20px;
-  color: green;
-  background-color: yellow;
-  padding: 10px;
-`;
+import Home from './pages/Home';
+import Test from './pages/Test';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Home />} />
+      <Route path="/test" element={<Test />}></Route>
+    </Route>
+  )
+);
 
 export default function App() {
-  return (
-    <>
-      <div
-        css={css`
-          padding: 32px;
-          background-color: hotpink;
-          font-size: 24px;
-          border-radius: 4px;
-          text-align: center;
-          cursor: pointer;
-          &:hover {
-            color: ${'#fff'};
-          }
-        `}
-      >
-        WhatSsup
-      </div>
-      <img src={img} alt="" />
-      <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
