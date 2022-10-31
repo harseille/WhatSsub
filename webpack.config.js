@@ -36,8 +36,6 @@ module.exports = {
                     },
                   },
                 ],
-                '@babel/preset-react',
-                '@babel/preset-typescript',
               ],
             },
           },
@@ -62,9 +60,9 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      React: 'react',
-    }),
+    // new webpack.ProvidePlugin({
+    //   React: 'react',
+    // }),
   ],
 
   devServer: {
