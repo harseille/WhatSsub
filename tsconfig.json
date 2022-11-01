@@ -104,11 +104,11 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "baseUrl": "./",
     "paths": {
-      // "@hooks/*": ["src/hooks/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      // "@layouts/*": ["layouts/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"]
-      // "@utils/*": ["utils/*"],
+      // "@hooks/*": ["src/hooks/*"],
       // "@typings/*": ["typings/*"]
     }
   },

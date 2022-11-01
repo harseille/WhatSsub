@@ -1,21 +1,21 @@
-import img from '../img.png';
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 import count from '../state/state';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import Counter from '@components/Counter';
-import music from '../music/whatSsup.mp3';
+import img from '@assets/images/img.png';
+import music from '@assets/audios/whatSsup.mp3';
 
 const Description = styled.p`
   font-size: 20px;
-  color: green;
   background-color: yellow;
+  color: ${props => props.theme.colors.primaryBlue};
   padding: 10px;
 `;
 
 const audio = new Audio(music);
 
-const Home = () => {
+const HomePage = () => {
   const [countNumber, setCountNumber] = useRecoilState(count);
 
   const imgClickHandler = () =>
@@ -51,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

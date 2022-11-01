@@ -17,10 +17,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      // '@hooks': path.resolve(__dirname, 'hooks'),
+      '@assets': path.resolve(__dirname, 'src', 'assets'),
       '@components': path.resolve(__dirname, 'src', 'components'),
-      // '@layouts': path.resolve(__dirname, 'layouts'),
+      '@layouts': path.resolve(__dirname, 'src', 'layouts'),
       '@pages': path.resolve(__dirname, 'src', 'pages'),
+      // '@hooks': path.resolve(__dirname, 'hooks'),
       // '@state': path.resolve(__dirname, 'src', 'state'),
       // '@utils': path.resolve(__dirname, 'utils'),
       // '@typings': path.resolve(__dirname, 'typings'),
