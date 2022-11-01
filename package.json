@@ -1,11 +1,13 @@
 {
-  "name": "whatssup",
+  "name": "whatssub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack serve --open --mode=development",
+    "build": "webpack",
+    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.tsx",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -13,13 +15,36 @@
   "devDependencies": {
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@babel/preset-env": "^7.19.4",
     "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@types/jest": "^29.2.0",
+    "@types/node": "^18.11.7",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@typescript-eslint/parser": "^5.42.0",
     "babel-loader": "^9.0.0",
     "css-loader": "^6.7.1",
-    "file-loader": "^6.2.0",
+    "emotion-normalize": "^11.0.1",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.13",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
     "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.8.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
@@ -27,6 +52,11 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.4.2",
+    "recoil": "^0.7.6"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
