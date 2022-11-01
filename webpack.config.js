@@ -30,9 +30,13 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // {
+      //   test: /\.(png|jp(e*)g|svg|gif)$/,
+      //   use: ['file-loader'],
+      // },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: ['file-loader'],
+        type: 'asset/resource',
       },
     ],
   },
@@ -46,7 +50,7 @@ module.exports = {
   devServer: {
     hot: true,
     // devMiddleware: { publicPath: '/dist' },
-    static: { directory: path.resolve(__dirname, 'dist') },
+    static: { directory: path.resolve(__dirname, 'dist') }, // 무슨 역할인지 알아보기
     host: 'localhost',
     port: 3001,
   },
