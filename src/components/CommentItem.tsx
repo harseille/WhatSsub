@@ -47,13 +47,15 @@ const ProfileImg = styled.div`
   float: left;
   width: ${changeRem(40)};
   height: ${changeRem(40)};
+  margin-right: 8px;
   border-radius: 50%;
   background: #ccc;
 `;
 
 const UserName = styled.div`
   float: left;
-  width: ${`calc(100% - ${changeRem(40)})`};
+  width: ${`calc(100% - ${changeRem(48)})`};
+  margin: 2px 0;
   font-size: ${changeRem(16)};
   font-weight: bold;
   line-height: 1.25;
@@ -61,7 +63,7 @@ const UserName = styled.div`
 
 const CreatedTime = styled.span`
   float: left;
-  width: ${`calc(100% - ${changeRem(40)})`};
+  width: ${`calc(100% - ${changeRem(48)})`};
   font-size: ${changeRem(12)};
   line-height: 1.25;
   color: #979797;
