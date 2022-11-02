@@ -2,16 +2,26 @@ import styled from '@emotion/styled';
 import IngredientButton from '@components/IngredientButton';
 import { changeRem } from '../styles/mixin';
 
+interface gredient {
+  id: string;
+  val: string;
+}
+
 interface ingredientList {
   title: string;
   desc: string;
-  items: string[];
+  items: gredient[];
 }
 
 const dummy: ingredientList = {
   title: '재료',
   desc: '재료 1가지를 선택해 주세요.',
-  items: ['돼지고기', '소고기', '닭고기', '해산물'],
+  items: [
+    { id: '1', val: '돼지고기' },
+    { id: '2', val: '소고기' },
+    { id: '3', val: '닭고기' },
+    { id: '4', val: '해산물' },
+  ],
 };
 
 function IngredientButtonList() {
@@ -22,10 +32,9 @@ function IngredientButtonList() {
         <TitleDes>{`(${dummy.desc})`}</TitleDes>
       </Title>
       <IngredientList>
-        $
         {dummy.items.map(item => (
-          <li>
-            <IngredientButton>{item}</IngredientButton>
+          <li key={item.id}>
+            <IngredientButton>{item.val}</IngredientButton>
           </li>
         ))}
       </IngredientList>
@@ -57,7 +66,6 @@ const TitleDes = styled.span`
 const IngredientList = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
   align-items: center;
   gap: 10px;
 `;
