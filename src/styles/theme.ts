@@ -4,6 +4,8 @@ const theme = {
     primaryYellow: '#FBC200',
     primaryBlue: '#01A4E3',
     primaryOrange: '#FF8300',
+    gray87: '#878787',
+    grayF5: '#F5F5F5',
   },
   badgeColors: {
     yellow: '#DFA000',
