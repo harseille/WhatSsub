@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Counter from '@components/Counter';
 import img from '@assets/images/img.png';
 import music from '@assets/audios/whatSsup.mp3';
-import SandwitchInfo from '@components/SandwitchInfo';
+import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import count from '../state/state';
 
 const Description = styled.p`
@@ -29,7 +29,7 @@ function HomePage() {
 
   return (
     <>
-      <SandwitchInfo />
+      <SandwitchInfoCard />
       <div
         css={css`
           padding: 32px;
