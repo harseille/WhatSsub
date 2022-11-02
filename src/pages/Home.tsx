@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil';
-import count from '../state/state';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Counter from '@components/Counter';
 import img from '@assets/images/img.png';
 import music from '@assets/audios/whatSsup.mp3';
+import count from '../state/state';
 
 const Description = styled.p`
   font-size: 20px;
@@ -15,7 +15,7 @@ const Description = styled.p`
 
 const audio = new Audio(music);
 
-const HomePage = () => {
+function HomePage() {
   const [countNumber, setCountNumber] = useRecoilState(count);
 
   const imgClickHandler = () =>
@@ -29,7 +29,6 @@ const HomePage = () => {
   return (
     <>
       <div
-        onClick={whatSsupClickHandler}
         css={css`
           padding: 32px;
           background-color: hotpink;
@@ -40,15 +39,13 @@ const HomePage = () => {
           &:hover {
             color: ${'#fff'};
           }
-        `}
-      >
+        `}>
         WhatSsup
       </div>
-      <img onClick={imgClickHandler} src={img} alt="" />
       <Counter />
       <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description>
     </>
   );
-};
+}
 
 export default HomePage;

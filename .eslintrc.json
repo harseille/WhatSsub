@@ -57,7 +57,9 @@
     "@typescript-eslint/no-unused-vars": 2,
     "no-empty-pattern": 2,
     "no-case-declarations": 2,
-    "@typescript-eslint/no-empty-interface": 2
+    "@typescript-eslint/no-empty-interface": 2,
+    "import/no-unresolved": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   },
   "settings": {
     "import/resolver": {
