@@ -1,32 +1,19 @@
 import styled from '@emotion/styled';
-import source from '@assets/images/ingredients/sauce_hot_chilli.png';
+import { 재료 } from '@components/IngredientCardList';
 import { changeRem, flexbox, autoMargin } from '../styles/mixin';
 
-interface 재료 {
-  아이디: string;
-  이름: string;
-  칼로리: number;
-  재료사진: string;
-}
-
-const 더미_재료: 재료 = {
-  아이디: 'k123',
-  이름: '핫칠리',
-  칼로리: 41.8,
-  재료사진: source,
-};
-
-function IngredientCard() {
+function IngredientCard(props: { ingredient: 재료 }) {
+  const {
+    ingredient: { 이름, 칼로리, 재료사진 },
+  } = props;
   return (
-    <li key={더미_재료.아이디}>
-      <Card>
-        <Title>{더미_재료.이름}</Title>
-        <Kcal>{더미_재료.칼로리}Kcal</Kcal>
-        <ImgWrap>
-          <img src={더미_재료.재료사진} alt={더미_재료.이름} />
-        </ImgWrap>
-      </Card>
-    </li>
+    <Card>
+      <Title>{이름}</Title>
+      <Kcal>{칼로리}Kcal</Kcal>
+      <ImgWrap>
+        <img src={재료사진} alt={이름} />
+      </ImgWrap>
+    </Card>
   );
 }
 

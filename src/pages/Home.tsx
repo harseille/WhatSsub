@@ -1,31 +1,16 @@
-import styled from '@emotion/styled';
-import Counter from '@components/Counter';
-
-import img from '@assets/images/img.png';
-import music from '@assets/audios/whatSsup.mp3';
 import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import CombinationRankingCard from '@components/CombinationRankingCard';
 
-import IngredientCard from '@components/IngredientCard';
+import IngredientCardList from '@components/IngredientCardList';
 import Button from '@components/UI/Button';
 import { changeRem } from '../styles/mixin';
-import count from '../state/state';
-
-// const Description = styled.p`
-//   font-size: 20px;
-//   background-color: yellow;
-//   color: ${props => props.theme.colors.primaryBlue};
-//   padding: 10px;
-// `;
-
-// const audio = new Audio(music);
 
 function HomePage() {
   return (
     <>
       <SandwitchInfoCard />
-      <div
+      {/* <div
         css={css`
           padding: 32px;
           background-color: hotpink;
@@ -38,10 +23,10 @@ function HomePage() {
           }
         `}>
         WhatSsup
-      </div>
+      </div> */}
 
       <h2>준하</h2>
-      <IngredientCard />
+      <IngredientCardList />
       <CombinationIngredientList />
       <CombinationRankingCard />
       <Button designType="primaryGreen" width={changeRem(370)} height={changeRem(50)}>
@@ -50,7 +35,7 @@ function HomePage() {
       <Button designType="primaryYellow" width={changeRem(370)} height={changeRem(50)}>
         다시 찾기
       </Button>
-      <Button designType="social" width={changeRem(360)} height={changeRem(54)} border-radius="6px">
+      <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
         <svg
           width="25"
           height="24"
@@ -65,7 +50,7 @@ function HomePage() {
         </svg>
         Continue with Facebook
       </Button>
-      <Button designType="social" width={changeRem(360)} height={changeRem(54)} border-radius="6px">
+      <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
         <svg
           width="25"
           height="24"
@@ -108,10 +93,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-const Description = styled.p`
-  font-size: 20px;
-  background-color: yellow;
-  color: ${props => props.theme.colors.primaryBlue};
-  padding: 10px;
-`;

@@ -57,9 +57,4 @@ const Title = styled.h3`
   color: ${props => props.theme.colors.primaryGreen};
 `;
 
-const sandwitchBadgeListSize = css({
-  width: changeRem(50),
-  height: changeRem(14),
-});
-
 export default CombinationRankingCard;
