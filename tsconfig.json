@@ -106,6 +106,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"]
       // "@hooks/*": ["src/hooks/*"],
