@@ -1,29 +1,24 @@
+import styled from '@emotion/styled';
 import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import CombinationRankingCard from '@components/CombinationRankingCard';
-
-import IngredientCardList from '@components/IngredientCardList';
+import IngredientCard from '@components/IngredientCard';
 import Button from '@components/UI/Button';
 import { changeRem } from '../styles/mixin';
+
+// const Description = styled.p`
+//   font-size: 20px;
+//   background-color: yellow;
+//   color: ${props => props.theme.colors.primaryBlue};
+//   padding: 10px;
+// `;
+
+// const audio = new Audio(music);
 
 function HomePage() {
   return (
     <>
       <SandwitchInfoCard />
-      {/* <div
-        css={css`
-          padding: 32px;
-          background-color: hotpink;
-          font-size: 24px;
-          border-radius: 4px;
-          text-align: center;
-          cursor: pointer;
-          &:hover {
-            color: ${'#fff'};
-          }
-        `}>
-        WhatSsup
-      </div> */}
 
       <h2>준하</h2>
       <IngredientCardList />
