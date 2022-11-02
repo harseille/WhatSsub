@@ -3,7 +3,6 @@ import { RecoilRoot } from 'recoil';
 import { Global, ThemeProvider, css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
-import CommentItem from '@components/CommentItem';
 import globalStlye from './styles/global';
 import theme from './styles/theme';
 import App from './App';
@@ -19,7 +18,6 @@ root.render(
     />
     <ThemeProvider theme={theme}>
       <App />
-      <CommentItem />
     </ThemeProvider>
   </RecoilRoot>
 );
