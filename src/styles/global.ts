@@ -8,6 +8,10 @@ const globalStlye = `
     font-size: 16px;
     font-family: 'Noto Sans KR', 'Arial', sans-serif;
   }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 `;
 
 export default globalStlye;
