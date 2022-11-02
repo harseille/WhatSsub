@@ -2,25 +2,25 @@ import styled from '@emotion/styled';
 import IngredientButton from '@components/IngredientButton';
 import { changeRem } from '../styles/mixin';
 
-interface gredient {
+interface 재료 {
   id: string;
-  val: string;
+  이름: string;
 }
 
-interface ingredientList {
-  title: string;
-  desc: string;
-  items: gredient[];
+interface 재료선택 {
+  제목: string;
+  가이드: string;
+  재료목록: 재료[];
 }
 
-const dummy: ingredientList = {
-  title: '재료',
-  desc: '재료 1가지를 선택해 주세요.',
-  items: [
-    { id: '1', val: '돼지고기' },
-    { id: '2', val: '소고기' },
-    { id: '3', val: '닭고기' },
-    { id: '4', val: '해산물' },
+const 더미데이터: 재료선택 = {
+  제목: '재료',
+  가이드: '재료 1가지를 선택해 주세요.',
+  재료목록: [
+    { id: '1', 이름: '돼지고기' },
+    { id: '2', 이름: '소고기' },
+    { id: '3', 이름: '닭고기' },
+    { id: '4', 이름: '해산물' },
   ],
 };
 
@@ -28,13 +28,15 @@ function IngredientButtonList() {
   return (
     <Wrapper>
       <Title>
-        {dummy.title}
-        <TitleDes>{`(${dummy.desc})`}</TitleDes>
+        {더미데이터.제목}
+        <TitleDes>{`(${더미데이터.가이드})`}</TitleDes>
       </Title>
       <IngredientList>
-        {dummy.items.map(item => (
-          <li key={item.id}>
-            <IngredientButton>{item.val}</IngredientButton>
+        {더미데이터.재료목록.map(재료 => (
+          <li key={재료.id}>
+            <IngredientButton 글자색="#7A7A7A" 배경색="rgba(220, 220, 220, 0.3)">
+              {재료.이름}
+            </IngredientButton>
           </li>
         ))}
       </IngredientList>
