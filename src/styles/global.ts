@@ -18,6 +18,10 @@ const globalStlye = `
   p{
     margin:0;  
   }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 `;
 
 export default globalStlye;

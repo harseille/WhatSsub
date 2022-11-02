@@ -2,9 +2,10 @@ import { useRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Counter from '@components/Counter';
-import CombinationIngredientList from '@components/CombinationIngredientList';
-// import img from '@assets/images/img.png';
-// import music from '@assets/audios/whatSsup.mp3';
+
+import img from '@assets/images/img.png';
+import music from '@assets/audios/whatSsup.mp3';
+import SandwitchInfoCard from '@components/SandwitchInfoCard';
 
 import count from '../state/state';
 
@@ -30,6 +31,7 @@ function HomePage() {
 
   return (
     <>
+      <SandwitchInfoCard />
       <div
         css={css`
           padding: 32px;
@@ -44,7 +46,6 @@ function HomePage() {
         `}>
         WhatSsup
       </div>
-      <CombinationIngredientList />
       <Counter />
       {/* <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description> */}
     </>
