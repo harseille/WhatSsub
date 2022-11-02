@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { changeRem } from 'src/styles/mixin';
+import { changeRem } from '../styles/mixin';
 
 function CommentInputWrap() {
   return (
@@ -16,9 +16,8 @@ const Wrapper = styled.div`
   left: 0;
   bottom: 88px;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 10px;
   background: #ffffff;
@@ -33,7 +32,7 @@ const ProfileImg = styled.div`
 `;
 const Input = styled.input`
   flex-shrink: 0;
-  flex-grow: 1;
+  flex-basis: ${`calc(100% - ${changeRem(135)})`};
   border: 0;
   padding: 13px;
   border-radius: 6px;
@@ -42,7 +41,8 @@ const Input = styled.input`
 `;
 const Button = styled.button`
   border: 0;
-  flex-basis: ${changeRem(30)};
+  flex-basis: ${changeRem(40)};
+  flex-shrink: 0;
   background: transparent;
   color: ${props => props.theme.colors.primaryBlue};
   font-size: ${changeRem(14)};
