@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Counter from '@components/Counter';
-import IngredientCard from '@components/IngredientCard';
+import CombinationIngredientList from '@components/CombinationIngredientList';
 // import img from '@assets/images/img.png';
 // import music from '@assets/audios/whatSsup.mp3';
 
@@ -44,6 +44,7 @@ function HomePage() {
         `}>
         WhatSsup
       </div>
+      <CombinationIngredientList />
       <Counter />
       {/* <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description> */}
     </>
