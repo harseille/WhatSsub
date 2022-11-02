@@ -21,6 +21,7 @@ function HomePage() {
       <SandwitchInfoCard />
 
       <h2>준하</h2>
+      <IngredientCardList />
       <CombinationIngredientList />
       <CombinationRankingCard />
       <Button designType="primaryGreen" width={changeRem(370)} height={changeRem(50)}>
