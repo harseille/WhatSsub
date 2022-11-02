@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 import { changeRem } from '../styles/mixin';
 
-interface commentProps {
-  user: string;
-  profile: string;
-  createdAt: string;
-  review: string;
+interface 리뷰프로퍼티 {
+  작성자: string;
+  프로필이미지: string;
+  등록날짜: string;
+  본문: string;
 }
 
-const comment: commentProps = {
-  user: 'test',
-  profile: '아마 경로',
-  createdAt: '2시간',
-  review: '고소~고소~ 짭짤~짭짤~ 매워~매워~',
+const 리뷰: 리뷰프로퍼티 = {
+  작성자: 'test',
+  프로필이미지: '아마 경로',
+  등록날짜: '2시간',
+  본문: '고소~고소~ 짭짤~짭짤~ 매워~매워~',
 };
 
 function CommentItem() {
@@ -20,10 +20,10 @@ function CommentItem() {
     <Wrapper>
       <UserInfoWrapper>
         <ProfileImg />
-        <UserName>{comment.user}</UserName>
-        <CreatedTime>{comment.createdAt}</CreatedTime>
+        <UserName>{리뷰.작성자}</UserName>
+        <CreatedTime>{리뷰.등록날짜}</CreatedTime>
       </UserInfoWrapper>
-      <Comment>{comment.review}</Comment>
+      <Comment>{리뷰.본문}</Comment>
     </Wrapper>
   );
 }
