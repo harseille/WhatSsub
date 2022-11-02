@@ -19,8 +19,9 @@ function HomePage() {
   return (
     <>
       <SandwitchInfoCard />
+
       <h2>준하</h2>
-      <IngredientCard />
+      <IngredientCardList />
       <CombinationIngredientList />
       <CombinationRankingCard />
       <Button designType="primaryGreen" width={changeRem(370)} height={changeRem(50)}>
@@ -29,7 +30,7 @@ function HomePage() {
       <Button designType="primaryYellow" width={changeRem(370)} height={changeRem(50)}>
         다시 찾기
       </Button>
-      <Button designType="social" width={changeRem(360)} height={changeRem(54)} border-radius="6px">
+      <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
         <svg
           width="25"
           height="24"
@@ -44,7 +45,7 @@ function HomePage() {
         </svg>
         Continue with Facebook
       </Button>
-      <Button designType="social" width={changeRem(360)} height={changeRem(54)} border-radius="6px">
+      <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
         <svg
           width="25"
           height="24"
@@ -87,10 +88,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-const Description = styled.p`
-  font-size: 20px;
-  background-color: yellow;
-  color: ${props => props.theme.colors.primaryBlue};
-  padding: 10px;
-`;
