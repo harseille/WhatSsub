@@ -57,7 +57,9 @@
     "recoil": "^0.7.6"
   },
   "lint-staged": {
-    "*.js": "eslint  --fix",
-    "*.{js,css,md}": "prettier --write"
+    "renderer/**/*.{js,ts,jsx,tsx}": [
+      "eslint --ext .tsx,.ts . --quiet --fix",
+      "prettier --config ./.prettierrc.json --write -u"
+    ]
   }
 }

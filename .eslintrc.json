@@ -50,6 +50,12 @@
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true
       }
-    ] // prettier의 printWidth 옵션 대신 사용
+    ], // prettier의 printWidth 옵션 대신 사용
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
+    "@typescript-eslint/no-unused-vars": 2,
+    "no-empty-pattern": 2,
+    "no-case-declarations": 2,
+    "@typescript-eslint/no-empty-interface": 2
   }
 }
