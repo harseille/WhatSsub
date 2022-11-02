@@ -1,4 +1,4 @@
-const globalStlye = `
+const globalStyle = `
   html,
   body {
     padding: 0;
@@ -10,4 +10,4 @@ const globalStlye = `
   }
 `;
 
-export default globalStlye;
+export default globalStyle;
