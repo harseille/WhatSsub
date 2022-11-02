@@ -13,8 +13,8 @@ const 더미_재료: 재료 = {
   아이디: 'k123',
   이름: '핫칠리',
   칼로리: 41.8,
-  재료사진: source.
-}
+  재료사진: source,
+};
 
 function IngredientCard() {
   return (
