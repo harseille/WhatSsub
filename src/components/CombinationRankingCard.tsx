@@ -14,7 +14,7 @@ function CombinationRankingCard() {
       </RankingImageWrap>
       <RankingContents>
         <Title>스테이크 & 치즈</Title>
-        <SandwitchBadgeList />
+        {/* <SandwitchBadgeList /> */}
         <Like top={changeRem(77)} left={changeRem(270)} />
       </RankingContents>
     </RankingCard>

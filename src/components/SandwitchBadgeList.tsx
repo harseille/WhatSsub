@@ -1,25 +1,34 @@
 import styled from '@emotion/styled';
 import IngredientBadge from './IngredientBadge';
+import { 샌드위치뱃지리스트 } from './SandwitchInfoCard';
 
-interface badgeCate {
-  flavor: string[];
-  mainIngredient: string[];
-  additional: string[];
+interface 뱃지컬러인터페이스 {
+  노랑: string;
+  파랑: string;
+  빨강: string;
+  노랑배경: string;
+  파랑배경: string;
+  빨강배경: string;
 }
 
-const badgeCategory: badgeCate = {
-  flavor: ['달달', '고소'],
-  mainIngredient: ['돼지고기'],
-  additional: ['고기러버'],
+const 뱃지컬러: 뱃지컬러인터페이스 = {
+  노랑: '#DFA000',
+  파랑: '#4B69FD',
+  빨강: '#FF4200',
+  노랑배경: 'rgba(252, 189, 33, 0.1)',
+  파랑배경: 'rgba(75, 105, 253, 0.1)',
+  빨강배경: 'rgba(255, 66, 0, 0.1)',
 };
 
-function SandwitchBadgeList() {
+function SandwitchBadgeList({ badgeList: { 맛, 메인재료, 추가사항 } }: { badgeList: 샌드위치뱃지리스트 }) {
   return (
     <BadgeList>
-      {badgeCategory.flavor.map(item => (
-        <li>
-          <IngredientBadge>{item}</IngredientBadge>
-        </li>
+      {맛.map(item => (
+        <IngredientBadge fontColor={뱃지컬러.노랑} backgroundColor={뱃지컬러.노랑배경} item={item} />
+      ))}
+      <IngredientBadge fontColor={뱃지컬러.파랑} backgroundColor={뱃지컬러.파랑배경} item={메인재료} />
+      {추가사항.map(item => (
+        <IngredientBadge fontColor={뱃지컬러.빨강} backgroundColor={뱃지컬러.빨강배경} item={item} />
       ))}
     </BadgeList>
   );

@@ -1,12 +1,39 @@
 import styled from '@emotion/styled';
 import heart from '@assets/images/heart.png';
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import SandwitchInfo from './SandwitchInfo';
 import { changeRem } from '../styles/mixin';
+
+export interface 샌드위치뱃지리스트 {
+  맛: string[];
+  메인재료: string;
+  추가사항: string[];
+}
+
+export interface 샌드위치 {
+  이미지: string;
+  이름: string;
+  베이스샌드위치: string;
+  칼로리: string;
+  뱃지리스트: 샌드위치뱃지리스트;
+}
+
+const sandwitch: 샌드위치 = {
+  이미지: ChickenSlice,
+  이름: '꿀꿀마앗',
+  베이스샌드위치: '치킨 슬라이스',
+  칼로리: '265',
+  뱃지리스트: {
+    맛: ['달달', '고소'],
+    메인재료: '돼지고기',
+    추가사항: ['고기러버'],
+  },
+};
 
 function SandwitchInfoCard() {
   return (
     <CardWarp>
-      <SandwitchInfo />
+      <SandwitchInfo sandwitch={sandwitch} />
       <LikeBtn />
     </CardWarp>
   );
