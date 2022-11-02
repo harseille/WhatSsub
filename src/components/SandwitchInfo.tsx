@@ -1,19 +1,19 @@
 import styled from '@emotion/styled';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { changeRem } from '../styles/mixin';
 import SandwitchBadgeList from './SandwitchBadgeList';
+import { 샌드위치 } from './SandwitchInfoCard';
 
-function SandwitchInfo() {
+function SandwitchInfo({ sandwitch: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwitch: 샌드위치 }) {
   return (
     <InfoWrap>
       <ImgWrap>
-        <img src={ChickenSlice} alt="" />
+        <img src={이미지} alt={이름} />
       </ImgWrap>
-      <SandwitchName>꿀꿀마앗</SandwitchName>
+      <SandwitchName>{이름}</SandwitchName>
       <InfoSummary>
-        치킨 슬라이스 • <Kcal>265Kcal</Kcal>
+        {베이스샌드위치} • <Kcal>{칼로리}Kcal</Kcal>
       </InfoSummary>
-      <SandwitchBadgeList />
+      <SandwitchBadgeList badgeList={뱃지리스트} />
     </InfoWrap>
   );
 }
