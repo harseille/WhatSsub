@@ -20,7 +20,6 @@ function SandwitchInfo() {
 
 const InfoWrap = styled.div`
   width: ${changeRem(305)};
-  border: 1px solid red;
   margin: 10px;
 `;
 

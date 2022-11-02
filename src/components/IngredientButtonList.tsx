@@ -2,7 +2,13 @@ import styled from '@emotion/styled';
 import IngredientButton from '@components/IngredientButton';
 import { changeRem } from '../styles/mixin';
 
-const dummy = {
+interface ingredientList {
+  title: string;
+  desc: string;
+  items: string[];
+}
+
+const dummy: ingredientList = {
   title: '재료',
   desc: '재료 1가지를 선택해 주세요.',
   items: ['돼지고기', '소고기', '닭고기', '해산물'],
