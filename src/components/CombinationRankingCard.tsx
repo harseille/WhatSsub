@@ -1,10 +1,16 @@
-import { css } from '@emotion/react';
 import SandwitchBadgeList from '@components/SandwitchBadgeList';
 import Like from '@components/Like';
 import styled from '@emotion/styled';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '../styles/mixin';
+import { 샌드위치뱃지리스트 } from './SandwitchInfoCard';
+
+const 뱃지리스트: 샌드위치뱃지리스트 = {
+  맛: ['달달'],
+  메인재료: '돼지고기',
+  추가사항: [],
+};
 
 function CombinationRankingCard() {
   return (
@@ -14,7 +20,7 @@ function CombinationRankingCard() {
       </RankingImageWrap>
       <RankingContents>
         <Title>스테이크 & 치즈</Title>
-        {/* <SandwitchBadgeList /> */}
+        <SandwitchBadgeList badgeList={뱃지리스트} />
         <Like top={changeRem(77)} left={changeRem(270)} />
       </RankingContents>
     </RankingCard>
@@ -56,10 +62,5 @@ const Title = styled.h3`
   font-size: ${changeRem(16)};
   color: ${props => props.theme.colors.primaryGreen};
 `;
-
-const sandwitchBadgeListSize = css({
-  width: changeRem(50),
-  height: changeRem(14),
-});
 
 export default CombinationRankingCard;

@@ -9,7 +9,7 @@ const globalStyle = `
     font-family: 'Noto Sans KR', 'Arial', sans-serif;
 
   },
-  ul {
+  ul,ol,li {
     list-style: none;
     padding: 0;
   },
@@ -18,11 +18,7 @@ const globalStyle = `
   },
   p{
     margin:0;  
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
+  },
   img {
     max-width: 100%;
   }
