@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { changeRem } from 'src/styles/mixin';
+import { changeRem } from '../styles/mixin';
 
 interface IngredientButtonProps {
   bg?: string;

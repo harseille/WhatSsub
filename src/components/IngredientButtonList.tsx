@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { changeRem } from 'src/styles/mixin';
 import IngredientButton from '@components/IngredientButton';
+import { changeRem } from '../styles/mixin';
 
 interface gredient {
   id: string;
