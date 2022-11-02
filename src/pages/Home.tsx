@@ -6,6 +6,8 @@ import Counter from '@components/Counter';
 import img from '@assets/images/img.png';
 import music from '@assets/audios/whatSsup.mp3';
 import SandwitchInfoCard from '@components/SandwitchInfoCard';
+import CombinationIngredientList from '@components/CombinationIngredientList';
+import CombinationRankingCard from '@components/CombinationRankingCard';
 
 import count from '../state/state';
 
@@ -47,6 +49,8 @@ function HomePage() {
         WhatSsup
       </div>
       <Counter />
+      <CombinationRankingCard />
+      <CombinationIngredientList />
       {/* <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description> */}
     </>
   );
