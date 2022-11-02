@@ -6,7 +6,6 @@ import { changeRem } from '../../styles/mixin';
 function MyCombinationCard() {
   return (
     <Container>
-      <Danji src={BelieverDanji} alt="believer-danji" />
       <Card className="card">
         <div className="text">
           <Text>
@@ -18,6 +17,8 @@ function MyCombinationCard() {
         <Img src={SandwichBL} alt="샌드위치 이미지" />
         <Input type="text" placeholder="왓썹의 이름은..?" />
       </Card>
+
+      <Danji src={BelieverDanji} alt="believer-danji" />
     </Container>
   );
 }
@@ -79,11 +80,11 @@ const Input = styled.input`
   height: ${changeRem(50)};
 `;
 
-// 단지 위치 좀 도와조..
 const Danji = styled.img`
   position: absolute;
   top: 70px;
-  left: 45%;
+  left: 50%;
+  transform: translate(-50%);
 `;
 export default MyCombinationCard;
 
