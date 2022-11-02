@@ -8,5 +8,13 @@ declare module '@emotion/react' {
       primaryBlue: string;
       primaryOrange: string;
     };
+    badgeColors: {
+      yellow: string;
+      blue: string;
+      red: string;
+      yellowBack: string;
+      blueBack: string;
+      redBack: string;
+    };
   }
 }
