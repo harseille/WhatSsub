@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import CombinationRankingCard from '@components/CombinationRankingCard';
-import IngredientCard from '@components/IngredientCard';
+import IngredientCardList from '@components/IngredientCardList';
 import Button from '@components/UI/Button';
 import { changeRem } from '../styles/mixin';
 
