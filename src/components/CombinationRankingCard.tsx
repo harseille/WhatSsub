@@ -30,6 +30,8 @@ function CombinationRankingCard() {
 
 const RankingCard = styled.section`
   ${flexbox('row', 'flex-start', 'center')};
+  min-width: ${changeRem(360)};
+  max-width: ${changeRem(480)};
   height: ${changeRem(110)};
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
@@ -42,7 +44,7 @@ const RankingImageWrap = styled.div`
   width: ${changeRem(80)};
   height: ${changeRem(80)};
   & img {
-    height: ${changeRem(60)};
+    height: ${changeRem(48)};
     object-fit: cover;
   }
   border-radius: 50%;
@@ -53,8 +55,9 @@ const RankingImageWrap = styled.div`
 
 const RankingContents = styled.div`
   ${flexbox('column', 'space-between')};
+  width: 80%;
   gap: ${changeRem(8)};
-  margin-left: ${changeRem(20)};
+  margin: ${changeRem(20)};
 `;
 
 const Title = styled.h3`
