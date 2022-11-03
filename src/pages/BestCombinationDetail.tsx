@@ -57,6 +57,7 @@ function BestCombinationDetailPage() {
           }}
         />
         <IngredientCardList ingredientList={data[0].선택재료} />
+        {/* <CombinationIngredientList ingredientList={data[0].선택재료} /> */}
         <CombinationIngredientList />
       </Contents>
       <Comments>
