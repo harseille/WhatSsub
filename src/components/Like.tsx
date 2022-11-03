@@ -52,7 +52,7 @@ function Like(props: 인터페이스_좋아요) {
 }
 
 const LikeContainter = styled.div`
-  ${flexbox('row', 'center', 'center')}
+  ${flexbox('row', 'right', 'center')}
   color: ${props => props.theme.colors.primaryGreen};
   & span {
     font-size: ${changeRem(14)};

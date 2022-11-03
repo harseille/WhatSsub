@@ -17,7 +17,7 @@ interface 인터페이스_메뉴 {
 
 const 메뉴정보: 인터페이스_메뉴[] = [
   { 메뉴명: '홈', 이동링크: '/', 아이콘: homeImg, 아이콘설명: '홈 아이콘' },
-  { 메뉴명: '맛잘알랭킹', 이동링크: '/best-combination-list', 아이콘: rankingImg, 아이콘설명: '맛잘알랭킹 아이콘' },
+  { 메뉴명: '맛잘알랭킹', 이동링크: '/best-combination', 아이콘: rankingImg, 아이콘설명: '맛잘알랭킹 아이콘' },
   { 메뉴명: '커스텀', 이동링크: '/custom-combination', 아이콘: customImg, 아이콘설명: '커스텀 아이콘' },
   { 메뉴명: '마이페이지', 이동링크: '/myPage', 아이콘: myPageImg, 아이콘설명: '마이페이지 아이콘' },
 ];
