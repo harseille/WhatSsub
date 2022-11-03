@@ -1,29 +1,34 @@
 import styled from '@emotion/styled';
 import { changeRem } from '../styles/mixin';
 
-interface 리뷰프로퍼티 {
+export interface 리뷰프로퍼티 {
+  id?: string;
   작성자: string;
-  프로필이미지: string;
+  프로필이미지?: string;
   등록날짜: string;
   본문: string;
 }
 
-const 리뷰: 리뷰프로퍼티 = {
-  작성자: 'test',
-  프로필이미지: '아마 경로',
-  등록날짜: '2시간',
-  본문: '고소~고소~ 짭짤~짭짤~ 매워~매워~',
-};
+// const 리뷰: 리뷰프로퍼티 = {
+//   id:'r1'
+//   작성자: 'test',
+//   프로필이미지: '아마 경로',
+//   등록날짜: '2시간',
+//   본문: '고소~고소~ 짭짤~짭짤~ 매워~매워~',
+// };
 
-function CommentItem() {
+function CommentItem(props: { comment: 리뷰프로퍼티 }) {
+  const {
+    comment: { 작성자, 등록날짜, 본문 },
+  } = props;
   return (
     <Wrapper>
       <UserInfoWrapper>
         <ProfileImg />
-        <UserName>{리뷰.작성자}</UserName>
-        <CreatedTime>{리뷰.등록날짜}</CreatedTime>
+        <UserName>{작성자}</UserName>
+        <CreatedTime>{등록날짜}</CreatedTime>
       </UserInfoWrapper>
-      <Comment>{리뷰.본문}</Comment>
+      <Comment>{본문}</Comment>
     </Wrapper>
   );
 }
