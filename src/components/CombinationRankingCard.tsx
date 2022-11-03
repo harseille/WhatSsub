@@ -1,6 +1,7 @@
 import SandwitchBadgeList from '@components/SandwitchBadgeList';
 import Like from '@components/Like';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '../styles/mixin';
@@ -21,7 +22,7 @@ function CombinationRankingCard() {
       <RankingContents>
         <Title>스테이크 & 치즈</Title>
         <SandwitchBadgeList badgeList={뱃지리스트} />
-        <Like top={changeRem(77)} left={changeRem(270)} />
+        <Like count="40" />
       </RankingContents>
     </RankingCard>
   );

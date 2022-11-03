@@ -41,7 +41,7 @@ export interface 인터페이스_꿀조합 {
   제목: string;
   작성자: string;
   작성일: string;
-  좋아요: number;
+  좋아요: string;
   베이스샌드위치: string;
   이미지: string;
   칼로리: string;

@@ -20,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/best-combination-pick" element={<BestCombinationPickPage />} />
       <Route path="/best-combination-list" element={<BestCombinationListPage />} />
       <Route path="/best-combination-detail">
+        <Route index element={<BestCombinationDetailPage />} />
         <Route path=":combinationId" element={<BestCombinationDetailPage />} />
       </Route>
       <Route path="/random-pick" element={<RandomPickPage />} />
