@@ -1,7 +1,5 @@
-import React from 'react';
-
-const BestCombinationDetailPage = () => {
+function BestCombinationDetailPage() {
   return <div>BestCombinationDetailPage</div>;
-};
+}
 
 export default BestCombinationDetailPage;
