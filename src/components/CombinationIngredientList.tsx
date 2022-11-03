@@ -9,7 +9,8 @@ interface 선택재료 {
   추가재료?: string[];
 }
 
-function CombinationIngredientList() {
+function CombinationIngredientList(props: { ingredientList: 선택재료[] }) {
+  
   const 선택재료: 선택재료 = {
     빵: '플랫 브레드',
     치즈: '슈레드',
