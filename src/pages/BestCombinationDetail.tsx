@@ -28,6 +28,20 @@ const data: 인터페이스_꿀조합[] = [
         칼로리: '30',
         추가재료여부: false,
       },
+      {
+        id: 'v2',
+        이름: '토마토',
+        카테고리: '야채',
+        칼로리: '50',
+        추가재료여부: false,
+      },
+      {
+        id: 's1',
+        이름: '핫소스',
+        카테고리: '소스',
+        칼로리: '50',
+        추가재료여부: false,
+      },
     ],
     뱃지리스트: {
       맛: ['달달', '고소'],
@@ -56,9 +70,9 @@ function BestCombinationDetailPage() {
             뱃지리스트: data[0].뱃지리스트,
           }}
         />
-        <IngredientCardList ingredientList={data[0].선택재료} />
-        {/* <CombinationIngredientList ingredientList={data[0].선택재료} /> */}
-        <CombinationIngredientList />
+        {/* <IngredientCardList ingredientList={data[0].선택재료} /> */}
+        <CombinationIngredientList ingredientList={data[0].선택재료} />
+        {/* <CombinationIngredientList /> */}
       </Contents>
       <Comments>
         <CommentHeader>
