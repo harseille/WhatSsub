@@ -23,7 +23,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/random-pick" element={<RandomPickPage />} />
       <Route path="/custom-combination" element={<CustomCombination />} />
-      <Route path="/mypage" element={<MyPage />} />
+      <Route path="/myPage" element={<MyPage />} />
     </Route>
   )
 );
