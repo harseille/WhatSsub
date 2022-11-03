@@ -9,43 +9,43 @@ export interface 재료 {
   id: string;
   카테고리: string;
   이름: string;
-  칼로리: number;
+  칼로리: string;
   재료사진?: string;
 }
 
-const 더미_재료_목록: 재료[] = [
-  {
-    id: 's11',
-    카테고리: '소스',
-    이름: '핫칠리',
-    칼로리: 41.8,
-    재료사진: source,
-  },
-  {
-    id: 'v222',
-    카테고리: '야채',
-    이름: '양상추',
-    칼로리: 100,
-    재료사진: source,
-  },
-  {
-    id: 'b333',
-    카테고리: '빵',
-    이름: '위트',
-    칼로리: 58,
-    재료사진: source,
-  },
-  {
-    id: 'c333',
-    카테고리: '치즈',
-    이름: '슈레드',
-    칼로리: 58,
-    재료사진: source,
-  },
-];
+// const 더미_재료_목록: 재료[] = [
+//   {
+//     id: 's11',
+//     카테고리: '소스',
+//     이름: '핫칠리',
+//     칼로리: 41.8,
+//     재료사진: source,
+//   },
+//   {
+//     id: 'v222',
+//     카테고리: '야채',
+//     이름: '양상추',
+//     칼로리: 100,
+//     재료사진: source,
+//   },
+//   {
+//     id: 'b333',
+//     카테고리: '빵',
+//     이름: '위트',
+//     칼로리: 58,
+//     재료사진: source,
+//   },
+//   {
+//     id: 'c333',
+//     카테고리: '치즈',
+//     이름: '슈레드',
+//     칼로리: 58,
+//     재료사진: source,
+//   },
+// ];
 
-function IngredientCardList() {
-  const LiList = 더미_재료_목록.map(재료 => (
+function IngredientCardList(props: { ingredientList: 재료[] }) {
+  const LiList = props.ingredientList.map(재료 => (
     <li key={재료.id}>
       <IngredientCard ingredient={재료} />
     </li>

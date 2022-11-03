@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import IngredientBadge from './IngredientBadge';
 import { 샌드위치뱃지리스트 } from './SandwitchInfoCard';
 
-interface 뱃지컬러인터페이스 {
+interface 뱃지컬러_인터페이스 {
   노랑: string;
   파랑: string;
   빨강: string;
@@ -11,7 +11,7 @@ interface 뱃지컬러인터페이스 {
   빨강배경: string;
 }
 
-const 뱃지컬러: 뱃지컬러인터페이스 = {
+const 뱃지컬러: 뱃지컬러_인터페이스 = {
   노랑: '#DFA000',
   파랑: '#4B69FD',
   빨강: '#FF4200',
