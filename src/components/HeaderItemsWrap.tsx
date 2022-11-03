@@ -1,21 +1,21 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
+import homeImg from '@assets//images/home.svg';
+import rankingImg from '@assets//images/ranking.svg';
+import customImg from '@assets//images/custom.svg';
+import myPageImg from '@assets//images/myPage.svg';
 import { changeRem, buttonNone } from '../styles/mixin';
-import homeImg from '../assets/images/home.svg';
-import rankingImg from '../assets/images/ranking.svg';
-import customImg from '../assets/images/custom.svg';
-import myPageImg from '../assets/images/myPage.svg';
 import mediaQuery from '../styles/media-queries';
 
-interface 메뉴_인터페이스 {
+interface 인터페이스_메뉴 {
   메뉴명: string;
   이동링크: string;
   아이콘: any;
   아이콘설명: string;
 }
 
-const 메뉴정보: 메뉴_인터페이스[] = [
+const 메뉴정보: 인터페이스_메뉴[] = [
   { 메뉴명: '홈', 이동링크: '/', 아이콘: homeImg, 아이콘설명: '홈 아이콘' },
   { 메뉴명: '맛잘알랭킹', 이동링크: '/', 아이콘: rankingImg, 아이콘설명: '맛잘알랭킹 아이콘' },
   { 메뉴명: '커스텀', 이동링크: '/', 아이콘: customImg, 아이콘설명: '커스텀 아이콘' },
