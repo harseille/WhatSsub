@@ -1,5 +1,5 @@
-function Ranking() {
+function RankingPage() {
   return <div>Ranking</div>;
 }
 
-export default Ranking;
+export default RankingPage;
