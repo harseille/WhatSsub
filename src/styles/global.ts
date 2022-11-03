@@ -21,6 +21,10 @@ const globalStyle = `
   },
   img {
     max-width: 100%;
+  },
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 

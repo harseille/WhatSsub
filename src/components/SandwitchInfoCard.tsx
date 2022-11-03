@@ -39,7 +39,7 @@ function SandwitchInfoCard() {
   );
 }
 
-const CardWarp = styled.div`
+const CardWarp = styled.li`
   position: relative;
   padding: 45px 25px 20px;
   max-width: ${changeRem(370)};

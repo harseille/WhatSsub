@@ -30,7 +30,6 @@ function CombinationRankingCard() {
 
 const RankingCard = styled.section`
   ${flexbox('row', 'flex-start', 'center')};
-  width: ${changeRem(360)};
   height: ${changeRem(110)};
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
