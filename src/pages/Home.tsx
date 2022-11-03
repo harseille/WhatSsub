@@ -1,9 +1,13 @@
-import styled from '@emotion/styled';
 import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import CombinationRankingCard from '@components/CombinationRankingCard';
 import IngredientCardList from '@components/IngredientCardList';
 import Button from '@components/UI/Button';
+import MyCombinationCard from '@components/UI/MyCombinationCard';
+import RandomRoulette from '@components/UI/RandomRoulette';
+import Header from '@components/Header';
+import CommentItem from '@components/CommentItem';
+import CommentInputWrap from '@components/CommentInputWrap';
 import { changeRem } from '../styles/mixin';
 
 // const Description = styled.p`
@@ -18,8 +22,11 @@ import { changeRem } from '../styles/mixin';
 function HomePage() {
   return (
     <>
-      <SandwitchInfoCard />
-
+      <h2>세훈</h2>
+      <Header />
+      <h2>황도</h2>
+      <CommentInputWrap />
+      <CommentItem />
       <h2>준하</h2>
       <IngredientCardList />
       <CombinationIngredientList />
@@ -81,6 +88,11 @@ function HomePage() {
         </svg>
         Continue with Gmail
       </Button>
+      <h2>원오</h2>
+      <SandwitchInfoCard />
+      <h2>다빈</h2>
+      <MyCombinationCard />
+      <RandomRoulette />
 
       {/* <Description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, veritatis.</Description> */}
     </>

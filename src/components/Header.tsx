@@ -28,7 +28,7 @@ const HeaderInner = styled.div`
   justify-content: space-between;
   transition: all 0.5s;
 
-  ${mediaQuery[1]} {
+  ${mediaQuery} {
     padding: 24px 36px;
   }
 `;

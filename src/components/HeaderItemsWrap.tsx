@@ -61,7 +61,7 @@ const HeaderLogInOut = styled.button`
   flex-shrink: 0;
   cursor: pointer;
 
-  ${mediaQuery[1]} {
+  ${mediaQuery} {
     font-size: ${changeRem(15)};
     padding-left: 3px;
   }
@@ -72,7 +72,7 @@ const Nav = styled.nav`
   width: 100%;
   left: 0;
   bottom: 0;
-  ${mediaQuery[1]} {
+  ${mediaQuery} {
     position: static;
   }
 
@@ -81,9 +81,9 @@ const Nav = styled.nav`
     align-items: center;
     justify-content: space-around;
 
-    ${mediaQuery[1]} {
+    ${mediaQuery} {
       & li {
-        :first-child {
+        :first-of-type {
           display: none;
         }
 
@@ -99,7 +99,7 @@ const NavItemTitle = styled.span`
   color: ${props => props.theme.colors.gray87};
   font-weight: 700;
 
-  ${mediaQuery[1]} {
+  ${mediaQuery} {
     padding-top: 0;
     font-size: ${changeRem(15)};
   }
@@ -109,7 +109,7 @@ const NavItemImg = styled.img`
   width: ${changeRem(26)};
   height: ${changeRem(30)};
 
-  ${mediaQuery[1]} {
+  ${mediaQuery} {
     display: none;
   }
 `;

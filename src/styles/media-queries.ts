@@ -1,7 +1,5 @@
-import { css } from '@emotion/react';
+const BREAKPOINTS = 768;
 
-const breakpoints = [375, 768, 1200];
-
-const mediaQuery = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
+const mediaQuery = `@media (min-width: ${BREAKPOINTS}px)`;
 
 export default mediaQuery;
