@@ -20,7 +20,7 @@ const globalStyle = `
     margin:0;  
   },
   img {
-    max-width: 100%;
+    width: 100%;
   },
   a {
     text-decoration: none;
