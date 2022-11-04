@@ -6,13 +6,23 @@ import { changeRem } from '../../styles/mixin';
 import xBtn from '../../assets/images/x-btn.svg';
 import Button from './Button';
 
+const data = [
+  {
+    id: 'sdf',
+    이름: 'sdf',
+    카테고리: 'sdf',
+    칼로리: 'sdfdfs',
+    추가재료여부: true,
+  },
+];
+
 function RandomModalResult() {
   return (
     <Card>
       <img src={xBtn} alt="닫기 버튼" />
       <Title>응~ 이거나 먹어~</Title>
       <SandwitchInfo sandwitch={sandwitch} />
-      <CombinationIngredientList />
+      <CombinationIngredientList ingredientList={data} />
       <Button />
       {/* 준하야 이거 버튼 어떻게 쓰니..? */}
     </Card>
