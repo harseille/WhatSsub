@@ -33,6 +33,8 @@ const RankingCard = styled.section`
   min-width: ${changeRem(360)};
   max-width: ${changeRem(480)};
   height: ${changeRem(110)};
+  position: relative;
+  margin-bottom: 16px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
@@ -55,7 +57,6 @@ const RankingImageWrap = styled.div`
 
 const RankingContents = styled.div`
   ${flexbox('column', 'space-between')};
-  width: 80%;
   gap: ${changeRem(8)};
   margin: ${changeRem(20)};
 `;

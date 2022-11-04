@@ -1,16 +1,17 @@
-// import RandomRoulette from '@components/UI/RandomRoulette';
+import RandomRoulette from '@components/UI/RandomRoulette';
 // import styled from '@emotion/styled';
 import RandomModalResult from '@components/UI/RandomModalResult';
+import Wrapper from '@components/UI/Wrapper';
 // import { changeRem } from '../styles/mixin';
 
 function RandomPickPage() {
   return (
-    <div>
-      {/* <Title>랜덤 조합 룰렛</Title>
+    <Wrapper>
+      {/* <Title>랜덤 조합 룰렛</Title> */}
       <RandomRoulette />
-      <Text>돌려돌려 돌림판~</Text> */}
+      {/* <Text>돌려돌려 돌림판~</Text> */}
       <RandomModalResult />
-    </div>
+    </Wrapper>
   );
 }
 

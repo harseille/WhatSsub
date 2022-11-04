@@ -34,7 +34,8 @@ function CommentItem(props: { comment: 리뷰프로퍼티 }) {
 }
 
 const Wrapper = styled.div`
-  padding-bottom: 30px;
+  padding-top: 8px;
+  padding-bottom: 16px;
   border-bottom: 1px solid #eee;
 `;
 

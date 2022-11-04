@@ -24,7 +24,6 @@ function RandomModalResult() {
       <SandwitchInfo sandwitch={sandwitch} />
       <CombinationIngredientList ingredientList={data} />
       <Button />
-      {/* 준하야 이거 버튼 어떻게 쓰니..? */}
     </Card>
   );
 }
@@ -39,6 +38,9 @@ const Card = styled.div`
   /* margin-bottom: 10px; */
   /* margin: 30px 0 20px; */
   margin: 0 auto;
+  & img {
+    width: 20px;
+  }
 `;
 
 const Title = styled.div`

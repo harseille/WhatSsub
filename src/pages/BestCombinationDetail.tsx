@@ -6,6 +6,10 @@ import SandwitchInfo from '@components/SandwitchInfo';
 import CommentList from '@components/CommentList';
 import styled from '@emotion/styled';
 
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import sauceHotChilli from '@assets/images/ingredients/sauce_hot_chilli.png';
+
+import Wrapper from '@components/UI/Wrapper';
 import { changeRem, flexbox } from '../styles/mixin';
 
 import { 인터페이스_꿀조합 } from '../types/ISandwitch';
@@ -14,7 +18,7 @@ const data: 인터페이스_꿀조합[] = [
   {
     id: 'k1',
     베이스샌드위치: '서브웨이 클럽',
-    이미지: 'imgString',
+    이미지: ChickenSlice,
     작성일: '2022.11.01',
     작성자: '최원오',
     제목: '서브웨이 클럽',
@@ -26,6 +30,7 @@ const data: 인터페이스_꿀조합[] = [
         이름: '양상추',
         카테고리: '야채',
         칼로리: '30',
+        재료사진: sauceHotChilli,
         추가재료여부: false,
       },
       {
@@ -33,6 +38,7 @@ const data: 인터페이스_꿀조합[] = [
         이름: '토마토',
         카테고리: '야채',
         칼로리: '50',
+        재료사진: sauceHotChilli,
         추가재료여부: false,
       },
       {
@@ -40,6 +46,31 @@ const data: 인터페이스_꿀조합[] = [
         이름: '핫소스',
         카테고리: '소스',
         칼로리: '50',
+        재료사진: sauceHotChilli,
+        추가재료여부: false,
+      },
+      {
+        id: 's2',
+        이름: '핫소스',
+        카테고리: '소스',
+        칼로리: '50',
+        재료사진: sauceHotChilli,
+        추가재료여부: false,
+      },
+      {
+        id: 's3',
+        이름: '핫소스',
+        카테고리: '소스',
+        칼로리: '50',
+        재료사진: sauceHotChilli,
+        추가재료여부: false,
+      },
+      {
+        id: 's1',
+        이름: '핫소스',
+        카테고리: '소스',
+        칼로리: '50',
+        재료사진: sauceHotChilli,
         추가재료여부: false,
       },
     ],
@@ -70,7 +101,7 @@ function BestCombinationDetailPage() {
             뱃지리스트: data[0].뱃지리스트,
           }}
         />
-        {/* <IngredientCardList ingredientList={data[0].선택재료} /> */}
+        <IngredientCardList ingredientList={data[0].선택재료} />
         <CombinationIngredientList ingredientList={data[0].선택재료} />
         {/* <CombinationIngredientList /> */}
       </Contents>
@@ -94,15 +125,11 @@ export default BestCombinationDetailPage;
 //   return getPost(combinationId);
 // }
 
-const Wrapper = styled.div`
-  background: #f5f5f5;
-  margin-bottom: 150px;
-`;
-
 const Header = styled.div`
   ${flexbox('row', 'space-between', 'center')}
   height: 48px;
   background: #fff;
+  position: relative;
   padding: 0 32px 0 32px;
   & h1 {
     font-weight: 700;
@@ -116,6 +143,7 @@ const Header = styled.div`
 `;
 
 const Contents = styled.div`
+  ${flexbox('column', 'flex-start', 'center')}
   background: #fff;
   margin-bottom: 10px;
   padding: 32px;
@@ -124,11 +152,16 @@ const Contents = styled.div`
 const Comments = styled.div`
   background: #fff;
   padding: 0 32px;
+  padding-bottom: 64px;
+  box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
 `;
 
 const CommentHeader = styled.div`
   ${flexbox('row', undefined, 'center')}
   height: ${changeRem(60)};
+
+  box-shadow: 0px 1px 1px #eee;
+
   & h2 {
     font-weight: 500;
     font-size: ${changeRem(14)};

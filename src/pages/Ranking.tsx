@@ -1,21 +1,24 @@
 import styled from '@emotion/styled';
 import CombinationRankingCard from '@components/CombinationRankingCard';
+import Wrapper from '@components/UI/Wrapper';
 import { changeRem, buttonNone } from '../styles/mixin';
 
 function RankingPage() {
   return (
-    <Wrapper>
-      <TabGroup>
-        <TitleTab>맛잘알랭킹</TitleTab>
-        <TitleTab>신규조합</TitleTab>
-      </TabGroup>
-      <RankingCard />
-      <RankingCard />
-    </Wrapper>
+    <Wrapper2>
+      <Wrapper>
+        <TabGroup>
+          <TitleTab>맛잘알랭킹</TitleTab>
+          <TitleTab>신규조합</TitleTab>
+        </TabGroup>
+        <RankingCard />
+        <RankingCard />
+      </Wrapper>
+    </Wrapper2>
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper2 = styled.div`
   background: #f9f9f9;
   height: 100vh;
   padding: 25px 20px;

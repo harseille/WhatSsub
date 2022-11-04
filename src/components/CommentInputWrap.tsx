@@ -14,7 +14,7 @@ function CommentInputWrap() {
 const Wrapper = styled.div`
   position: fixed;
   left: 0;
-  bottom: 88px;
+  bottom: 80px;
   width: 100%;
   padding: 10px;
   display: flex;
