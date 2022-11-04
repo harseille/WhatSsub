@@ -57,10 +57,10 @@ export default styled.button<
 
   ${({ textAlign }) => textAlign && `text-align : ${textAlign}`};
   ${({ boxShadow }) => boxShadow && `box-shadow : ${boxShadow}`};
+  ${({ designType }) => designType && designList[designType]};
   font-size: ${({ fontSize }) => fontSize || '16px'};
   font-weight: ${({ fontWeight }) => fontWeight || '400'};
   font-family: inherit;
-  ${({ designType }) => designType && designList[designType]};
   height: ${({ height }) => height};
   line-height: ${({ lineHeight }) => lineHeight};
   width: ${({ width }) => width};
