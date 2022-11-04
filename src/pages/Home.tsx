@@ -29,14 +29,14 @@ function HomePage() {
             <span>꿀 조합</span>
           </LinkTitle>
           <LinkSub>BEST 메뉴</LinkSub>
-          <img src={bestLink} alt="꿀 조합 아이콘" />
+          <LinkImg src={bestLink} alt="꿀 조합 아이콘" />
         </ALink>
         <ALink to="/random-pick">
           <LinkTitle>
             <span>랜덤 조합</span>
           </LinkTitle>
           <LinkSub>랜덤으로 즐기는 메뉴</LinkSub>
-          <img src={ramdomLink} alt="룰렛" />
+          <LinkImg src={ramdomLink} alt="룰렛" />
         </ALink>
       </LinkGroup>
     </HomeWrapper>
@@ -119,6 +119,10 @@ const ALink = styled(Link)`
       transform: translate3d(0, -50%, 0);
     }
   }
+`;
+
+const LinkImg = styled.img`
+  width: auto;
 `;
 
 const LinkTitle = styled.span`
