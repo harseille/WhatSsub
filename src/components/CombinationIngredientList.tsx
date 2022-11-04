@@ -1,23 +1,25 @@
 import styled from '@emotion/styled';
 import { changeRem } from '../styles/mixin';
+import {} from './SandwitchInfoCard';
 
-interface 선택재료 {
-  빵: string;
-  치즈: string;
-  야채: string[];
-  소스: string[];
-  추가재료?: string[];
+interface 인터페이스_재료 {
+  id: string;
+  이름: string;
+  카테고리: string;
+  칼로리: string;
+  추가재료여부: boolean;
 }
 
-function CombinationIngredientList() {
-  const 선택재료: 선택재료 = {
-    빵: '플랫 브레드',
-    치즈: '슈레드',
-    야채: ['양상추', '토마토'],
-    소스: ['핫칠리', '올리브오일', '후추'],
-    // 추가재료: ['아보카도'],
-  };
-  const CombinationIngredientLis = Object.entries(선택재료).map(([재료타입, 재료]) => (
+function CombinationIngredientList(props: { ingredientList: 인터페이스_재료[] }) {
+  const { ingredientList } = props;
+
+  const 재료_맵 = new Map();
+
+  ingredientList.forEach((재료: 인터페이스_재료) => {
+    재료_맵.set(재료.카테고리, 재료_맵.get(재료.카테고리) ? [재료.이름, ...재료_맵.get(재료.카테고리)] : [재료.이름]);
+  });
+
+  const CombinationIngredientList = [...재료_맵.entries()].map(([재료타입, 재료]) => (
     <li>
       <p>
         <span>{재료타입}</span>: {Array.isArray(재료) ? <span>{재료.join(', ')}</span> : <span>{재료}</span>}
@@ -25,7 +27,7 @@ function CombinationIngredientList() {
     </li>
   ));
 
-  return <CombinationIngredientUl>{CombinationIngredientLis}</CombinationIngredientUl>;
+  return <CombinationIngredientUl>{CombinationIngredientList}</CombinationIngredientUl>;
 }
 
 const CombinationIngredientUl = styled.ul`

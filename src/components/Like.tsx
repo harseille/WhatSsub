@@ -1,16 +1,29 @@
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
+import { changeRem, flexbox } from '../styles/mixin';
 
-interface ILike {
-  top?: string;
-  left?: string;
+// interface 인터페이스_좋아요_스타일 {
+//   position?: string | undefined;
+//   top?: string | undefined;
+//   left?: string | undefined;
+//   right?: string | undefined;
+//   bottom?: string | undefined;
+// }
+
+// interface 인터페이스_좋아요 extends 인터페이스_좋아요_스타일 {
+//   count: string;
+// }
+
+interface 인터페이스_좋아요 {
+  count: string;
 }
 
-function Like(props: ILike) {
-  const { top, left } = props;
+function Like(props: 인터페이스_좋아요) {
+  // const { count, position, top, left, right, bottom } = props;
+  const { count } = props;
 
   return (
-    <LikeContainter top={top} left={left}>
+    // <LikeContainter position={position} top={top} left={left} right={right} bottom={bottom}>
+    <LikeContainter>
       <svg
         width="19"
         height="16"
@@ -33,19 +46,17 @@ function Like(props: ILike) {
           mask="url(#path-1-inside-1_369_602)"
         />
       </svg>
-      <span>728</span>
+      <span>{count}</span>
     </LikeContainter>
   );
 }
 
-const LikeContainter = styled.div(
-  {
-    position: 'absolute',
-  },
-  (props: ILike) => ({
-    top: props.top,
-    left: props.left,
-  })
-);
+const LikeContainter = styled.div`
+  ${flexbox('row', 'right', 'center')}
+  color: ${props => props.theme.colors.primaryGreen};
+  & span {
+    font-size: ${changeRem(14)};
+  }
+`;
 
 export default Like;

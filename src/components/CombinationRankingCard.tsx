@@ -1,6 +1,7 @@
 import SandwitchBadgeList from '@components/SandwitchBadgeList';
 import Like from '@components/Like';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '../styles/mixin';
@@ -21,7 +22,7 @@ function CombinationRankingCard() {
       <RankingContents>
         <Title>스테이크 & 치즈</Title>
         <SandwitchBadgeList badgeList={뱃지리스트} />
-        <Like top={changeRem(77)} left={changeRem(270)} />
+        <Like count="40" />
       </RankingContents>
     </RankingCard>
   );
@@ -29,7 +30,8 @@ function CombinationRankingCard() {
 
 const RankingCard = styled.section`
   ${flexbox('row', 'flex-start', 'center')};
-  width: ${changeRem(360)};
+  min-width: ${changeRem(360)};
+  max-width: ${changeRem(480)};
   height: ${changeRem(110)};
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
@@ -42,7 +44,7 @@ const RankingImageWrap = styled.div`
   width: ${changeRem(80)};
   height: ${changeRem(80)};
   & img {
-    height: ${changeRem(60)};
+    height: ${changeRem(48)};
     object-fit: cover;
   }
   border-radius: 50%;
@@ -53,8 +55,9 @@ const RankingImageWrap = styled.div`
 
 const RankingContents = styled.div`
   ${flexbox('column', 'space-between')};
+  width: 80%;
   gap: ${changeRem(8)};
-  margin-left: ${changeRem(20)};
+  margin: ${changeRem(20)};
 `;
 
 const Title = styled.h3`

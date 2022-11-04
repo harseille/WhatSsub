@@ -20,6 +20,9 @@ const designList = {
     border: 1px solid #8E8EA9;
     font-weight: 400;
     font-size: 16px;
+    & img {
+      margin-right:8px;
+    }
     `,
 };
 
