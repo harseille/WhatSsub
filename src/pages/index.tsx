@@ -1,12 +1,12 @@
-import HomePage from './Home';
-import LoginPage from './Login';
-import MyPage from './MyPage';
-import BestCombinationPickPage from './BestCombinationPick';
-import BestCombinationListPage from './BestCombinationList';
-import BestCombinationDetailPage from './BestCombinationDetail';
-import RandomPickPage from './RandomPick';
-import RandomResultPage from './RandomResult';
-import RankingPage from './Ranking';
+import HomePage from './HomePage';
+import LoginPage from './LoginPage';
+import MyPage from './MyPagePage';
+import BestCombinationPickPage from './BestCombinationPickPage';
+import BestCombinationListPage from './BestCombinationListPage';
+import BestCombinationDetailPage from './BestCombinationDetailPage';
+import RandomPickPage from './RandomPickPage';
+import RankingPage from './RankingPage';
+import CustomCombination from './CustomCombinationPage';
 
 export {
   HomePage,
@@ -16,6 +16,6 @@ export {
   BestCombinationListPage,
   BestCombinationDetailPage,
   RandomPickPage,
-  RandomResultPage,
   RankingPage,
+  CustomCombination,
 };

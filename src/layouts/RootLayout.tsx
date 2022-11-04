@@ -1,22 +1,35 @@
 import { Outlet } from 'react-router-dom';
-import MainNavigation from '../components/MainNavigation';
+import Header from '@layouts/Header';
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
+import mediaQuery from '@styles/media-queries';
 
 function RootLayout() {
   return (
-    <>
-      <MainNavigation />
-      <Test>Test</Test>
-      <main>
+    <Layout>
+      <Header />
+      <Main>
         <Outlet />
-      </main>
-    </>
+      </Main>
+    </Layout>
   );
 }
 
-const Test = styled.div`
-  font-size: ${changeRem(100)};
+export default RootLayout;
+
+const Layout = styled.div`
+  position: relative;
+  min-width: 375px;
+  min-height: 667px;
+  height: 100vh;
+  background: #fafafa;
 `;
 
-export default RootLayout;
+const Main = styled.main`
+  padding-top: 76px;
+  padding-bottom: 80px;
+
+  ${mediaQuery} {
+    padding-top: 98px;
+    padding-bottom: 0px;
+  }
+`;

@@ -9,6 +9,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
 
@@ -22,6 +23,8 @@ module.exports = {
       '@constants': path.resolve(__dirname, 'src', 'constants'),
       '@layouts': path.resolve(__dirname, 'src', 'layouts'),
       '@pages': path.resolve(__dirname, 'src', 'pages'),
+      '@styles': path.resolve(__dirname, 'src', 'styles'),
+      '@types': path.resolve(__dirname, 'src', 'types'),
       // '@state': path.resolve(__dirname, 'src', 'state'),
       // '@utils': path.resolve(__dirname, 'utils'),
       // '@typings': path.resolve(__dirname, 'typings'),

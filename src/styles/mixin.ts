@@ -1,13 +1,13 @@
-import { css } from '@emotion/react';
+// import { css } from '@emotion/react';
 import { DEFAULT_SIZE } from '@constants/constants';
 
 const changeRem = (n: number) => `${n / DEFAULT_SIZE}rem`;
 
 const flexbox = (
-  direction: string = 'row',
-  justify: string = 'flex-start',
-  items: string = 'stretch',
-  wrap: string = 'nowrap'
+  direction: string | undefined = 'row',
+  justify: string | undefined = 'flex-start',
+  items: string | undefined = 'stretch',
+  wrap: string | undefined = 'nowrap'
 ) => `
     display: flex;
     flex-flow: ${direction} ${wrap};
