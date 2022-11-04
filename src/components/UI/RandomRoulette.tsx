@@ -7,35 +7,39 @@ import { changeRem } from '../../styles/mixin';
 function RandomRoulette() {
   return (
     <Container>
-      <Roulette src={spinBoard} alt="pointer" />
-      <StartButton src={startBtn} alt="pointer" />
-      <Pointer src={pointer} alt="pointer" />
+      <Roulette src={spinBoard} alt="룰렛" />
+      <StartButton src={startBtn} alt="시작 버튼" />
+      <Pointer src={pointer} alt="포인터" />
     </Container>
   );
 }
 
 const Container = styled.div`
   position: relative;
-  top: 100px;
+  width: 379px;
 `;
 const Roulette = styled.img`
-  width: 100%;
-  position: absolute;
+  background-color: pink;
+  /* 
   left: 50%;
   top: 18%;
   transform: translate(-50%, -4%);
-  width: ${changeRem(316)};
+  width: ${changeRem(316)}; */
 `;
 const Pointer = styled.img`
   position: absolute;
-  left: 50%;
+  max-width: none;
+  /* left: 50%;
+  top: 18%;
   transform: translate(-50%, -50%);
-  width: ${changeRem(30)};
+  width: ${changeRem(30)}; */
 `;
 const StartButton = styled.img`
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, 110%);
-  width: ${changeRem(82)};
+  max-width: none;
+  /* left: 50%;
+  top: 29%;
+  transform: translate(-50%);
+  width: ${changeRem(82)}; */
 `;
 export default RandomRoulette;

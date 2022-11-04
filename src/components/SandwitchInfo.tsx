@@ -20,7 +20,8 @@ function SandwitchInfo({ sandwitch: { 이미지, 이름, 베이스샌드위치, 
 
 const InfoWrap = styled.div`
   width: ${changeRem(305)};
-  margin: 10px;
+  /* margin: 10px; */
+  //원오야 잠시 마진 뺼게 조립할 때 요 마진 있어서 정렬이 어렵 -다빈
 `;
 
 const ImgWrap = styled.div`
@@ -38,7 +39,7 @@ const ImgWrap = styled.div`
 const SandwitchName = styled.p`
   font-size: ${changeRem(20)};
   font-weight: 700;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 `;
 
 const InfoSummary = styled.p`

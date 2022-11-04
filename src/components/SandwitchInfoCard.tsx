@@ -18,7 +18,7 @@ export interface 샌드위치 {
   뱃지리스트: 샌드위치뱃지리스트;
 }
 
-const sandwitch: 샌드위치 = {
+export const sandwitch: 샌드위치 = {
   이미지: ChickenSlice,
   이름: '꿀꿀마앗',
   베이스샌드위치: '치킨 슬라이스',
