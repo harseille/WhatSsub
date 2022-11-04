@@ -7,6 +7,8 @@ import confettiGreen from '@assets/icons/confetti_green.svg';
 import confettiOrange from '@assets/icons/confetti_orange.svg';
 import confettiYellow from '@assets/icons/confetti_yellow.svg';
 import styled from '@emotion/styled';
+import Wrapper from '@components/UI/Wrapper';
+import mediaQuery from '../styles/media-queries';
 import theme from '../styles/theme';
 import { autoMargin, changeRem, flexbox } from '../styles/mixin';
 
@@ -24,12 +26,12 @@ function LoginPage() {
               <Span color={theme.colors.primaryYellow}>꿀조합</Span>을 공유해보세요.
             </Span>
           </Title>
-          <VisualImg src={danzziAnnung} alt="안눙이라고 말하는 단지" />
+          <VisualImg src={danzziAnnung} alt="안눙이라고 말하는 단찌" />
         </Visual>
       </Banner>
       <ButtonList>
         <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
-          <img src={iconFacebook} alt="facebook 아이콘" />
+          <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
         <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
@@ -40,20 +42,20 @@ function LoginPage() {
     </LoginWrapper>
   );
 }
-const LoginWrapper = styled.div`
-  height: 100vh;
-`;
+const LoginWrapper = styled.div``;
 
 const Banner = styled.div`
   background-color: #f2f2f2;
-  height: 447px;
+  height: 300px;
+  ${mediaQuery} {
+    height: 447px;
+  }
 `;
 
-const Visual = styled.section`
+const Visual = styled(Wrapper)`
   ${autoMargin()}
   overflow: hidden;
   padding: 30px 0 0;
-  max-width: 800px;
   text-align: center;
   background-image: url(${confettiOrange});
   background-repeat: no-repeat;
@@ -63,24 +65,34 @@ const Visual = styled.section`
 const Title = styled.h2`
   padding: 0 45px;
   color: #000;
-  font-size: ${changeRem(36)};
+  font-size: ${changeRem(24)};
   font-weight: 700;
   text-align: right;
   background-image: url(${confettiGreen}), url(${confettiYellow});
   background-repeat: no-repeat;
   background-position: left 14% center, right 30px top -15px;
   transform: skewY(7deg);
+
+  ${mediaQuery} {
+    font-size: ${changeRem(36)};
+  }
 `;
 
 const VisualImg = styled.img`
-  width: ${changeRem(280)};
+  width: ${changeRem(200)};
   margin-top: -30px;
+  ${mediaQuery} {
+    width: ${changeRem(280)};
+  }
 `;
 
-const ButtonList = styled.div`
+const ButtonList = styled(Wrapper)`
   ${flexbox('column', 'center', 'center')}
   gap: 16px;
   margin-top: 80px;
+  & img {
+    width: auto;
+  }
 `;
 
 export default LoginPage;

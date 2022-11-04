@@ -55,8 +55,17 @@ function IngredientCardList(props: { ingredientList: 재료[] }) {
 }
 
 const CardList = styled.ul`
+  width: 100%;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
   ${flexbox()}
-  gap: 8px
+  gap: 8px;
 `;
 
 export default IngredientCardList;

@@ -45,6 +45,7 @@ const CardWarp = styled.li`
   max-width: ${changeRem(370)};
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
+  background: #fff;
 `;
 
 const LikeBtn = styled.button`

@@ -6,7 +6,7 @@ import mediaQuery from '../styles/media-queries';
 
 function Header() {
   return (
-    <header>
+    <HeaderWrap>
       <HeaderInner>
         <HeaderLogo>
           <NavLink to="/">
@@ -15,17 +15,27 @@ function Header() {
         </HeaderLogo>
         <HeaderItemsWrap />
       </HeaderInner>
-    </header>
+    </HeaderWrap>
   );
 }
 
 export default Header;
+
+const HeaderWrap = styled.header`
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  min-width: 375px;
+  background: #fff;
+  box-shadow: 0px 2px 2px #eee;
+`;
 
 const HeaderInner = styled.div`
   padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   transition: all 0.5s;
 
   ${mediaQuery} {

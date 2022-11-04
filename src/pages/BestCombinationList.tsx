@@ -2,22 +2,25 @@ import SandwitchInfoCard from '@components/SandwitchInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
 import Button from '@components/UI/Button';
+import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '../styles/mixin';
 
 function BestCombinationListPage() {
-  if (true) {
+  if (false) {
     return (
-      <Container>
-        <Title>꿀조합 찾기 실패</Title>
-        <ImgWrap>
-          <img src={cryingDanji} alt="cryingDanji" />
-        </ImgWrap>
-        <Desc>검색하신 샌드위치를 찾을 수 없습니다.</Desc>
-        <Desc>꿀 조합을 다시 선택해주세요.</Desc>
-        <Button designType="primaryYellow" width={changeRem(330)} height={changeRem(50)} marginTop="40px">
-          다시 찾기
-        </Button>
-      </Container>
+      <Wrapper>
+        <Container>
+          <Title>꿀조합 찾기 실패</Title>
+          <ImgWrap>
+            <img src={cryingDanji} alt="cryingDanji" />
+          </ImgWrap>
+          <Desc>검색하신 샌드위치를 찾을 수 없습니다.</Desc>
+          <Desc>꿀 조합을 다시 선택해주세요.</Desc>
+          <Button designType="primaryYellow" width={changeRem(330)} height={changeRem(50)} marginTop="40px">
+            다시 찾기
+          </Button>
+        </Container>
+      </Wrapper>
     );
   }
 
@@ -35,11 +38,10 @@ function BestCombinationListPage() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 0 20px;
   margin: 0 auto;
-  background: url(cryingDanji) no-repeat center;
+  background: #fafafa url(cryingDanji) no-repeat center;
+  padding-top: 5vh;
 
   & > ul {
     display: flex;

@@ -7,45 +7,50 @@ import deco3 from '@assets/images/home_bg_left_bottom.svg';
 import bestLink from '@assets/images/home_link_best_combination.svg';
 import bgText from '@assets/images/home_bg_text.svg';
 import ramdomLink from '@assets/images/home_link_random.svg';
+import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '../styles/mixin';
+import mediaQuery from '../styles/media-queries';
 
 function HomePage() {
   return (
     <HomeWrapper>
       <Visual>
-        <Title>
-          <TitleSpan>
-            <SpanStrong>생각</SpanStrong>이 안날땐
-          </TitleSpan>
-          <TitleSpan>
-            <SpanStrong>왔썹</SpanStrong>으로 주문하자
-          </TitleSpan>
-        </Title>
-        <VisualImg src={homeDanji} alt="샌드위치 먹는 단지" />
+        <Wrapper>
+          <Title>
+            <TitleSpan>
+              <SpanStrong>생각</SpanStrong>이 안날땐
+            </TitleSpan>
+            <TitleSpan>
+              <SpanStrong>왔썹</SpanStrong>으로 고르자
+            </TitleSpan>
+          </Title>
+          <VisualImg src={homeDanji} alt="샌드위치 먹는 단지" />
+        </Wrapper>
       </Visual>
-      <LinkGroup>
-        <ALink to="/best-combination-pick">
-          <LinkTitle>
-            <span>꿀 조합</span>
-          </LinkTitle>
-          <LinkSub>BEST 메뉴</LinkSub>
-          <LinkImg src={bestLink} alt="꿀 조합 아이콘" />
-        </ALink>
-        <ALink to="/random-pick">
-          <LinkTitle>
-            <span>랜덤 조합</span>
-          </LinkTitle>
-          <LinkSub>랜덤으로 즐기는 메뉴</LinkSub>
-          <LinkImg src={ramdomLink} alt="룰렛" />
-        </ALink>
-      </LinkGroup>
+      <Wrapper>
+        <LinkGroup>
+          <ALink to="/best-combination-pick">
+            <LinkTitle>
+              <span>꿀 조합</span>
+            </LinkTitle>
+            <LinkSub>BEST 메뉴</LinkSub>
+            <LinkImg src={bestLink} alt="꿀 조합 아이콘" />
+          </ALink>
+          <ALink to="/random-pick">
+            <LinkTitle>
+              <span>랜덤 조합</span>
+            </LinkTitle>
+            <LinkSub>랜덤으로 즐기는 메뉴</LinkSub>
+            <LinkImg src={ramdomLink} alt="룰렛" />
+          </ALink>
+        </LinkGroup>
+      </Wrapper>
     </HomeWrapper>
   );
 }
 
 const HomeWrapper = styled.div`
-  height: 100vh;
-  /* padding-top: 97px; */
+  padding: 0 0 50px;
   background: #f9f9f9;
 `;
 
@@ -58,6 +63,10 @@ const Visual = styled.section`
   background-image: url(${deco3}), url(${bgText});
   background-repeat: no-repeat;
   background-position: left 34px bottom 60px, right -30px bottom 90px;
+
+  ${mediaQuery} {
+    height: 680px;
+  }
 `;
 
 const Title = styled.h2`
@@ -70,6 +79,12 @@ const Title = styled.h2`
   background-repeat: no-repeat;
   background-position: left 14% center, right 30px top -15px;
   transform: skewY(7deg);
+
+  ${mediaQuery} {
+    text-align: center;
+    font-size: ${changeRem(80)};
+    transform: skewY(7deg) translateY(20%);
+  }
 `;
 
 const TitleSpan = styled.span`
@@ -80,6 +95,10 @@ const SpanStrong = styled.span`
   color: ${({ theme }) => theme.colors.primaryYellow};
   font-size: ${changeRem(48)};
   font-weight: bold;
+
+  ${mediaQuery} {
+    font-size: ${changeRem(100)};
+  }
 `;
 
 const VisualImg = styled.img`

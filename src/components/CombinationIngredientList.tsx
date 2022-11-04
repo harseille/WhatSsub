@@ -31,6 +31,7 @@ function CombinationIngredientList(props: { ingredientList: 인터페이스_재�
 }
 
 const CombinationIngredientUl = styled.ul`
+  width: 100%;
   font-size: ${changeRem(12)};
   line-height: ${changeRem(20)};
   color: #979797;

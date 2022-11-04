@@ -3,6 +3,7 @@ import { useState } from 'react';
 import MyCombinationStep from '@components/MyCombinationStep';
 import SelectCombination from '@components/SelectCombination';
 import NextStepButton from '@components/NextStepButton';
+import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '../styles/media-queries';
 
 function CustomCombination() {
@@ -30,7 +31,7 @@ function CustomCombination() {
 
 export default CustomCombination;
 
-const CustomPageWrap = styled.div`
+const CustomPageWrap = styled(Wrapper)`
   padding: 0 25px;
 
   ${mediaQuery} {
