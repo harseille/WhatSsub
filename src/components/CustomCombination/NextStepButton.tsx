@@ -1,4 +1,4 @@
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 
 interface 인터페이스_조합_선택_버튼_속성 {
   currentStep: number;

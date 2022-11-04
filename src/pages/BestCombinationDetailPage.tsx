@@ -1,9 +1,9 @@
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import CommentInputWrap from '@components/CommentInputWrap';
 import IngredientCardList from '@components/IngredientCardList';
-import Like from '@components/Like';
-import SandwitchInfo from '@components/SandwitchInfo';
-import CommentList from '@components/CommentList';
+import Like from '@components/UI/Button/Like';
+import SandwitchInfo from '@components/UI/SandwitchInfo';
+import CommentList from '@components/Comments/CommentList';
 import styled from '@emotion/styled';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';

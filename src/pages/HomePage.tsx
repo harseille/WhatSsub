@@ -8,8 +8,8 @@ import bestLink from '@assets/images/home_link_best_combination.svg';
 import bgText from '@assets/images/home_bg_text.svg';
 import ramdomLink from '@assets/images/home_link_random.svg';
 import Wrapper from '@components/UI/Wrapper';
-import { changeRem } from '../styles/mixin';
-import mediaQuery from '../styles/media-queries';
+import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 
 function HomePage() {
   return (

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
+import { changeRem } from '@styles/mixin';
 
 interface 재료버튼프로퍼티 {
   배경색?: string;

@@ -5,8 +5,8 @@ import homeImg from '@assets//images/home.svg';
 import rankingImg from '@assets//images/ranking.svg';
 import customImg from '@assets//images/custom.svg';
 import myPageImg from '@assets//images/myPage.svg';
-import { changeRem, buttonNone } from '../styles/mixin';
-import mediaQuery from '../styles/media-queries';
+import mediaQuery from '@styles/media-queries';
+import { changeRem, buttonNone } from '@styles/mixin';
 
 interface 인터페이스_메뉴 {
   메뉴명: string;

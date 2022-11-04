@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
-import SandwitchBadgeList from './SandwitchBadgeList';
-import { 샌드위치 } from './SandwitchInfoCard';
+import { changeRem } from '@styles/mixin';
+import SandwitchBadgeList from '@components/SandwitchBadgeList';
+import { 샌드위치 } from '@components/UI/Cards/SandwitchInfoCard';
 
 function SandwitchInfo({ sandwitch: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwitch: 샌드위치 }) {
   return (

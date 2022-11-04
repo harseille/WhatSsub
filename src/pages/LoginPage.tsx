@@ -1,4 +1,4 @@
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 import Span from '@components/UI/Span';
 import danzziAnnung from '@assets/images/danzzi/danzzi_annung.png';
 import iconFacebook from '@assets/icons/facebook.svg';
@@ -8,9 +8,9 @@ import confettiOrange from '@assets/icons/confetti_orange.svg';
 import confettiYellow from '@assets/icons/confetti_yellow.svg';
 import styled from '@emotion/styled';
 import Wrapper from '@components/UI/Wrapper';
-import mediaQuery from '../styles/media-queries';
-import theme from '../styles/theme';
-import { autoMargin, changeRem, flexbox } from '../styles/mixin';
+import mediaQuery from '@styles/media-queries';
+import theme from '@styles/theme';
+import { autoMargin, changeRem, flexbox } from '@styles/mixin';
 
 function LoginPage() {
   return (

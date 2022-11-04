@@ -1,10 +1,10 @@
-import SandwitchInfo from '@components/SandwitchInfo';
+import SandwitchInfo from '@components/UI/SandwitchInfo';
 import styled from '@emotion/styled';
-import { sandwitch } from '@components/SandwitchInfoCard';
+import { sandwitch } from '@components/UI/Cards/SandwitchInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import { changeRem } from '../../styles/mixin';
 import xBtn from '../../assets/images/x-btn.svg';
-import Button from './Button';
+import Button from './Button/Button';
 
 const data = [
   {

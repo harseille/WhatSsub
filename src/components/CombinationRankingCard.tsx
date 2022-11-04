@@ -1,11 +1,9 @@
 import SandwitchBadgeList from '@components/SandwitchBadgeList';
-import Like from '@components/Like';
+import Like from '@components/UI/Button/Like';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import { flexbox, changeRem } from '../styles/mixin';
-import { 샌드위치뱃지리스트 } from './SandwitchInfoCard';
+import { flexbox, changeRem } from '@styles/mixin';
+import { 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwitchInfoCard';
 
 const 뱃지리스트: 샌드위치뱃지리스트 = {
   맛: ['달달'],

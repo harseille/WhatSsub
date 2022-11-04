@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
-import mediaQuery from '../styles/media-queries';
+import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 
 const MobileSize: number = 26;
 const DesktopSize: number = 32;
