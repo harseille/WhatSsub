@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import heart from '@assets/images/heart.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import SandwitchInfo from './SandwitchInfo';
-import { changeRem } from '../styles/mixin';
+import SandwitchInfo from '@components/UI/SandwitchInfo';
+import { changeRem } from '../../../styles/mixin';
 
 export interface 샌드위치뱃지리스트 {
   맛: string[];

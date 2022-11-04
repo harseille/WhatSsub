@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import Header from '@components/Header';
+import Header from '@layouts/Header';
 import styled from '@emotion/styled';
-import mediaQuery from '../styles/media-queries';
+import mediaQuery from '@styles/media-queries';
 
 function RootLayout() {
   return (
@@ -29,7 +29,7 @@ const Main = styled.main`
   padding-bottom: 80px;
 
   ${mediaQuery} {
-    padding-top: 100px;
+    padding-top: 98px;
     padding-bottom: 0px;
   }
 `;

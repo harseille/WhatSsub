@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { changeRem, flexbox } from '../styles/mixin';
+import { changeRem, flexbox } from '@styles/mixin';
 
 // interface 인터페이스_좋아요_스타일 {
 //   position?: string | undefined;

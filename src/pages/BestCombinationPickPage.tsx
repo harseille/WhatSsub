@@ -1,8 +1,8 @@
 import IngredientButtonList from '@components/IngredientButtonList';
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
-import { changeRem, flexbox } from '../styles/mixin';
+import { changeRem, flexbox } from '@styles/mixin';
 
 function BestCombinationPickPage() {
   return (

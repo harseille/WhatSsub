@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { 재료 } from '@components/IngredientCardList';
-import { changeRem, flexbox, autoMargin } from '../styles/mixin';
+import { changeRem, flexbox, autoMargin } from '@styles/mixin';
 
 function IngredientCard(props: { ingredient: 재료 }) {
   const {

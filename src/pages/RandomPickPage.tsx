@@ -1,8 +1,6 @@
 import RandomRoulette from '@components/UI/RandomRoulette';
-// import styled from '@emotion/styled';
 import RandomModalResult from '@components/UI/RandomModalResult';
 import Wrapper from '@components/UI/Wrapper';
-// import { changeRem } from '../styles/mixin';
 
 function RandomPickPage() {
   return (

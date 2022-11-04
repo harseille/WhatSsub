@@ -1,9 +1,9 @@
-import SandwitchInfoCard from '@components/SandwitchInfoCard';
+import SandwitchInfoCard from '@components/UI/Cards/SandwitchInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
-import { changeRem } from '../styles/mixin';
+import { changeRem } from '@styles/mixin';
 
 function BestCombinationListPage() {
   if (false) {

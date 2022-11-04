@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import CombinationRankingCard from '@components/CombinationRankingCard';
 import Wrapper from '@components/UI/Wrapper';
-import { changeRem, buttonNone } from '../styles/mixin';
+import { changeRem, buttonNone } from '@styles/mixin';
 
 function RankingPage() {
   return (

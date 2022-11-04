@@ -1,5 +1,4 @@
-import { 리뷰프로퍼티 } from '@components/CommentItem';
-import CommentItem from './CommentItem';
+import CommentItem, { 리뷰프로퍼티 } from '@components/CommentItem';
 
 const 리뷰리스트: 리뷰프로퍼티[] = [
   {

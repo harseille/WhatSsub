@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import MyCombinationStep from '@components/MyCombinationStep';
-import SelectCombination from '@components/SelectCombination';
-import NextStepButton from '@components/NextStepButton';
+import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
+import SelectCombination from '@components/CustomCombination/SelectCombination';
+import NextStepButton from '@components/CustomCombination/NextStepButton';
 import Wrapper from '@components/UI/Wrapper';
-import mediaQuery from '../styles/media-queries';
+import mediaQuery from '@styles/media-queries';
 
 function CustomCombination() {
   const [현재진행도, 현재진행도_수정] = useState(1);

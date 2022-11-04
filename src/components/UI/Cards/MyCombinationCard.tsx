@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import SandwichBL from '@assets/images/sandwich_B.L.png';
 import BelieverDanji from '@assets/images/believerDanji.png';
-import { changeRem } from '../../styles/mixin';
+import { changeRem } from '../../../styles/mixin';
 
 function MyCombinationCard() {
   return (

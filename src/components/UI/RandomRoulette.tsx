@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import spinBoard from '@assets/images/spinBoard.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
-import { changeRem } from '../../styles/mixin';
+import { changeRem } from '@styles/mixin';
 
 function RandomRoulette() {
   return (

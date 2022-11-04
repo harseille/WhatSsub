@@ -1,9 +1,8 @@
-import SandwitchInfo from '@components/SandwitchInfo';
+import SandwitchInfo from '@components/UI/SandwitchInfo';
 import styled from '@emotion/styled';
-// import { sandwitch } from '@components/SandwitchInfoCard';
-import { sandwitch } from '@components/SandwitchInfoCard';
+import { sandwitch } from '@components/UI/Cards/SandwitchInfoCard';
 import Wrapper from '@components/UI/Wrapper';
-import { changeRem } from '../styles/mixin';
+import { changeRem } from '@styles/mixin';
 
 function MyPage() {
   return (
@@ -11,7 +10,7 @@ function MyPage() {
       <Content>
         <Title>
           <UserName className="title">단찌</UserName>
-          <span>만의 조합</span>
+          <SubTitle>만의 조합</SubTitle>
         </Title>
         <span className="sub-title">좋아요 꿀조합</span>
         <Card>
@@ -29,10 +28,10 @@ function MyPage() {
 const Content = styled.div`
   width: 380px;
   margin: 30px auto 0;
-  & .sub-title {
-    color: #979797;
-    font-weight: 700;
-  }
+`;
+const SubTitle = styled.span`
+  color: #979797;
+  font-weight: 700;
 `;
 
 const Title = styled.span`
@@ -59,7 +58,7 @@ const Card = styled.div`
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   /* margin-bottom: 10px; */
-  margin: 20px 0 10px;
+  margin: 20px auto;
 `;
 
 export default MyPage;

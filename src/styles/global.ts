@@ -12,7 +12,7 @@ const globalStyle = `
     list-style: none;
     padding: 0;
   },
-  h3 {
+  h1,h2,h3 {
     margin:0;
   },
   p{
