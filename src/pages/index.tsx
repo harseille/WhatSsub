@@ -5,8 +5,8 @@ import BestCombinationPickPage from './BestCombinationPick';
 import BestCombinationListPage from './BestCombinationList';
 import BestCombinationDetailPage from './BestCombinationDetail';
 import RandomPickPage from './RandomPick';
-import RandomResultPage from './RandomResult';
 import RankingPage from './Ranking';
+import CustomCombination from './CustomCombination';
 
 export {
   HomePage,
@@ -16,6 +16,6 @@ export {
   BestCombinationListPage,
   BestCombinationDetailPage,
   RandomPickPage,
-  RandomResultPage,
   RankingPage,
+  CustomCombination,
 };

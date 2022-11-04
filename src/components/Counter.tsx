@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
-import count from '../state/state';
 import styled from '@emotion/styled';
+import count from '../state/state';
 
 const P = styled.p`
   font-size: 20px;
@@ -14,10 +14,10 @@ const P = styled.p`
   border-radius: 50%;
 `;
 
-const Number = () => {
+function Number() {
   const [countNumber] = useRecoilState(count);
 
   return <P>{countNumber}</P>;
-};
+}
 
 export default Number;
