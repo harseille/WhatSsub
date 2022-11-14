@@ -17,9 +17,10 @@ function RandomRoulette() {
 const Container = styled.div`
   position: relative;
   width: 379px;
+  margin: 18px auto 0;
+  padding-top: 18px;
 `;
 const Roulette = styled.img`
-  background-color: pink;
   /* 
   left: 50%;
   top: 18%;
@@ -28,18 +29,23 @@ const Roulette = styled.img`
 `;
 const Pointer = styled.img`
   position: absolute;
-  max-width: none;
-  /* left: 50%;
-  top: 18%;
+  width: 48px;
+  height: 84px;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  /* top: 18%;
   transform: translate(-50%, -50%);
   width: ${changeRem(30)}; */
 `;
 const StartButton = styled.img`
   position: absolute;
-  max-width: none;
-  /* left: 50%;
-  top: 29%;
-  transform: translate(-50%);
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* top: 29%;
   width: ${changeRem(82)}; */
 `;
 export default RandomRoulette;

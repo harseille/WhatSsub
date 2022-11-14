@@ -29,14 +29,18 @@ function RandomModalResult() {
 }
 
 const Card = styled.div`
+  z-index: 11;
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   box-sizing: border-box;
   padding: 20px 15px;
   width: ${changeRem(350)};
   height: ${changeRem(532)};
-  box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
+  box-shadow: 0px 4px 5px 3px rgba(35, 35, 35, 0.5);
   border-radius: 15px;
-  /* margin-bottom: 10px; */
-  /* margin: 30px 0 20px; */
   margin: 0 auto;
   & img {
     width: 20px;
