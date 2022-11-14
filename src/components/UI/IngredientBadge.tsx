@@ -18,7 +18,7 @@ function IngredientBadge({ fontColor, backgroundColor, item }: 뱃지정보) {
     </li>
   );
 }
-
+// test 주석
 const IngredientBadgeBox = styled.div`
   display: inline-block;
   padding: 4px 12px;
