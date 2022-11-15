@@ -21,3 +21,6 @@
 .env.production.local
 
 npm-debug.log*
+
+# firebase
+.firebase.ts

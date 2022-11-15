@@ -11,8 +11,26 @@ import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
+import { setPersistence, browserSessionPersistence, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../firebase.config';
 
 function LoginPage() {
+  const googleLoginHandler = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const provider = new GoogleAuthProvider();
+    setPersistence(auth, browserSessionPersistence).then(() => {
+      console.log(auth);
+      return signInWithPopup(auth, provider)
+        .then(() => {
+          // navigate('/main');
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    });
+  };
+
   return (
     <LoginWrapper>
       <Banner>
@@ -34,7 +52,12 @@ function LoginPage() {
           <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
-        <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
+        <Button
+          designType="social"
+          width={changeRem(360)}
+          height={changeRem(54)}
+          borderRadius="6px"
+          onClick={googleLoginHandler}>
           <img src={iconGmail} alt="Gmail 아이콘" />
           Continue with Gmail
         </Button>
