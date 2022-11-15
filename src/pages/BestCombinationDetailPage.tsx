@@ -82,6 +82,8 @@ const data: 인터페이스_꿀조합[] = [
   },
 ];
 
+console.log(JSON.stringify(data));
+
 function BestCombinationDetailPage() {
   return (
     <Wrapper>
