@@ -6,6 +6,7 @@ import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import filterBestCombinationList from '@utils/filterBestCombiList';
 
 const dummy = [
   {
@@ -48,6 +49,8 @@ const dummy = [
 
 function BestCombinationListPage() {
   const { state } = useLocation();
+
+  const 꿀조합리스트 = filterBestCombinationList(dummy, state);
 
   if (false) {
     return (
