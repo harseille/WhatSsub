@@ -31,7 +31,7 @@ export interface 인터페이스_재료 {
 
 export interface 샌드위치뱃지리스트 {
   맛: string[];
-  메인재료: string;
+  메인재료: string[];
   추가사항: string[];
 }
 
