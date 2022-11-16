@@ -35,7 +35,7 @@ export const mockSandwich: 샌드위치 = {
 function SandwichInfoCard({ sandwich }: { sandwich: 샌드위치 }) {
   return (
     <CardWarp>
-      <SandwichInfo sandwich={sandwich} />
+      <SandwichInfo sandwich={mockSandwich} />
       <LikeBtn />
     </CardWarp>
   );
