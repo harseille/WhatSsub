@@ -1,6 +1,6 @@
 import SandwichInfo from '@components/UI/SandwichInfo';
 import styled from '@emotion/styled';
-import { sandwich } from '@components/UI/Cards/SandwichInfoCard';
+import { mockSandwich } from '@components/UI/Cards/SandwichInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import { changeRem } from '../../styles/mixin';
 import xBtn from '../../assets/images/x-btn.svg';
@@ -21,7 +21,7 @@ function RandomModalResult() {
     <Card>
       <img src={xBtn} alt="닫기 버튼" />
       <Title>응~ 이거나 먹어~</Title>
-      <SandwichInfo sandwich={sandwich} />
+      <SandwichInfo sandwich={mockSandwich} />
       <CombinationIngredientList ingredientList={data} />
       <Button />
     </Card>
