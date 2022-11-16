@@ -4,14 +4,14 @@ import { changeRem, flexbox, autoMargin } from '@styles/mixin';
 
 function IngredientCard(props: { ingredient: 재료 }) {
   const {
-    ingredient: { 이름, 칼로리, 재료사진 },
+    ingredient: { 이름, 칼로리, 이미지 },
   } = props;
   return (
     <Card>
       <Title>{이름}</Title>
       <Kcal>{칼로리}Kcal</Kcal>
       <ImgWrap>
-        <img src={재료사진} alt={이름} />
+        <img src={이미지} alt={이름} />
       </ImgWrap>
     </Card>
   );

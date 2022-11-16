@@ -5,18 +5,17 @@ import IngredientCard from '@components/UI/Cards/IngredientCard';
 import { flexbox } from '@styles/mixin';
 
 export interface 재료 {
-  id: string;
-  카테고리: string;
   이름: string;
+  속성: string;
   칼로리: string;
-  재료사진?: string;
+  이미지: string;
 }
 
 function IngredientCardList(props: { ingredientList: 재료[] }) {
   const { ingredientList } = props;
 
   const LiList = ingredientList.map(재료 => (
-    <li key={재료.id}>
+    <li key={재료.이름}>
       <IngredientCard ingredient={재료} />
     </li>
   ));
