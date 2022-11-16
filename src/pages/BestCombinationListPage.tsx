@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import SandwitchInfoCard from '@components/UI/Cards/SandwitchInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
@@ -6,6 +7,9 @@ import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 
 function BestCombinationListPage() {
+  const location = useLocation();
+  console.log(location);
+
   if (false) {
     return (
       <Wrapper>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IngredientButtonList from '@components/IngredientButtonList';
 import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
@@ -56,6 +57,8 @@ const 더미데이터: 재료선택[] = [
 ];
 
 function BestCombinationPickPage() {
+  const navigate = useNavigate();
+
   const initFilter: IFilter = {
     맛: [],
     재료: [],
@@ -65,11 +68,13 @@ function BestCombinationPickPage() {
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
 
   const selectFilterHandler = (filter: string, name: string, maxNum: number) => {
-    if (maxNum === 1)
+    if (maxNum === 1) {
       setSelectedFilter(prevState => ({
         ...prevState,
-        [filter]: [...name],
+        [filter]: [name],
       }));
+      return;
+    }
 
     if (maxNum === selectedFilter[filter].length) {
       alert('최대 선택 개수를 초과했습니다.');
@@ -90,6 +95,10 @@ function BestCombinationPickPage() {
     setSelectedFilter(initFilter);
   };
 
+  const navigateListPage = () => {
+    navigate('/best-combination', { state: selectedFilter });
+  };
+
   return (
     <Container>
       <IngredientButtonListWrap>
@@ -106,7 +115,7 @@ function BestCombinationPickPage() {
         ))}
       </IngredientButtonListWrap>
       <ButtonWrap>
-        <Button designType="primaryGreen" width={changeRem(330)} height={changeRem(50)}>
+        <Button onClick={navigateListPage} designType="primaryGreen" width={changeRem(330)} height={changeRem(50)}>
           꿀 조합 보러가기
         </Button>
       </ButtonWrap>
