@@ -54,6 +54,12 @@
         "칼로리": "146.7"
       },
       {
+        "이름": "아보카도",
+        "이미지": "/src/assets/images/ingredients/additional/Avocado.png",
+        "속성": "아보카도",
+        "칼로리": "63"
+      },
+      {
         "이름": "에그마요",
         "이미지": "/src/assets/images/ingredients/main/egg_mayo.png",
         "속성": "에그마요",
@@ -158,11 +164,6 @@
     "카테고리": "야채",
     "속성유무": false,
     "목록": [
-      {
-        "이름": "아보카도",
-        "이미지": "/src/assets/images/ingredients/vegetable/Avocado.png",
-        "칼로리": "56.5"
-      },
       {
         "이름": "양상추",
         "이미지": "/src/assets/images/ingredients/vegetable/Lettuce.png",
