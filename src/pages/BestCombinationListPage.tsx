@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SandwichInfoCard from '@components/UI/Cards/SandwichInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
@@ -6,6 +6,7 @@ import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import filterBestCombinationList from '@utils/filterBestCombinationList';
 
 const dummy = [
   {
@@ -48,8 +49,15 @@ const dummy = [
 
 function BestCombinationListPage() {
   const { state } = useLocation();
+  const navigate = useNavigate();
 
-  if (false) {
+  const 꿀조합리스트 = filterBestCombinationList(dummy, state);
+
+  const navigatePickPage = () => {
+    navigate(-1);
+  };
+
+  if (꿀조합리스트.length === 0) {
     return (
       <Wrapper>
         <Container>
@@ -59,7 +67,12 @@ function BestCombinationListPage() {
           </ImgWrap>
           <Desc>검색하신 샌드위치를 찾을 수 없습니다.</Desc>
           <Desc>꿀 조합을 다시 선택해주세요.</Desc>
-          <Button designType="primaryYellow" width={changeRem(330)} height={changeRem(50)} marginTop="40px">
+          <Button
+            onClick={navigatePickPage}
+            designType="primaryYellow"
+            width={changeRem(330)}
+            height={changeRem(50)}
+            marginTop="40px">
             다시 찾기
           </Button>
         </Container>
@@ -70,9 +83,11 @@ function BestCombinationListPage() {
   return (
     <Container>
       <ul>
-        <SandwichInfoCard />
-        <SandwichInfoCard />
-        <SandwichInfoCard />
+        {꿀조합리스트.map(sandwich => (
+          <Link to={`/best-combination/${sandwich.id}`} key={sandwich.id}>
+            <SandwichInfoCard sandwich={sandwich} />
+          </Link>
+        ))}
       </ul>
     </Container>
   );

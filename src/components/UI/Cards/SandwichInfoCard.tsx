@@ -19,7 +19,7 @@ export interface 샌드위치 {
   뱃지리스트: 샌드위치뱃지리스트;
 }
 
-export const sandwich: 샌드위치 = {
+export const mockSandwich: 샌드위치 = {
   id: 'S1',
   이미지: ChickenSlice,
   이름: '꿀꿀마앗',
@@ -32,7 +32,7 @@ export const sandwich: 샌드위치 = {
   },
 };
 
-function SandwichInfoCard() {
+function SandwichInfoCard({ sandwich }: { sandwich: 샌드위치 }) {
   return (
     <CardWarp>
       <SandwichInfo sandwich={sandwich} />
