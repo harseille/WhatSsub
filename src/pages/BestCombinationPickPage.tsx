@@ -77,13 +77,6 @@ function BestCombinationPickPage() {
       }));
       return;
     }
-    if (maxNum === 1 && !filterArr.includes(name)) {
-      setSelectedFilter(prevState => ({
-        ...prevState,
-        [filter]: [],
-      }));
-      return;
-    }
 
     if (maxNum === filterArr.length && !filterArr.includes(name)) {
       alert('최대 선택 개수를 초과했습니다.');
