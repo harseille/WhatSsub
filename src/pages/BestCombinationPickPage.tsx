@@ -12,7 +12,7 @@ export interface 재료 {
 export interface 재료선택 {
   제목: string;
   재료목록: 재료[];
-  선택개수: number;
+  최대선택개수: number;
 }
 
 const 더미데이터: 재료선택[] = [
@@ -24,7 +24,7 @@ const 더미데이터: 재료선택[] = [
       { id: 'F3', 이름: '고소' },
       { id: 'F4', 이름: '짭짤' },
     ],
-    선택개수: 3,
+    최대선택개수: 3,
   },
   {
     제목: '재료',
@@ -36,7 +36,7 @@ const 더미데이터: 재료선택[] = [
       { id: 'I5', 이름: '에그마요' },
       { id: 'I6', 이름: '야채' },
     ],
-    선택개수: 1,
+    최대선택개수: 1,
   },
   {
     제목: '추가사항',
@@ -45,7 +45,7 @@ const 더미데이터: 재료선택[] = [
       { id: 'A2', 이름: '치즈폭탄' },
       { id: 'A3', 이름: '저칼로리' },
     ],
-    선택개수: 3,
+    최대선택개수: 3,
   },
 ];
 
@@ -54,7 +54,7 @@ function BestCombinationPickPage() {
     <Container>
       <div>
         {더미데이터.map(data => (
-          <IngredientButtonList filterData={data} />
+          <IngredientButtonList key={data.제목} filterData={data} />
         ))}
       </div>
       <ButtonWrap>
@@ -68,6 +68,7 @@ function BestCombinationPickPage() {
 
 const Container = styled(Wrapper)`
   ${flexbox('column', 'space-between', 'center')};
+  padding: 26px;
 `;
 
 const ButtonWrap = styled.div`
