@@ -7,7 +7,7 @@ import CommentList from '@components/Comments/CommentList';
 import styled from '@emotion/styled';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import sauceHotChilli from '@assets/images/ingredients/sauce_hot_chilli.png';
+import sauceHotChilli from '@assets/images/ingredients/sauce/hot_chilli.png';
 
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem, flexbox } from '../styles/mixin';
