@@ -12,6 +12,8 @@ import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
 import { getOAuthProvider } from '@utils/index';
+// import { useRecoilValue } from 'recoil';
+// import { isLoggedInState } from 'src/state';
 
 function LoginPage() {
   const googleLoginHandler = getOAuthProvider('google');
@@ -110,3 +112,15 @@ const ButtonList = styled(Wrapper)`
 `;
 
 export default LoginPage;
+
+// export const loader =  () => {
+//   // user정보 확인
+//   const user = useRecoilValue(isLoggedInState);
+//   if (user) {
+//     return redirect("/");
+//   }
+// };
+
+// export const action = () => {
+//    return redirect("/");
+// };

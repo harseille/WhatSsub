@@ -5,7 +5,6 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from 'firebase/auth';
-import { redirect } from 'react-router-dom';
 import { auth } from '../firebase.config';
 
 interface IAuthProvider {
@@ -20,13 +19,16 @@ const authProvider: IAuthProvider = {
 const getOAuthProvider = (bender: string) => (e: React.MouseEvent) => {
   e.preventDefault();
 
-  // const navigate = useNavigate();
-  const provider = new authProvider[bender]();
+  const AuthProvider = authProvider[bender];
+  const provider = new AuthProvider();
 
   setPersistence(auth, browserSessionPersistence).then(() =>
     signInWithPopup(auth, provider)
-      .then(() => {
+      .then(result => {
         console.log('로그인 성공');
+        console.log(result);
+
+        // TODO: redirect 처리
       })
       .catch(error => {
         alert('로그인 실패했습니다. 다시 시도해주세요');
