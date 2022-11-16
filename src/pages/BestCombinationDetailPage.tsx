@@ -4,15 +4,15 @@ import IngredientCardList from '@components/IngredientCardList';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/CommentInputWrap';
 
-// import SandwitchInfo from '@components/UI/SandwitchInfo';
-import SandwitchInfo from '@components/UI/SandwichInfo';
+// import sandwichInfo from '@components/UI/sandwichInfo';
+import SandwichInfo from '@components/UI/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import Like from '@components/UI/Button/Like';
 
 import { changeRem, flexbox } from '@styles/mixin';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import { API_URL_PATH_PREFIX } from '@constants/constants';
-import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISandwitch';
+import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISandwich';
 
 // ? fetch를 뭐라고 바꿀지 고민...
 const fetchJson = (url: string) => fetch(url).then(res => res.json());
@@ -38,8 +38,9 @@ function BestCombinationDetailPage() {
           <Like count={꿀조합.좋아요} />
         </Header>
         <Contents>
-          <SandwitchInfo
-            sandwitch={{
+          <SandwichInfo
+            sandwich={{
+              id: 'testid',
               이미지: 꿀조합.이미지,
               이름: 꿀조합.제목,
               베이스샌드위치: 꿀조합.베이스샌드위치,
