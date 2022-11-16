@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwitchInfoCard';
 import IngredientBadge from '@components/UI/IngredientBadge';
+import { 샌드위치뱃지리스트 } from '../types/ISandwitch';
 
 interface 뱃지컬러_인터페이스 {
   노랑: string;
@@ -26,7 +26,9 @@ function SandwitchBadgeList({ badgeList: { 맛, 메인재료, 추가사항 } }: 
       {맛.map((item: string) => (
         <IngredientBadge fontColor={뱃지컬러.노랑} backgroundColor={뱃지컬러.노랑배경} item={item} />
       ))}
-      <IngredientBadge fontColor={뱃지컬러.파랑} backgroundColor={뱃지컬러.파랑배경} item={메인재료} />
+      {메인재료.map((item: string) => (
+        <IngredientBadge fontColor={뱃지컬러.파랑} backgroundColor={뱃지컬러.파랑배경} item={item} />
+      ))}
       {추가사항.map((item: string) => (
         <IngredientBadge fontColor={뱃지컬러.빨강} backgroundColor={뱃지컬러.빨강배경} item={item} />
       ))}

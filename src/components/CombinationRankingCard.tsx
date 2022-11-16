@@ -3,7 +3,7 @@ import Like from '@components/UI/Button/Like';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '@styles/mixin';
-import { 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwitchInfoCard';
+import { 샌드위치뱃지리스트 } from '../types/ISandwitch';
 
 interface 인터페이스_랭킹카드_프로퍼티 {
   title: string;
