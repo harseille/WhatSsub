@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import IngredientButtonList from '@components/IngredientButtonList';
 import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
+import refreshIcon from '@assets/icons/refresh.svg';
 
 export interface 재료 {
   id: string;
@@ -13,6 +15,10 @@ export interface 재료선택 {
   제목: string;
   재료목록: 재료[];
   최대선택개수: number;
+}
+
+interface IFilter {
+  [key: string]: string[];
 }
 
 const 더미데이터: 재료선택[] = [
@@ -50,13 +56,55 @@ const 더미데이터: 재료선택[] = [
 ];
 
 function BestCombinationPickPage() {
+  const initFilter: IFilter = {
+    맛: [],
+    재료: [],
+    추가사항: [],
+  };
+
+  const [selectedFilter, setSelectedFilter] = useState(initFilter);
+
+  const selectFilterHandler = (filter: string, name: string, maxNum: number) => {
+    if (maxNum === 1)
+      setSelectedFilter(prevState => ({
+        ...prevState,
+        [filter]: [...name],
+      }));
+
+    if (maxNum === selectedFilter[filter].length) {
+      alert('최대 선택 개수를 초과했습니다.');
+      return;
+    }
+
+    setSelectedFilter(prevState => {
+      const filterArr: string[] = prevState[filter];
+
+      if (filterArr.includes(name))
+        return { ...prevState, [filter]: filterArr.filter((item: string) => item !== name) };
+
+      return { ...prevState, [filter]: [...filterArr, name] };
+    });
+  };
+
+  const refreshFilter = () => {
+    setSelectedFilter(initFilter);
+  };
+
   return (
     <Container>
-      <div>
+      <IngredientButtonListWrap>
+        <RefreshButton onClick={refreshFilter}>
+          <img src={refreshIcon} alt="새로고침" />
+        </RefreshButton>
         {더미데이터.map(data => (
-          <IngredientButtonList key={data.제목} filterData={data} />
+          <IngredientButtonList
+            key={data.제목}
+            filterData={data}
+            selectedFilter={selectedFilter}
+            onSelectFilter={selectFilterHandler}
+          />
         ))}
-      </div>
+      </IngredientButtonListWrap>
       <ButtonWrap>
         <Button designType="primaryGreen" width={changeRem(330)} height={changeRem(50)}>
           꿀 조합 보러가기
@@ -69,6 +117,27 @@ function BestCombinationPickPage() {
 const Container = styled(Wrapper)`
   ${flexbox('column', 'space-between', 'center')};
   padding: 26px;
+`;
+
+const IngredientButtonListWrap = styled.div`
+  position: relative;
+  padding-top: 20px;
+`;
+
+const RefreshButton = styled.button`
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const ButtonWrap = styled.div`
