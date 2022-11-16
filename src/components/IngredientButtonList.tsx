@@ -2,24 +2,16 @@ import styled from '@emotion/styled';
 import IngredientButton from '@components/UI/Button/IngredientButton';
 import { changeRem } from '@styles/mixin';
 import { 재료선택, 재료 } from '@pages/BestCombinationPickPage';
-import { useState } from 'react';
 
-function IngredientButtonList({ filterData: { 제목, 재료목록, 최대선택개수 } }: { filterData: 재료선택 }) {
-  const [selectedNum, setSelectedNum] = useState<number>(0);
-
-  const alertMaxSelect = (isSelected: boolean) => {
-    const count = isSelected ? -1 : 1;
-
-    if (selectedNum === 최대선택개수 && !isSelected) {
-      // Todo Modal 컴포넌트 개발 시 대체 예정
-      alert('최대 선택 개수를 초과했습니다.');
-    } else {
-      setSelectedNum(prevNum => prevNum + count);
-    }
-
-    return selectedNum === 최대선택개수;
-  };
-
+function IngredientButtonList({
+  filterData: { 제목, 재료목록, 최대선택개수 },
+  selectedFilter,
+  onSelectFilter,
+}: {
+  filterData: 재료선택;
+  selectedFilter: { [key: string]: string[] };
+  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
+}) {
   return (
     <Wrapper>
       <Title>
@@ -29,7 +21,13 @@ function IngredientButtonList({ filterData: { 제목, 재료목록, 최대선택
       <IngredientList>
         {재료목록.map((재료: 재료) => (
           <li key={재료.id}>
-            <IngredientButton filter={제목} name={재료.이름} onAlert={alertMaxSelect} />
+            <IngredientButton
+              filter={제목}
+              name={재료.이름}
+              max={최대선택개수}
+              selectedFilter={selectedFilter}
+              onSelectFilter={onSelectFilter}
+            />
           </li>
         ))}
       </IngredientList>
