@@ -5,22 +5,30 @@ import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '@styles/mixin';
 import { 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwitchInfoCard';
 
-const 뱃지리스트: 샌드위치뱃지리스트 = {
-  맛: ['달달'],
-  메인재료: '돼지고기',
-  추가사항: [],
-};
+interface 인터페이스_랭킹카드_프로퍼티 {
+  title: string;
+  imageUrl: string;
+  originName: string;
+  badgeList: 샌드위치뱃지리스트;
+  like: string;
+}
 
-function CombinationRankingCard() {
+function CombinationRankingCard({
+  title: 제목,
+  imageUrl: 이미지,
+  originName,
+  badgeList: 뱃지리스트,
+  like: 좋아요,
+}: 인터페이스_랭킹카드_프로퍼티) {
   return (
     <RankingCard>
       <RankingImageWrap>
-        <img src={ChickenSlice} />
+        <img src={ChickenSlice} alt={originName} />
       </RankingImageWrap>
       <RankingContents>
-        <Title>스테이크 & 치즈</Title>
+        <Title>{제목}</Title>
         <SandwitchBadgeList badgeList={뱃지리스트} />
-        <Like count="40" />
+        <Like count={좋아요} />
       </RankingContents>
     </RankingCard>
   );
@@ -29,9 +37,10 @@ function CombinationRankingCard() {
 const RankingCard = styled.section`
   ${flexbox('row', 'flex-start', 'center')};
   min-width: ${changeRem(360)};
-  max-width: ${changeRem(480)};
-  height: ${changeRem(110)};
+  /* max-width: ${changeRem(480)}; */
+  /* height: ${changeRem(110)}; */
   position: relative;
+  padding: 13px 0;
   margin-bottom: 16px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
