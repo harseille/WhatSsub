@@ -11,6 +11,7 @@ export default function App() {
   // const [loggedInUser, setloggedInUser] = useRecoilState(userState);
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
   const setloggedInUser = useSetRecoilState(userState);
+
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Button from '@components/UI/Button/Button';
 import Span from '@components/UI/Span';
 import danzziAnnung from '@assets/images/danzzi/danzzi_annung.png';
@@ -11,13 +12,24 @@ import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
-import { getOAuthProvider } from '@utils/index';
-// import { useRecoilValue } from 'recoil';
-// import { isLoggedInState } from 'src/state';
+import { getOAuthProvider, getSessionUserInfo } from '@utils/index';
+import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { isLoggedInState } from '@state/index';
 
 function LoginPage() {
-  const googleLoginHandler = getOAuthProvider('google');
-  const facebookLoginHandler = getOAuthProvider('facebook');
+  const navigate = useNavigate();
+  const isLoggedin = useRecoilValue(isLoggedInState);
+  const userInfo = getSessionUserInfo();
+
+  useEffect(() => {
+    if (isLoggedin || userInfo) {
+      navigate('/');
+    }
+  }, []);
+
+  const 구글_로그인_핸들러 = getOAuthProvider('google');
+  const 페이스북_로그인_핸들러 = getOAuthProvider('facebook');
 
   return (
     <LoginWrapper>
@@ -41,7 +53,7 @@ function LoginPage() {
           width={changeRem(360)}
           height={changeRem(54)}
           borderRadius="6px"
-          onClick={facebookLoginHandler}>
+          onClick={페이스북_로그인_핸들러}>
           <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
@@ -50,7 +62,7 @@ function LoginPage() {
           width={changeRem(360)}
           height={changeRem(54)}
           borderRadius="6px"
-          onClick={googleLoginHandler}>
+          onClick={구글_로그인_핸들러}>
           <img src={iconGmail} alt="Gmail 아이콘" />
           Continue with Gmail
         </Button>
