@@ -1,18 +1,20 @@
 import styled from '@emotion/styled';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import IngredientCardList from '@components/IngredientCardList';
+import Like from '@components/UI/Button/Like';
+import SandwichInfo from '@components/UI/SandwichInfo';
+import CommentList from '@components/Comments/CommentList';
+import Wrapper from '@components/UI/Wrapper';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/CommentInputWrap';
-
-import SandwitchInfo from '@components/UI/SandwitchInfo';
-import Wrapper from '@components/UI/Wrapper';
-import Like from '@components/UI/Button/Like';
-
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import sauceHotChilli from '@assets/images/ingredients/sauce/hot_chilli.png';
 
-import { changeRem, flexbox } from '@styles/mixin';
-import { 인터페이스_꿀조합 } from '../types/ISandwitch';
+
+import styled from '@emotion/styled';
+import { changeRem, flexbox } from '../styles/mixin';
+import { 인터페이스_꿀조합 } from '../types/ISandwich';
+
 
 const data: 인터페이스_꿀조합[] = [
   {
@@ -76,7 +78,7 @@ const data: 인터페이스_꿀조합[] = [
     ],
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['살라미'],
+      재료: ['살라미'],
       추가사항: ['고기러버'],
     },
   },
@@ -92,8 +94,9 @@ function BestCombinationDetailPage() {
         <Like count={data[0].좋아요} />
       </Header>
       <Contents>
-        <SandwitchInfo
-          sandwitch={{
+        <SandwichInfo
+          sandwich={{
+            id: 'S1',
             이미지: data[0].이미지,
             이름: data[0].제목,
             베이스샌드위치: data[0].베이스샌드위치,

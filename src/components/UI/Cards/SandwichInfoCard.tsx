@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
 import heart from '@assets/images/heart.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import SandwitchInfo from '@components/UI/SandwitchInfo';
+import SandwichInfo from '@components/UI/SandwichInfo';
 import { changeRem } from '../../../styles/mixin';
 
 export interface 샌드위치뱃지리스트 {
   맛: string[];
-  메인재료: string[];
+  재료: string[];
   추가사항: string[];
 }
 
 export interface 샌드위치 {
+  id: string;
   이미지: string;
   이름: string;
   베이스샌드위치: string;
@@ -18,22 +19,23 @@ export interface 샌드위치 {
   뱃지리스트: 샌드위치뱃지리스트;
 }
 
-export const sandwitch: 샌드위치 = {
+export const sandwich: 샌드위치 = {
+  id: 'S1',
   이미지: ChickenSlice,
   이름: '꿀꿀마앗',
   베이스샌드위치: '치킨 슬라이스',
   칼로리: '265',
   뱃지리스트: {
     맛: ['달달', '고소'],
-    메인재료: ['살라미'],
+    재료: ['살라미'],
     추가사항: ['고기러버'],
   },
 };
 
-function SandwitchInfoCard() {
+function SandwichInfoCard() {
   return (
     <CardWarp>
-      <SandwitchInfo sandwitch={sandwitch} />
+      <SandwichInfo sandwich={sandwich} />
       <LikeBtn />
     </CardWarp>
   );
@@ -61,4 +63,4 @@ const LikeBtn = styled.button`
   background-color: #ffe8e0;
 `;
 
-export default SandwitchInfoCard;
+export default SandwichInfoCard;
