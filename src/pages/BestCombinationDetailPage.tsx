@@ -1,17 +1,17 @@
-import CombinationIngredientList from '@components/CombinationIngredientList';
-import CommentInputWrap from '@components/CommentInputWrap';
-import IngredientCardList from '@components/IngredientCardList';
-import Like from '@components/UI/Button/Like';
-import SandwitchInfo from '@components/UI/SandwitchInfo';
-import CommentList from '@components/Comments/CommentList';
 import styled from '@emotion/styled';
+import CombinationIngredientList from '@components/CombinationIngredientList';
+import IngredientCardList from '@components/IngredientCardList';
+import CommentList from '@components/Comments/CommentList';
+import CommentInputWrap from '@components/CommentInputWrap';
+
+import SandwitchInfo from '@components/UI/SandwitchInfo';
+import Wrapper from '@components/UI/Wrapper';
+import Like from '@components/UI/Button/Like';
 
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import sauceHotChilli from '@assets/images/ingredients/sauce/hot_chilli.png';
 
-import Wrapper from '@components/UI/Wrapper';
-import { changeRem, flexbox } from '../styles/mixin';
-
+import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '../types/ISandwitch';
 
 const data: 인터페이스_꿀조합[] = [
@@ -81,8 +81,6 @@ const data: 인터페이스_꿀조합[] = [
     },
   },
 ];
-
-console.log(JSON.stringify(data));
 
 function BestCombinationDetailPage() {
   return (
@@ -173,3 +171,7 @@ const CommentHeader = styled.div`
     }
   }
 `;
+
+const loader = () => {
+  // test
+};
