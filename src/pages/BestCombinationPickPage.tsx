@@ -68,15 +68,22 @@ function BestCombinationPickPage() {
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
 
   const selectFilterHandler = (filter: string, name: string, maxNum: number) => {
-    if (maxNum === 1) {
+    const filterArr = selectedFilter[filter];
+
+    if (maxNum === 1 && !filterArr.includes(name)) {
       setSelectedFilter(prevState => ({
         ...prevState,
         [filter]: [name],
       }));
       return;
     }
-
-    const filterArr = selectedFilter[filter];
+    if (maxNum === 1 && !filterArr.includes(name)) {
+      setSelectedFilter(prevState => ({
+        ...prevState,
+        [filter]: [],
+      }));
+      return;
+    }
 
     if (maxNum === filterArr.length && !filterArr.includes(name)) {
       alert('최대 선택 개수를 초과했습니다.');
