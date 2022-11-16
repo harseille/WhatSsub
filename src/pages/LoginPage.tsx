@@ -11,25 +11,11 @@ import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
-import { setPersistence, browserSessionPersistence, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase.config';
+import { getOAuthProvider } from '@utils/index';
 
 function LoginPage() {
-  const googleLoginHandler = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    const provider = new GoogleAuthProvider();
-    setPersistence(auth, browserSessionPersistence).then(() => {
-      console.log(auth);
-      return signInWithPopup(auth, provider)
-        .then(() => {
-          // navigate('/main');
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    });
-  };
+  const googleLoginHandler = getOAuthProvider('google');
+  const facebookLoginHandler = getOAuthProvider('facebook');
 
   return (
     <LoginWrapper>
@@ -48,7 +34,12 @@ function LoginPage() {
         </Visual>
       </Banner>
       <ButtonList>
-        <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
+        <Button
+          designType="social"
+          width={changeRem(360)}
+          height={changeRem(54)}
+          borderRadius="6px"
+          onClick={facebookLoginHandler}>
           <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
