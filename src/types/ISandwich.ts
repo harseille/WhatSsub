@@ -49,6 +49,26 @@ export interface 인터페이스_꿀조합 {
   선택재료: 인터페이스_재료[];
 }
 
+export interface 인터페이스_꿀조합상세페이지_꿀조합 {
+  작성자Id: string;
+  작성자_이름: string;
+  작성일: string;
+  제목: string;
+  좋아요: string;
+  베이스샌드위치: string;
+  칼로리: string;
+  이미지: string;
+  선택재료: 인터페이스_꿀조합_선택재료[];
+  뱃지리스트: 샌드위치뱃지리스트;
+}
+
+export interface 인터페이스_꿀조합_선택재료 {
+  이름: string;
+  이미지: string;
+  속성: string;
+  칼로리: string;
+}
+
 export interface 인터페이스_샌드위치 {
   이미지: string;
   이름: string;
