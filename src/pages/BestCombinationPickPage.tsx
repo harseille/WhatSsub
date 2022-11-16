@@ -3,6 +3,7 @@ import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
+import refresh from '@assets/icons/refresh.svg';
 
 export interface 재료 {
   id: string;
@@ -52,11 +53,14 @@ const 더미데이터: 재료선택[] = [
 function BestCombinationPickPage() {
   return (
     <Container>
-      <div>
+      <IngredientButtonListWrap>
+        <RefreshButton>
+          <img src={refresh} alt="새로고침" />
+        </RefreshButton>
         {더미데이터.map(data => (
           <IngredientButtonList key={data.제목} filterData={data} />
         ))}
-      </div>
+      </IngredientButtonListWrap>
       <ButtonWrap>
         <Button designType="primaryGreen" width={changeRem(330)} height={changeRem(50)}>
           꿀 조합 보러가기
@@ -69,6 +73,26 @@ function BestCombinationPickPage() {
 const Container = styled(Wrapper)`
   ${flexbox('column', 'space-between', 'center')};
   padding: 26px;
+`;
+
+const IngredientButtonListWrap = styled.div`
+  position: relative;
+  padding-top: 20px;
+`;
+
+const RefreshButton = styled.button`
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const ButtonWrap = styled.div`
