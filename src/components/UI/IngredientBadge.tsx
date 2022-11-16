@@ -1,33 +1,23 @@
 import styled from '@emotion/styled';
+import { fontColor, backgroundColor } from '@components/UI/Button/IngredientButton';
 
-interface 뱃지컬러 {
-  fontColor: string;
-  backgroundColor: string;
-}
-
-interface 뱃지정보 extends 뱃지컬러 {
-  item: string;
-}
-
-function IngredientBadge({ fontColor, backgroundColor, item }: 뱃지정보) {
+function IngredientBadge({ filter, item }: { filter: string; item: string }) {
   return (
     <li>
-      <IngredientBadgeBox fontColor={fontColor} backgroundColor={backgroundColor}>
-        {item}
-      </IngredientBadgeBox>
+      <IngredientBadgeBox color={filter}>{item}</IngredientBadgeBox>
     </li>
   );
 }
-// test 주석
-const IngredientBadgeBox = styled.div`
+
+const IngredientBadgeBox = styled.div<{ color: string }>`
   display: inline-block;
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
-  color: ${(props: 뱃지컬러) => props.fontColor};
-  background: ${(props: 뱃지컬러) => props.backgroundColor};
+  color: ${({ color }) => fontColor[color]};
+  background: ${({ color }) => backgroundColor[color]};
 `;
 
 export default IngredientBadge;

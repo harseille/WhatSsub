@@ -8,7 +8,7 @@ import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import { 인터페이스_꿀조합 } from '../types/ISandwitch';
+import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
 const rankingListData: 인터페이스_꿀조합[] = [
   {
@@ -21,7 +21,7 @@ const rankingListData: 인터페이스_꿀조합[] = [
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['돼지고기'],
+      재료: ['돼지고기'],
       추가사항: ['고기러버'],
     },
     좋아요: '44',
@@ -37,7 +37,7 @@ const rankingListData: 인터페이스_꿀조합[] = [
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['돼지고기'],
+      재료: ['돼지고기'],
       추가사항: ['치즈폭탄'],
     },
     좋아요: '28',
@@ -53,7 +53,7 @@ const rankingListData: 인터페이스_꿀조합[] = [
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['에그마요'],
+      재료: ['에그마요'],
       추가사항: ['저칼로리'],
     },
     좋아요: '5',

@@ -1,14 +1,53 @@
 import { useLocation } from 'react-router-dom';
-import SandwitchInfoCard from '@components/UI/Cards/SandwitchInfoCard';
+import SandwichInfoCard from '@components/UI/Cards/SandwichInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
 import Button from '@components/UI/Button/Button';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
+
+const dummy = [
+  {
+    id: 'S1',
+    이미지: ChickenSlice,
+    이름: '꿀꿀마앗',
+    베이스샌드위치: '치킨 슬라이스',
+    칼로리: '265',
+    뱃지리스트: {
+      맛: ['짭짤'],
+      재료: ['소고기'],
+      추가사항: [],
+    },
+  },
+  {
+    id: 'S2',
+    이미지: ChickenSlice,
+    이름: '치킨치킨야야야',
+    베이스샌드위치: '치킨 슬라이스',
+    칼로리: '265',
+    뱃지리스트: {
+      맛: ['달달', '고소'],
+      재료: ['돼지고기'],
+      추가사항: ['치즈폭탄'],
+    },
+  },
+  {
+    id: 'S3',
+    이미지: ChickenSlice,
+    이름: '칰칰',
+    베이스샌드위치: '치킨 슬라이스',
+    칼로리: '265',
+    뱃지리스트: {
+      맛: ['달달', '새콤'],
+      재료: ['닭고기'],
+      추가사항: ['고기러버'],
+    },
+  },
+];
 
 function BestCombinationListPage() {
-  const location = useLocation();
-  console.log(location);
+  const { state } = useLocation();
 
   if (false) {
     return (
@@ -31,9 +70,9 @@ function BestCombinationListPage() {
   return (
     <Container>
       <ul>
-        <SandwitchInfoCard />
-        <SandwitchInfoCard />
-        <SandwitchInfoCard />
+        <SandwichInfoCard />
+        <SandwichInfoCard />
+        <SandwichInfoCard />
       </ul>
     </Container>
   );

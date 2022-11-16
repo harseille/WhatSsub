@@ -28,14 +28,14 @@ interface IColor {
   [key: string]: string;
 }
 
-const fontColor: IColor = {
+export const fontColor: IColor = {
   기본: '#7A7A7A',
   맛: '#DFA000',
   재료: '#4B69FD',
   추가사항: '#FF4200',
 };
 
-const backgroundColor: IColor = {
+export const backgroundColor: IColor = {
   기본: 'rgba(220, 220, 220, 0.3)',
   맛: 'rgba(252, 189, 33, 0.1)',
   재료: 'rgba(75, 105, 253, 0.1)',
