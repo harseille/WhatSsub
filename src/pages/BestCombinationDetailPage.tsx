@@ -4,7 +4,8 @@ import IngredientCardList from '@components/IngredientCardList';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/CommentInputWrap';
 
-import SandwitchInfo from '@components/UI/SandwitchInfo';
+// import SandwitchInfo from '@components/UI/SandwitchInfo';
+import SandwitchInfo from '@components/UI/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import Like from '@components/UI/Button/Like';
 

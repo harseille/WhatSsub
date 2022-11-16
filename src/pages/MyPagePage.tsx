@@ -1,6 +1,6 @@
-import SandwitchInfo from '@components/UI/SandwitchInfo';
+import SandwtchInfo from '@components/UI/SandwichInfo';
 import styled from '@emotion/styled';
-import { sandwitch } from '@components/UI/Cards/SandwitchInfoCard';
+import { mockSandwich } from '@components/UI/Cards/SandwichInfoCard';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 
@@ -14,11 +14,11 @@ function MyPage() {
         </Title>
         <span className="sub-title">좋아요 꿀조합</span>
         <Card>
-          <SandwitchInfo sandwitch={sandwitch} />
+          <SandwtchInfo sandwich={mockSandwich} />
         </Card>
 
         <Card>
-          <SandwitchInfo sandwitch={sandwitch} />
+          <SandwtchInfo sandwich={mockSandwich} />
         </Card>
       </Content>
     </Wrapper>
