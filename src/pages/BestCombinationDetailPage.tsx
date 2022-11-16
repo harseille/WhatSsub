@@ -5,16 +5,12 @@ import Like from '@components/UI/Button/Like';
 import SandwichInfo from '@components/UI/SandwichInfo';
 import CommentList from '@components/Comments/CommentList';
 import Wrapper from '@components/UI/Wrapper';
-import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/CommentInputWrap';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import sauceHotChilli from '@assets/images/ingredients/sauce/hot_chilli.png';
 
-
-import styled from '@emotion/styled';
 import { changeRem, flexbox } from '../styles/mixin';
 import { 인터페이스_꿀조합 } from '../types/ISandwich';
-
 
 const data: 인터페이스_꿀조합[] = [
   {
