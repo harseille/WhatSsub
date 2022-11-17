@@ -1,4 +1,4 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import SandwichInfoCard from '@components/UI/Cards/SandwichInfoCard';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
@@ -84,9 +84,7 @@ function BestCombinationListPage() {
     <Container>
       <ul>
         {꿀조합리스트.map(sandwich => (
-          <Link to={`/best-combination/${sandwich.id}`} key={sandwich.id}>
-            <SandwichInfoCard sandwich={sandwich} />
-          </Link>
+          <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
         ))}
       </ul>
     </Container>
