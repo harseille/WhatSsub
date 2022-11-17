@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
@@ -6,62 +7,69 @@ import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 import SandwitchInfo from '@components/UI/SandwitchInfo';
+import { 샌드위치뱃지리스트, 인터페이스_꿀조합 } from '../types/ISandwitch';
 
 function MyPage() {
-  interface 샌드위치뱃지리스트 {
-    맛: string[];
-    메인재료: string;
-    추가사항: string[];
-  }
   interface 샌드위치 {
-    이미지: string;
+    id: string;
+    제목: string;
     이름: string;
-    베이스샌드위치: string;
-    칼로리: string;
+    작성일: string;
     좋아요: number;
-    날짜: string;
+    베이스샌드위치: string;
+    이미지: string;
+    칼로리: string;
     뱃지리스트: 샌드위치뱃지리스트;
   }
 
-  const sandwitches: 샌드위치[] = [
+  const sandwitches: 인터페이스_꿀조합[] = [
     {
-      이미지: ChickenSlice,
-      이름: '꿀꿀마앗',
+      id: 'a1',
+      제목: '꿀꿀마앗',
+      작성자: '다다',
+      작성일: '2022.11.05',
+      좋아요: '44',
       베이스샌드위치: '치킨 슬라이스',
+      이미지: ChickenSlice,
       칼로리: '265',
-      좋아요: 20,
-      날짜: '2022.11.24',
       뱃지리스트: {
         맛: ['달달', '고소'],
         메인재료: '치킨고기',
         추가사항: ['고기러버'],
       },
+      선택재료: [],
     },
     {
-      이미지: PulledPork,
-      이름: '돼지 잡자',
+      id: 'a2',
+      제목: '돼지위치',
+      작성자: '댑',
+      작성일: '2022.11.01',
+      좋아요: '51',
       베이스샌드위치: '풀드 포크드',
+      이미지: PulledPork,
       칼로리: '327',
-      좋아요: 5,
-      날짜: '2022.12.03',
       뱃지리스트: {
         맛: ['달달', '고소'],
         메인재료: '돼지고기',
         추가사항: ['고기러버'],
       },
+      선택재료: [],
     },
     {
-      이미지: SteakCheese,
-      이름: '소고기 굿굿',
+      id: 'a3',
+      제목: '소고기 굿굿',
+      작성자: '다비나',
+      작성일: '2022.11.017',
+      좋아요: '51',
       베이스샌드위치: '풀드 포크드',
+      이미지: SteakCheese,
       칼로리: '355',
-      좋아요: 1,
-      날짜: '2022.11.26',
       뱃지리스트: {
         맛: ['고소'],
         메인재료: '소고기',
         추가사항: ['고기러버'],
       },
+      선택재료: [],
     },
   ];
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
@@ -73,12 +81,15 @@ function MyPage() {
     console.log(사용자명_체크);
   };
 
-  const clickHandler = () => {};
+  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
+    // console.log((e.target as Element).closest('SandwitchInfo'));
+    // useNavigate('/ranking/:combinationId');
+  };
 
-  const likeFirstOrder = (prev: 샌드위치, next: 샌드위치): number => next.좋아요 - prev.좋아요;
+  const likeFirstOrder = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => +next.좋아요 - +prev.좋아요;
 
-  const dateFirstOrder = (prev: 샌드위치, next: 샌드위치): number => {
-    if (prev.날짜 < next.날짜) return 1;
+  const dateFirstOrder = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
+    if (prev.작성일 < next.작성일) return 1;
     return -1;
   };
 
@@ -97,10 +108,23 @@ function MyPage() {
   return (
     <Wrapper>
       <Content>
-        <UserTitle onClick={combinationChangeHandler}>단찌만의 조합</UserTitle>
-        <LikeTitle className="sub-title" onClick={combinationChangeHandler}>
-          좋아요 꿀조합
-        </LikeTitle>
+        {toggleState ? (
+          <div>
+            <UserTitle onClick={combinationChangeHandler}>단찌만의 조합</UserTitle>
+            <LikeTitle className="sub-title" onClick={combinationChangeHandler}>
+              좋아요 꿀조합
+            </LikeTitle>
+          </div>
+        ) : (
+          <div>
+            <UserTitle style={{ background: '#f5d891' }} onClick={combinationChangeHandler}>
+              단찌만의 조합
+            </UserTitle>
+            <LikeTitle style={{ background: '#fab608' }} className="sub-title" onClick={combinationChangeHandler}>
+              좋아요 꿀조합
+            </LikeTitle>
+          </div>
+        )}
         {toggleState ? userCombination : likeCombination}
       </Content>
     </Wrapper>
@@ -123,30 +147,18 @@ const UserTitle = styled.span`
   border-radius: 5px;
   padding: 4px 6px;
   margin-right: 10px;
+  transition: 0.3s;
+  cursor: pointer;
 `;
 const LikeTitle = styled.span`
   font-weight: 500;
   color: #2a2a2a;
-  border: 2px solid #f5d891;
+  border: 1px solid #f5d891;
   background-color: #f5d891;
   border-radius: 5px;
   padding: 4px 6px;
-  transition: 0.2s;
-  &:hover {
-    background-color: #fab608;
-    border: 2px solid #fab608;
-  }
-`;
-
-const UserName = styled.h2`
-  /* display: inline;
-  color: #2a2a2a;
-  font-weight: 500;
-  font-size: 18px;
-  padding-right: 3px;
-  background-color: #fab608;
-  border-radius: 5px;
-  padding: 4px 6px; */
+  transition: 0.3s;
+  cursor: pointer;
 `;
 
 const Card = styled.div`
