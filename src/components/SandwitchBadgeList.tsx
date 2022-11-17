@@ -26,7 +26,7 @@ function SandwitchBadgeList({ badgeList: { 맛, 메인재료, 추가사항 } }: 
       {맛.map((item: string) => (
         <IngredientBadge fontColor={뱃지컬러.노랑} backgroundColor={뱃지컬러.노랑배경} item={item} />
       ))}
-      <IngredientBadge fontColor={뱃지컬러.파랑} backgroundColor={뱃지컬러.파랑배경} item={메인재료} />
+      <IngredientBadge fontColor={뱃지컬러.파랑} backgroundColor={뱃지컬러.파랑배경} item={메인재료[0]} />
       {추가사항.map((item: string) => (
         <IngredientBadge fontColor={뱃지컬러.빨강} backgroundColor={뱃지컬러.빨강배경} item={item} />
       ))}

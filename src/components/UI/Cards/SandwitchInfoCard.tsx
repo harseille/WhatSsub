@@ -6,7 +6,7 @@ import { changeRem } from '../../../styles/mixin';
 
 export interface 샌드위치뱃지리스트 {
   맛: string[];
-  메인재료: string;
+  메인재료: string[];
   추가사항: string[];
 }
 
@@ -25,7 +25,7 @@ export const sandwitch: 샌드위치 = {
   칼로리: '265',
   뱃지리스트: {
     맛: ['달달', '고소'],
-    메인재료: '돼지고기',
+    메인재료: ['돼지고기'],
     추가사항: ['고기러버'],
   },
 };
