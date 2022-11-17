@@ -22,7 +22,7 @@ export default function App() {
         setloggedInUser(null);
       }
     });
-  }, []);
+  }, [setIsLoggedIn, setloggedInUser]);
 
   return <RouterProvider router={router} />;
   // return <MyCombinationCard />;
