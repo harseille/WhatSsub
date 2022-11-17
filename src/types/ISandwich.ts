@@ -42,6 +42,7 @@ export interface 인터페이스_꿀조합 {
   작성자: string;
   작성일: string;
   좋아요: string;
+  토스팅?: boolean;
   베이스샌드위치: string;
   이미지: string;
   칼로리: string;
@@ -98,3 +99,23 @@ export interface 인터페이스_샌드위치 {
 //   아이콘: any;
 //   아이콘설명: string;
 // }
+
+export interface 인터페이스_재료목록 {
+  이름: string;
+  이미지?: string;
+  속성?: string;
+  칼로리?: string;
+}
+
+export interface 인터페이스_재료데이터 {
+  카테고리: string;
+  배경색?: string;
+  글자색?: string;
+  속성유무?: boolean;
+  목록: 인터페이스_재료목록[];
+}
+export interface 인터페이스_레시피 {
+  이름: string;
+  재료목록: string[];
+  재료칼로리: string;
+}
