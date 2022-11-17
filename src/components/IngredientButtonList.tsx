@@ -1,42 +1,33 @@
 import styled from '@emotion/styled';
 import IngredientButton from '@components/UI/Button/IngredientButton';
 import { changeRem } from '@styles/mixin';
+import { 재료선택, 재료 } from '@pages/BestCombinationPickPage';
 
-interface 재료 {
-  id: string;
-  이름: string;
-}
-
-interface 재료선택 {
-  제목: string;
-  가이드: string;
-  재료목록: 재료[];
-}
-
-const 더미데이터: 재료선택 = {
-  제목: '재료',
-  가이드: '재료 1가지를 선택해 주세요.',
-  재료목록: [
-    { id: '1', 이름: '돼지고기' },
-    { id: '2', 이름: '소고기' },
-    { id: '3', 이름: '닭고기' },
-    { id: '4', 이름: '해산물' },
-  ],
-};
-
-function IngredientButtonList() {
+function IngredientButtonList({
+  filterData: { 제목, 재료목록, 최대선택개수 },
+  selectedFilter,
+  onSelectFilter,
+}: {
+  filterData: 재료선택;
+  selectedFilter: { [key: string]: string[] };
+  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
+}) {
   return (
     <Wrapper>
       <Title>
-        {더미데이터.제목}
-        <TitleDes>{`(${더미데이터.가이드})`}</TitleDes>
+        {제목}
+        <TitleDes>{`(최대 ${최대선택개수}가지 선택 가능합니다.)`}</TitleDes>
       </Title>
       <IngredientList>
-        {더미데이터.재료목록.map(재료 => (
+        {재료목록.map((재료: 재료) => (
           <li key={재료.id}>
-            <IngredientButton 글자색="#7A7A7A" 배경색="rgba(220, 220, 220, 0.3)">
-              {재료.이름}
-            </IngredientButton>
+            <IngredientButton
+              filter={제목}
+              name={재료.이름}
+              max={최대선택개수}
+              selectedFilter={selectedFilter}
+              onSelectFilter={onSelectFilter}
+            />
           </li>
         ))}
       </IngredientList>
@@ -45,7 +36,7 @@ function IngredientButtonList() {
 }
 
 const Wrapper = styled.div`
-  padding-bottom: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid #eee;
 
   &:last-child {

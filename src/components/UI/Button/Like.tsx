@@ -54,7 +54,9 @@ function Like(props: 인터페이스_좋아요) {
 const LikeContainter = styled.div`
   ${flexbox('row', 'right', 'center')};
   position: absolute;
-  right: 12px;
+  right: 20px;
+  top: 50%;
+  transform: translate3d(0 -50%, 0);
   color: ${props => props.theme.colors.primaryGreen};
   & span {
     font-size: ${changeRem(14)};

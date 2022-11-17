@@ -1,3 +1,4 @@
+
 // import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import styled from '@emotion/styled';
@@ -73,6 +74,34 @@
 //     },
 //   ];
 //   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
+=======
+import SandwtchInfo from '@components/UI/SandwichInfo';
+import styled from '@emotion/styled';
+import { mockSandwich } from '@components/UI/Cards/SandwichInfoCard';
+import Wrapper from '@components/UI/Wrapper';
+import { changeRem } from '@styles/mixin';
+
+function MyPage() {
+  return (
+    <Wrapper>
+      <Content>
+        <Title>
+          <UserName className="title">단찌</UserName>
+          <SubTitle>만의 조합</SubTitle>
+        </Title>
+        <span className="sub-title">좋아요 꿀조합</span>
+        <Card>
+          <SandwtchInfo sandwich={mockSandwich} />
+        </Card>
+
+        <Card>
+          <SandwtchInfo sandwich={mockSandwich} />
+        </Card>
+      </Content>
+    </Wrapper>
+  );
+}
+
 
 //   const combinationChangeHandler = (e: React.MouseEvent<HTMLElement>) => {
 //     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');

@@ -1,27 +1,25 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import SandwitchBadgeList from '@components/SandwitchBadgeList';
-import { 샌드위치 } from '@components/UI/Cards/SandwitchInfoCard';
+import SandwichBadgeList from '@components/SandwichBadgeList';
+import { 샌드위치 } from '@components/UI/Cards/SandwichInfoCard';
 
-function SandwitchInfo({ sandwitch: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwitch: 샌드위치 }) {
+function SandwichInfo({ sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwich: 샌드위치 }) {
   return (
     <InfoWrap>
       <ImgWrap>
         <img src={이미지} alt={이름} />
       </ImgWrap>
-      <SandwitchName>{이름}</SandwitchName>
+      <SandwichName>{이름}</SandwichName>
       <InfoSummary>
         {베이스샌드위치} • <Kcal>{칼로리}Kcal</Kcal>
       </InfoSummary>
-      <SandwitchBadgeList badgeList={뱃지리스트} />
+      <SandwichBadgeList badgeList={뱃지리스트} />
     </InfoWrap>
   );
 }
 
 const InfoWrap = styled.div`
   width: ${changeRem(305)};
-  /* margin: 10px; */
-  //원오야 잠시 마진 뺼게 조립할 때 요 마진 있어서 정렬이 어렵 -다빈
 `;
 
 const ImgWrap = styled.div`
@@ -36,7 +34,7 @@ const ImgWrap = styled.div`
   }
 `;
 
-const SandwitchName = styled.p`
+const SandwichName = styled.p`
   font-size: ${changeRem(20)};
   font-weight: 700;
   margin-bottom: 10px;
@@ -52,4 +50,4 @@ const Kcal = styled.span`
   color: #ffd600;
 `;
 
-export default SandwitchInfo;
+export default SandwichInfo;
