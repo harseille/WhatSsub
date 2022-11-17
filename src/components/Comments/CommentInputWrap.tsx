@@ -1,12 +1,43 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import { useRef } from 'react';
+import { 새_댓글_추가 } from '@api/index';
+import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@state/index';
+import { User } from 'firebase/auth';
+import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
 
 function CommentInputWrap() {
+  const commentInput = useRef<HTMLInputElement>(null);
+
+  const { combinationId } = useParams();
+  const 유저정보: User | null = useRecoilValue(userState);
+
+  const 게시_버튼_클릭 = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const 댓글내용 = commentInput.current?.value;
+    if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
+    else if (!댓글내용) alert('댓글을 입력해주세요.');
+    else if (유저정보 && 댓글내용 && combinationId) {
+      const 댓글_정보: 인터페이스_댓글프로퍼티 = {
+        꿀조합id: combinationId,
+        작성자id: 유저정보.uid,
+        작성자이름: 유저정보.displayName,
+        작성자프로필이미지: 유저정보.photoURL,
+        내용: commentInput.current?.value,
+        작성일: Date.now(),
+      };
+      새_댓글_추가(댓글_정보);
+    }
+  };
   return (
     <Wrapper>
       <ProfileImg />
-      <Input />
-      <Button>게시</Button>
+      <Form onSubmit={게시_버튼_클릭}>
+        <Input id="comment" maxLength={120} ref={commentInput} />
+        <Submit type="submit" value="게시" />
+      </Form>
     </Wrapper>
   );
 }
@@ -17,10 +48,10 @@ const Wrapper = styled.div`
   bottom: 80px;
   width: 100%;
   padding: 10px;
+  background: #ffffff;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff;
   box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
 `;
 
@@ -30,6 +61,14 @@ const ProfileImg = styled.div`
   border-radius: 50%;
   background: #ccc;
 `;
+
+const Form = styled.form`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+`;
+
 const Input = styled.input`
   flex-shrink: 0;
   flex-basis: ${`calc(100% - ${changeRem(135)})`};
@@ -39,7 +78,7 @@ const Input = styled.input`
   background: #f5f5f5;
   font-size: ${changeRem(14)};
 `;
-const Button = styled.button`
+const Submit = styled.input`
   border: 0;
   flex-basis: ${changeRem(40)};
   flex-shrink: 0;

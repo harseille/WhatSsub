@@ -1,18 +1,7 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-
-export interface 인터페이스_댓글 {
-  댓글id: 인터페이스_댓글프로퍼티;
-}
-
-export interface 인터페이스_댓글프로퍼티 {
-  꿀조합id?: string;
-  작성자id: string;
-  작성자이름: string;
-  작성자프로필이미지: string;
-  작성일: string;
-  내용: string;
-}
+// ! : @types 안먹힘
+import { 인터페이스_댓글프로퍼티 } from '../types/IComment';
 // export interface 리뷰프로퍼티 {
 //   id?: string;
 //   작성자: string;

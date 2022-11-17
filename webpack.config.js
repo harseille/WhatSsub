@@ -20,6 +20,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       '@assets': path.resolve(__dirname, 'src', 'assets'),
+      '@api': path.resolve(__dirname, 'src', 'api'),
       '@components': path.resolve(__dirname, 'src', 'components'),
       '@constants': path.resolve(__dirname, 'src', 'constants'),
       '@layouts': path.resolve(__dirname, 'src', 'layouts'),

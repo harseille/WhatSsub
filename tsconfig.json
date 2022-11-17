@@ -105,6 +105,7 @@
     "baseUrl": "./",
     "paths": {
       "@assets/*": ["src/assets/*"],
+      "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@layouts/*": ["src/layouts/*"],
