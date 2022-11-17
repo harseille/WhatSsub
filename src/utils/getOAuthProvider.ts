@@ -1,4 +1,3 @@
-import { DEFAULT_SIZE } from '@constants/constants';
 import {
   setPersistence,
   browserSessionPersistence,
@@ -6,7 +5,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from 'firebase/auth';
-import { auth, firebaseConfig } from '../firebase.config';
+import { auth } from '../firebase.config';
 
 interface IAuthProvider {
   [key: string]: typeof GoogleAuthProvider | typeof FacebookAuthProvider;
@@ -26,12 +25,11 @@ const getOAuthProvider = (bender: string) => (e: React.MouseEvent) => {
   setPersistence(auth, browserSessionPersistence).then(() =>
     signInWithPopup(auth, provider)
       .then(result => {
+        console.log(result);
         console.log('로그인 성공');
-        console.log('result', result);
-
-        // TODO: redirect 처리
       })
       .catch(error => {
+        console.error(error);
         alert('로그인 실패했습니다. 다시 시도해주세요');
       })
   );

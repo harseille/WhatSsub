@@ -14,9 +14,11 @@ export default function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
+      // ! recoil에서 immutable한 user를 업데이트 할 수 없음으로 임시 복사본을 atom으로 설정
+      const _user = JSON.parse(JSON.stringify(user));
       if (user) {
         setIsLoggedIn(true);
-        setloggedInUser(user);
+        setloggedInUser(_user);
       } else {
         setIsLoggedIn(false);
         setloggedInUser(null);
