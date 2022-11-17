@@ -9,18 +9,6 @@ import { changeRem } from '@styles/mixin';
 import SandwichInfo from '@components/UI/SandwichInfo';
 import { 샌드위치뱃지리스트, 인터페이스_재료 } from '../types/ISandwich';
 
-interface 샌드위치 {
-  id: string;
-  제목: string;
-  이름: string;
-  작성일: string;
-  좋아요: number;
-  베이스샌드위치: string;
-  이미지: string;
-  칼로리: string;
-  뱃지리스트: 샌드위치뱃지리스트;
-}
-
 interface 인터페이스_꿀조합_임의 {
   id: string;
   이름: string;
@@ -91,19 +79,17 @@ function MyPage() {
   const combinationChangeHandler = (e: React.MouseEvent<HTMLElement>) => {
     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');
     setToggleState(사용자명_체크);
-
-    console.log(사용자명_체크);
   };
 
   const navigator = useNavigate();
 
   // const clickHandler = (id, e: React.MouseEvent<HTMLElement>) => {
-  //   // console.log((e.target as Element).closest('SandwichInfo'));
   //   navigator('/ranking/a2');
   // };
-  const clickHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const clickHandler = (sandwiches: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     // console.log((e.target as Element).closest('SandwichInfo'));
-    navigator('/ranking/a2');
+    // console.log(sandwiches);
+    navigator('/best-combination/${sandwiches[1]}');
   };
 
   const likeFirstOrder = (prev: 인터페이스_꿀조합_임의, next: 인터페이스_꿀조합_임의): number =>
