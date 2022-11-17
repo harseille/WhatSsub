@@ -12,7 +12,7 @@ import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
-import { getOAuthProvider, getSessionUserInfo } from '@utils/index';
+import { getOAuthProvider } from '@utils/index';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { isLoggedInState } from '@state/index';
@@ -20,13 +20,12 @@ import { isLoggedInState } from '@state/index';
 function LoginPage() {
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
-  const userInfo = getSessionUserInfo();
 
   useEffect(() => {
-    if (isLoggedin || userInfo) {
+    if (isLoggedin) {
       navigate('/');
     }
-  }, []);
+  }, [isLoggedin]);
 
   const 구글_로그인_핸들러 = getOAuthProvider('google');
   const 페이스북_로그인_핸들러 = getOAuthProvider('facebook');
@@ -70,6 +69,7 @@ function LoginPage() {
     </LoginWrapper>
   );
 }
+
 const LoginWrapper = styled.div``;
 
 const Banner = styled.div`
@@ -124,15 +124,3 @@ const ButtonList = styled(Wrapper)`
 `;
 
 export default LoginPage;
-
-// export const loader =  () => {
-//   // user정보 확인
-//   const user = useRecoilValue(isLoggedInState);
-//   if (user) {
-//     return redirect("/");
-//   }
-// };
-
-// export const action = () => {
-//    return redirect("/");
-// };

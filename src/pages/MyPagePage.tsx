@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
@@ -7,6 +7,8 @@ import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
 import SandwichInfo from '@components/UI/SandwichInfo';
+import { useRecoilValue } from 'recoil';
+import { isLoggedInState } from '@state/index';
 import { 샌드위치뱃지리스트, 인터페이스_재료 } from '../types/ISandwich';
 
 interface 인터페이스_꿀조합_임의 {
@@ -74,6 +76,16 @@ const sandwiches: 인터페이스_꿀조합_임의[] = [
 ];
 
 function MyPage() {
+  const navigate = useNavigate();
+  const isLoggedin = useRecoilValue(isLoggedInState);
+
+  useEffect(() => {
+    alert('로그인 먼저');
+    if (!isLoggedin) {
+      navigate('/login');
+    }
+  }, [isLoggedin]);
+
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
 
   const combinationChangeHandler = (e: React.MouseEvent<HTMLElement>) => {
@@ -81,15 +93,13 @@ function MyPage() {
     setToggleState(사용자명_체크);
   };
 
-  const navigator = useNavigate();
-
   // const clickHandler = (id, e: React.MouseEvent<HTMLElement>) => {
   //   navigator('/ranking/a2');
   // };
   const clickHandler = (sandwiches: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     // console.log((e.target as Element).closest('SandwichInfo'));
     // console.log(sandwiches);
-    navigator('/best-combination/${sandwiches[1]}');
+    navigate('/best-combination/${sandwiches[1]}');
   };
 
   const likeFirstOrder = (prev: 인터페이스_꿀조합_임의, next: 인터페이스_꿀조합_임의): number =>
