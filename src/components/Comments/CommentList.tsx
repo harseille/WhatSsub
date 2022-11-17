@@ -1,4 +1,5 @@
-import CommentItem, { 인터페이스_댓글 } from '@components/CommentItem';
+import CommentItem from '@components/CommentItem';
+import { 인터페이스_댓글 } from '../../types/IComment';
 
 // const 리뷰리스트: 리뷰프로퍼티[] = [
 //   {
@@ -32,7 +33,7 @@ function CommentList(props: { commentList: 인터페이스_댓글[] }) {
   //   </li>
   // ));
 
-  const 댓글JSX = commentList.map(댓글 => {
+  const 댓글목록 = commentList.map(댓글 => {
     // TODO: Data가공 리펙토링 필요
     const [댓글id] = Object.keys(댓글);
     const [댓글_정보] = Object.values(댓글);
@@ -44,7 +45,7 @@ function CommentList(props: { commentList: 인터페이스_댓글[] }) {
     );
   });
 
-  return <ul>{댓글JSX}</ul>;
+  return <ul>{댓글목록}</ul>;
 }
 
 export default CommentList;

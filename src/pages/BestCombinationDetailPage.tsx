@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 // import CombinationIngredientList from '@components/CombinationIngredientList';
 import IngredientCardList from '@components/IngredientCardList';
 import CommentList from '@components/Comments/CommentList';
-import CommentInputWrap from '@components/CommentInputWrap';
+import CommentInputWrap from '@components/Comments/CommentInputWrap';
 
 // import sandwichInfo from '@components/UI/sandwichInfo';
 import SandwichInfo from '@components/UI/SandwichInfo';
@@ -30,9 +30,6 @@ const 꿀조합_데이터_받아오기 = async (
 function BestCombinationDetailPage() {
   // TODO: any 없애기
   const 꿀조합: 인터페이스_꿀조합상세페이지_꿀조합 | any = useLoaderData();
-
-  // console.log(꿀조합.댓글);
-  console.log(꿀조합.댓글);
 
   if (꿀조합) {
     return (
