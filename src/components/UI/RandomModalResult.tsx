@@ -1,29 +1,69 @@
+import { useState } from 'react';
 import SandwichInfo from '@components/UI/SandwichInfo';
 import styled from '@emotion/styled';
 import { mockSandwich } from '@components/UI/Cards/SandwichInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
 import { changeRem } from '../../styles/mixin';
 import xBtn from '../../assets/images/x-btn.svg';
-import Button from './Button/Button';
+// import Button from './Button/Button';
 
 const data = [
   {
-    id: 'sdf',
-    이름: 'sdf',
+    id: 'a1',
+    이름: '다다',
     카테고리: 'sdf',
-    칼로리: 'sdfdfs',
+    칼로리: '265',
     추가재료여부: true,
   },
 ];
 
 function RandomModalResult() {
+  // const [modal, setModal] = useRecoilState(modalState);
+
+  // const 모달_닫기 = () => {
+  //   setModal(true);
+  //   console.log(modal, modalState);
+  // };
+
+  // const 다시_돌리기 = () => {};
+  // const [closeModal, setCloseModal] = useState<boolean | null>(false);
+
+  const 모달_닫기 = () => {
+    // setCloseModal(true);
+  };
+
   return (
+    // <div>
+    //   {closeModal ? (
+    //     <Card>
+    //       <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={모달_닫기} />
+    //       <Title>응~ 이거나 먹어~</Title>
+    //       <SandwichInfoWrapper>
+    //         <SandwichInfo sandwich={mockSandwich} />
+    //         <CombinationIngredientList ingredientList={data} />
+    //         <ReturnBtn>다시 돌리러 가기</ReturnBtn>
+    //       </SandwichInfoWrapper>
+    //     </Card>
+    //   ) : (
+    //     <Card>
+    //       <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={모달_닫기} />
+    //       <Title>응~ 이거나 먹어~</Title>
+    //       <SandwichInfoWrapper>
+    //         <SandwichInfo sandwich={mockSandwich} />
+    //         <CombinationIngredientList ingredientList={data} />
+    //         <ReturnBtn>다시 돌리러 가기</ReturnBtn>
+    //       </SandwichInfoWrapper>
+    //     </Card>
+    //   )}
+    // </div>
     <Card>
-      <img src={xBtn} alt="닫기 버튼" />
+      <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" />
       <Title>응~ 이거나 먹어~</Title>
-      <SandwichInfo sandwich={mockSandwich} />
-      <CombinationIngredientList ingredientList={data} />
-      <Button />
+      <SandwichInfoWrapper>
+        <SandwichInfo sandwich={mockSandwich} />
+        <CombinationIngredientList ingredientList={data} />
+        <ReturnBtn>다시 돌리러 가기</ReturnBtn>
+      </SandwichInfoWrapper>
     </Card>
   );
 }
@@ -42,9 +82,13 @@ const Card = styled.div`
   box-shadow: 0px 4px 5px 3px rgba(35, 35, 35, 0.5);
   border-radius: 15px;
   margin: 0 auto;
-  & img {
-    width: 20px;
-  }
+`;
+const SandwichInfoWrapper = styled.div`
+  padding-left: 18px;
+`;
+const CloseBtn = styled.img`
+  padding-left: 300px;
+  width: 20px;
 `;
 
 const Title = styled.div`
@@ -52,6 +96,16 @@ const Title = styled.div`
   text-align: center;
   font-size: 24px;
   font-weight: 700;
+`;
+const ReturnBtn = styled.button`
+  width: ${changeRem(284)};
+  height: ${changeRem(50)};
+  background-color: ${props => props.theme.colors.primaryYellow};
+  /* background: #fbc200; */
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 300;
 `;
 
 export default RandomModalResult;

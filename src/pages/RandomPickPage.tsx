@@ -14,8 +14,6 @@ function RandomPickPage() {
       <Title>랜덤 조합 룰렛</Title>
       <RandomRoulette />
       <Text>돌려돌려 돌림판~</Text>
-      {/* <DimmedLayer />
-      <RandomModalResult /> */}
     </Wrapper>
   );
 }
