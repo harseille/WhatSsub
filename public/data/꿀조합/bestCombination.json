@@ -1,7 +1,7 @@
 {
   "작성자Id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
   "작성자_이름": "데이빗",
-  "작성일": "2022-11-16",
+  "작성일": "2022-11-10",
   "제목": "에이맨",
   "좋아요": "3244",
   "베이스샌드위치": "스테이크",
@@ -98,6 +98,49 @@
       "이미지": "/images/ingredients/cheese/Mozzarella_Cheese.png",
       "속성": "치즈 폭탄",
       "칼로리": "43.8"
+    }
+  ],
+
+  "댓글": [
+    {
+      "comment1": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "찰스",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "경복궁역 1번출구 서브웨이 최고",
+        "작성일": "2022-11-11"
+      }
+    },
+    {
+      "comment2": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "제인",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "양파가 많아야 맛있어요",
+        "작성일": "2022-11-12"
+      }
+    },
+    {
+      "comment3": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "도날드",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "🥒❌",
+        "작성일": "2022-11-13"
+      }
+    },
+    {
+      "comment4": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "엘리스",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "먹을줄 아는 분이시다",
+        "작성일": "2022-11-15"
+      }
     }
   ]
 }

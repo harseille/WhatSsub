@@ -16,7 +16,9 @@ import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISa
 
 // ? fetch를 뭐라고 바꿀지 고민...
 const fetchJson = (url: string) => fetch(url).then(res => res.json());
-const getResponseByBestCombinationId = (combinationId = '') => fetchJson(`${API_URL_PATH_PREFIX}/bestCombination.json`);
+// TODO: DB구축 후 combinationId로 불러오기
+const getResponseByBestCombinationId = (combinationId = '') =>
+  fetchJson(`${API_URL_PATH_PREFIX}/꿀조합/bestCombination.json`);
 
 const 꿀조합_데이터_받아오기 = async (
   combinationId: string | undefined
@@ -26,7 +28,11 @@ const 꿀조합_데이터_받아오기 = async (
 };
 
 function BestCombinationDetailPage() {
+  // TODO: any 없애기
   const 꿀조합: 인터페이스_꿀조합상세페이지_꿀조합 | any = useLoaderData();
+
+  // console.log(꿀조합.댓글);
+  console.log(꿀조합.댓글);
 
   if (꿀조합) {
     return (
@@ -40,6 +46,7 @@ function BestCombinationDetailPage() {
         <Contents>
           <SandwichInfo
             sandwich={{
+              // TODO: data의 ingredients.json과 불일치
               id: 'testid',
               이미지: 꿀조합.이미지,
               이름: 꿀조합.제목,
@@ -54,10 +61,10 @@ function BestCombinationDetailPage() {
         <Comments>
           <CommentHeader>
             <h2>
-              리뷰 <span>37</span>
+              리뷰 <span>{꿀조합.댓글.length}</span>
             </h2>
           </CommentHeader>
-          <CommentList />
+          <CommentList commentList={꿀조합.댓글} />
           <CommentInputWrap />
         </Comments>
       </Wrapper>
