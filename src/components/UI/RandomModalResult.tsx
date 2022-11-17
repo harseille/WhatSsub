@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import SandwichInfo from '@components/UI/SandwichInfo';
 import styled from '@emotion/styled';
 import { mockSandwich } from '@components/UI/Cards/SandwichInfoCard';
 import CombinationIngredientList from '@components/CombinationIngredientList';
+
 import { changeRem } from '../../styles/mixin';
 import xBtn from '../../assets/images/x-btn.svg';
 // import Button from './Button/Button';
@@ -17,9 +18,10 @@ const data = [
   },
 ];
 
-function RandomModalResult() {
-  // const [modal, setModal] = useRecoilState(modalState);
-
+interface func {
+  onClick: any;
+}
+function RandomModalResult(props: func) {
   // const 모달_닫기 = () => {
   //   setModal(true);
   //   console.log(modal, modalState);
@@ -28,11 +30,21 @@ function RandomModalResult() {
   // const 다시_돌리기 = () => {};
   // const [closeModal, setCloseModal] = useState<boolean | null>(false);
 
-  const 모달_닫기 = () => {
-    // setCloseModal(true);
-  };
+  // const 모달_닫기 = () => {
+  //   setModal(true);
+  //   console.log('모달 닫기', modal);
+  // };
 
   return (
+    <Card>
+      <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={props.onClick} />
+      <Title>응~ 이거나 먹어~</Title>
+      <SandwichInfoWrapper>
+        <SandwichInfo sandwich={mockSandwich} />
+        <CombinationIngredientList ingredientList={data} />
+        <ReturnBtn onClick={props.onClick}>다시 돌리러 가기</ReturnBtn>
+      </SandwichInfoWrapper>
+    </Card>
     // <div>
     //   {closeModal ? (
     //     <Card>
@@ -56,15 +68,6 @@ function RandomModalResult() {
     //     </Card>
     //   )}
     // </div>
-    <Card>
-      <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" />
-      <Title>응~ 이거나 먹어~</Title>
-      <SandwichInfoWrapper>
-        <SandwichInfo sandwich={mockSandwich} />
-        <CombinationIngredientList ingredientList={data} />
-        <ReturnBtn>다시 돌리러 가기</ReturnBtn>
-      </SandwichInfoWrapper>
-    </Card>
   );
 }
 

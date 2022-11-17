@@ -1,11 +1,9 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import { changeRem } from '@styles/mixin';
-import { useRecoilValue } from 'recoil';
-import modalState from '../../state/modal';
 import RandomModalResult from './RandomModalResult';
 import DimmedLayer from './DimmedLayer';
 
@@ -29,24 +27,27 @@ function RandomRoulette() {
     setTimeout(() => {
       console.log('3초');
       // 여기에 모달 트리거 할 수 있게
-      setModal(true);
+      openModal();
     }, 3000);
+  };
+
+  const openModal: () => void = () => {
+    setModal(true);
+  };
+  const closeModal: () => void = () => {
+    setModal(false);
   };
 
   return (
     <div>
-      {modal ? (
-        <div>
-          <DimmedLayer />
-          <RandomModalResult />
-        </div>
-      ) : (
-        ''
-      )}
-      {/* <div>
-        <DimmedLayer />
-        <RandomModalResult />
-      </div> */}
+      <div>
+        {modal ? (
+          <div>
+            <DimmedLayer />
+            <RandomModalResult onClick={closeModal} />
+          </div>
+        ) : null}
+      </div>
 
       <Container>
         <Roulette src={spinBoard} alt="룰렛" ref={roulette} />
