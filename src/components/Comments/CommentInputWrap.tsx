@@ -14,7 +14,7 @@ function CommentInputWrap() {
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
 
-  const 게시_버튼_클릭 = (e: React.FormEvent<HTMLFormElement>) => {
+  const 게시_버튼_클릭 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const 댓글내용 = commentInput.current?.value;
     if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
@@ -28,9 +28,10 @@ function CommentInputWrap() {
         내용: commentInput.current?.value,
         작성일: Date.now(),
       };
-      새_댓글_추가(댓글_정보);
+      await 새_댓글_추가(댓글_정보);
     }
   };
+
   return (
     <Wrapper>
       <ProfileImg />
