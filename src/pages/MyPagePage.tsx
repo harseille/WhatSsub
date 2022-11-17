@@ -80,8 +80,8 @@ function MyPage() {
   const isLoggedin = useRecoilValue(isLoggedInState);
 
   useEffect(() => {
-    alert('로그인 먼저');
     if (!isLoggedin) {
+      alert('로그인 먼저');
       navigate('/login');
     }
   }, [isLoggedin]);
