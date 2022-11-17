@@ -1,7 +1,11 @@
-import styled from '@emotion/styled';
-import heart from '@assets/images/heart.png';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import { useRecoilState } from 'recoil';
+import { userLike } from '@state/user';
+import { useNavigate } from 'react-router-dom';
 import SandwichInfo from '@components/UI/SandwichInfo';
+import heart from '@assets/icons/heart.svg';
+import heartFill from '@assets/icons/heart-fill.svg';
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import styled from '@emotion/styled';
 import { changeRem } from '../../../styles/mixin';
 
 export interface 샌드위치뱃지리스트 {
@@ -33,10 +37,32 @@ export const mockSandwich: 샌드위치 = {
 };
 
 function SandwichInfoCard({ sandwich }: { sandwich: 샌드위치 }) {
+  // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
+  const [userData, setUserData] = useRecoilState(userLike);
+  const navigate = useNavigate();
+
+  const navigateDetailPage = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).tagName === 'BUTTON') return;
+    navigate(`/best-combination/${sandwich.id}`);
+  };
+
+  const toggleLikeBtn = () => {
+    setUserData(prevData => {
+      const { likedSandwich } = prevData;
+
+      if (!likedSandwich.includes(sandwich.id)) return { ...prevData, likedSandwich: [...likedSandwich, sandwich.id] };
+
+      return {
+        ...prevData,
+        likedSandwich: likedSandwich.filter(id => id !== sandwich.id),
+      };
+    });
+  };
+
   return (
-    <CardWarp>
-      <SandwichInfo sandwich={mockSandwich} />
-      <LikeBtn />
+    <CardWarp role="link" onClick={navigateDetailPage}>
+      <SandwichInfo sandwich={sandwich} />
+      <LikeBtn onClick={toggleLikeBtn} isLiked={userData.likedSandwich.includes(sandwich.id)} />
     </CardWarp>
   );
 }
@@ -50,7 +76,7 @@ const CardWarp = styled.li`
   background: #fff;
 `;
 
-const LikeBtn = styled.button`
+const LikeBtn = styled.button<{ isLiked: boolean }>`
   position: absolute;
   top: 16px;
   right: 16px;
@@ -59,7 +85,7 @@ const LikeBtn = styled.button`
   border-radius: 50%;
   width: ${changeRem(34)};
   height: ${changeRem(34)};
-  background: url(${heart}) no-repeat center;
+  background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
   background-color: #ffe8e0;
 `;
 
