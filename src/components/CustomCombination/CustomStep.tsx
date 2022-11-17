@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { changeRem } from '@styles/mixin';
 import Ingredient from '@components/CustomCombination/Ingredient';
 
-import { 인터페이스_꿀조합, 인터페이스_재료데이터, 인터페이스_레시피 } from '../../types/ISandwitch';
+import { 인터페이스_꿀조합, 인터페이스_재료데이터, 인터페이스_레시피 } from '../../types/ISandwich';
 
 const INGREDIENT_PATH = '/data/ingredients.json';
 const RECIPE_PATH = '/data/recipe.json';

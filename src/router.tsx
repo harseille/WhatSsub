@@ -10,6 +10,7 @@ import {
   MyPage,
   CustomCombination,
   RankingPage,
+  bestCombinationDetailLoader,
 } from '@pages/index';
 
 const router = createBrowserRouter(
@@ -21,7 +22,7 @@ const router = createBrowserRouter(
       <Route path="best-combination">
         <Route index element={<BestCombinationListPage />} />
         <Route path="ranking" element={<RankingPage />} />
-        <Route path=":combinationId" element={<BestCombinationDetailPage />} />
+        <Route path=":combinationId" element={<BestCombinationDetailPage />} loader={bestCombinationDetailLoader} />
       </Route>
       <Route path="random-pick" element={<RandomPickPage />} />
       <Route path="custom-combination" element={<CustomCombination />} />

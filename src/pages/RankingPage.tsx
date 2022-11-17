@@ -7,58 +7,62 @@ import Wrapper from '@components/UI/Wrapper';
 import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
-import { 샌드위치 } from '@components/UI/Cards/SandwitchInfoCard';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
-interface 인터페이스_랭킹리스트 extends 샌드위치 {
-  id: string;
-  좋아요: string;
-}
-
-const rankingListData: 인터페이스_랭킹리스트[] = [
+const rankingListData: 인터페이스_꿀조합[] = [
   {
     id: 'sdfsdf',
-    이름: '꿀꿀마앗',
+    제목: '꿀꿀마앗',
     이미지: ChickenSlice,
+    작성자: '도은',
+    작성일: '2022.11.16',
     베이스샌드위치: '치킨 슬라이스',
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['돼지고기'],
+      재료: ['돼지고기'],
       추가사항: ['고기러버'],
     },
     좋아요: '44',
+    선택재료: [],
   },
   {
     id: 'sdfsadfdf',
-    이름: '고기 조합이다아아아',
+    제목: '고기 조합이다아아아',
     이미지: ChickenSlice,
+    작성자: '도은',
+    작성일: '2022.11.16',
     베이스샌드위치: '포크샌드',
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['돼지고기'],
+      재료: ['돼지고기'],
       추가사항: ['치즈폭탄'],
     },
     좋아요: '28',
+    선택재료: [],
   },
   {
     id: 'swerdfsdf',
-    이름: '다이어트',
+    제목: '다이어트',
     이미지: ChickenSlice,
+    작성자: '도은',
+    작성일: '2022.11.16',
     베이스샌드위치: '에그마요',
     칼로리: '265',
     뱃지리스트: {
       맛: ['달달', '고소'],
-      메인재료: ['에그마요'],
+      재료: ['에그마요'],
       추가사항: ['저칼로리'],
     },
     좋아요: '5',
+    선택재료: [],
   },
 ];
 
 function RankingPage() {
-  const [rankingList, setRankingList] = useState<인터페이스_랭킹리스트[]>(rankingListData);
+  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>(rankingListData);
   const [currentTab, setCurrentTab] = useState<string>('맛잘알랭킹');
 
   const onClickTab = () => {
@@ -77,7 +81,7 @@ function RankingPage() {
           </TitleTab>
         </TabGroup>
         <div>
-          {rankingList.map(({ id, 이름, 이미지, 베이스샌드위치, 뱃지리스트, 좋아요 }, i) => {
+          {rankingList.map(({ id, 제목, 이미지, 베이스샌드위치, 뱃지리스트, 좋아요 }, i) => {
             let badgeUrl = '';
 
             if (currentTab === '맛잘알랭킹') {
@@ -90,7 +94,7 @@ function RankingPage() {
               <RankingCardWrapper key={id} to={`/best-combination/${id}`}>
                 {badgeUrl && <RankBadge src={badgeUrl} alt={`rank${i + 1}`} />}
                 <CombinationRankingCard
-                  title={이름}
+                  title={제목}
                   imageUrl={이미지}
                   originName={베이스샌드위치}
                   badgeList={뱃지리스트}

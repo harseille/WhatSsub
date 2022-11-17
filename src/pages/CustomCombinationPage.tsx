@@ -4,7 +4,7 @@ import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
 import SelectComponent from '@components/CustomCombination/SelectComponent';
 import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '../types/ISandwitch';
+import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
 const 나만의_조합_초기화: 인터페이스_꿀조합 = {
   id: '',
@@ -17,7 +17,7 @@ const 나만의_조합_초기화: 인터페이스_꿀조합 = {
   칼로리: '',
   뱃지리스트: {
     맛: [],
-    메인재료: [],
+    재료: [],
     추가사항: [],
   },
   선택재료: [],

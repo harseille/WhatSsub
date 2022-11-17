@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Button from '@components/UI/Button/Button';
 import Span from '@components/UI/Span';
 import danzziAnnung from '@assets/images/danzzi/danzzi_annung.png';
@@ -11,25 +12,24 @@ import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
-import { setPersistence, browserSessionPersistence, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase.config';
+import { getOAuthProvider, getSessionUserInfo } from '@utils/index';
+import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { isLoggedInState } from '@state/index';
 
 function LoginPage() {
-  const googleLoginHandler = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  const isLoggedin = useRecoilValue(isLoggedInState);
+  const userInfo = getSessionUserInfo();
 
-    const provider = new GoogleAuthProvider();
-    setPersistence(auth, browserSessionPersistence).then(() => {
-      console.log(auth);
-      return signInWithPopup(auth, provider)
-        .then(() => {
-          // navigate('/main');
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    });
-  };
+  useEffect(() => {
+    if (isLoggedin || userInfo) {
+      navigate('/');
+    }
+  }, []);
+
+  const 구글_로그인_핸들러 = getOAuthProvider('google');
+  const 페이스북_로그인_핸들러 = getOAuthProvider('facebook');
 
   return (
     <LoginWrapper>
@@ -48,7 +48,12 @@ function LoginPage() {
         </Visual>
       </Banner>
       <ButtonList>
-        <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
+        <Button
+          designType="social"
+          width={changeRem(360)}
+          height={changeRem(54)}
+          borderRadius="6px"
+          onClick={페이스북_로그인_핸들러}>
           <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
@@ -57,7 +62,7 @@ function LoginPage() {
           width={changeRem(360)}
           height={changeRem(54)}
           borderRadius="6px"
-          onClick={googleLoginHandler}>
+          onClick={구글_로그인_핸들러}>
           <img src={iconGmail} alt="Gmail 아이콘" />
           Continue with Gmail
         </Button>
@@ -119,3 +124,15 @@ const ButtonList = styled(Wrapper)`
 `;
 
 export default LoginPage;
+
+// export const loader =  () => {
+//   // user정보 확인
+//   const user = useRecoilValue(isLoggedInState);
+//   if (user) {
+//     return redirect("/");
+//   }
+// };
+
+// export const action = () => {
+//    return redirect("/");
+// };

@@ -6,7 +6,6 @@ const globalStyle = `
     background: white;
     font-size: 16px;
     font-family: 'Noto Sans KR', 'Arial', sans-serif;
-
   },
   ul,ol,li {
     list-style: none;
@@ -20,6 +19,11 @@ const globalStyle = `
   },
   img {
     width: 100%;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
   },
   a {
     text-decoration: none;

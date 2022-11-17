@@ -1,9 +1,9 @@
-import SandwitchBadgeList from '@components/SandwitchBadgeList';
+import SandwichBadgeList from '@components/SandwichBadgeList';
 import Like from '@components/UI/Button/Like';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { flexbox, changeRem } from '@styles/mixin';
-import { 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwitchInfoCard';
+import { 샌드위치뱃지리스트 } from '../types/ISandwich';
 
 interface 인터페이스_랭킹카드_프로퍼티 {
   title: string;
@@ -27,7 +27,7 @@ function CombinationRankingCard({
       </RankingImageWrap>
       <RankingContents>
         <Title>{제목}</Title>
-        <SandwitchBadgeList badgeList={뱃지리스트} />
+        <SandwichBadgeList badgeList={뱃지리스트} />
         <Like count={좋아요} />
       </RankingContents>
     </RankingCard>

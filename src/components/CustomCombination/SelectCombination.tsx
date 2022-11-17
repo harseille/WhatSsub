@@ -1,5 +1,5 @@
 import CustomStep from '@components/CustomCombination/CustomStep';
-import { 인터페이스_꿀조합 } from '../../types/ISandwitch';
+import { 인터페이스_꿀조합 } from '../../types/ISandwich';
 
 type 타입_재료선택 = {
   customCombination: 인터페이스_꿀조합;
