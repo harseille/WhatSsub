@@ -1,16 +1,60 @@
+import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
-import spinBoard from '@assets/images/spinBoard.png';
+import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import { changeRem } from '@styles/mixin';
+import RandomModalResult from './RandomModalResult';
+import DimmedLayer from './DimmedLayer';
 
 function RandomRoulette() {
+  const roulette = useRef<string | any>();
+  const [modal, setModal] = useState<boolean>(false);
+  // const oldModalState = useRecoilValue(modalState);
+
+  const 룰렛_회전 = () => {
+    const random = Math.floor(+Math.random * 6);
+    const rotate = 3000;
+    roulette.current.style.transform = `rotate(-${rotate}deg)`;
+    roulette.current.style.transition = `2s`;
+    return random;
+  };
+
+  const 룰렛_돌리기 = () => {
+    룰렛_회전();
+    console.log('회전 클릭 이벤트');
+
+    setTimeout(() => {
+      console.log('3초');
+      // 여기에 모달 트리거 할 수 있게
+      openModal();
+    }, 3000);
+  };
+
+  const openModal: () => void = () => {
+    setModal(true);
+  };
+  const closeModal: () => void = () => {
+    setModal(false);
+  };
+
   return (
-    <Container>
-      <Roulette src={spinBoard} alt="룰렛" />
-      <StartButton src={startBtn} alt="시작 버튼" />
-      <Pointer src={pointer} alt="포인터" />
-    </Container>
+    <div>
+      <div>
+        {modal ? (
+          <div>
+            <DimmedLayer />
+            <RandomModalResult onClick={closeModal} />
+          </div>
+        ) : null}
+      </div>
+
+      <Container>
+        <Roulette src={spinBoard} alt="룰렛" ref={roulette} />
+        <StartButton src={startBtn} alt="시작 버튼" onClick={룰렛_돌리기} />
+        <Pointer src={pointer} alt="포인터" />
+      </Container>
+    </div>
   );
 }
 
@@ -21,11 +65,7 @@ const Container = styled.div`
   padding-top: 18px;
 `;
 const Roulette = styled.img`
-  /* 
-  left: 50%;
-  top: 18%;
-  transform: translate(-50%, -4%);
-  width: ${changeRem(316)}; */
+  /* transform: rotate(-${200}deg); */
 `;
 const Pointer = styled.img`
   position: absolute;
