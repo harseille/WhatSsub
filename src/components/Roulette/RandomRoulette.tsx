@@ -15,7 +15,8 @@ function RandomRoulette() {
     const random = Math.floor(+Math.random * 6);
     const rotate = 3000;
     (rouletteRef.current as HTMLImageElement).style.transform = `rotate(-${rotate}deg)`;
-    (rouletteRef.current as HTMLImageElement).style.transition = `2s`;
+    (rouletteRef.current as HTMLImageElement).style.transition = `4s`;
+    (rouletteRef.current as HTMLImageElement).style.transitionTimingFunction = 'ease-out';
     return random;
   };
 
@@ -25,6 +26,8 @@ function RandomRoulette() {
 
     setTimeout(() => {
       console.log('3초');
+      (rouletteRef.current as HTMLImageElement).style.transform = '';
+      (rouletteRef.current as HTMLImageElement).style.transition = '';
       모달_열기();
     }, 3000);
   };
