@@ -16,6 +16,7 @@ function SandwichBadgeList({ badgeList }: { badgeList: 샌드위치뱃지리스�
 
 const BadgeList = styled.ul`
   display: flex;
+  flex-flow: wrap;
   margin: 0;
   gap: 8px;
 `;

@@ -27,7 +27,7 @@ function CombinationRankingCard({
       </RankingImageWrap>
       <RankingContents>
         <Title>{제목}</Title>
-        <SandwichBadgeList badgeList={뱃지리스트} />
+        <RankingBadgeList badgeList={뱃지리스트} />
         <Like count={좋아요} />
       </RankingContents>
     </RankingCard>
@@ -35,12 +35,12 @@ function CombinationRankingCard({
 }
 
 const RankingCard = styled.section`
+  box-sizing: border-box;
   ${flexbox('row', 'flex-start', 'center')};
-  min-width: ${changeRem(360)};
-  /* max-width: ${changeRem(480)}; */
-  /* height: ${changeRem(110)}; */
+  min-width: ${changeRem(300)};
+  gap: ${changeRem(20)};
   position: relative;
-  padding: 13px 0;
+  padding: 30px 20px;
   margin-bottom: 16px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: #ffffff;
@@ -52,6 +52,7 @@ const RankingImageWrap = styled.div`
   ${flexbox('row', 'center', 'center')};
   width: ${changeRem(80)};
   height: ${changeRem(80)};
+  flex-shrink: 0;
   & img {
     height: ${changeRem(48)};
     object-fit: cover;
@@ -59,19 +60,23 @@ const RankingImageWrap = styled.div`
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 15px 5px rgba(80, 80, 80, 0.15);
-  margin-left: ${changeRem(20)};
 `;
 
 const RankingContents = styled.div`
-  ${flexbox('column', 'space-between')};
-  gap: ${changeRem(8)};
-  margin: ${changeRem(20)};
+  flex-basis: calc(100% - 160px);
 `;
 
 const Title = styled.h3`
+  margin-bottom: 8px;
   font-weight: 600;
   font-size: ${changeRem(16)};
   color: ${props => props.theme.colors.primaryGreen};
+`;
+
+const RankingBadgeList = styled(SandwichBadgeList)`
+  ul {
+    flex-wrap: wrap;
+  }
 `;
 
 export default CombinationRankingCard;
