@@ -1,14 +1,19 @@
 import { Outlet } from 'react-router-dom';
+import useScrollTop from '@hooks/useScrollTop';
 import Header from '@layouts/Header';
+import Top from '@components/Common/Button/Top';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 
 function RootLayout() {
+  const { isShowTop } = useScrollTop();
+
   return (
     <Layout>
       <Header />
       <Main>
         <Outlet />
+        {isShowTop && <Top />}
       </Main>
     </Layout>
   );
