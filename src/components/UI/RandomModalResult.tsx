@@ -22,6 +22,7 @@ interface func {
   onClick: any;
 }
 function RandomModalResult(props: func) {
+  // ㅇ
   // const 모달_닫기 = () => {
   //   setModal(true);
   //   console.log(modal, modalState);
