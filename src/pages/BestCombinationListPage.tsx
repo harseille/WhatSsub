@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import SandwichInfoCard from '@components/Common/Cards/SandwichInfoCard';
 import Button from '@components/UI/Button';
@@ -7,6 +8,7 @@ import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { changeRem } from '@styles/mixin';
+import useInfiniteScroll from '../hooks/useInfiniteScroll';
 
 const dummy = [
   {
@@ -50,6 +52,8 @@ const dummy = [
 function BestCombinationListPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const ListUlRef = useRef<HTMLUListElement>(null);
+  // const page = useInfiniteScroll(ListUlRef);
 
   const 필터링된_꿀조합_목록 = 꿀조합_목록_필터링하기(dummy, state);
 
@@ -80,7 +84,7 @@ function BestCombinationListPage() {
 
   return (
     <Container>
-      <ul>
+      <ul ref={ListUlRef}>
         {필터링된_꿀조합_목록.map(sandwich => (
           <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
         ))}
