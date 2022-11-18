@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+// import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import SandwichInfoCard from '@components/Common/Cards/SandwichInfoCard';
 import Button from '@components/UI/Button';
 import Wrapper from '@components/UI/Wrapper';
@@ -8,7 +9,6 @@ import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import { changeRem } from '@styles/mixin';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
 
 const dummy = [
   {
