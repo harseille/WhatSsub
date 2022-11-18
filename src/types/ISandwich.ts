@@ -36,13 +36,13 @@ export interface 인터페이스_재료정보 {
 }
 
 export interface 인터페이스_재료 {
-  id: string;
+  id?: string;
   이름: string;
   카테고리: string;
-  칼로리: string;
+  칼로리?: string;
   추가재료여부: boolean;
-  맛속성?: string;
-  재료사진?: string;
+  속성?: string;
+  이미지?: string;
 }
 
 export interface 인터페이스_샌드위치뱃지리스트 {
@@ -115,5 +115,6 @@ export interface 인터페이스_레시피 {
   재료칼로리: string;
 }
 export interface 인터페이스_선택된_재료 extends 인터페이스_꿀조합_선택재료 {
-  카테고리?: string;
+  카테고리: string;
+  id?: string;
 }
