@@ -1,5 +1,5 @@
+import { fontColor, backgroundColor } from '@components/Attribute/AttributeButton';
 import styled from '@emotion/styled';
-import { fontColor, backgroundColor } from '@components/UI/Button/IngredientButton';
 
 function IngredientBadge({ filter, item }: { filter: string; item: string }) {
   return (

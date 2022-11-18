@@ -1,19 +1,19 @@
-import styled from '@emotion/styled';
-import { changeRem, buttonNone } from '@styles/mixin';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import CombinationRankingCard from '@components/CombinationRankingCard';
 import Wrapper from '@components/UI/Wrapper';
+import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
 import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import styled from '@emotion/styled';
+import { changeRem, buttonNone } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
 const rankingListData: 인터페이스_꿀조합[] = [
   {
     id: 'sdfsdf',
-    제목: '꿀꿀마앗',
+    이름: '꿀꿀마앗',
     이미지: ChickenSlice,
     작성자: '도은',
     작성일: '2022.11.16',
@@ -29,7 +29,7 @@ const rankingListData: 인터페이스_꿀조합[] = [
   },
   {
     id: 'sdfsadfdf',
-    제목: '고기 조합이다아아아',
+    이름: '고기 조합이다아아아',
     이미지: ChickenSlice,
     작성자: '도은',
     작성일: '2022.11.16',
@@ -45,7 +45,7 @@ const rankingListData: 인터페이스_꿀조합[] = [
   },
   {
     id: 'swerdfsdf',
-    제목: '다이어트',
+    이름: '다이어트',
     이미지: ChickenSlice,
     작성자: '도은',
     작성일: '2022.11.16',
@@ -65,7 +65,7 @@ function RankingPage() {
   const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>(rankingListData);
   const [currentTab, setCurrentTab] = useState<string>('맛잘알랭킹');
 
-  const onClickTab = () => {
+  const 클릭핸들러_탭_변경 = () => {
     setCurrentTab(prev => (prev === '맛잘알랭킹' ? '신규조합' : '맛잘알랭킹'));
   };
 
@@ -73,15 +73,15 @@ function RankingPage() {
     <Wrapper2>
       <Wrapper>
         <TabGroup>
-          <TitleTab className={currentTab === '맛잘알랭킹' ? 'on' : ''} onClick={onClickTab}>
+          <TitleTab className={currentTab === '맛잘알랭킹' ? 'on' : ''} onClick={클릭핸들러_탭_변경}>
             맛잘알랭킹
           </TitleTab>
-          <TitleTab className={currentTab === '신규조합' ? 'on' : ''} onClick={onClickTab}>
+          <TitleTab className={currentTab === '신규조합' ? 'on' : ''} onClick={클릭핸들러_탭_변경}>
             신규조합
           </TitleTab>
         </TabGroup>
         <div>
-          {rankingList.map(({ id, 제목, 이미지, 베이스샌드위치, 뱃지리스트, 좋아요 }, i) => {
+          {rankingList.map(({ id, 이름, 이미지, 베이스샌드위치, 뱃지리스트, 좋아요 }, i) => {
             let badgeUrl = '';
 
             if (currentTab === '맛잘알랭킹') {
@@ -94,7 +94,7 @@ function RankingPage() {
               <RankingCardWrapper key={id} to={`/best-combination/${id}`}>
                 {badgeUrl && <RankBadge src={badgeUrl} alt={`rank${i + 1}`} />}
                 <CombinationRankingCard
-                  title={제목}
+                  title={이름}
                   imageUrl={이미지}
                   originName={베이스샌드위치}
                   badgeList={뱃지리스트}
@@ -108,6 +108,8 @@ function RankingPage() {
     </Wrapper2>
   );
 }
+
+export default RankingPage;
 
 const Wrapper2 = styled.div`
   background: #f9f9f9;
@@ -145,5 +147,3 @@ const RankBadge = styled.img`
   z-index: 1;
   width: 90px;
 `;
-
-export default RankingPage;

@@ -1,18 +1,6 @@
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 
-// interface 인터페이스_좋아요_스타일 {
-//   position?: string | undefined;
-//   top?: string | undefined;
-//   left?: string | undefined;
-//   right?: string | undefined;
-//   bottom?: string | undefined;
-// }
-
-// interface 인터페이스_좋아요 extends 인터페이스_좋아요_스타일 {
-//   count: string;
-// }
-
 interface 인터페이스_좋아요 {
   count: string;
 }

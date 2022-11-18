@@ -1,14 +1,14 @@
+import IngredientButton from '@components/Attribute/AttributeButton';
 import styled from '@emotion/styled';
-import IngredientButton from '@components/UI/Button/IngredientButton';
 import { changeRem } from '@styles/mixin';
-import { 재료선택, 재료 } from '@pages/BestCombinationPickPage';
+import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조합선택페이지_속성선택 } from '../../types/ISandwich';
 
 function IngredientButtonList({
-  filterData: { 제목, 재료목록, 최대선택개수 },
+  filterData: { 제목, 속성목록, 최대선택개수 },
   selectedFilter,
   onSelectFilter,
 }: {
-  filterData: 재료선택;
+  filterData: 인터페이스_꿀조합선택페이지_속성선택;
   selectedFilter: { [key: string]: string[] };
   onSelectFilter: (filter: string, name: string, maxNum: number) => void;
 }) {
@@ -19,11 +19,11 @@ function IngredientButtonList({
         <TitleDes>{`(최대 ${최대선택개수}가지 선택 가능합니다.)`}</TitleDes>
       </Title>
       <IngredientList>
-        {재료목록.map((재료: 재료) => (
-          <li key={재료.id}>
+        {속성목록.map((속성: 인터페이스_꿀조합선택페이지_속성) => (
+          <li key={속성.id}>
             <IngredientButton
               filter={제목}
-              name={재료.이름}
+              name={속성.이름}
               max={최대선택개수}
               selectedFilter={selectedFilter}
               onSelectFilter={onSelectFilter}

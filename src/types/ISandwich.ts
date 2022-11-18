@@ -1,4 +1,19 @@
 // Ingredient Button List
+export interface 인터페이스_꿀조합선택페이지_속성 {
+  id: string;
+  이름: string;
+}
+
+export interface 인터페이스_꿀조합선택페이지_속성선택 {
+  제목: string;
+  속성목록: 인터페이스_꿀조합선택페이지_속성[];
+  최대선택개수: number;
+}
+
+export interface 인터페이스_꿀조합선택페이지_필터 {
+  [key: string]: string[];
+}
+
 interface 인터페이스_꿀조합_카테고리_속성 {
   id: string;
   카테고리명: string;
@@ -38,7 +53,7 @@ export interface 샌드위치뱃지리스트 {
 // 꿀조합
 export interface 인터페이스_꿀조합 {
   id: string;
-  제목: string;
+  이름: string;
   작성자: string;
   작성일: string;
   좋아요: string;

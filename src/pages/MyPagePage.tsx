@@ -1,30 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLoggedInState } from '@state/index';
+import SandwichInfo from '@components/Sandwichs/SandwichInfo';
+import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
 import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
-import Wrapper from '@components/UI/Wrapper';
 import { changeRem } from '@styles/mixin';
-import SandwichInfo from '@components/UI/SandwichInfo';
-import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
-import { 샌드위치뱃지리스트, 인터페이스_재료 } from '../types/ISandwich';
+import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
-interface 인터페이스_꿀조합_임의 {
-  id: string;
-  이름: string;
-  작성자: string;
-  작성일: string;
-  좋아요: string;
-  베이스샌드위치: string;
-  이미지: string;
-  칼로리: string;
-  뱃지리스트: 샌드위치뱃지리스트;
-  선택재료: 인터페이스_재료[];
-}
-
-const sandwiches: 인터페이스_꿀조합_임의[] = [
+const sandwiches: 인터페이스_꿀조합[] = [
   {
     id: 'a1',
     이름: '꿀꿀마앗',
@@ -84,42 +71,37 @@ function MyPage() {
       alert('로그인 먼저');
       navigate('/login');
     }
-  }, [isLoggedin]);
+  }, [isLoggedin, navigate]);
 
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
 
-  const combinationChangeHandler = (e: React.MouseEvent<HTMLElement>) => {
+  const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');
     setToggleState(사용자명_체크);
   };
 
-  // const clickHandler = (id, e: React.MouseEvent<HTMLElement>) => {
-  //   navigator('/ranking/a2');
-  // };
-  const clickHandler = (sandwiches: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    // console.log((e.target as Element).closest('SandwichInfo'));
-    // console.log(sandwiches);
-    navigate('/best-combination/${sandwiches[1]}');
-  };
-
-  const likeFirstOrder = (prev: 인터페이스_꿀조합_임의, next: 인터페이스_꿀조합_임의): number =>
-    +next.좋아요 - +prev.좋아요;
-
-  const dateFirstOrder = (prev: 인터페이스_꿀조합_임의, next: 인터페이스_꿀조합_임의): number => {
+  const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
     if (prev.작성일 < next.작성일) return 1;
     return -1;
   };
 
-  const userCombination = sandwiches.sort(dateFirstOrder).map(sandwich => (
-    // <Card onClick={clickHandler.bind(null, sandwtch.id)}>
-    <Card onClick={clickHandler}>
-      <SandwichInfo sandwich={sandwich} />
+  const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
+    +next.좋아요 - +prev.좋아요;
+
+  // ! 데이터 받아온 후 컴포넌트를 만들게 됨으로 리팩토링 예정
+  const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
+    <Card key={sandwich.id}>
+      <Link to={`/best-combination/${sandwich.id}`}>
+        <SandwichInfo sandwich={sandwich} />
+      </Link>
     </Card>
   ));
 
-  const likeCombination = sandwiches.sort(likeFirstOrder).map(sandwich => (
-    <Card onClick={clickHandler}>
-      <SandwichInfo sandwich={sandwich} />
+  const likeCombination = sandwiches.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
+    <Card key={sandwich.id}>
+      <Link to={`/best-combination/${sandwich.id}`}>
+        <SandwichInfo sandwich={sandwich} />
+      </Link>
     </Card>
   ));
 
@@ -128,17 +110,17 @@ function MyPage() {
       <Content>
         {toggleState ? (
           <div>
-            <UserTitle onClick={combinationChangeHandler}>단찌만의 조합</UserTitle>
-            <LikeTitle className="sub-title" onClick={combinationChangeHandler}>
+            <UserTitle onClick={클릭핸들러_꿀조합_목록_변경}>단찌만의 조합</UserTitle>
+            <LikeTitle className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
               좋아요 꿀조합
             </LikeTitle>
           </div>
         ) : (
           <div>
-            <UserTitle style={{ background: '#f5d891' }} onClick={combinationChangeHandler}>
+            <UserTitle style={{ background: '#f5d891' }} onClick={클릭핸들러_꿀조합_목록_변경}>
               단찌만의 조합
             </UserTitle>
-            <LikeTitle style={{ background: '#fab608' }} className="sub-title" onClick={combinationChangeHandler}>
+            <LikeTitle style={{ background: '#fab608' }} className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
               좋아요 꿀조합
             </LikeTitle>
           </div>
@@ -148,6 +130,8 @@ function MyPage() {
     </Wrapper>
   );
 }
+
+export default MyPage;
 
 const Content = styled.div`
   width: 380px;
@@ -188,5 +172,3 @@ const Card = styled.div`
   border-radius: 15px;
   margin: 20px auto 0;
 `;
-
-export default MyPage;

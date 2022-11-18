@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
 import SelectCombination from '@components/CustomCombination/SelectCombination';
 import NextStepButton from '@components/CustomCombination/NextStepButton';
+import styled from '@emotion/styled';
 import { 인터페이스_꿀조합 } from '../../types/ISandwich';
 
 type 타입_재료선택_속성 = {

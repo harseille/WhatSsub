@@ -1,6 +1,6 @@
-import { 샌드위치, 샌드위치뱃지리스트 } from '@components/UI/Cards/SandwichInfoCard';
+import { 샌드위치, 샌드위치뱃지리스트 } from '@components/Common/Cards/SandwichInfoCard';
 
-const filterBestCombinationList = (꿀조합리스트: 샌드위치[], filter: 샌드위치뱃지리스트) => {
+const 꿀조합_목록_필터링하기 = (꿀조합리스트: 샌드위치[], filter: 샌드위치뱃지리스트) => {
   const badgeListArr = 꿀조합리스트.map(data => Object.values(data.뱃지리스트).flat());
   const filterList = Object.values(filter).flat();
 
@@ -17,4 +17,4 @@ const filterBestCombinationList = (꿀조합리스트: 샌드위치[], filter: �
   return 꿀조합리스트.filter((_, idx) => filteredIdxArr.includes(idx));
 };
 
-export default filterBestCombinationList;
+export default 꿀조합_목록_필터링하기;

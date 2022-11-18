@@ -1,65 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IngredientButtonList from '@components/IngredientButtonList';
-import Button from '@components/UI/Button/Button';
+import IngredientButtonList from '@components/Attribute/AttributeButtonList';
+import Button from '@components/UI/Button';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
-import { changeRem, flexbox } from '@styles/mixin';
 import refreshIcon from '@assets/icons/refresh.svg';
-
-export interface 재료 {
-  id: string;
-  이름: string;
-}
-
-export interface 재료선택 {
-  제목: string;
-  재료목록: 재료[];
-  최대선택개수: number;
-}
-
-interface IFilter {
-  [key: string]: string[];
-}
-
-const 더미데이터: 재료선택[] = [
-  {
-    제목: '맛',
-    재료목록: [
-      { id: 'F1', 이름: '달달' },
-      { id: 'F2', 이름: '새콤' },
-      { id: 'F3', 이름: '고소' },
-      { id: 'F4', 이름: '짭짤' },
-    ],
-    최대선택개수: 3,
-  },
-  {
-    제목: '재료',
-    재료목록: [
-      { id: 'I1', 이름: '돼지고기' },
-      { id: 'I2', 이름: '소고기' },
-      { id: 'I3', 이름: '닭고기' },
-      { id: 'I4', 이름: '해산물' },
-      { id: 'I5', 이름: '에그마요' },
-      { id: 'I6', 이름: '야채' },
-    ],
-    최대선택개수: 1,
-  },
-  {
-    제목: '추가사항',
-    재료목록: [
-      { id: 'A1', 이름: '고기러버' },
-      { id: 'A2', 이름: '치즈폭탄' },
-      { id: 'A3', 이름: '저칼로리' },
-    ],
-    최대선택개수: 3,
-  },
-];
+import { changeRem, flexbox } from '@styles/mixin';
+import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
+import 더미데이터 from '../data/PickPageDummy';
 
 function BestCombinationPickPage() {
   const navigate = useNavigate();
 
-  const initFilter: IFilter = {
+  const initFilter: 인터페이스_꿀조합선택페이지_필터 = {
     맛: [],
     재료: [],
     추가사항: [],
@@ -67,7 +20,7 @@ function BestCombinationPickPage() {
 
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
 
-  const selectFilterHandler = (filter: string, name: string, maxNum: number) => {
+  const 클릭핸들러_꿀조합_속성_토글 = (filter: string, name: string, maxNum: number) => {
     const filterArr = selectedFilter[filter];
 
     if (maxNum === 1 && !filterArr.includes(name)) {
@@ -93,18 +46,18 @@ function BestCombinationPickPage() {
     });
   };
 
-  const refreshFilter = () => {
+  const 클릭핸들러_꿀조합_속성_초기화 = () => {
     setSelectedFilter(initFilter);
   };
 
-  const navigateListPage = () => {
+  const 꿀조합_목록_페이지로_이동하기 = () => {
     navigate('/best-combination', { state: selectedFilter });
   };
 
   return (
     <Container>
       <IngredientButtonListWrap>
-        <RefreshButton onClick={refreshFilter}>
+        <RefreshButton onClick={클릭핸들러_꿀조합_속성_초기화}>
           <img src={refreshIcon} alt="새로고침" />
         </RefreshButton>
         {더미데이터.map(data => (
@@ -112,18 +65,24 @@ function BestCombinationPickPage() {
             key={data.제목}
             filterData={data}
             selectedFilter={selectedFilter}
-            onSelectFilter={selectFilterHandler}
+            onSelectFilter={클릭핸들러_꿀조합_속성_토글}
           />
         ))}
       </IngredientButtonListWrap>
       <ButtonWrap>
-        <Button onClick={navigateListPage} designType="primaryGreen" width={changeRem(330)} height={changeRem(50)}>
+        <Button
+          onClick={꿀조합_목록_페이지로_이동하기}
+          designType="primaryGreen"
+          width={changeRem(330)}
+          height={changeRem(50)}>
           꿀 조합 보러가기
         </Button>
       </ButtonWrap>
     </Container>
   );
 }
+
+export default BestCombinationPickPage;
 
 const Container = styled(Wrapper)`
   ${flexbox('column', 'space-between', 'center')};
@@ -155,5 +114,3 @@ const ButtonWrap = styled.div`
   position: absolute;
   bottom: 120px;
 `;
-
-export default BestCombinationPickPage;

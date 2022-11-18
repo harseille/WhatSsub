@@ -1,12 +1,12 @@
 import { useRecoilState } from 'recoil';
-import { userLike } from '@state/user';
 import { useNavigate } from 'react-router-dom';
-import SandwichInfo from '@components/UI/SandwichInfo';
+import SandwichInfo from '@components/Sandwichs/SandwichInfo';
 import heart from '@assets/icons/heart.svg';
 import heartFill from '@assets/icons/heart-fill.svg';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
-import { changeRem } from '../../../styles/mixin';
+import { userLike } from '@state/user';
+import { changeRem } from '@styles/mixin';
 
 export interface 샌드위치뱃지리스트 {
   맛: string[];

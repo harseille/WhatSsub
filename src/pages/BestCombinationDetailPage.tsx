@@ -1,17 +1,13 @@
-import styled from '@emotion/styled';
-// import CombinationIngredientList from '@components/CombinationIngredientList';
-import IngredientCardList from '@components/IngredientCardList';
+import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import IngredientCardList from '@components/Ingredient/IngredientCardList';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/Comments/CommentInputWrap';
-
-// import sandwichInfo from '@components/UI/sandwichInfo';
-import SandwichInfo from '@components/UI/SandwichInfo';
+import SandwichInfo from '@components/Sandwichs/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
-import Like from '@components/UI/Button/Like';
-
-import { changeRem, flexbox } from '@styles/mixin';
-import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import Like from '@components/Common/Button/Like';
 import { API_URL_PATH_PREFIX } from '@constants/constants';
+import styled from '@emotion/styled';
+import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISandwich';
 
 // ? fetch를 뭐라고 바꿀지 고민...

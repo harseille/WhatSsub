@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { changeRem } from '../styles/mixin';
+import { changeRem } from '@styles/mixin';
 
 interface 인터페이스_재료 {
   id: string;

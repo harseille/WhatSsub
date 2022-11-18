@@ -14,12 +14,12 @@ function IngredientButton({
   selectedFilter: { [key: string]: string[] };
   onSelectFilter: (filter: string, name: string, maxNum: number) => void;
 }) {
-  const toggleButtonHandler = () => {
+  const 클릭핸들러_버튼_토글 = () => {
     onSelectFilter(filter, name, max);
   };
 
   return (
-    <Button onClick={toggleButtonHandler} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
+    <Button onClick={클릭핸들러_버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
       {name}
     </Button>
   );

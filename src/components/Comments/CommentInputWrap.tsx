@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
 import { useRef } from 'react';
-import { 새_댓글_추가 } from '@api/index';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
+import { 새_댓글_추가하기 } from '@api/index';
+import styled from '@emotion/styled';
+import { changeRem } from '@styles/mixin';
 import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
 
 function CommentInputWrap() {
@@ -14,7 +14,7 @@ function CommentInputWrap() {
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
 
-  const 게시_버튼_클릭 = async (e: React.FormEvent<HTMLFormElement>) => {
+  const 서브밋핸들러_댓글_쓰기 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const 댓글내용 = commentInput.current?.value;
     if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
@@ -28,14 +28,15 @@ function CommentInputWrap() {
         내용: commentInput.current?.value,
         작성일: Date.now(),
       };
-      await 새_댓글_추가(댓글_정보);
+      await 새_댓글_추가하기(댓글_정보);
+      console.log('댓글 테스트');
     }
   };
 
   return (
     <Wrapper>
       <ProfileImg />
-      <Form onSubmit={게시_버튼_클릭}>
+      <Form onSubmit={서브밋핸들러_댓글_쓰기}>
         <Input id="comment" maxLength={120} ref={commentInput} />
         <Submit type="submit" value="게시" />
       </Form>

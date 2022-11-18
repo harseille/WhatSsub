@@ -1,34 +1,20 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
 
-export interface 리뷰프로퍼티 {
-  id?: string;
-  작성자: string;
-  프로필이미지?: string;
-  등록날짜: string;
-  본문: string;
-}
-
-// const 리뷰: 리뷰프로퍼티 = {
-//   id:'r1'
-//   작성자: 'test',
-//   프로필이미지: '아마 경로',
-//   등록날짜: '2시간',
-//   본문: '고소~고소~ 짭짤~짭짤~ 매워~매워~',
-// };
-
-function CommentItem(props: { comment: 리뷰프로퍼티 }) {
+function CommentItem(props: { comment: 인터페이스_댓글프로퍼티 }) {
   const {
-    comment: { 작성자, 등록날짜, 본문 },
+    comment: { 작성자이름, 내용, 작성일 },
+    // comment: { 꿀조합id, 작성자id, 작성자이름, 작성자프로필이미지, 내용, 작성일 },
   } = props;
   return (
     <Wrapper>
       <UserInfoWrapper>
         <ProfileImg />
-        <UserName>{작성자}</UserName>
-        <CreatedTime>{등록날짜}</CreatedTime>
+        <UserName>{작성자이름}</UserName>
+        <CreatedTime>{작성일}</CreatedTime>
       </UserInfoWrapper>
-      <Comment>{본문}</Comment>
+      <Comment>{내용}</Comment>
     </Wrapper>
   );
 }

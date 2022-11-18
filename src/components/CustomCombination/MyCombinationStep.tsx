@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-bind */
+import MyCombinationStepBadge from '@components/CustomCombination/MyCombinationStepBadge';
+
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import MyCombinationStepBadge from '@components/CustomCombination/MyCombinationStepBadge';
 
 interface 인터페이스_조합진행도_속성 {
   currentStep: number;
