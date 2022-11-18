@@ -2,7 +2,7 @@ import { ref, push } from 'firebase/database';
 import { db } from '../firebase.config';
 import { 인터페이스_댓글프로퍼티 } from '../types/IComment';
 
-const 새_댓글_추가 = (댓글: 인터페이스_댓글프로퍼티) => {
+const 새_댓글_추가하기 = (댓글: 인터페이스_댓글프로퍼티) => {
   push(ref(db, '댓글/'), {
     꿀조합id: 댓글.꿀조합id,
     작성자id: 댓글.작성자id,
@@ -13,4 +13,4 @@ const 새_댓글_추가 = (댓글: 인터페이스_댓글프로퍼티) => {
   });
 };
 
-export default 새_댓글_추가;
+export default 새_댓글_추가하기;

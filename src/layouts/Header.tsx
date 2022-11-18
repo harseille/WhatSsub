@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import logoImg from '@assets/images/logo.svg';
 import HeaderItemsWrap from '@layouts/HeaderItemsWrap';
+import logoImg from '@assets/images/logo.svg';
+import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 
 function Header() {

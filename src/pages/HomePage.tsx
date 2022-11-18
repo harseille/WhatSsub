@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
+import Wrapper from '@components/UI/Wrapper';
 import homeDanji from '@assets/images/home_danji.png';
 import deco1 from '@assets/images/home_bg_left_top.svg';
 import deco2 from '@assets/images/home_bg_right_top.svg';
@@ -7,7 +7,7 @@ import deco3 from '@assets/images/home_bg_left_bottom.svg';
 import bestLink from '@assets/images/home_link_best_combination.svg';
 import bgText from '@assets/images/home_bg_text.svg';
 import ramdomLink from '@assets/images/home_link_random.svg';
-import Wrapper from '@components/UI/Wrapper';
+import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 
@@ -18,10 +18,10 @@ function HomePage() {
         <Wrapper>
           <Title>
             <TitleSpan>
-              <SpanStrong>생각</SpanStrong>이 안날땐
+              <StrongSpan>생각</StrongSpan>이 안날땐
             </TitleSpan>
             <TitleSpan>
-              <SpanStrong>왔썹</SpanStrong>으로 고르자
+              <StrongSpan>왔썹</StrongSpan>으로 고르자
             </TitleSpan>
           </Title>
           <VisualImg src={homeDanji} alt="샌드위치 먹는 단지" />
@@ -48,6 +48,8 @@ function HomePage() {
     </HomeWrapper>
   );
 }
+
+export default HomePage;
 
 const HomeWrapper = styled.div`
   padding: 0 0 50px;
@@ -91,7 +93,7 @@ const TitleSpan = styled.span`
   display: block;
 `;
 
-const SpanStrong = styled.span`
+const StrongSpan = styled.span`
   color: ${({ theme }) => theme.colors.primaryYellow};
   font-size: ${changeRem(48)};
   font-weight: bold;
@@ -173,5 +175,3 @@ const LinkSub = styled.span`
   color: #979797;
   font-size: ${changeRem(12)};
 `;
-
-export default HomePage;

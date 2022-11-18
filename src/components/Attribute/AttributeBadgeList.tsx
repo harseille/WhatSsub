@@ -1,6 +1,6 @@
+import IngredientBadge from '@components/Attribute/AttributeBadge';
 import styled from '@emotion/styled';
-import IngredientBadge from '@components/UI/IngredientBadge';
-import { 샌드위치뱃지리스트 } from '../types/ISandwich';
+import { 샌드위치뱃지리스트 } from '../../types/ISandwich';
 
 function SandwichBadgeList({ badgeList }: { badgeList: 샌드위치뱃지리스트 }) {
   const convertedBadgeList = Object.entries(badgeList);
@@ -16,6 +16,7 @@ function SandwichBadgeList({ badgeList }: { badgeList: 샌드위치뱃지리스�
 
 const BadgeList = styled.ul`
   display: flex;
+  flex-flow: wrap;
   margin: 0;
   gap: 8px;
 `;

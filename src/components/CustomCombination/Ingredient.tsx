@@ -1,17 +1,17 @@
-import styled from '@emotion/styled';
 import { useState } from 'react';
+import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
 function Ingredient(props: { children: string }) {
   const { children } = props;
   const [isSelected, setisSelected] = useState(false);
 
-  const onSelectedHandler = () => setisSelected(prev => !prev);
+  const 클릭핸들러_재료_선택 = () => setisSelected(prev => !prev);
 
   const bgColor = isSelected ? '#fff5de' : '#f1f0f0';
   const color = isSelected ? '#dfa000' : '#7A7A7A';
   return (
-    <IngredientItem onClick={onSelectedHandler} color={color} bgColor={bgColor}>
+    <IngredientItem onClick={클릭핸들러_재료_선택} color={color} bgColor={bgColor}>
       {children}
     </IngredientItem>
   );

@@ -1,14 +1,9 @@
-import RandomRoulette from '@components/UI/RandomRoulette';
-import RandomModalResult from '@components/UI/RandomModalResult';
-import DimmedLayer from '@components/UI/DimmedLayer';
+import RandomRoulette from '@components/Roulette/RandomRoulette';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { API_URL_PATH_PREFIX } from '@constants/constants';
 
 function RandomPickPage() {
-  // const fetchData = (url: string) => fetch(url).then(res => res.json());
-
   return (
     <Wrapper>
       <Title>랜덤 조합 룰렛</Title>

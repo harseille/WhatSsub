@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import styled from '@emotion/styled';
+import DimmedLayer from '@components/UI/DimmedLayer';
+import RandomModalResult from '@components/Roulette/RandomModalResult';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import { changeRem } from '@styles/mixin';
-import RandomModalResult from './RandomModalResult';
-import DimmedLayer from './DimmedLayer';
 
 function RandomRoulette() {
   const roulette = useRef<string | any>();

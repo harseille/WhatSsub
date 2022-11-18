@@ -1,12 +1,12 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import SandwichInfoCard from '@components/UI/Cards/SandwichInfoCard';
+import SandwichInfoCard from '@components/Common/Cards/SandwichInfoCard';
+import Button from '@components/UI/Button';
+import Wrapper from '@components/UI/Wrapper';
+import 꿀조합_목록_필터링하기 from '@utils/filterBestCombinationList';
 import styled from '@emotion/styled';
 import cryingDanji from '@assets/images/cryingDanji.png';
-import Button from '@components/UI/Button/Button';
-import Wrapper from '@components/UI/Wrapper';
-import { changeRem } from '@styles/mixin';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import filterBestCombinationList from '@utils/filterBestCombinationList';
+import { changeRem } from '@styles/mixin';
 
 const dummy = [
   {
@@ -51,13 +51,11 @@ function BestCombinationListPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const 꿀조합리스트 = filterBestCombinationList(dummy, state);
+  const 필터링된_꿀조합_목록 = 꿀조합_목록_필터링하기(dummy, state);
 
-  const navigatePickPage = () => {
-    navigate(-1);
-  };
+  const 페이지_뒤로가기 = () => navigate(-1);
 
-  if (꿀조합리스트.length === 0) {
+  if (필터링된_꿀조합_목록.length === 0) {
     return (
       <Wrapper>
         <Container>
@@ -68,7 +66,7 @@ function BestCombinationListPage() {
           <Desc>검색하신 샌드위치를 찾을 수 없습니다.</Desc>
           <Desc>꿀 조합을 다시 선택해주세요.</Desc>
           <Button
-            onClick={navigatePickPage}
+            onClick={페이지_뒤로가기}
             designType="primaryYellow"
             width={changeRem(330)}
             height={changeRem(50)}
@@ -83,13 +81,15 @@ function BestCombinationListPage() {
   return (
     <Container>
       <ul>
-        {꿀조합리스트.map(sandwich => (
+        {필터링된_꿀조합_목록.map(sandwich => (
           <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
         ))}
       </ul>
     </Container>
   );
 }
+
+export default BestCombinationListPage;
 
 const Container = styled.div`
   display: flex;
@@ -126,5 +126,3 @@ const Desc = styled.p`
   margin-bottom: 4px;
   color: rgb(65, 65, 65);
 `;
-
-export default BestCombinationListPage;

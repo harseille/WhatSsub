@@ -1,7 +1,5 @@
+import IngredientCard from '@components/Ingredient/IngredientCard';
 import styled from '@emotion/styled';
-
-import IngredientCard from '@components/UI/Cards/IngredientCard';
-
 import { flexbox } from '@styles/mixin';
 
 export interface 재료 {

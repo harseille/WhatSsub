@@ -1,7 +1,7 @@
+import SandwichBadgeList from '@components/Attribute/AttributeBadgeList';
+import { 샌드위치 } from '@components/Common/Cards/SandwichInfoCard';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import SandwichBadgeList from '@components/SandwichBadgeList';
-import { 샌드위치 } from '@components/UI/Cards/SandwichInfoCard';
 
 function SandwichInfo({ sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwich: 샌드위치 }) {
   return (

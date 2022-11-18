@@ -10,8 +10,8 @@ import CustomCombination from './CustomCombinationPage';
 
 export {
   HomePage,
-  MyPage,
   LoginPage,
+  MyPage,
   BestCombinationPickPage,
   BestCombinationListPage,
   BestCombinationDetailPage,
