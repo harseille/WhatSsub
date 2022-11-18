@@ -1,8 +1,8 @@
-import IngredientBadge from '@components/Attribute/AttributeBadge';
+import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge';
 import styled from '@emotion/styled';
-import { 샌드위치뱃지리스트 } from '../../types/ISandwich';
+import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
 
-function SandwichBadgeList({ badgeList }: { badgeList: 샌드위치뱃지리스트 }) {
+function SandwichBadgeList({ badgeList }: { badgeList: 인터페이스_샌드위치뱃지리스트 }) {
   const convertedBadgeList = Object.entries(badgeList);
 
   return (

@@ -2,6 +2,10 @@ import { useState } from 'react';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
+type 타입_속성 = {
+  bgColor: string;
+};
+
 function Ingredient(props: { children: string }) {
   const { children } = props;
   const [isSelected, setisSelected] = useState(false);
@@ -18,10 +22,6 @@ function Ingredient(props: { children: string }) {
 }
 
 export default Ingredient;
-
-type 타입_속성 = {
-  bgColor: string;
-};
 
 const IngredientItem = styled.li<타입_속성>`
   color: ${props => props.color};

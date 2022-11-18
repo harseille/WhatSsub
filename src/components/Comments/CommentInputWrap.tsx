@@ -9,14 +9,14 @@ import { changeRem } from '@styles/mixin';
 import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
 
 function CommentInputWrap() {
-  const commentInput = useRef<HTMLInputElement>(null);
+  const commentInputRef = useRef<HTMLInputElement>(null);
 
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
 
   const 서브밋핸들러_댓글_쓰기 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const 댓글내용 = commentInput.current?.value;
+    const 댓글내용 = commentInputRef.current?.value;
     if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
     else if (!댓글내용) alert('댓글을 입력해주세요.');
     else if (유저정보 && 댓글내용 && combinationId) {
@@ -25,11 +25,11 @@ function CommentInputWrap() {
         작성자id: 유저정보.uid,
         작성자이름: 유저정보.displayName,
         작성자프로필이미지: 유저정보.photoURL,
-        내용: commentInput.current?.value,
+        내용: commentInputRef.current?.value,
         작성일: Date.now(),
       };
       await 새_댓글_추가하기(댓글_정보);
-      console.log('댓글 테스트');
+      // console.log('댓글 성공');
     }
   };
 
@@ -37,12 +37,14 @@ function CommentInputWrap() {
     <Wrapper>
       <ProfileImg />
       <Form onSubmit={서브밋핸들러_댓글_쓰기}>
-        <Input id="comment" maxLength={120} ref={commentInput} />
+        <Input id="comment" maxLength={120} ref={commentInputRef} />
         <Submit type="submit" value="게시" />
       </Form>
     </Wrapper>
   );
 }
+
+export default CommentInputWrap;
 
 const Wrapper = styled.div`
   position: fixed;
@@ -89,5 +91,3 @@ const Submit = styled.input`
   font-size: ${changeRem(14)};
   font-weight: bold;
 `;
-
-export default CommentInputWrap;

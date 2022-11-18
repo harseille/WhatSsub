@@ -1,9 +1,13 @@
-import SandwichBadgeList from '@components/Attribute/AttributeBadgeList';
-import { 샌드위치 } from '@components/Common/Cards/SandwichInfoCard';
+import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import { 인터페이스_샌드위치 } from '../../types/ISandwich';
 
-function SandwichInfo({ sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: { sandwich: 샌드위치 }) {
+function SandwichInfo({
+  sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 },
+}: {
+  sandwich: 인터페이스_샌드위치;
+}) {
   return (
     <InfoWrap>
       <ImgWrap>
@@ -17,6 +21,8 @@ function SandwichInfo({ sandwich: { 이미지, 이름, 베이스샌드위치, �
     </InfoWrap>
   );
 }
+
+export default SandwichInfo;
 
 const InfoWrap = styled.div`
   width: ${changeRem(305)};
@@ -49,5 +55,3 @@ const InfoSummary = styled.p`
 const Kcal = styled.span`
   color: #ffd600;
 `;
-
-export default SandwichInfo;

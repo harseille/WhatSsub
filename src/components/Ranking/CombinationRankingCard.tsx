@@ -1,17 +1,17 @@
-import SandwichBadgeList from '@components/Attribute/AttributeBadgeList';
+import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import Like from '@components/Common/Button/Like';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
-import { 샌드위치뱃지리스트 } from '../../types/ISandwich';
+import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
 
-interface 인터페이스_랭킹카드_프로퍼티 {
+type TProps = {
   title: string;
   imageUrl: string;
   originName: string;
-  badgeList: 샌드위치뱃지리스트;
+  badgeList: 인터페이스_샌드위치뱃지리스트;
   like: string;
-}
+};
 
 function CombinationRankingCard({
   title: 이름,
@@ -19,7 +19,7 @@ function CombinationRankingCard({
   originName,
   badgeList: 뱃지리스트,
   like: 좋아요,
-}: 인터페이스_랭킹카드_프로퍼티) {
+}: TProps) {
   return (
     <RankingCard>
       <RankingImageWrap>
@@ -33,6 +33,8 @@ function CombinationRankingCard({
     </RankingCard>
   );
 }
+
+export default CombinationRankingCard;
 
 const RankingCard = styled.section`
   box-sizing: border-box;
@@ -78,5 +80,3 @@ const RankingBadgeList = styled(SandwichBadgeList)`
     flex-wrap: wrap;
   }
 `;
-
-export default CombinationRankingCard;

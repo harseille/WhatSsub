@@ -1,4 +1,4 @@
-import { fontColor, backgroundColor } from '@components/Attribute/AttributeButton';
+import { badgeFontColor, badgeBackgroundColor } from '@styles/common';
 import styled from '@emotion/styled';
 
 function IngredientBadge({ filter, item }: { filter: string; item: string }) {
@@ -16,8 +16,8 @@ const IngredientBadgeBox = styled.div<{ color: string }>`
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
-  color: ${({ color }) => fontColor[color]};
-  background: ${({ color }) => backgroundColor[color]};
+  color: ${({ color }) => badgeFontColor[color]};
+  background: ${({ color }) => badgeBackgroundColor[color]};
 `;
 
 export default IngredientBadge;
