@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IngredientButtonList from '@components/Attribute/AttributeButtonList';
+import IngredientButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
 import Button from '@components/UI/Button';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';

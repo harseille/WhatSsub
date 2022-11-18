@@ -23,6 +23,8 @@ function MyCombinationCard() {
   );
 }
 
+export default MyCombinationCard;
+
 const Container = styled.div`
   position: relative;
   /* margin-top: 150px; */
@@ -86,14 +88,3 @@ const Danji = styled.img`
   left: 50%;
   transform: translate(-50%);
 `;
-export default MyCombinationCard;
-
-// Container -> position: relative
-// BelieverDanji -> position: absolute
-
-// Card -> position: relative
-// Img -> position: absolute
-// Input -> position: absolute
-
-// card를 relative로, 이미지가 png라 투명 영역이 차지하는 부분 때문에 absolute로 조절
-// Input도 이미지 투명 영역 떄문에 absolute

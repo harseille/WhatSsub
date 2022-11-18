@@ -1,29 +1,15 @@
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-import SandwichInfo from '@components/Sandwichs/SandwichInfo';
+import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import heart from '@assets/icons/heart.svg';
 import heartFill from '@assets/icons/heart-fill.svg';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { userLike } from '@state/user';
 import { changeRem } from '@styles/mixin';
+import { 인터페이스_샌드위치 } from '../../../types/ISandwich';
 
-export interface 샌드위치뱃지리스트 {
-  맛: string[];
-  재료: string[];
-  추가사항: string[];
-}
-
-export interface 샌드위치 {
-  id: string;
-  이미지: string;
-  이름: string;
-  베이스샌드위치: string;
-  칼로리: string;
-  뱃지리스트: 샌드위치뱃지리스트;
-}
-
-export const mockSandwich: 샌드위치 = {
+export const mockSandwich: 인터페이스_샌드위치 = {
   id: 'S1',
   이미지: ChickenSlice,
   이름: '꿀꿀마앗',
@@ -36,17 +22,17 @@ export const mockSandwich: 샌드위치 = {
   },
 };
 
-function SandwichInfoCard({ sandwich }: { sandwich: 샌드위치 }) {
+function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
   // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
   const [userData, setUserData] = useRecoilState(userLike);
   const navigate = useNavigate();
 
-  const navigateDetailPage = (e: React.MouseEvent) => {
+  const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).tagName === 'BUTTON') return;
     navigate(`/best-combination/${sandwich.id}`);
   };
 
-  const toggleLikeBtn = () => {
+  const 클릭핸들러_좋아요_토글 = () => {
     setUserData(prevData => {
       const { likedSandwich } = prevData;
 
@@ -60,12 +46,14 @@ function SandwichInfoCard({ sandwich }: { sandwich: 샌드위치 }) {
   };
 
   return (
-    <CardWarp role="link" onClick={navigateDetailPage}>
+    <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={toggleLikeBtn} isLiked={userData.likedSandwich.includes(sandwich.id)} />
+      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.likedSandwich.includes(sandwich.id)} />
     </CardWarp>
   );
 }
+
+export default SandwichInfoCard;
 
 const CardWarp = styled.li`
   position: relative;
@@ -88,5 +76,3 @@ const LikeBtn = styled.button<{ isLiked: boolean }>`
   background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
   background-color: #ffe8e0;
 `;
-
-export default SandwichInfoCard;

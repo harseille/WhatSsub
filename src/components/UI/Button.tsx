@@ -1,5 +1,5 @@
-import { CSSProperties } from 'react';
 import styled from '@emotion/styled';
+import { CSSProperties } from 'react';
 
 const designList = {
   primaryGreen: `

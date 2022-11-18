@@ -2,7 +2,7 @@ import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import IngredientCardList from '@components/Ingredient/IngredientCardList';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/Comments/CommentInputWrap';
-import SandwichInfo from '@components/Sandwichs/SandwichInfo';
+import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import Like from '@components/Common/Button/Like';
 import { API_URL_PATH_PREFIX } from '@constants/constants';

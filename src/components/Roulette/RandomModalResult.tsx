@@ -1,9 +1,10 @@
-import SandwichInfo from '@components/Sandwichs/SandwichInfo';
-import CombinationIngredientList from '@components/Ingredient/CombinationIngredientList';
-import { mockSandwich } from '@components/Common/Cards/SandwichInfoCard';
+import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import IngredientInfo from '@components/Ingredient/IngredientInfo';
 import xBtn from '@assets/images/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+
+import { mockSandwich } from '@components/Common/Cards/SandwichInfoCard';
 
 const data = [
   {
@@ -15,23 +16,25 @@ const data = [
   },
 ];
 
-interface func {
+type TProps = {
   onClick: () => void;
-}
+};
 
-function RandomModalResult({ onClick }: func) {
+function RandomModalResult({ onClick }: TProps) {
   return (
     <Card>
       <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={onClick} />
       <Title>응~ 이거나 먹어~</Title>
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={mockSandwich} />
-        <CombinationIngredientList ingredientList={data} />
+        <IngredientInfo ingredientList={data} />
         <ReturnBtn onClick={onClick}>다시 돌리러 가기</ReturnBtn>
       </SandwichInfoWrapper>
     </Card>
   );
 }
+
+export default RandomModalResult;
 
 const Card = styled.div`
   z-index: 11;
@@ -72,5 +75,3 @@ const ReturnBtn = styled.button`
   color: #fff;
   font-weight: 300;
 `;
-
-export default RandomModalResult;

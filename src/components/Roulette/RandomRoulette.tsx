@@ -1,62 +1,61 @@
-import React, { useRef, useState } from 'react';
-import styled from '@emotion/styled';
+import { useRef, useState } from 'react';
 import DimmedLayer from '@components/UI/DimmedLayer';
 import RandomModalResult from '@components/Roulette/RandomModalResult';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
+import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
 function RandomRoulette() {
-  const roulette = useRef<string | any>();
-  const [modal, setModal] = useState<boolean>(false);
-  // const oldModalState = useRecoilValue(modalState);
+  const rouletteRef = useRef<HTMLImageElement>(null);
+  const [isShowModal, setIsShowModal] = useState<boolean>(false);
 
-  const 룰렛_회전 = () => {
+  const 룰렛_회전하기 = () => {
     const random = Math.floor(+Math.random * 6);
     const rotate = 3000;
-    roulette.current.style.transform = `rotate(-${rotate}deg)`;
-    roulette.current.style.transition = `2s`;
+    (rouletteRef.current as HTMLImageElement).style.transform = `rotate(-${rotate}deg)`;
+    (rouletteRef.current as HTMLImageElement).style.transition = `2s`;
     return random;
   };
 
   const 룰렛_돌리기 = () => {
-    룰렛_회전();
+    룰렛_회전하기();
     console.log('회전 클릭 이벤트');
 
     setTimeout(() => {
       console.log('3초');
-      // 여기에 모달 트리거 할 수 있게
-      openModal();
+      모달_열기();
     }, 3000);
   };
 
-  const openModal: () => void = () => {
-    setModal(true);
+  const 모달_열기 = () => {
+    setIsShowModal(true);
   };
-  const closeModal: () => void = () => {
-    setModal(false);
+  const 클릭핸들러_모달_닫기 = () => {
+    setIsShowModal(false);
   };
 
   return (
     <div>
       <div>
-        {modal ? (
+        {isShowModal ? (
           <div>
             <DimmedLayer />
-            <RandomModalResult onClick={closeModal} />
+            <RandomModalResult onClick={클릭핸들러_모달_닫기} />
           </div>
         ) : null}
       </div>
-
       <Container>
-        <Roulette src={spinBoard} alt="룰렛" ref={roulette} />
+        <Roulette src={spinBoard} alt="룰렛" ref={rouletteRef} />
         <StartButton src={startBtn} alt="시작 버튼" onClick={룰렛_돌리기} />
         <Pointer src={pointer} alt="포인터" />
       </Container>
     </div>
   );
 }
+
+export default RandomRoulette;
 
 const Container = styled.div`
   position: relative;
@@ -88,4 +87,3 @@ const StartButton = styled.img`
   /* top: 29%;
   width: ${changeRem(82)}; */
 `;
-export default RandomRoulette;

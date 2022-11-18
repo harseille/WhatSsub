@@ -39,6 +39,8 @@ function Like(props: 인터페이스_좋아요) {
   );
 }
 
+export default Like;
+
 const LikeContainter = styled.div`
   ${flexbox('row', 'right', 'center')};
   position: absolute;
@@ -50,5 +52,3 @@ const LikeContainter = styled.div`
     font-size: ${changeRem(14)};
   }
 `;
-
-export default Like;

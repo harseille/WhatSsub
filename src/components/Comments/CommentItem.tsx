@@ -19,6 +19,8 @@ function CommentItem(props: { comment: 인터페이스_댓글프로퍼티 }) {
   );
 }
 
+export default CommentItem;
+
 const Wrapper = styled.div`
   padding-top: 8px;
   padding-bottom: 16px;
@@ -65,5 +67,3 @@ const Comment = styled.div`
   font-size: ${changeRem(14)};
   line-height: 1.25;
 `;
-
-export default CommentItem;

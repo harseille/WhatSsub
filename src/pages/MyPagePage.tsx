@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { isLoggedInState } from '@state/index';
-import SandwichInfo from '@components/Sandwichs/SandwichInfo';
+import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';

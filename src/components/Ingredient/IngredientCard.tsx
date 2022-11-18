@@ -1,11 +1,8 @@
-import { 재료 } from '@components/Ingredient/IngredientCardList';
 import styled from '@emotion/styled';
 import { changeRem, flexbox, autoMargin } from '@styles/mixin';
+import { 인터페이스_꿀조합_선택재료 } from '../../types/ISandwich';
 
-function IngredientCard(props: { ingredient: 재료 }) {
-  const {
-    ingredient: { 이름, 칼로리, 이미지 },
-  } = props;
+function IngredientCard({ ingredient: { 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_꿀조합_선택재료 }) {
   return (
     <Card>
       <Title>{이름}</Title>
@@ -16,6 +13,8 @@ function IngredientCard(props: { ingredient: 재료 }) {
     </Card>
   );
 }
+
+export default IngredientCard;
 
 const Card = styled.section`
   ${flexbox('column')}
@@ -53,5 +52,3 @@ const ImgWrap = styled.div`
   margin-bottom: ${changeRem(4)};
   order: 1;
 `;
-
-export default IngredientCard;

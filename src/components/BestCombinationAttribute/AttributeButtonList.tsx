@@ -1,17 +1,19 @@
-import IngredientButton from '@components/Attribute/AttributeButton';
+import IngredientButton from '@components/BestCombinationAttribute/AttributeButton';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조합선택페이지_속성선택 } from '../../types/ISandwich';
+
+type TProps = {
+  filterData: 인터페이스_꿀조합선택페이지_속성선택;
+  selectedFilter: { [key: string]: string[] };
+  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
+};
 
 function IngredientButtonList({
   filterData: { 제목, 속성목록, 최대선택개수 },
   selectedFilter,
   onSelectFilter,
-}: {
-  filterData: 인터페이스_꿀조합선택페이지_속성선택;
-  selectedFilter: { [key: string]: string[] };
-  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
-}) {
+}: TProps) {
   return (
     <Wrapper>
       <Title>
