@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
-import { 새_댓글_추가하기 } from 'src/firebase/index';
+import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
