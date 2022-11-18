@@ -1,5 +1,5 @@
+import useScrollTop from '@hooks/useScrollTop';
 import styled from '@emotion/styled';
-import useScrollTop from '../../../hooks/useScrollTop';
 
 function Top() {
   const { scrollToTop } = useScrollTop();
