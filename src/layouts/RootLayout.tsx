@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import useScrollTop from '@hooks/useScrollTop';
 import Header from '@layouts/Header';
 import Top from '@components/Common/Button/Top';
@@ -10,6 +10,7 @@ function RootLayout() {
 
   return (
     <Layout>
+      <ScrollRestoration />
       <Header />
       <Main>
         <Outlet />
