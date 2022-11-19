@@ -24,5 +24,4 @@ export default function App() {
   }, [setIsLoggedIn, setloggedInUser]);
 
   return <RouterProvider router={router} />;
-  // return <MyCombinationCard />;
 }
