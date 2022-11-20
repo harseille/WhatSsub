@@ -165,4 +165,5 @@
 
 ## 회고
 
-[보다 자세한 회고는 여기로](https://www.notion.so/69cf2d64c62749808891a83a552d4528){:target="\_blank"}
+보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로
+
