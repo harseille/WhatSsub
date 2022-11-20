@@ -1,4 +1,4 @@
-![로고](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7f68081f-a667-4717-9599-ddb1a497e31b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T084038Z&X-Amz-Expires=86400&X-Amz-Signature=7559e564d1bd4cfc32c5cce828f5e2e51d16175fa318d92676b308eae710fa99&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
+![로고](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b39fda9-f2e5-4bca-92d9-019546593ea5/Group_34925_%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T092634Z&X-Amz-Expires=86400&X-Amz-Signature=0a699120c02b586de84b63c23836c7acea065d3eb9914dca864f0b2f21ba398d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Group%252034925%2520%282%29.png%22&x-id=GetObject)
 
 ## 🗃️목차
 
@@ -19,9 +19,13 @@
 
 서브웨이 주문 시 재료를 선택해서 음식을 주문하는 방식에 익숙하지 않은 사람들을 위한 재료 조합 생성 및 제공 커뮤니티 서비스
 
+<br />
+
 ### 🎞 도입 배경
 
 매주 스터디를 하면서 먹기 깔끔한 서브웨이를 자주 시켜 먹었다. 서브웨이에 익숙하지 않은 팀원들은 메뉴 선택을 할 때마다 “서브웨이 꿀조합”을 검색했다. 매번 검색할 때 마다 많은 시간이 소요 되었고 그렇기에 이러한 불편함을 해소하기 위해 **서브웨이 꿀조합 picker**프로젝트를 시작하게 되었다.
+
+<br />
 
 ### 🎯 프로젝트 목표
 
@@ -29,6 +33,8 @@
 - TypeScript 를 사용하여 코드의 가독성을 높이고 디버깅을 하기 편한 코드를 작성한다.
 - 보일러플레이트 를 사용하지 않고 webpack를 직접 설정해 초기 세팅 경험
 - Firebase를 이용한 Serverless 프로젝트 경험 (OAuth, realtime database)
+
+<br />
 
 ### 💡 프로젝트 기획
 
@@ -41,6 +47,8 @@
 - 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
 - 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
 - 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+
+<br />
 
 ### 📞 팀원 소개
 
@@ -81,10 +89,13 @@
 </tbody>
 </table>
 
+<br />
+
 ### 🛠️ 역할 분담
 
 ---
 
+<br />
 <div id="2"></div>
 
 ## 🏛️ 아키텍처
@@ -120,11 +131,17 @@
 └── 📂 utils
 ```
 
+<br />
+
 ### 🔨 기술스택
 
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![Recoil](https://img.shields.io/badge/recoil-f26b00?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PGxpbmsgeG1sbnM9IiIgdHlwZT0idGV4dC9jc3MiIGlkPSJkYXJrLW1vZGUiIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iIi8+PGcgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xNDIuNTM2IDE5OC44NThjMCAyNi4zNi0yMS4zNjggNDcuNzItNDcuNzIgNDcuNzItMjYuMzYgMC00Ny43MjItMjEuMzYtNDcuNzIyLTQ3LjcyczIxLjM2LTQ3LjcyIDQ3LjcyLTQ3LjcyYzI2LjM1NSAwIDQ3LjcyMiAyMS4zNiA0Ny43MjIgNDcuNzIiLz48cGF0aCBkPSJNNTA1LjE4IDQxNC4yMjVIMjM4LjEyNGMtMzUuMjUgMC02My45MjYtMjguNjc0LTYzLjkyNi02My45MjNzMjguNjc4LTYzLjkyNiA2My45MjYtNjMuOTI2aDEyMC43OGMyMC44MTYgMCAzNy43NTMtMTYuOTM4IDM3Ljc1My0zNy43NTZzLTE2LjkzOC0zNy43NTYtMzcuNzUzLTM3Ljc1Nkg5NC44MWMtNy4yMjcgMC0xMy4wODYtNS44Ni0xMy4wODYtMTMuMDg1IDAtNy4yMjcgNS44Ni0xMy4wODYgMTMuMDg1LTEzLjA4NmgyNjQuMDkzYzM1LjI1IDAgNjMuOTIzIDI4LjY3OCA2My45MjMgNjMuOTI2cy0yOC42NzQgNjMuOTIzLTYzLjkyMyA2My45MjNoLTEyMC43OGMtMjAuODIgMC0zNy43NTYgMTYuOTM4LTM3Ljc1NiAzNy43NiAwIDIwLjgxNiAxNi45MzggMzcuNzUzIDM3Ljc1NiAzNy43NTNINTA1LjE4YzcuMjI3IDAgMTMuMDg2IDUuODYgMTMuMDg2IDEzLjA4NSAwIDcuMjI2LTUuODU4IDEzLjA4NS0xMy4wODUgMTMuMDg1eiIvPjxwYXRoIGQ9Ik00NTcuNDY0IDQwMS4xNDJjMC0yNi4zNiAyMS4zNi00Ny43MiA0Ny43Mi00Ny43MnM0Ny43MiAyMS4zNiA0Ny43MiA0Ny43Mi0yMS4zNiA0Ny43Mi00Ny43MiA0Ny43Mi00Ny43Mi0yMS4zNi00Ny43Mi00Ny43MiIvPjwvZz48c3R5bGUgeG1sbnM9IiIgaWQ9ImRhcmstbW9kZS1jdXN0b20tY29sb3IiPgoJCTpyb290ewoJCQktLWJnLWNvbG9yOnJnYmEoMjYsMjYsMjYsMSk7CgkJCS0tdGV4dC1jb2xvcjpyZ2JhKDExMCwxMTAsMTEwLDEpOwoJCQktLWEtY29sb3I6cmdiYSg5MCwxMjAsMTIwLDEpOwoJCQktLWEtdmlzaXRlZC1jb2xvcjpyZ2JhKDEyMCwxMjAsOTAsMSk7CgkJCS0tYS1ob3Zlci1jb2xvcjpyZ2JhKDIxMSwyMTEsMjExLDEpOwoJCQktLWlucHV0LWJvcmRlci1jb2xvcjpyZ2JhKDIxMSwyMTEsMjExLDAuMik7CgkJCS0taW5wdXQtcGxhY2Vob2xkZXItY29sb3I6cmdiYSgxNzMsMjE2LDIzMCwxKTsKCQkJLS1kaWFsb2ctYmctY29sb3I6cmdiYSgzNiwzNiwzNiwwLjk1KTsKCQkJLS1iZy1pbWFnZTpsaW5lYXItZ3JhZGllbnQocmdiYSgyNiwyNiwyNiwxKSxyZ2JhKDI2LDI2LDI2LDEpKTsKCQl9Cgk8L3N0eWxlPjwvc3ZnPg==) ![Emotion](https://img.shields.io/badge/Emotion-FF69B4?style=for-the-badge)
-![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
+<br />
 
 ### ❓ 도입 이유
 
@@ -138,7 +155,7 @@
   - 상태를 구독한 컴포넌트만 리렌더링 되므로 불필요한 렌더링 발생이 줄어든다.
 - Emotion
   - styled-component와 차이점을 알기 위해 사용하였다.
-  - 좀 더 가볍고 빠른 번들 사이즈를 가진다.
+  - styled-component 대비 가볍고 작은 번들 사이즈를 가진다.
 - Firebase
   - Front-end 개발자로만 이루어진 프로젝트이기 때문에 낮은 러닝커브로 서버 대체 가능하다는 장점이 있다.
   - OAuth, Realtime DB 제공한다.
@@ -152,6 +169,8 @@
 ### 🌊 프로세스 플로우
 
 ![flow.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7d665171-c683-4d32-81e6-2e065fd68297/process_flow.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T084118Z&X-Amz-Expires=86400&X-Amz-Signature=303000ca20512c2b2108b87da84299489966b080b94b36cb82c86d4d88549226&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22process%2520flow.png%22&x-id=GetObject)
+
+<br />
 
 ### ✨ 기능 소개
 
@@ -167,6 +186,7 @@
 
 ---
 
+<br />
 <div id="4"></div>
 
 ## 🚨 이슈 및 해결 방법 (문서 작성 후 링크 연결 예정)
@@ -178,8 +198,11 @@
 
 ---
 
+<br />
 <div id="5"></div>
 
 ## 🍵 회고
+
+<br />
 
 보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로
