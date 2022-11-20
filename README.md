@@ -15,7 +15,7 @@
 
 ### 프로젝트 소개
 
-서브웨이와 같이 재료를 선택해서 음식을 주문하는 방식에 익숙하지 않은 사람들을 위한 재료 조합 생성 및 제공 커뮤니티 서비스
+서브웨이 주문 시 재료를 선택해서 음식을 주문하는 방식에 익숙하지 않은 사람들을 위한 재료 조합 생성 및 제공 커뮤니티 서비스
 
 ### 도입 배경
 
@@ -34,9 +34,8 @@
 - BDD(Behaviour-Driven-Development): <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
 - SDD(Schema-Driven-Development): <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
 - 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
-- 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">github-flow, gitmoji</a>
+- 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
 - 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
-
 
 ### 팀원 소개
 
@@ -60,22 +59,23 @@
   </tr>
   <tr>
     <td>Github</td>
-    <td><a href="https://github.com/davinahi">davinahi</a></td>
-    <td><a href="https://github.com/harseille">harseille</a></td>
-    <td><a href="https://github.com/jeong-se-hun">jeong-se-hun</a></td>
-    <td><a href="https://github.com/choi1five">choi1five</a></td>
-    <td><a href="https://github.com/dee0518">dee0518</a></td>
+    <td><a href="https://github.com/davinahi" target="_blank">davinahi</a></td>
+    <td><a href="https://github.com/harseille" target="_blank">harseille</a></td>
+    <td><a href="https://github.com/jeong-se-hun" target="_blank">jeong-se-hun</a></td>
+    <td><a href="https://github.com/choi1five" target="_blank">choi1five</a></td>
+    <td><a href="https://github.com/dee0518" target="_blank">dee0518</a></td>
   </tr>
   <tr>
     <td>Blog</td>
-    <td><a href="https://velog.io/@dadak">@dadak</a></td>
-    <td><a href="https://velog.io/@dessin">@dessin</a></td>
-    <td><a href="https://velog.io/@tpgns933">@tpgns933</a></td>
-    <td><a href="https://velog.io/@o1_choi">@o1_choi</a></td>
-    <td><a href="https://velog.io/@dee0518">@dee0518</a></td>
+    <td><a href="https://velog.io/@dadak" target="_blank">@dadak</a></td>
+    <td><a href="https://velog.io/@dessin" target="_blank">@dessin</a></td>
+    <td><a href="https://velog.io/@tpgns933" target="_blank">@tpgns933</a></td>
+    <td><a href="https://velog.io/@o1_choi" target="_blank">@o1_choi</a></td>
+    <td><a href="https://velog.io/@dee0518" target="_blank">@dee0518</a></td>
   </tr>
 </tbody>
 </table>
+
 ### 역할 분담
 
 ---
@@ -166,4 +166,3 @@
 ## 회고
 
 보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로
-
