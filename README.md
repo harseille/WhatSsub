@@ -4,10 +4,13 @@
 2. [**아키 텍쳐**](#2)
 3. [**주요 기능**](#3)
 4. [**이슈 및 해결 방법**](#4)
-5. [** 회고**](#5)
+5. [**회고**](#5)
    <br />
 
+---
+
 <div id="1"></div>
+
 ## 개요
 
 ### 프로젝트 소개
@@ -27,16 +30,14 @@
 
 ### 프로젝트 기획
 
-- 디자인: [Figma Wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
-- BDD(Behaviour-Driven-Development): [노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7)
-- SDD(Schema-Driven-Development): [노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201)
-- 네이밍 컨벤션: 한글 변수 사용: [집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae)
-- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b)
-- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues)
+- 디자인: [Figma Wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0){:target="\_blank"}
+- BDD(Behaviour-Driven-Development): [노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7){:target="\_blank"}
+- SDD(Schema-Driven-Development): [노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201){:target="\_blank"}
+- 네이밍 컨벤션: 한글 변수 사용: [집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae){:target="\_blank"}
+- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b){:target="\_blank"}
+- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues){:target="\_blank"}
 
 ### 기획
-
-### 팀원소개
 
 ### 팀원 소개
 
@@ -47,7 +48,10 @@
 
 ### 역할 분담
 
+---
+
 <div id="2"></div>
+
 ## 아키텍처
 
 ### 폴더구조
@@ -96,13 +100,15 @@
 - Emotion
 - Firebase
 
+---
+
 <div id="3"></div>
 
 ## 주요 기능
 
 ### 프로세스 플로우
 
-![flow.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3a1e7735-d2c8-4cd0-b9ab-9b46c8f995fb/flow.png)
+![flow.png](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3a1e7735-d2c8-4cd0-b9ab-9b46c8f995fb%2Fflow.png?table=block&id=699f0a99-6f20-42a2-8763-8bc43709a416&spaceId=a2ac351c-251d-4c62-86bd-40e368d410a5&width=2000&userId=1c23a479-d6dc-4c17-a240-67408e56fb9b&cache=v2)
 
 ### 기능 소개
 
@@ -112,15 +118,21 @@
 - 커스텀
 - 로그인 OAuth
 
+---
+
 <div id="4"></div>
+
 ## 이슈 및 해결 방법
+
 - env 환경변수
 - 한글 컨벤션
 - recoil: mutable
 - useRef: mutableRef
 
+---
+
 <div id="5"></div>
 
 ## 회고
 
-[보다 자세한 회고는 여기로](https://www.notion.so/69cf2d64c62749808891a83a552d4528)
+[보다 자세한 회고는 여기로](https://www.notion.so/69cf2d64c62749808891a83a552d4528){:target="\_blank"}
