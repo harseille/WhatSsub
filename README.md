@@ -1,17 +1,24 @@
 ![로고](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b39fda9-f2e5-4bca-92d9-019546593ea5/Group_34925_%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T092634Z&X-Amz-Expires=86400&X-Amz-Signature=0a699120c02b586de84b63c23836c7acea065d3eb9914dca864f0b2f21ba398d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Group%252034925%2520%282%29.png%22&x-id=GetObject)
 
+<br />
+
 ## 🗃️목차
+
+<br />
 
 1. [**개요**](#1)
 2. [**아키 텍쳐**](#2)
 3. [**주요 기능**](#3)
 4. [**이슈 및 해결 방법**](#4)
 5. [**회고**](#5)
-   <br />
+
+<br />
 
 ---
 
+<br />
 <div id="1"></div>
+<br />
 
 ## 📜 개요
 
@@ -97,6 +104,7 @@
 
 <br />
 <div id="2"></div>
+<br />
 
 ## 🏛️ 아키텍처
 
@@ -162,7 +170,9 @@
 
 ---
 
+<br />
 <div id="3"></div>
+<br />
 
 ## 📌 주요 기능
 
@@ -188,6 +198,7 @@
 
 <br />
 <div id="4"></div>
+<br />
 
 ## 🚨 이슈 및 해결 방법 (문서 작성 후 링크 연결 예정)
 
@@ -200,6 +211,7 @@
 
 <br />
 <div id="5"></div>
+<br />
 
 ## 🍵 회고
 
