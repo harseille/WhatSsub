@@ -51,11 +51,11 @@
   </tr>
   <tr>
     <td >e-mail</td>
-    <td ><a href="mailto:kdbj12003@gmail.com">kdbj12003@gmail.com</a></td>
-    <td ><a href="mailto:joonhabaak@gmail.com">joonhabaak@gmail.com</a></td>
-    <td ><a href="mailto:tpgns933@gmail.com">tpgns933@gmail.com</a></td>
-    <td ><a href="mailto:cwo1401@gmail.com">cwo1401@gmail.com</a></td>
-    <td ><a href="mailto:dehya0518@naver.com">dehya0518@naver.com</a></td>
+    <td ><a href="mailto:kdbj12003@gmail.com">📧</a></td>
+    <td ><a href="mailto:joonhabaak@gmail.com">📧</a></td>
+    <td ><a href="mailto:tpgns933@gmail.com">📧</a></td>
+    <td ><a href="mailto:cwo1401@gmail.com">📧</a></td>
+    <td ><a href="mailto:dehya0518@naver.com">📧</a></td>
   </tr>
   <tr>
     <td>Github</td>
