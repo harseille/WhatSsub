@@ -1,10 +1,27 @@
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import IngredientInfo from '@components/Ingredient/IngredientInfo';
 import xBtn from '@assets/images/x-btn.svg';
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+// import { 인터페이스_랜덤재료샌드위치 } from '../../types/ISandwich';
+// import { mockSandwich } from '@components/Common/Cards/SandwichInfoCard';
+import { 인터페이스_샌드위치 } from '../../types/ISandwich';
+// import { 인터페이스_샌드위치 } from '../../types/ISandwich';
+// import { 인터페이스_랜덤재료샌드위치 } from '../../types/ISandwich';
 
-import { mockSandwich } from '@components/Common/Cards/SandwichInfoCard';
+export const mockSandwich: 인터페이스_샌드위치 = {
+  id: 'r1',
+  이미지: ChickenSlice,
+  이름: '꿀꿀마앗',
+  베이스샌드위치: '치킨 슬라이스',
+  칼로리: '265',
+  뱃지리스트: {
+    맛: ['달달', '고소'],
+    재료: ['살라미'],
+    추가사항: ['고기러버'],
+  },
+};
 
 const data = [
   {
@@ -18,15 +35,17 @@ const data = [
 
 type TProps = {
   onClick: () => void;
+  // randomSandwich: 인터페이스_랜덤재료샌드위치;
 };
-
+// function RandomModalResult({ onClick, randomSandwich }: TProps) {
 function RandomModalResult({ onClick }: TProps) {
   return (
     <Card>
       <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={onClick} />
-      <Title>응~ 이거나 먹어~</Title>
+      <Title>⭐️오늘의 랜덤 조합⭐️</Title>
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={mockSandwich} />
+        {/* <SandwichInfo sandwich={randomSandwich} /> */}
         <IngredientInfo ingredientList={data} />
         <ReturnBtn onClick={onClick}>다시 돌리러 가기</ReturnBtn>
       </SandwichInfoWrapper>

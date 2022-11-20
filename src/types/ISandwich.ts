@@ -114,6 +114,16 @@ export interface 인터페이스_레시피 {
   재료목록: string[];
   재료칼로리: string;
 }
+
+export interface 인터페이스_랜덤재료샌드위치 {
+  이름: string;
+  베이스샌드위치: string;
+  빵: string;
+  치즈: string;
+  소스: string;
+  칼로리: string;
+  뱃지리스트: string[];
+}
 export interface 인터페이스_선택된_재료 extends 인터페이스_꿀조합_선택재료 {
   카테고리: string;
   id?: string;
