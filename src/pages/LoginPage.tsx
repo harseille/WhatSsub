@@ -1,35 +1,34 @@
-import Button from '@components/UI/Button/Button';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLoggedInState } from '@state/index';
+import Button from '@components/UI/Button';
 import Span from '@components/UI/Span';
-import danzziAnnung from '@assets/images/danzzi/danzzi_annung.png';
+import Wrapper from '@components/UI/Wrapper';
+import { getOAuthProvider } from '@utils/index';
 import iconFacebook from '@assets/icons/facebook.svg';
 import iconGmail from '@assets/icons/gmail.svg';
+import danzziAnnung from '@assets/images/danzzi/danzzi_annung.png';
 import confettiGreen from '@assets/icons/confetti_green.svg';
 import confettiOrange from '@assets/icons/confetti_orange.svg';
 import confettiYellow from '@assets/icons/confetti_yellow.svg';
 import styled from '@emotion/styled';
-import Wrapper from '@components/UI/Wrapper';
 import mediaQuery from '@styles/media-queries';
 import theme from '@styles/theme';
 import { autoMargin, changeRem, flexbox } from '@styles/mixin';
-import { setPersistence, browserSessionPersistence, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../firebase.config';
 
 function LoginPage() {
-  const googleLoginHandler = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  const isLoggedin = useRecoilValue(isLoggedInState);
 
-    const provider = new GoogleAuthProvider();
-    setPersistence(auth, browserSessionPersistence).then(() => {
-      console.log(auth);
-      return signInWithPopup(auth, provider)
-        .then(() => {
-          // navigate('/main');
-        })
-        .catch(error => {
-          alert(error.message);
-        });
-    });
-  };
+  useEffect(() => {
+    if (isLoggedin) {
+      navigate('/');
+    }
+  }, [isLoggedin, navigate]);
+
+  const 클릭핸들러_구글_로그인 = getOAuthProvider('google');
+  const 클릭핸들러_페이스북_로그인 = getOAuthProvider('facebook');
 
   return (
     <LoginWrapper>
@@ -48,7 +47,12 @@ function LoginPage() {
         </Visual>
       </Banner>
       <ButtonList>
-        <Button designType="social" width={changeRem(360)} height={changeRem(54)} borderRadius="6px">
+        <Button
+          designType="social"
+          width={changeRem(360)}
+          height={changeRem(54)}
+          borderRadius="6px"
+          onClick={클릭핸들러_페이스북_로그인}>
           <img src={iconFacebook} alt="facebook 아이콘" width="auto" />
           Continue with Facebook
         </Button>
@@ -57,7 +61,7 @@ function LoginPage() {
           width={changeRem(360)}
           height={changeRem(54)}
           borderRadius="6px"
-          onClick={googleLoginHandler}>
+          onClick={클릭핸들러_구글_로그인}>
           <img src={iconGmail} alt="Gmail 아이콘" />
           Continue with Gmail
         </Button>
@@ -65,6 +69,9 @@ function LoginPage() {
     </LoginWrapper>
   );
 }
+
+export default LoginPage;
+
 const LoginWrapper = styled.div``;
 
 const Banner = styled.div`
@@ -117,5 +124,3 @@ const ButtonList = styled(Wrapper)`
     width: auto;
   }
 `;
-
-export default LoginPage;

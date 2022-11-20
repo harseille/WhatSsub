@@ -105,13 +105,16 @@
     "baseUrl": "./",
     "paths": {
       "@assets/*": ["src/assets/*"],
+      "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
+      "@state/*": ["src/state/*"],
       "@styles/*": ["src/styles/*"],
-      "@types/*": ["src/types/*"]
-      // "@hooks/*": ["src/hooks/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"]
       // "@typings/*": ["typings/*"]
     }
   },

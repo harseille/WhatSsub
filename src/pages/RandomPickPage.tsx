@@ -1,6 +1,4 @@
-import RandomRoulette from '@components/UI/RandomRoulette';
-import RandomModalResult from '@components/UI/RandomModalResult';
-import DimmedLayer from '@components/UI/DimmedLayer';
+import RandomRoulette from '@components/Roulette/RandomRoulette';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
@@ -11,8 +9,6 @@ function RandomPickPage() {
       <Title>랜덤 조합 룰렛</Title>
       <RandomRoulette />
       <Text>돌려돌려 돌림판~</Text>
-      <DimmedLayer />
-      <RandomModalResult />
     </Wrapper>
   );
 }

@@ -1,15 +1,16 @@
-import Button from '@components/UI/Button/Button';
+import Button from '@components/UI/Button';
+import styled from '@emotion/styled';
 
-interface 인터페이스_조합_선택_버튼_속성 {
+type 타입_선택_버튼_속성 = {
   currentStep: number;
   onNextStep: () => void;
-}
+};
 
 type 타입_버튼_텍스트 = {
   [key: number]: string;
 };
 
-function NextStepButton(props: 인터페이스_조합_선택_버튼_속성) {
+function NextStepButton(props: 타입_선택_버튼_속성) {
   const { currentStep: 현재진행도, onNextStep: 다음_선택지로_이동 } = props;
 
   const 버튼_텍스트: 타입_버튼_텍스트 = {
@@ -20,7 +21,7 @@ function NextStepButton(props: 인터페이스_조합_선택_버튼_속성) {
   };
 
   return (
-    <Button
+    <SelectButton
       designType="primaryGreen"
       width="100%"
       padding="15px"
@@ -28,8 +29,12 @@ function NextStepButton(props: 인터페이스_조합_선택_버튼_속성) {
       fontWeight="700"
       onClick={다음_선택지로_이동}>
       {버튼_텍스트[현재진행도]}
-    </Button>
+    </SelectButton>
   );
 }
 
 export default NextStepButton;
+
+const SelectButton = styled(Button)`
+  flex-shrink: 0;
+`;

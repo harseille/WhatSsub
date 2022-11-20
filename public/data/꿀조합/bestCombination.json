@@ -1,0 +1,146 @@
+{
+  "작성자Id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+  "작성자_이름": "데이빗",
+  "작성일": "2022-11-10",
+  "제목": "에이맨",
+  "좋아요": "3244",
+  "베이스샌드위치": "스테이크",
+  "뱃지리스트": {
+    "맛": ["달달", "고소"],
+    "메인재료": ["살라미"],
+    "추가사항": ["고기러버"]
+  },
+  "칼로리": "623",
+  "이미지": "이미지",
+  "선택재료": [
+    {
+      "이름": "베이컨",
+      "이미지": "/images/ingredients/main/bacon.png",
+      "속성": "돼지고기",
+      "칼로리": "22.9"
+    },
+    {
+      "이름": "살라미",
+      "이미지": "/images/ingredients/main/salami.png",
+      "속성": "햄",
+      "칼로리": "24.3"
+    },
+    {
+      "이름": "스테이크",
+      "이미지": "/images/ingredients/main/steak.png",
+      "속성": "소고기",
+      "칼로리": "146.7"
+    },
+    {
+      "이름": "위트",
+      "이미지": "/images/ingredients/bread/Wheat.png",
+      "칼로리": "197"
+    },
+    {
+      "이름": "아메리칸 치즈",
+      "이미지": "/images/ingredients/cheese/American_Cheese.png",
+      "칼로리": "35.3"
+    },
+    {
+      "이름": "양상추",
+      "이미지": "/images/ingredients/vegetable/Lettuce.png",
+      "칼로리": "2.9"
+    },
+    {
+      "이름": "양파",
+      "이미지": "/images/ingredients/vegetable/Red_Onions.png",
+      "칼로리": "2.8"
+    },
+    {
+      "이름": "오이",
+      "이미지": "/images/ingredients/vegetable/Cucumbers.png",
+      "칼로리": "1.5"
+    },
+    {
+      "이름": "올리브",
+      "이미지": "/images/ingredients/vegetable/Olives.png",
+      "칼로리": "3.9"
+    },
+    {
+      "이름": "토마토",
+      "이미지": "/images/ingredients/vegetable/Tomatoes.png",
+      "칼로리": "7.7"
+    },
+    {
+      "이름": "피망",
+      "이미지": "/images/ingredients/vegetable/Peppers.png",
+      "칼로리": "1.4"
+    },
+    {
+      "이름": "피클",
+      "이미지": "/images/ingredients/vegetable/Pickles.png",
+      "칼로리": "0.4"
+    },
+    {
+      "이름": "할라피뇨",
+      "이미지": "/images/ingredients/vegetable/Jalapenos.png",
+      "칼로리": "0.6"
+    },
+    {
+      "이름": "레드와인식초",
+      "이미지": "/images/ingredients/sauce/Red_Wine.png",
+      "속성": "새콤",
+      "칼로리": "0.7"
+    },
+    {
+      "이름": "마요네즈",
+      "이미지": "/images/ingredients/sauce/mayonnaise.png",
+      "속성": "고소",
+      "칼로리": "158"
+    },
+    {
+      "이름": "모차렐라 치즈",
+      "이미지": "/images/ingredients/cheese/Mozzarella_Cheese.png",
+      "속성": "치즈 폭탄",
+      "칼로리": "43.8"
+    }
+  ],
+
+  "댓글": [
+    {
+      "comment1": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "찰스",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "경복궁역 1번출구 서브웨이 최고",
+        "작성일": "2022-11-11"
+      }
+    },
+    {
+      "comment2": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "제인",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "양파가 많아야 맛있어요",
+        "작성일": "2022-11-12"
+      }
+    },
+    {
+      "comment3": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "도날드",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "🥒❌",
+        "작성일": "2022-11-13"
+      }
+    },
+    {
+      "comment4": {
+        "꿀조합id": "-NGotaPwkuP9D6dbnJ1F",
+        "작성자id": "kMh9sa2CHfUeXX6esfMjyphlr1R2",
+        "작성자이름": "엘리스",
+        "작성자프로필이미지": "https://lh3.googleusercontent.com/a/ALm5wu27bATpV6Lpngtb_xkYvJS1ozrB8X1BoEtMGhhI=s96-c",
+        "내용": "먹을줄 아는 분이시다",
+        "작성일": "2022-11-15"
+      }
+    }
+  ]
+}
