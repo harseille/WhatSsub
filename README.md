@@ -27,7 +27,7 @@
 
 ### 프로젝트 기획
 
-- 디자인: [새 탭에서 열기][Figma Wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
+- 디자인: [Figma Wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
 - BDD(Behaviour-Driven-Development): [노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7)
 - SDD(Schema-Driven-Development): [노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201)
 - 네이밍 컨벤션: 한글 변수 사용: [집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae)
