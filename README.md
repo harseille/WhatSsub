@@ -30,22 +30,51 @@
 
 ### 프로젝트 기획
 
-- 디자인: [Figma Wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0){:target="\_blank"}
-- BDD(Behaviour-Driven-Development): [노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7){:target="\_blank"}
-- SDD(Schema-Driven-Development): [노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201){:target="\_blank"}
-- 네이밍 컨벤션: 한글 변수 사용: [집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae){:target="\_blank"}
-- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b){:target="\_blank"}
-- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues){:target="\_blank"}
-
-### 기획
+- 디자인: <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
+- BDD(Behaviour-Driven-Development): <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
+- SDD(Schema-Driven-Development): <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
+- 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
+- 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">github-flow, gitmoji</a>
+- 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
 
 ### 팀원 소개
 
-| 김다빈 | 박준하 | 정세훈 | 최원오 | 황도은 |
-| ------ | ------ | ------ | ------ | ------ |
-| e-mail | e-mail | e-mail | e-mail | e-mail |
-| Github | Github | Github | Github | Github |
-
+<table class="tg">
+<tbody>
+  <tr>
+    <td>Name</td>
+    <td>김다빈</td>
+    <td>박준하</td>
+    <td>정세훈</td>
+    <td>최원오</td>
+    <td>황도은</td>
+  </tr>
+  <tr>
+    <td >e-mail</td>
+    <td ><a href="mailto:kdbj12003@gmail.com">kdbj12003@gmail.com</a></td>
+    <td ><a href="mailto:joonhabaak@gmail.com">joonhabaak@gmail.com</a></td>
+    <td ><a href="mailto:tpgns933@gmail.com">tpgns933@gmail.com</a></td>
+    <td ><a href="mailto:cwo1401@gmail.com">cwo1401@gmail.com</a></td>
+    <td ><a href="mailto:dehya0518@naver.com">dehya0518@naver.com</a></td>
+  </tr>
+  <tr>
+    <td>Github</td>
+    <td><a href="https://github.com/davinahi">davinahi</a></td>
+    <td><a href="https://github.com/harseille">harseille</a></td>
+    <td><a href="https://github.com/jeong-se-hun">jeong-se-hun</a></td>
+    <td><a href="https://github.com/choi1five">choi1five</a></td>
+    <td><a href="https://github.com/dee0518">dee0518</a></td>
+  </tr>
+  <tr>
+    <td>Blog</td>
+    <td><a href="https://velog.io/@dadak">@dadak</a></td>
+    <td><a href="https://velog.io/@dessin">@dessin</a></td>
+    <td><a href="https://velog.io/@tpgns933">@tpgns933</a></td>
+    <td><a href="https://velog.io/@o1_choi">@o1_choi</a></td>
+    <td><a href="https://velog.io/@dee0518">@dee0518</a></td>
+  </tr>
+</tbody>
+</table>
 ### 역할 분담
 
 ---
