@@ -1,11 +1,13 @@
 import SandwichBL from '@assets/images/sandwich_B.L.png';
-import BelieverDanji from '@assets/images/believerDanji.png';
+import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
+
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
 function MyCombinationCard() {
   return (
     <Container>
+      <Danji src={danzziTrust} alt="believer-danji" />
       <Card className="card">
         <div className="text">
           <Text>
@@ -17,8 +19,6 @@ function MyCombinationCard() {
         <Img src={SandwichBL} alt="샌드위치 이미지" />
         <Input type="text" placeholder="왓썹의 이름은..?" />
       </Card>
-
-      <Danji src={BelieverDanji} alt="believer-danji" />
     </Container>
   );
 }
@@ -84,6 +84,7 @@ const Input = styled.input`
 
 const Danji = styled.img`
   position: absolute;
+  width: 200px;
   top: 70px;
   left: 50%;
   transform: translate(-50%);

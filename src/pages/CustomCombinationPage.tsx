@@ -31,7 +31,7 @@ function CustomCombination() {
   const 클릭핸들러_현재진행도_수정 = (진행도: number) => 현재진행도_수정(진행도);
 
   const 다음_선택지로_이동하기 = () => {
-    if (현재진행도 > 3) return;
+    if (현재진행도 > 4) return;
     현재진행도_수정(진행도 => 진행도 + 1);
   };
 
