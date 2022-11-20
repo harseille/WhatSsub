@@ -37,6 +37,7 @@
 - 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">github-flow, gitmoji</a>
 - 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
 
+
 ### 팀원 소개
 
 <table class="tg">
