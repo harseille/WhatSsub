@@ -1,7 +1,6 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { 인터페이스_댓글프로퍼티 } from '../types/IComment';
-import 댓글_목록_가져오기 from './getCommentList';
 
 const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글프로퍼티) => {
   try {
@@ -12,9 +11,6 @@ const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글프로퍼�
       작성자프로필이미지: 댓글.작성자프로필이미지,
       내용: 댓글.내용,
       작성일: 댓글.작성일,
-    }).then(() => {
-      console.log('댓글 리스트 불러오기');
-      return 댓글_목록_가져오기(댓글.꿀조합id);
     });
   } catch {
     console.log('댓글쓰기 실패');

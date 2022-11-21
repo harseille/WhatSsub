@@ -1,10 +1,9 @@
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import IngredientCardList from '@components/Ingredient/IngredientCardList';
-import CommentList from '@components/Comments/CommentList';
-import CommentInputWrap from '@components/Comments/CommentInputWrap';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import Like from '@components/Common/Button/Like';
+import CommentsContainer from '@components/Comments/CommentsContainer';
 import { API_URL_PATH_PREFIX } from '@constants/constants';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
@@ -51,15 +50,7 @@ function BestCombinationDetailPage() {
           <IngredientCardList ingredientList={꿀조합.선택재료} />
           {/* <CombinationIngredientList ingredientList={꿀조합.선택재료} /> */}
         </Contents>
-        <Comments>
-          <CommentHeader>
-            <h2>
-              리뷰 <span>{꿀조합.댓글.length}</span>
-            </h2>
-          </CommentHeader>
-          <CommentList commentList={꿀조합.댓글} />
-          <CommentInputWrap />
-        </Comments>
+        <CommentsContainer />
       </Wrapper>
     );
   }
@@ -93,27 +84,4 @@ const Contents = styled.div`
   background: #fff;
   margin-bottom: 10px;
   padding: 32px;
-`;
-
-const Comments = styled.div`
-  background: #fff;
-  padding: 0 32px;
-  padding-bottom: 64px;
-  box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
-`;
-
-const CommentHeader = styled.div`
-  ${flexbox('row', undefined, 'center')}
-  height: ${changeRem(60)};
-
-  box-shadow: 0px 1px 1px #eee;
-
-  & h2 {
-    font-weight: 500;
-    font-size: ${changeRem(14)};
-
-    & span {
-      color: ${props => props.theme.colors.primaryYellow};
-    }
-  }
 `;
