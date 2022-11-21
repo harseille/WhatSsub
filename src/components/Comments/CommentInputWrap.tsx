@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { userState } from '@state/index';
+import { UserState } from '@state/index';
 import { User } from 'firebase/auth';
 import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
@@ -12,7 +12,7 @@ function CommentInputWrap() {
   const commentInputRef = useRef<HTMLInputElement>(null);
 
   const { combinationId } = useParams();
-  const 유저정보: User | null = useRecoilValue(userState);
+  const 유저정보: User | null = useRecoilValue(UserState);
 
   const 서브밋핸들러_댓글_쓰기 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

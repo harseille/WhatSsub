@@ -1,4 +1,4 @@
-import isLoggedInState from './isLoggedIn';
-import userState from './user';
+import IsLoggedInState from './isLoggedIn';
+import UserState from './user';
 
-export { isLoggedInState, userState };
+export { IsLoggedInState, UserState };

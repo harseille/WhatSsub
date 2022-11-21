@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
+import { IsLoggedInState } from '@state/index';
 import Button from '@components/UI/Button';
 import Span from '@components/UI/Span';
 import Wrapper from '@components/UI/Wrapper';
@@ -19,7 +19,7 @@ import { autoMargin, changeRem, flexbox } from '@styles/mixin';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const isLoggedin = useRecoilValue(isLoggedInState);
+  const isLoggedin = useRecoilValue(IsLoggedInState);
 
   useEffect(() => {
     if (isLoggedin) {

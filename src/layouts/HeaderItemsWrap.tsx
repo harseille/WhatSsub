@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
+import { IsLoggedInState } from '@state/index';
 import { 메뉴정보 } from '@constants/constants';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
@@ -9,7 +9,7 @@ import { changeRem, buttonNone } from '@styles/mixin';
 import { auth } from '../firebase.config';
 
 function HeaderItemsWrap() {
-  const isLoggedin = useRecoilValue(isLoggedInState);
+  const isLoggedin = useRecoilValue(IsLoggedInState);
 
   const 로그아웃 = () => {
     auth.signOut();

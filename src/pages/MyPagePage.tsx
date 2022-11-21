@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
+import { IsLoggedInState } from '@state/index';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
@@ -64,7 +64,7 @@ const sandwiches: 인터페이스_꿀조합[] = [
 
 function MyPage() {
   const navigate = useNavigate();
-  const isLoggedin = useRecoilValue(isLoggedInState);
+  const isLoggedin = useRecoilValue(IsLoggedInState);
 
   useEffect(() => {
     if (!isLoggedin) {

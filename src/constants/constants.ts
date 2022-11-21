@@ -2,6 +2,7 @@ import homeImg from '@assets/images/home.svg';
 import rankingImg from '@assets/images/ranking.svg';
 import customImg from '@assets/images/custom.svg';
 import myPageImg from '@assets/images/myPage.svg';
+import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
 
 type 타입_메뉴 = {
   메뉴명: string;
@@ -36,3 +37,9 @@ export const 메뉴정보: 타입_메뉴[] = [
     로그인상관여부: true,
   },
 ];
+
+export const 꿀조합_픽_초기_필터: 인터페이스_꿀조합선택페이지_필터 = {
+  맛: [],
+  재료: [],
+  추가사항: [],
+};
