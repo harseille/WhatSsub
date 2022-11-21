@@ -1,7 +1,8 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 
-const useInfiniteScroll = (target: React.RefObject<HTMLUListElement>) => {
+const useInfiniteScroll = () => {
   const [page, setPage] = useState(1);
+  const target = useRef<HTMLUListElement>(null);
 
   const ENDPOINT = 1;
 
@@ -39,6 +40,7 @@ const useInfiniteScroll = (target: React.RefObject<HTMLUListElement>) => {
   }, [target, observer]);
 
   return {
+    target,
     page,
     setPage,
   };
