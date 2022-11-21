@@ -38,7 +38,9 @@ function CustomCombination() {
   const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_꿀조합) => 나만의_조합_수정(선택한재료);
   return (
     <CustomPageWrap>
-      <MyCombinationStep currentStep={현재진행도} onChangeStep={클릭핸들러_현재진행도_수정} />
+      {현재진행도 <= 4 ? (
+        <MyCombinationStep currentStep={현재진행도} onChangeStep={클릭핸들러_현재진행도_수정} />
+      ) : null}
       <SelectComponent
         currentStep={현재진행도}
         customCombination={나만의_조합}
@@ -55,9 +57,9 @@ const CustomPageWrap = styled(Wrapper)`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 160px);
-  padding: 0 25px;
-  overflow: auto;
+  padding: 0 24px;
+  overflow-y: auto;
   ${mediaQuery} {
-    padding: 0 15%;
+    padding: 0 36px;
   }
 `;

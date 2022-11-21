@@ -3,6 +3,8 @@ import NextStepButton from '@components/CustomCombination/NextStepButton';
 import CombinationRegistration from '@components/CustomCombination/CombinationRegistration';
 
 import styled from '@emotion/styled';
+import { changeRem } from '@styles/mixin';
+
 import { 인터페이스_꿀조합 } from '../../types/ISandwich';
 
 type 타입_재료선택_속성 = {
@@ -44,4 +46,5 @@ const SelectWrap = styled.section`
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  min-height: ${changeRem(510)};
 `;
