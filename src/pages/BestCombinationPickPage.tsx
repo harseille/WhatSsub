@@ -1,57 +1,25 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useToggleFilter from '@hooks/useToggleFilter';
 import IngredientButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
 import Button from '@components/UI/Button';
 import Wrapper from '@components/UI/Wrapper';
+import { 꿀조합_픽_초기_필터 } from '@constants/constants';
 import styled from '@emotion/styled';
 import refreshIcon from '@assets/icons/refresh.svg';
 import { changeRem, flexbox } from '@styles/mixin';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
 import 더미데이터 from '../data/PickPageDummy';
 
 function BestCombinationPickPage() {
   const navigate = useNavigate();
 
-  const initFilter: 인터페이스_꿀조합선택페이지_필터 = {
-    맛: [],
-    재료: [],
-    추가사항: [],
-  };
-
-  const [selectedFilter, setSelectedFilter] = useState(initFilter);
-
-  const 클릭핸들러_꿀조합_속성_토글 = (filter: string, name: string, maxNum: number) => {
-    const filterArr = selectedFilter[filter];
-
-    if (maxNum === 1 && !filterArr.includes(name)) {
-      setSelectedFilter(prevState => ({
-        ...prevState,
-        [filter]: [name],
-      }));
-      return;
-    }
-
-    if (maxNum === filterArr.length && !filterArr.includes(name)) {
-      alert('최대 선택 개수를 초과했습니다.!!!');
-      return;
-    }
-
-    setSelectedFilter(prevState => {
-      const filterArr: string[] = prevState[filter];
-
-      if (filterArr.includes(name))
-        return { ...prevState, [filter]: filterArr.filter((item: string) => item !== name) };
-
-      return { ...prevState, [filter]: [...filterArr, name] };
-    });
-  };
-
-  const 클릭핸들러_꿀조합_속성_초기화 = () => {
-    setSelectedFilter(initFilter);
-  };
+  const {
+    selectedFilter: 선택된_꿀조합_속성,
+    toggleFilter: 클릭핸들러_꿀조합_속성_토글,
+    initializeFilter: 클릭핸들러_꿀조합_속성_초기화,
+  } = useToggleFilter(꿀조합_픽_초기_필터);
 
   const 꿀조합_목록_페이지로_이동하기 = () => {
-    navigate('/best-combination', { state: selectedFilter });
+    navigate('/best-combination', { state: 선택된_꿀조합_속성 });
   };
 
   return (
@@ -64,7 +32,7 @@ function BestCombinationPickPage() {
           <IngredientButtonList
             key={data.제목}
             filterData={data}
-            selectedFilter={selectedFilter}
+            selectedFilter={선택된_꿀조합_속성}
             onSelectFilter={클릭핸들러_꿀조합_속성_토글}
           />
         ))}
