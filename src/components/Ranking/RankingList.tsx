@@ -4,6 +4,7 @@ import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import styled from '@emotion/styled';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합 } from '../../types/ISandwich';
 
 type TProps = {
@@ -27,6 +28,8 @@ function RankingList({ currentTab, rankingList }: TProps) {
           <RankingCardWrapper key={id} to={`/best-combination/${id}`}>
             {badgeUrl && <RankBadge src={badgeUrl} alt={`rank${i + 1}`} />}
             <CombinationRankingCard
+              rank={i + 1}
+              currentTab={currentTab}
               title={이름}
               imageUrl={이미지}
               originName={베이스샌드위치}
@@ -53,4 +56,10 @@ const RankBadge = styled.img`
   top: -28px;
   z-index: 1;
   width: 90px;
+
+  ${mediaQuery} {
+    width: 106px;
+    top: -40px;
+    right: -25px;
+  }
 `;

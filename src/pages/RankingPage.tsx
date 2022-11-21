@@ -4,6 +4,7 @@ import RankingTab from '@components/Ranking/RankingTab';
 import RankingList from '@components/Ranking/RankingList';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합 } from '../types/ISandwich';
 
 const rankingListData: 인터페이스_꿀조합[] = [
@@ -81,4 +82,8 @@ const Wrapper2 = styled.div`
   background: #f9f9f9;
   height: 100vh;
   padding: 25px 20px;
+
+  ${mediaQuery} {
+    padding-top: 35px;
+  }
 `;

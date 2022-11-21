@@ -1,6 +1,7 @@
 import { MouseEvent } from 'react';
 import styled from '@emotion/styled';
 import { changeRem, buttonNone } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 
 type TProps = {
   currentTab: string;
@@ -39,5 +40,9 @@ const TitleTab = styled.button`
 
   &.on {
     color: #252525;
+  }
+
+  ${mediaQuery} {
+    font-size: ${changeRem(22)};
   }
 `;
