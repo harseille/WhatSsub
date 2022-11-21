@@ -1,5 +1,6 @@
 import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge';
 import styled from '@emotion/styled';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
 
 function SandwichBadgeList({ badgeList }: { badgeList: 인터페이스_샌드위치뱃지리스트 }) {
@@ -19,6 +20,9 @@ const BadgeList = styled.ul`
   flex-flow: wrap;
   margin: 0;
   gap: 8px;
+  ${mediaQuery} {
+    width: 300px;
+  }
 `;
 
 export default SandwichBadgeList;

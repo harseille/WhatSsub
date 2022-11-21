@@ -62,6 +62,7 @@ function BestCombinationList({ filter }: { filter: 인터페이스_샌드위치�
 export default BestCombinationList;
 
 const ListWrap = styled.ul`
+  width: 100%;
   display: flex;
   ${flexbox('column', 'center', 'center')}
   gap: 16px;
