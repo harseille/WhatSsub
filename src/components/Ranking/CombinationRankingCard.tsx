@@ -3,9 +3,12 @@ import Like from '@components/Common/Button/Like';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
 
 type TProps = {
+  currentTab: string;
+  rank: number;
   title: string;
   imageUrl: string;
   originName: string;
@@ -14,6 +17,8 @@ type TProps = {
 };
 
 function CombinationRankingCard({
+  currentTab: 현재탭,
+  rank: 순위,
   title: 이름,
   imageUrl: 이미지,
   originName,
@@ -22,6 +27,7 @@ function CombinationRankingCard({
 }: TProps) {
   return (
     <RankingCard>
+      {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
       <RankingImageWrap>
         <img src={ChickenSlice} alt={originName} />
       </RankingImageWrap>
@@ -39,15 +45,31 @@ export default CombinationRankingCard;
 const RankingCard = styled.section`
   box-sizing: border-box;
   ${flexbox('row', 'flex-start', 'center')};
-  min-width: ${changeRem(300)};
   gap: ${changeRem(20)};
+  min-width: ${changeRem(300)};
   position: relative;
   padding: 30px 20px;
-  margin-bottom: 16px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  background: #ffffff;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
   border-radius: 20px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  ${mediaQuery} {
+    padding: 20px;
+    border-radius: 10px;
+    filter: none;
+    box-shadow: 0 10px 40px rgba(213, 213, 213, 0.6);
+  }
+`;
+
+const Rank = styled.div`
+  display: none;
+
+  ${mediaQuery} {
+    display: block;
+    font-weight: bold;
+    font-size: ${changeRem(20)};
+  }
 `;
 
 const RankingImageWrap = styled.div`
@@ -55,17 +77,27 @@ const RankingImageWrap = styled.div`
   width: ${changeRem(80)};
   height: ${changeRem(80)};
   flex-shrink: 0;
-  & img {
-    height: ${changeRem(48)};
-    object-fit: cover;
-  }
   border-radius: 50%;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 15px 5px rgba(80, 80, 80, 0.15);
+
+  & img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  ${mediaQuery} {
+    width: ${changeRem(143)};
+    box-shadow: none;
+  }
 `;
 
 const RankingContents = styled.div`
   flex-basis: calc(100% - 160px);
+
+  ${mediaQuery} {
+    flex-basis: calc(100% - 250px);
+  }
 `;
 
 const Title = styled.h3`

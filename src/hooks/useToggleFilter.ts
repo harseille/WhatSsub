@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useToggleFilter = (initFilter: { [key: string]: any[] } = {}) => {
+const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
 
   const toggleFilter = (filter: string, name: string, maxNum: number) => {

@@ -45,12 +45,25 @@
 - 브레인스토밍
   ![브레인스토밍_이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/17006918-ebac-4f48-b45e-97db4ba7013b/%EB%B8%8C%EB%A0%88%EC%9D%B8%EC%8A%A4%ED%86%A0%EB%B0%8D.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T083901Z&X-Amz-Expires=86400&X-Amz-Signature=c27348282822410fb5b23668226766d80c160ad658810c99759847e06b8bc157&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EB%25B8%258C%25EB%25A0%2588%25EC%259D%25B8%25EC%258A%25A4%25ED%2586%25A0%25EB%25B0%258D.png%22&x-id=GetObject)
 
+<<<<<<< HEAD
+- 디자인: [새 탭에서 열기][figma wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
+- BDD(Behaviour-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7)
+- SDD(Schema-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201)
+- 네이밍 컨벤션: 한글 변수 사용: [새 탭에서 열기][집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae)
+- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b)
+- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues)
+
+### 기획
+
+### 팀원소개
+=======
 - 디자인: <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
 - BDD(Behaviour-Driven-Development): <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
 - SDD(Schema-Driven-Development): <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
 - 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
 - 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
 - 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+>>>>>>> 62856a20d301c5b1ea5b8ae34c01bc710d72c918
 
 <br />
 

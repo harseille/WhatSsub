@@ -57,9 +57,7 @@ const CombinationStepList = styled.ol<타입_진행도_리스트_속성>`
 
   & li {
     padding: 0 4px;
-    box-sizing: border-box;
     position: relative;
-
     ${mediaQuery} {
       padding: 0 6px;
     }

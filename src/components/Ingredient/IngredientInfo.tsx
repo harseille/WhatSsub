@@ -15,7 +15,7 @@ function IngredientInfo(props: { ingredientList: 인터페이스_재료정보[] 
   });
 
   const CombinationIngredientList = [...재료_정보_목록.entries()].map(([재료타입, 재료]) => (
-    <li>
+    <li key={재료}>
       <p>
         <span>{재료타입}</span>: {Array.isArray(재료) ? <span>{재료.join(', ')}</span> : <span>{재료}</span>}
       </p>
