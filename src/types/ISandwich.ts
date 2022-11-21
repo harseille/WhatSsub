@@ -133,3 +133,7 @@ export interface 인터페이스_꿀조합_랜덤칼로리포함 extends 인터�
   칼로리: string;
   이름: string;
 }
+export interface 인터페이스_꿀조합_랜덤 extends 인터페이스_랜덤재료샌드위치 {
+  이미지: string;
+  id: string;
+}
