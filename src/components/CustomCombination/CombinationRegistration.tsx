@@ -1,4 +1,4 @@
-import MyCombinationCard from '@components/Common/Cards/MyCombinationCard';
+import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
 import Button from '@components/UI/Button';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
