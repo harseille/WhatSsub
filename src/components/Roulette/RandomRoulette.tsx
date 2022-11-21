@@ -7,7 +7,12 @@ import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_재료데이터, 인터페이스_랜덤재료샌드위치 } from '../../types/ISandwich';
+
+import {
+  인터페이스_재료데이터,
+  인터페이스_랜덤재료샌드위치,
+  인터페이스_꿀조합_랜덤칼로리포함,
+} from '../../types/ISandwich';
 
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
@@ -22,7 +27,6 @@ function RandomRoulette() {
     뱃지리스트: [],
   });
   const [random, setRandom] = useState<number>(-1);
-  const [sumNum, setSumNum] = useState<number>(0);
 
   const randomNum = (num: number) => Math.floor(Math.random() * num);
 
@@ -43,33 +47,44 @@ function RandomRoulette() {
       .then(
         axios.spread((res1, res2) => {
           const wanted = ['빵', '치즈', '소스'];
-          const filter = res2.data
-            .filter((val: 인터페이스_재료데이터) => wanted.includes(val.카테고리))
-            .map((val: 인터페이스_재료데이터) => ({ [val.카테고리]: val.목록[randomNum(val.목록.length)].이름 }))
+          const kcal: number[] = [];
+
+          const filter = res2.data.filter((val: 인터페이스_재료데이터) => wanted.includes(val.카테고리));
+
+          const 필터링된_랜덤_재료 = filter
+            .map((val: 인터페이스_꿀조합_랜덤칼로리포함) => {
+              const 랜덤_인덱스 = randomNum(val.목록.length);
+              kcal.push(랜덤_인덱스);
+              return {
+                [val.카테고리]: val.목록[랜덤_인덱스].이름,
+              };
+            })
             .reduce((acc: { [key: string]: string }, cur: { [key: string]: string }) => ({ ...acc, ...cur }), {});
 
-          const 칼로리 = '265';
-          // const 칼로리 = res2.data
-          //   .filter((val: 인터페이스_재료데이터) => wanted[0].includes(val.카테고리))
-          //   .map((val: 인터페이스_재료데이터) => {
-          //     console.log(val.목록[randomNum(val.목록.length)].이름, filter.빵, '같은지 확인~~~~~~~~~~~~~');
-          //     // if (val.목록[randomNum(val.목록.length)].이름 === filter.빵) console.log('gg');
-          //     if (val.목록[randomNum(val.목록.length)].includes(filter.빵)) console.log('gg');
-          //   });
-          // 소스의 속성
-          // const 뱃지리스트;
+          const 랜덤_샌드위치_인덱스 = randomNum(res1.data.length);
+          const 랜덤_샌드위치_칼로리 = res1.data[랜덤_샌드위치_인덱스].재료칼로리;
+          const 랜덤_재료_칼로리_배열 = filter.map(
+            (val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcal[i]].칼로리
+          );
+          const 랜덤_샌드위치_재료_칼로리 = 랜덤_재료_칼로리_배열.reduce(
+            (a: number, b: number) => Number(a) + Number(b)
+          );
+          const 랜덤_샌드위치_총_칼로리 = Math.floor(Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리));
+          const 랜덤_뱃지 = filter.map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcal[i]].속성);
+          // const 랜덤_뱃지 = res2.data
+          //   .filter((val: 인터페이스_재료데이터) => ['소스'].includes(val.카테고리))
+          //   .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcal[i]].속성);
+
+          console.log(필터링된_랜덤_재료, 랜덤_뱃지, '뱃지');
+          console.log(랜덤_샌드위치_칼로리, '+', 랜덤_재료_칼로리_배열, '=', 랜덤_샌드위치_총_칼로리);
 
           setSandwichData({
             이름: '',
-            베이스샌드위치: res1.data[randomNum(res1.data.length)].이름,
-            ...filter,
-            칼로리,
-            // 뱃지리스트,
+            베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
+            ...필터링된_랜덤_재료,
+            칼로리: 랜덤_샌드위치_총_칼로리,
+            뱃지리스트: 랜덤_뱃지,
           });
-
-          // console.log(filter, 'filter', 칼로리, '칼로리');
-          // console.log(filter.빵);
-          // console.log(칼로리);
         })
       )
       .catch(err => console.log(err))
@@ -91,14 +106,12 @@ function RandomRoulette() {
   };
 
   const 룰렛_돌리기 = () => {
-    // console.log(sandwichData, random);
     setRandom(Math.floor(Math.random() * 17));
     룰렛_회전하기();
   };
 
   const 모달_열기 = () => {
     setIsShowModal(true);
-    // console.log(sandwichData[random].이름);
   };
   const 클릭핸들러_모달_닫기 = () => {
     setIsShowModal(false);
@@ -110,6 +123,7 @@ function RandomRoulette() {
         {isShowModal ? (
           <div>
             <DimmedLayer />
+            {/* 데이터 정리되면 요 아래 걸로 보낼거임 지우지 말자 */}
             {/* <RandomModalResult randomSandwich={sandwichData} onClick={클릭핸들러_모달_닫기} /> */}
             <RandomModalResult onClick={클릭핸들러_모달_닫기} />
           </div>
