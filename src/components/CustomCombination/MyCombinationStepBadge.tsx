@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 
-const MobileSize: number = 26;
-const DesktopSize: number = 32;
+const MobileSize: number = 28;
+const DesktopSize: number = 34;
 
 type 타입_속성 = {
   currentStep: number;
@@ -21,15 +21,16 @@ const MyCombinationStepBadge = styled.span<타입_속성>`
   color: ${props => (props.currentStep >= props.children ? '#fff' : '#B1B1B1')};
   font-size: ${changeRem(10)};
   font-weight: bold;
-  line-height: ${MobileSize}px;
+  line-height: ${MobileSize - 6}px;
   text-align: center;
   cursor: pointer;
   transition: all 0.6s;
+  /* box-sizing: content-box; */
 
   ${mediaQuery} {
     width: ${changeRem(DesktopSize)};
     height: ${changeRem(DesktopSize)};
-    line-height: ${DesktopSize}px;
+    line-height: ${DesktopSize - 6}px;
   }
 `;
 
