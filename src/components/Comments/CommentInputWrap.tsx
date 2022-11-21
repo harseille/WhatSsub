@@ -28,8 +28,9 @@ function CommentInputWrap() {
         내용: commentInputRef.current?.value,
         작성일: Date.now(),
       };
-      await 새_댓글_추가하기(댓글_정보);
-      // console.log('댓글 성공');
+      const 댓글_목록 = await 새_댓글_추가하기(댓글_정보);
+      console.log('댓글_목록', 댓글_목록);
+      console.log('댓글 성공');
     }
   };
 
