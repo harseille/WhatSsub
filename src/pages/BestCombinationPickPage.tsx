@@ -3,17 +3,11 @@ import useToggleFilter from '@hooks/useToggleFilter';
 import IngredientButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
 import Button from '@components/UI/Button';
 import Wrapper from '@components/UI/Wrapper';
+import { 꿀조합_픽_초기_필터 } from '@constants/constants';
 import styled from '@emotion/styled';
 import refreshIcon from '@assets/icons/refresh.svg';
 import { changeRem, flexbox } from '@styles/mixin';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
 import 더미데이터 from '../data/PickPageDummy';
-
-const initFilter: 인터페이스_꿀조합선택페이지_필터 = {
-  맛: [],
-  재료: [],
-  추가사항: [],
-};
 
 function BestCombinationPickPage() {
   const navigate = useNavigate();
@@ -22,7 +16,7 @@ function BestCombinationPickPage() {
     selectedFilter: 선택된_꿀조합_속성,
     toggleFilter: 클릭핸들러_꿀조합_속성_토글,
     initializeFilter: 클릭핸들러_꿀조합_속성_초기화,
-  } = useToggleFilter(initFilter);
+  } = useToggleFilter(꿀조합_픽_초기_필터);
 
   const 꿀조합_목록_페이지로_이동하기 = () => {
     navigate('/best-combination', { state: 선택된_꿀조합_속성 });
