@@ -80,6 +80,7 @@ function MyPage() {
     setToggleState(사용자명_체크);
   };
 
+  //! 서버에서 sort 해주면 얘도 없어질 예정
   const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
     if (prev.작성일 < next.작성일) return 1;
     return -1;
