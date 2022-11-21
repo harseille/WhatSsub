@@ -5,7 +5,7 @@ import heart from '@assets/icons/heart.svg';
 import heartFill from '@assets/icons/heart-fill.svg';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
-import { userLike } from '@state/user';
+import { userLike } from '@state/User';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_샌드위치 } from '../../../types/ISandwich';
 

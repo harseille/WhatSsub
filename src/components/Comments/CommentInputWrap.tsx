@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
 import { 새_댓글_추가하기 } from '@api/index';
@@ -10,7 +10,6 @@ import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
 
 function CommentInputWrap() {
   const commentInputRef = useRef<HTMLInputElement>(null);
-
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
 
@@ -28,8 +27,11 @@ function CommentInputWrap() {
         내용: commentInputRef.current?.value,
         작성일: Date.now(),
       };
-      await 새_댓글_추가하기(댓글_정보);
-      // console.log('댓글 성공');
+      try {
+        await 새_댓글_추가하기(댓글_정보);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
