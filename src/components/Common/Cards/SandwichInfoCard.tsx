@@ -7,6 +7,7 @@ import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { userLike } from '@state/User';
 import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_샌드위치 } from '../../../types/ISandwich';
 
 export const mockSandwich: 인터페이스_샌드위치 = {
@@ -56,12 +57,23 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
 export default SandwichInfoCard;
 
 const CardWarp = styled.li`
+  min-width: ${changeRem(370)};
+  width: 80%;
   position: relative;
   padding: 45px 25px 20px;
   max-width: ${changeRem(370)};
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   background: #fff;
+
+  ${mediaQuery} {
+    min-width: 90%;
+    min-height: ${changeRem(260)};
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const LikeBtn = styled.button<{ isLiked: boolean }>`
@@ -75,4 +87,9 @@ const LikeBtn = styled.button<{ isLiked: boolean }>`
   height: ${changeRem(34)};
   background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
   background-color: #ffe8e0;
+
+  ${mediaQuery} {
+    width: ${changeRem(48)};
+    height: ${changeRem(48)};
+  }
 `;
