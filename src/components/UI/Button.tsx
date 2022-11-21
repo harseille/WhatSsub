@@ -64,6 +64,8 @@ export default styled.button<
   height: ${({ height }) => height};
   line-height: ${({ lineHeight }) => lineHeight};
   width: ${({ width }) => width};
+  min-width: ${({ minWidth }) => minWidth};
+  max-width: ${({ maxWidth }) => maxWidth};
 
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
