@@ -4,22 +4,28 @@ import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import Like from '@components/Common/Button/Like';
 import CommentsContainer from '@components/Comments/CommentsContainer';
-import { API_URL_PATH_PREFIX } from '@constants/constants';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
+import { collection, getDoc, doc } from 'firebase/firestore';
+import { db } from '../firebase.config';
 import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISandwich';
 
-// ? fetch를 뭐라고 바꿀지 고민...
-const fetchJson = (url: string) => fetch(url).then(res => res.json());
-// TODO: DB구축 후 combinationId로 불러오기
-const getResponseByBestCombinationId = (combinationId = '') =>
-  fetchJson(`${API_URL_PATH_PREFIX}/꿀조합/bestCombination.json`);
+const 꿀조합_데이터_가져오기 = async (꿀조합id: string | undefined) => {
+  try {
+    const 꿀조합_콜랙션 = collection(db, '꿀조합');
+    // const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
+    const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 'S4RLz3l4gbAN7V2z8MIy'));
 
-const 꿀조합_데이터_받아오기 = async (
-  combinationId: string | undefined
-): Promise<인터페이스_꿀조합상세페이지_꿀조합> => {
-  const response = await getResponseByBestCombinationId(combinationId);
-  return response;
+    if (querySnapshot.exists()) {
+      const 꿀조합 = querySnapshot.data();
+
+      return 꿀조합;
+    }
+    console.log('꿀조합이 없습니다.!');
+  } catch (error) {
+    console.error(error);
+    console.log('꿀조합 가져오기 실패');
+  }
 };
 
 function BestCombinationDetailPage() {
@@ -60,7 +66,7 @@ function BestCombinationDetailPage() {
 
 export default BestCombinationDetailPage;
 
-export const loader = ({ params }: LoaderFunctionArgs) => 꿀조합_데이터_받아오기(params.combinationId);
+export const loader = ({ params }: LoaderFunctionArgs) => 꿀조합_데이터_가져오기(params.combinationId);
 
 const Header = styled.div`
   ${flexbox('row', 'space-between', 'center')}
