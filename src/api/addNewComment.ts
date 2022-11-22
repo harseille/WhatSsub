@@ -1,8 +1,8 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase.config';
-import { 인터페이스_댓글프로퍼티 } from '../types/IComment';
+import { 인터페이스_댓글_추가 } from '../types/IComment';
 
-const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글프로퍼티) => {
+const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글_추가) => {
   try {
     await addDoc(collection(db, '댓글'), {
       꿀조합id: 댓글.꿀조합id,
