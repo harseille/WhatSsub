@@ -30,7 +30,7 @@ export interface 인터페이스_뱃지 {
 // Ingredient
 export interface 인터페이스_재료정보 {
   id: string;
-  이름: string;
+  이름: string | string[];
   카테고리: string;
   칼로리: string;
 }
@@ -120,7 +120,7 @@ export interface 인터페이스_랜덤재료샌드위치 {
   베이스샌드위치: string;
   빵: string;
   치즈: string;
-  소스: string;
+  소스: string[];
   칼로리: string;
   뱃지리스트: string[];
 }
