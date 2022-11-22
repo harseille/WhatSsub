@@ -118,7 +118,7 @@ const Title = styled.h2`
 const TitleSpan = styled.span`
   display: block;
 
-  &:first-child {
+  &:first-of-type {
     text-align: right;
   }
 `;
