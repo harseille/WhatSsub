@@ -1,4 +1,4 @@
 import isLoggedInState from './IsLoggedIn';
-import userState from './User';
+import userState from './user';
 
 export { isLoggedInState, userState };
