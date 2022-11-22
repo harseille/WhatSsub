@@ -22,7 +22,8 @@ const useGetComments = (꿀조합id: string | undefined) => {
             setComments(댓글_리스트);
           }
         });
-      } catch {
+      } catch (error) {
+        console.error(error);
         console.log('댓글읽기 실패');
       }
     };

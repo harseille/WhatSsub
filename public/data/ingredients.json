@@ -107,32 +107,32 @@
     "카테고리": "빵",
     "속성유무": false,
     "목록": [
-      { "id": "b1", "이름": "위트", "이미지": "/src/assets/images/ingredients/bread/Wheat.png", "칼로리": "197" },
+      { "id": "b1", "이름": "위트", "이미지": "/images/ingredients/bread/Wheat.png", "칼로리": "197" },
       {
         "id": "b2",
         "이름": "파마산 오레가노",
-        "이미지": "/src/assets/images/ingredients/bread/Parmesan_Oregano.png",
+        "이미지": "/images/ingredients/bread/Parmesan_Oregano.png",
         "칼로리": "213"
       },
       {
         "id": "b3",
         "이름": "플랫브레드",
-        "이미지": "/src/assets/images/ingredients/bread/Flat_Bread.png",
+        "이미지": "/images/ingredients/bread/Flat_Bread.png",
         "칼로리": "234"
       },
       {
         "id": "b4",
         "이름": "하티",
-        "이미지": "/src/assets/images/ingredients/bread/Hearty_Italian.png",
+        "이미지": "/images/ingredients/bread/Hearty_Italian.png",
         "칼로리": "210"
       },
       {
         "id": "b5",
         "이름": "허니오트",
-        "이미지": "/src/assets/images/ingredients/bread/Honey_Oat.png",
+        "이미지": "/images/ingredients/bread/Honey_Oat.png",
         "칼로리": "235"
       },
-      { "id": "b6", "이름": "화이트", "이미지": "/src/assets/images/ingredients/bread/White.png", "칼로리": "202" }
+      { "id": "b6", "이름": "화이트", "이미지": "/images/ingredients/bread/White.png", "칼로리": "202" }
     ]
   },
   {
