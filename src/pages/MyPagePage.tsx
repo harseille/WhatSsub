@@ -118,10 +118,10 @@ function MyPage() {
           </div>
         ) : (
           <div>
-            <UserTitle style={{ background: '#f5d891' }} onClick={클릭핸들러_꿀조합_목록_변경}>
+            <UserTitle onClick={클릭핸들러_꿀조합_목록_변경} style={{ color: '#6b6b6b' }}>
               단찌만의 조합
             </UserTitle>
-            <LikeTitle style={{ background: '#fab608' }} className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
+            <LikeTitle style={{ color: '#252525' }} className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
               좋아요 꿀조합
             </LikeTitle>
           </div>
@@ -143,10 +143,10 @@ const UserTitle = styled.span`
   text-align: left;
   padding: 25px 15px 0 0;
   display: inline;
-  color: #2a2a2a;
-  font-weight: 500;
-  font-size: 18px;
-  background-color: #fab608;
+  font-size: ${changeRem(20)};
+  font-weight: bold;
+  color: #252525;
+  cursor: pointer;
   border-radius: 5px;
   padding: 4px 6px;
   margin-right: 10px;
@@ -154,13 +154,9 @@ const UserTitle = styled.span`
   cursor: pointer;
 `;
 const LikeTitle = styled.span`
-  font-weight: 500;
-  color: #2a2a2a;
-  border: 1px solid #f5d891;
-  background-color: #f5d891;
-  border-radius: 5px;
-  padding: 4px 6px;
-  transition: 0.3s;
+  font-size: ${changeRem(20)};
+  font-weight: bold;
+  color: #6b6b6b;
   cursor: pointer;
 `;
 
