@@ -1,11 +1,12 @@
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
 import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '../../types/IComment';
 
 function CommentInputWrap() {
@@ -59,6 +60,10 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 10px;
   box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
+
+  ${mediaQuery} {
+    bottom: 0;
+  }
 `;
 
 const ProfileImg = styled.div`
