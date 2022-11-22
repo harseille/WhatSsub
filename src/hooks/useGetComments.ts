@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 const useGetComments = (꿀조합id: string | undefined) => {
@@ -12,7 +12,7 @@ const useGetComments = (꿀조합id: string | undefined) => {
     const 댓글_목록_가져오기 = async (꿀조합id: string) => {
       try {
         const 댓글_콜랙션 = collection(db, '댓글');
-        const 댓글_꿀조합_쿼리 = query(댓글_콜랙션, where('꿀조합id', '==', 꿀조합id));
+        const 댓글_꿀조합_쿼리 = query(댓글_콜랙션, where('꿀조합id', '==', 꿀조합id), orderBy('작성일', 'desc'));
         await onSnapshot(댓글_꿀조합_쿼리, querySnapshot => {
           if (!querySnapshot.empty) {
             const 댓글_리스트 = querySnapshot.docs.map(doc => ({
