@@ -37,6 +37,8 @@ const 재료데이터_초기값: 인터페이스_재료데이터[] = [
   { 카테고리: '', 배경색: '', 글자색: '', 속성유무: false, 목록: [] },
 ];
 
+const 필수_선택_재료 = ['샌드위치', '빵', '토스팅'];
+
 function CustomStep(props: TProps) {
   const { currentStep: 현재진행도, customCombination: 나만의_조합, onChange } = props;
 
@@ -76,7 +78,9 @@ function CustomStep(props: TProps) {
     <CustomStepWrap>
       {스탭_재료_목록[현재진행도].map(카테고리 => (
         <IngredientsSection key={카테고리}>
-          <IngredientTitle>{카테고리}</IngredientTitle>
+          <IngredientTitle>
+            {필수_선택_재료.find(필수재료 => 필수재료 === 카테고리) ? 카테고리 + '*' : 카테고리}
+          </IngredientTitle>
           <Ingredients>
             {재료데이터
               .find(재료데이터 => 재료데이터.카테고리 === 카테고리)
