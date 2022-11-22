@@ -6,7 +6,7 @@ import { User } from 'firebase/auth';
 import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
+import { 인터페이스_댓글_추가 } from '../../types/IComment';
 
 function CommentInputWrap() {
   const commentInputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +19,7 @@ function CommentInputWrap() {
     if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
     else if (!댓글내용) alert('댓글을 입력해주세요.');
     else if (유저정보 && 댓글내용 && combinationId) {
-      const 댓글_정보: 인터페이스_댓글프로퍼티 = {
+      const 댓글_정보: 인터페이스_댓글_추가 = {
         꿀조합id: combinationId,
         작성자id: 유저정보.uid,
         작성자이름: 유저정보.displayName,
