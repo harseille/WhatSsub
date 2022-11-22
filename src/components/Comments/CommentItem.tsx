@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
+import { 인터페이스_댓글_읽기 } from '../../types/IComment';
 
 // TODO: any 없애기
-function CommentItem(props: { comment: 인터페이스_댓글프로퍼티 }) {
+function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {
   const {
     comment: { 작성자이름, 내용, 작성일 },
     // comment: { 꿀조합id, 작성자id, 작성자이름, 작성자프로필이미지, 내용, 작성일 },

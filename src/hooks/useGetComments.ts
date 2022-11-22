@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getDocs, collection, query, where } from 'firebase/firestore';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 const useGetComments = (꿀조합id: string | undefined) => {
@@ -13,12 +13,15 @@ const useGetComments = (꿀조합id: string | undefined) => {
       try {
         const 댓글_콜랙션 = collection(db, '댓글');
         const 댓글_꿀조합_쿼리 = query(댓글_콜랙션, where('꿀조합id', '==', 꿀조합id));
-        const querySnapshot = await getDocs(댓글_꿀조합_쿼리);
-        if (!querySnapshot.empty) {
-          querySnapshot.forEach(doc => {
-            setComments(prev => [...prev, { [doc.id]: doc.data() }]);
-          });
-        }
+        await onSnapshot(댓글_꿀조합_쿼리, querySnapshot => {
+          if (!querySnapshot.empty) {
+            const 댓글_리스트 = querySnapshot.docs.map(doc => ({
+              댓글id: doc.id,
+              ...doc.data(),
+            }));
+            setComments(댓글_리스트);
+          }
+        });
       } catch {
         console.log('댓글읽기 실패');
       }
