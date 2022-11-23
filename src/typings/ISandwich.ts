@@ -43,6 +43,8 @@ export interface 인터페이스_재료정보 {
   칼로리: string;
 }
 
+export type 인터페이스_메인재료 = 인터페이스_꿀조합_재료;
+
 export interface 인터페이스_재료 {
   id?: string;
   이름: string;
