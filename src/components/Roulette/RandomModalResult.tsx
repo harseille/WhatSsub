@@ -4,12 +4,11 @@ import xBtn from '@assets/images/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import convertRandomSandwichInfo from '@utils/convertRandomSandwichInfo';
-import { 인터페이스_꿀조합_랜덤 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합_랜덤2 } from '../../types/ISandwich';
 
 type TProps = {
   onClick: () => void;
-  sandwich: 인터페이스_꿀조합_랜덤;
-  // randomSandwich: 인터페이스_랜덤재료샌드위치;
+  sandwich: 인터페이스_꿀조합_랜덤2;
 };
 // function RandomModalResult({ onClick, randomSandwich }: TProps) {
 function RandomModalResult({ onClick, sandwich }: TProps) {
@@ -20,7 +19,6 @@ function RandomModalResult({ onClick, sandwich }: TProps) {
       <Title>⭐️오늘의 랜덤 조합⭐️</Title>
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={sandwichData} />
-        {/* <SandwichInfo sandwich={randomSandwich} /> */}
         <IngredientInfo ingredientList={ingredientInfo} />
         <ReturnBtn onClick={onClick}>다시 돌리러 가기</ReturnBtn>
       </SandwichInfoWrapper>
