@@ -14,6 +14,7 @@ import {
   // 인터페이스_랜덤재료샌드위치,
   인터페이스_꿀조합_랜덤칼로리포함,
   인터페이스_꿀조합_랜덤,
+  인터페이스_재료목록,
 } from '../../types/ISandwich';
 
 export type BestCombination = {
@@ -23,7 +24,7 @@ export type BestCombination = {
   치즈: string;
   소스: string[];
   칼로리: string;
-  뱃지리스트: string[];
+  속성: string[];
   이미지: string;
   id: string;
 };
@@ -31,14 +32,14 @@ export type BestCombination = {
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
-  const [sandwichData, setSandwichData] = useState<인터페이스_꿀조합_랜덤>({
+  const [sandwichData, setSandwichData] = useState<BestCombination>({
     이름: '',
     베이스샌드위치: '',
     빵: '',
     치즈: '',
     소스: [],
     칼로리: '',
-    뱃지리스트: [],
+    속성: [],
     이미지: '',
     id: '',
   });
@@ -83,9 +84,10 @@ function RandomRoulette() {
             })
             .reduce((acc: { [key: string]: string }, cur: { [key: string]: string }) => ({ ...acc, ...cur }), {});
 
+          // 카테고리에서 소스 목록 뽑기
           const 소스_목록 = res2.data.find((val: 인터페이스_꿀조합_랜덤칼로리포함) => val.카테고리 === '소스').목록;
-          console.log('소스 =>', 소스_목록);
 
+          // 소스 인덱스 뽑기
           랜덤_소스_리스트 = 랜덤_소스_리스트.map(_ => {
             while (true) {
               const 랜덤_인덱스 = randomNum(소스_목록.length);
@@ -93,12 +95,13 @@ function RandomRoulette() {
             }
           });
 
-          const 소스_랜덤_재료 = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
+          // 소스 데이터 객체 3개 뽑기
+          const 소스_랜덤_재료: 인터페이스_재료목록[] = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
 
           const 랜덤_샌드위치_인덱스 = randomNum(res1.data.length);
           const 랜덤_샌드위치_칼로리 = res1.data[랜덤_샌드위치_인덱스].재료칼로리;
 
-          // 각각 빵, 치즈 칼로리 배열
+          // 각각 빵, 치즈 칼로리 총 합
           const 랜덤_샌드위치_재료_칼로리 = filter.reduce(
             (acc: number, cur: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => {
               const response = cur.목록[kcal[i]].칼로리;
@@ -106,13 +109,23 @@ function RandomRoulette() {
             },
             0
           );
-          console.log(랜덤_샌드위치_재료_칼로리);
+          console.log('랜덤_샌드위치_재료_칼로리 =>', 랜덤_샌드위치_재료_칼로리);
 
-          const 소스_랜덤_배열_만들기 = 소스_랜덤_재료.map((val: 인터페이스_꿀조합_랜덤, i: number) => {
+          // 소스에 대해 각각 이름, 속성, 칼로리 마다 배열 만들어서 리스팅 하기
+          소스_랜덤_재료.forEach((val: 인터페이스_재료목록, i: number) => {
             랜덤_소스_이름_리스트.push(val.이름);
-            // 랜덤_소스_속성_리스트.push(val.속성);
-            랜덤_소스_칼로리_리스트.push(val.칼로리);
+            랜덤_소스_속성_리스트.push(val.속성 || '');
+            랜덤_소스_칼로리_리스트.push(val.칼로리 || '');
           });
+
+          console.log('랜덤_소스_속성_리스트 =>', 랜덤_소스_속성_리스트);
+          console.log(랜덤_소스_속성_리스트);
+
+          // 랜덤 소스 속성(뱃지) 겹치는 부분 삭제
+
+          const 랜덤_소스_뱃지리스트 = 랜덤_소스_속성_리스트.filter(
+            (v: string, i: number) => 랜덤_소스_속성_리스트.indexOf(v) === i
+          );
 
           // 소스 칼로리 배열
           const 랜덤_소스_칼로리_배열 = res2.data
@@ -120,21 +133,20 @@ function RandomRoulette() {
             .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
 
           // ! 소스 칼로리 포함 시켜야함
-          // const 소스_합 = 랜덤_소스_칼로리_리스트.reduce((a: string, b: string) => {
-          //   Number(a) + Number(b);
-          // }, 0);
+          const toNumbers = (arr: string[]) => arr.map(Number);
+          const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
 
-          const 랜덤_샌드위치_총_칼로리 = Math.floor(Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리));
-
-          // console.log(랜덤_샌드위치_총_칼로리, '1231231231231312312313123');
-
+          const 랜덤_샌드위치_총_칼로리 = Math.floor(
+            Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
+          );
+          console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
           // ! setState
           setSandwichData({
             이름: '',
             베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
             ...필터링된_랜덤_재료,
             칼로리: 랜덤_샌드위치_총_칼로리,
-            뱃지리스트: 랜덤_소스_속성_리스트,
+            속성: 랜덤_소스_뱃지리스트,
             이미지: ChickenSlice,
             소스: 랜덤_소스_이름_리스트,
           });
@@ -176,9 +188,7 @@ function RandomRoulette() {
         {isShowModal ? (
           <div>
             <DimmedLayer />
-            {/* 데이터 정리되면 요 아래 걸로 보낼거임 지우지 말자 */}
             <RandomModalResult sandwich={sandwichData} onClick={클릭핸들러_모달_닫기} />
-            {/* <RandomModalResult onClick={클릭핸들러_모달_닫기} /> */}
           </div>
         ) : null}
       </div>

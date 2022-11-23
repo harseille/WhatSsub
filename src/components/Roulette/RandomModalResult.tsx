@@ -4,11 +4,11 @@ import xBtn from '@assets/images/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import convertRandomSandwichInfo from '@utils/convertRandomSandwichInfo';
-import { 인터페이스_꿀조합_랜덤 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합_랜덤2 } from '../../types/ISandwich';
 
 type TProps = {
   onClick: () => void;
-  sandwich: 인터페이스_꿀조합_랜덤;
+  sandwich: 인터페이스_꿀조합_랜덤2;
 };
 // function RandomModalResult({ onClick, randomSandwich }: TProps) {
 function RandomModalResult({ onClick, sandwich }: TProps) {

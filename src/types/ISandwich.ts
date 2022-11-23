@@ -122,7 +122,8 @@ export interface 인터페이스_랜덤재료샌드위치 {
   치즈: string;
   소스: string[];
   칼로리: string;
-  뱃지리스트: string[];
+  이미지: string;
+  id: string;
 }
 export interface 인터페이스_선택된_재료 extends 인터페이스_꿀조합_선택재료 {
   카테고리: string;
@@ -134,6 +135,9 @@ export interface 인터페이스_꿀조합_랜덤칼로리포함 extends 인터�
   이름: string;
 }
 export interface 인터페이스_꿀조합_랜덤 extends 인터페이스_랜덤재료샌드위치 {
-  이미지: string;
-  id: string;
+  속성: string;
 }
+export interface 인터페이스_꿀조합_랜덤2 extends 인터페이스_랜덤재료샌드위치 {
+  속성: string[];
+}
+// 보내주려는 샌드위치 데이터
