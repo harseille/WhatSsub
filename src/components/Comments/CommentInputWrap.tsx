@@ -7,7 +7,7 @@ import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_댓글_추가 } from '../../types/IComment';
+import { 인터페이스_댓글_추가 } from '@typings/IComment';
 
 function CommentInputWrap() {
   const commentInputRef = useRef<HTMLInputElement>(null);

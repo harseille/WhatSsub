@@ -1,7 +1,7 @@
 import IngredientButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
 import refreshIcon from '@assets/icons/refresh.svg';
 import styled from '@emotion/styled';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
 import 더미데이터 from '../../data/PickPageDummy';
 
 type TProps = {
@@ -18,7 +18,7 @@ function IngredientButtonListContainer({ filteredAttr, toggleFilter, initializeF
       </RefreshButton>
       {더미데이터.map(data => (
         <IngredientButtonList
-          key={data.제목}
+          key={data.이름}
           filterData={data}
           selectedFilter={filteredAttr}
           onSelectFilter={toggleFilter}

@@ -1,7 +1,7 @@
 import IngredientButton from '@components/BestCombinationAttribute/AttributeButton';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조합선택페이지_속성선택 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조합선택페이지_속성선택 } from '@typings/ISandwich';
 
 type TProps = {
   filterData: 인터페이스_꿀조합선택페이지_속성선택;
@@ -10,21 +10,21 @@ type TProps = {
 };
 
 function IngredientButtonList({
-  filterData: { 제목, 속성목록, 최대선택개수 },
+  filterData: { 이름, 속성목록, 최대선택개수 },
   selectedFilter,
   onSelectFilter,
 }: TProps) {
   return (
     <Wrapper>
       <Title>
-        {제목}
+        {이름}
         <TitleDes>{`(최대 ${최대선택개수}가지 선택 가능합니다.)`}</TitleDes>
       </Title>
       <IngredientList>
         {속성목록.map((속성: 인터페이스_꿀조합선택페이지_속성) => (
           <li key={속성.id}>
             <IngredientButton
-              filter={제목}
+              filter={이름}
               name={속성.이름}
               max={최대선택개수}
               selectedFilter={selectedFilter}

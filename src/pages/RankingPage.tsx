@@ -5,13 +5,13 @@ import RankingList from '@components/Ranking/RankingList';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '../types/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 const rankingListData: 인터페이스_꿀조합[] = [
   {
-    id: 'sdfsdf',
-    이름: '꿀꿀마앗',
+    꿀조합제목: '꿀꿀마앗',
     이미지: ChickenSlice,
+    작성자id: 'sdfd',
     작성자: '도은',
     작성일: '2022.11.16',
     베이스샌드위치: '치킨 슬라이스',
@@ -25,9 +25,9 @@ const rankingListData: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'sdfsadfdf',
-    이름: '고기 조합이다아아아',
+    꿀조합제목: '고기 조합이다아아아',
     이미지: ChickenSlice,
+    작성자id: 'sdfd',
     작성자: '도은',
     작성일: '2022.11.16',
     베이스샌드위치: '포크샌드',
@@ -41,9 +41,9 @@ const rankingListData: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'swerdfsdf',
-    이름: '다이어트',
+    꿀조합제목: '다이어트',
     이미지: ChickenSlice,
+    작성자id: 'sdfd',
     작성자: '도은',
     작성일: '2022.11.16',
     베이스샌드위치: '에그마요',

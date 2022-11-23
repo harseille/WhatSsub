@@ -1,4 +1,4 @@
-import { 인터페이스_샌드위치, 인터페이스_샌드위치뱃지리스트 } from '../types/ISandwich';
+import { 인터페이스_샌드위치, 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
 
 const 꿀조합_목록_필터링하기 = (꿀조합리스트: 인터페이스_샌드위치[], filter: 인터페이스_샌드위치뱃지리스트) => {
   const badgeListArr = 꿀조합리스트.map(data => Object.values(data.뱃지리스트).flat());

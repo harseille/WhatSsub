@@ -5,11 +5,11 @@ import Wrapper from '@components/UI/Wrapper';
 import combinationVerification from '@utils/customCombination/combinationVerification';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 const 나만의_조합_초기값: 인터페이스_꿀조합 = {
-  id: '',
-  이름: '',
+  작성자id: '',
+  꿀조합제목: '',
   작성자: '',
   작성일: '',
   좋아요: '0',

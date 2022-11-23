@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@components/UI/Button';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
 
 function NavigateListPageButton({ filteredAttr }: { filteredAttr: 인터페이스_꿀조합선택페이지_필터 }) {
   const navigate = useNavigate();

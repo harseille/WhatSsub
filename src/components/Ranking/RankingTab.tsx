@@ -13,9 +13,12 @@ function RankingTab({ currentTab: 현재탭, onClick: 클릭핸들러_탭_변경
 
   return (
     <TabGroup>
-      {tabList.map(title => (
-        // eslint-disable-next-line react/jsx-no-bind
-        <TitleTab className={현재탭 === title ? 'on' : ''} onClick={클릭핸들러_탭_변경.bind(null, title)}>
+      {tabList.map((title, i) => (
+        <TitleTab
+          key={`tab${i}`}
+          className={현재탭 === title ? 'on' : ''}
+          // eslint-disable-next-line react/jsx-no-bind
+          onClick={클릭핸들러_탭_변경.bind(null, title)}>
           {title}
         </TitleTab>
       ))}

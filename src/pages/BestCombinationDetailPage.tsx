@@ -7,8 +7,8 @@ import CommentsContainer from '@components/Comments/CommentsContainer';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import { collection, getDoc, doc } from 'firebase/firestore';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { db } from '../firebase.config';
-import { 인터페이스_꿀조합상세페이지_꿀조합 } from '../types/ISandwich';
 
 const 꿀조합_데이터_가져오기 = async (꿀조합id: string | undefined) => {
   try {
@@ -30,7 +30,7 @@ const 꿀조합_데이터_가져오기 = async (꿀조합id: string | undefined)
 
 function BestCombinationDetailPage() {
   // TODO: any 없애기
-  const 꿀조합: 인터페이스_꿀조합상세페이지_꿀조합 | any = useLoaderData();
+  const 꿀조합: 인터페이스_꿀조합 | any = useLoaderData();
 
   if (꿀조합) {
     return (
@@ -45,9 +45,8 @@ function BestCombinationDetailPage() {
           <SandwichInfo
             sandwich={{
               // TODO: data의 ingredients.json과 불일치
-              id: 'testid',
               이미지: 꿀조합.이미지,
-              이름: 꿀조합.제목,
+              꿀조합제목: 꿀조합.제목,
               베이스샌드위치: 꿀조합.베이스샌드위치,
               칼로리: 꿀조합.칼로리,
               뱃지리스트: 꿀조합.뱃지리스트,

@@ -11,7 +11,7 @@ import {
   인터페이스_재료데이터,
   인터페이스_레시피,
   인터페이스_선택된_재료,
-} from '../../types/ISandwich';
+} from '@typings/ISandwich';
 
 const INGREDIENT_PATH = '/data/ingredients.json';
 const RECIPE_PATH = '/data/recipe.json';

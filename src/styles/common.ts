@@ -1,4 +1,4 @@
-import { IColor } from '../types/IStyle';
+import { IColor } from '@typings/IStyle';
 
 export const badgeFontColor: IColor = {
   기본: '#7A7A7A',
