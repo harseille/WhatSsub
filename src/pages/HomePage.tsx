@@ -79,7 +79,7 @@ const Visual = styled.section`
       position: relative;
       height: calc(100% - 100px);
       background-size: 20%, 80%;
-      background-position: left -5% bottom 10%, right 25px bottom 30%;
+      background-position: left -5% bottom 10%, right 25px bottom 35%;
     }
 
     &::after {
@@ -106,9 +106,10 @@ const Title = styled.h2`
   transform: skewY(7deg);
 
   ${mediaQuery} {
-    width: 575px;
+    width: 558px;
+    padding-top: 20px;
     text-align: left;
-    font-size: ${changeRem(80)};
+    font-size: ${changeRem(64)};
     background-size: 23%, 10%;
     background-position: left -8% center, right 30px top -15px;
     transform: skewY(7deg) translateY(20%);
@@ -129,7 +130,7 @@ const StrongSpan = styled.span`
   font-weight: bold;
 
   ${mediaQuery} {
-    font-size: ${changeRem(100)};
+    font-size: ${changeRem(84)};
   }
 `;
 
@@ -140,7 +141,7 @@ const VisualImg = styled.img`
   ${mediaQuery} {
     position: absolute;
     right: 30px;
-    bottom: -10%;
+    bottom: -20%;
     width: 35%;
     margin: 0;
   }
