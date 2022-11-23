@@ -1,66 +1,38 @@
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useEffect } from 'react';
 import Wrapper from '@components/UI/Wrapper';
 import RankingTab from '@components/Ranking/RankingTab';
 import RankingList from '@components/Ranking/RankingList';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import dbGet from '@api/dbGet';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
-const rankingListData: 인터페이스_꿀조합[] = [
-  {
-    꿀조합제목: '꿀꿀마앗',
-    이미지: ChickenSlice,
-    작성자id: 'sdfd',
-    작성자: '도은',
-    작성일: '2022.11.16',
-    베이스샌드위치: '치킨 슬라이스',
-    칼로리: '265',
-    뱃지리스트: {
-      맛: ['달달'],
-      재료: ['돼지고기'],
-      추가사항: ['고기러버'],
-    },
-    좋아요: '44',
-    선택재료: [],
-  },
-  {
-    꿀조합제목: '고기 조합이다아아아',
-    이미지: ChickenSlice,
-    작성자id: 'sdfd',
-    작성자: '도은',
-    작성일: '2022.11.16',
-    베이스샌드위치: '포크샌드',
-    칼로리: '265',
-    뱃지리스트: {
-      맛: ['달달', '고소'],
-      재료: ['돼지고기'],
-      추가사항: ['치즈폭탄'],
-    },
-    좋아요: '28',
-    선택재료: [],
-  },
-  {
-    꿀조합제목: '다이어트',
-    이미지: ChickenSlice,
-    작성자id: 'sdfd',
-    작성자: '도은',
-    작성일: '2022.11.16',
-    베이스샌드위치: '에그마요',
-    칼로리: '265',
-    뱃지리스트: {
-      맛: ['달달', '고소'],
-      재료: ['에그마요'],
-      추가사항: ['저칼로리'],
-    },
-    좋아요: '5',
-    선택재료: [],
-  },
-];
+export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
+  id: string;
+}
 
 function RankingPage() {
-  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>(rankingListData);
+  const [rankingList, setRankingList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const [currentTab, setCurrentTab] = useState<string>('맛잘알랭킹');
+
+  useEffect(() => {
+    const condition: string = currentTab === '맛잘알랭킹' ? '좋아요' : '작성일';
+
+    꿀조합_컬렉션_정렬해서_가져오기(condition);
+  }, [currentTab]);
+
+  const 꿀조합_컬렉션_정렬해서_가져오기 = async (condition: string) => {
+    const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc')));
+    const 랭킹리스트: 인터페이스_꿀조합_아이디[] = [];
+
+    await 쿼리스냅샷.forEach(doc => {
+      랭킹리스트.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
+    });
+
+    setRankingList(랭킹리스트);
+  };
 
   const 클릭핸들러_탭_변경 = (title: string, e: MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(title);

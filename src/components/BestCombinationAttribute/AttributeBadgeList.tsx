@@ -1,10 +1,13 @@
 import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
+// import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
+import convertBadge from '@utils/convertBadge';
 
-function SandwichBadgeList({ badgeList }: { badgeList: 인터페이스_샌드위치뱃지리스트 }) {
-  const convertedBadgeList = Object.entries(badgeList);
+function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
+  console.log(badgeList);
+  const convertedBadgeList = convertBadge(badgeList);
+  // convertBadge(['달달', '고소']);
 
   return (
     <BadgeList>
