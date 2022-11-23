@@ -6,9 +6,10 @@ import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandw
 
 function NavigateListPageButton({ filteredAttr }: { filteredAttr: 인터페이스_꿀조합선택페이지_필터 }) {
   const navigate = useNavigate();
+  const attr = Object.values(filteredAttr).flat();
 
   const 꿀조합_목록_페이지로_이동하기 = () => {
-    navigate('/best-combination', { state: filteredAttr });
+    navigate('/best-combination', { state: attr });
   };
 
   return (

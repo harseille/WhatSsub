@@ -4,7 +4,7 @@ import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
+// import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
 
 type TProps = {
   currentTab: string;
@@ -12,7 +12,7 @@ type TProps = {
   title: string;
   imageUrl: string;
   originName: string;
-  badgeList: 인터페이스_샌드위치뱃지리스트;
+  badgeList: string[];
   like: string;
 };
 
