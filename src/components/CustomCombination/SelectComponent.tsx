@@ -5,7 +5,7 @@ import CombinationRegistration from '@components/CustomCombination/CombinationRe
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
-import { 인터페이스_꿀조합 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type 타입_재료선택_속성 = {
   customCombination: 인터페이스_꿀조합;

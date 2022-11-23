@@ -2,20 +2,20 @@ import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBad
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_샌드위치 } from '../../types/ISandwich';
+import { 인터페이스_샌드위치 } from '@typings/ISandwich';
 
 type TProps = {
   sandwich: 인터페이스_샌드위치;
 };
 
-function SandwichInfo({ sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 } }: TProps) {
+function SandwichInfo({ sandwich: { 이미지, 꿀조합제목, 베이스샌드위치, 칼로리, 뱃지리스트 } }: TProps) {
   return (
     <InfoWrap>
       <ImgWrap>
-        <img src={이미지} alt={이름} />
+        <img src={이미지} alt={꿀조합제목} />
       </ImgWrap>
       <div>
-        <SandwichName>{이름}</SandwichName>
+        <SandwichName>{꿀조합제목}</SandwichName>
         <InfoSummary>
           {베이스샌드위치} • <Kcal>{칼로리}Kcal</Kcal>
         </InfoSummary>

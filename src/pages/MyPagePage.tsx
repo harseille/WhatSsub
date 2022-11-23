@@ -9,12 +9,12 @@ import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
 import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합 } from '../types/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 const sandwiches: 인터페이스_꿀조합[] = [
   {
-    id: 'a1',
-    이름: '꿀꿀마앗',
+    작성자id: 'test1',
+    꿀조합제목: '꿀꿀마앗',
     작성자: '다다',
     작성일: '2022.11.05',
     좋아요: '44',
@@ -29,8 +29,8 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'a2',
-    이름: '돼지위치',
+    작성자id: 'test2',
+    꿀조합제목: '돼지위치',
     작성자: '댑',
     작성일: '2022.11.01',
     좋아요: '51',
@@ -45,8 +45,8 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'a3',
-    이름: '소고기 굿굿',
+    작성자id: 'test3',
+    꿀조합제목: '소고기 굿굿',
     작성자: '다비나',
     작성일: '2022.11.017',
     좋아요: '51',
@@ -91,16 +91,16 @@ function MyPage() {
 
   // ! 데이터 받아온 후 컴포넌트를 만들게 됨으로 리팩토링 예정
   const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.id}>
-      <Link to={`/best-combination/${sandwich.id}`}>
+    <Card key={sandwich.작성자id}>
+      <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
     </Card>
   ));
 
   const likeCombination = sandwiches.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.id}>
-      <Link to={`/best-combination/${sandwich.id}`}>
+    <Card key={sandwich.꿀조합제목}>
+      <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
     </Card>

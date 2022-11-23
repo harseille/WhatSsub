@@ -1,5 +1,5 @@
 import CommentItem from '@components/Comments/CommentItem';
-import { 인터페이스_댓글_읽기 } from '../../types/IComment';
+import { 인터페이스_댓글_읽기 } from '@typings/IComment';
 
 function CommentList({ commentList }: { commentList: 인터페이스_댓글_읽기[] }) {
   const 댓글목록 = commentList.map(댓글 => (

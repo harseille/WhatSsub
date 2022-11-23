@@ -4,13 +4,12 @@ import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import 꿀조합_목록_필터링하기 from '@utils/filterBestCombinationList';
 import styled from '@emotion/styled';
 import { flexbox } from '@styles/mixin';
-import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
+import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
 
 const dummy = [
   {
-    id: 'S1',
     이미지: ChickenSlice,
-    이름: '꿀꿀마앗',
+    꿀조합제목: '꿀꿀마앗',
     베이스샌드위치: '치킨 슬라이스',
     칼로리: '265',
     뱃지리스트: {
@@ -20,9 +19,8 @@ const dummy = [
     },
   },
   {
-    id: 'S2',
     이미지: ChickenSlice,
-    이름: '치킨치킨야야야',
+    꿀조합제목: '치킨치킨야야야',
     베이스샌드위치: '치킨 슬라이스',
     칼로리: '265',
     뱃지리스트: {
@@ -32,9 +30,8 @@ const dummy = [
     },
   },
   {
-    id: 'S3',
     이미지: ChickenSlice,
-    이름: '칰칰',
+    꿀조합제목: '칰칰',
     베이스샌드위치: '치킨 슬라이스',
     칼로리: '265',
     뱃지리스트: {
@@ -53,7 +50,8 @@ function BestCombinationList({ filter }: { filter: 인터페이스_샌드위치�
   return (
     <ListWrap>
       {필터링된_꿀조합_목록.map(sandwich => (
-        <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
+        //* key 값 수정 필요
+        <SandwichInfoCard key={sandwich.꿀조합제목} sandwich={sandwich} />
       ))}
     </ListWrap>
   );

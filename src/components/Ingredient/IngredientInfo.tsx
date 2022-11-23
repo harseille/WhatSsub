@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_재료정보 } from '../../types/ISandwich';
+import { 인터페이스_재료정보 } from '@typings/ISandwich';
 
 function IngredientInfo(props: { ingredientList: 인터페이스_재료정보[] }) {
   const { ingredientList } = props;

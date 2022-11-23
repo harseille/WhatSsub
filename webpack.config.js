@@ -27,7 +27,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src', 'pages'),
       '@state': path.resolve(__dirname, 'src', 'state'),
       '@styles': path.resolve(__dirname, 'src', 'styles'),
-      '@types': path.resolve(__dirname, 'src', 'types'),
+      '@typings': path.resolve(__dirname, 'src', 'typings'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@hooks': path.resolve(__dirname, 'src', 'hooks'),
       // '@state': path.resolve(__dirname, 'src', 'state'),

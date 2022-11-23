@@ -4,7 +4,7 @@ import xBtn from '@assets/images/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import convertRandomSandwichInfo from '@utils/convertRandomSandwichInfo';
-import { 인터페이스_꿀조합_랜덤2 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합_랜덤2 } from '@typings/ISandwich';
 
 type TProps = {
   onClick: () => void;

@@ -112,7 +112,7 @@
       "@pages/*": ["src/pages/*"],
       "@state/*": ["src/state/*"],
       "@styles/*": ["src/styles/*"],
-      "@types/*": ["src/types/*"],
+      "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"]
       // "@typings/*": ["typings/*"]

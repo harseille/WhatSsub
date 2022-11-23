@@ -8,12 +8,11 @@ import styled from '@emotion/styled';
 import { userLike } from '@state/user';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_샌드위치 } from '../../../types/ISandwich';
+import { 인터페이스_샌드위치 } from '@typings/ISandwich';
 
 export const mockSandwich: 인터페이스_샌드위치 = {
-  id: 'S1',
   이미지: ChickenSlice,
-  이름: '꿀꿀마앗',
+  꿀조합제목: '꿀꿀마앗',
   베이스샌드위치: '치킨 슬라이스',
   칼로리: '265',
   뱃지리스트: {
@@ -25,23 +24,25 @@ export const mockSandwich: 인터페이스_샌드위치 = {
 
 function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
   // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
+  //* id 대신 임시로 꿀조합 제목 나중에 수정 필요
   const [userData, setUserData] = useRecoilState(userLike);
   const navigate = useNavigate();
 
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).tagName === 'BUTTON') return;
-    navigate(`/best-combination/${sandwich.id}`);
+    navigate(`/best-combination/${sandwich.꿀조합제목}`);
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
     setUserData(prevData => {
       const { likedSandwich } = prevData;
 
-      if (!likedSandwich.includes(sandwich.id)) return { ...prevData, likedSandwich: [...likedSandwich, sandwich.id] };
+      if (!likedSandwich.includes(sandwich.꿀조합제목))
+        return { ...prevData, likedSandwich: [...likedSandwich, sandwich.꿀조합제목] };
 
       return {
         ...prevData,
-        likedSandwich: likedSandwich.filter(id => id !== sandwich.id),
+        likedSandwich: likedSandwich.filter(id => id !== sandwich.꿀조합제목),
       };
     });
   };
@@ -49,7 +50,7 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.likedSandwich.includes(sandwich.id)} />
+      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.likedSandwich.includes(sandwich.꿀조합제목)} />
     </CardWarp>
   );
 }

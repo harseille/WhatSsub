@@ -1,6 +1,6 @@
 import { addDoc, collection } from 'firebase/firestore';
+import { 인터페이스_댓글_추가 } from '@typings/IComment';
 import { db } from '../firebase.config';
-import { 인터페이스_댓글_추가 } from '../types/IComment';
 
 const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글_추가) => {
   try {

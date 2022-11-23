@@ -2,7 +2,7 @@ import homeImg from '@assets/images/home.svg';
 import rankingImg from '@assets/images/ranking.svg';
 import customImg from '@assets/images/custom.svg';
 import myPageImg from '@assets/images/myPage.svg';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
+import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
 
 type 타입_메뉴 = {
   메뉴명: string;

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { changeRem, flexbox, autoMargin } from '@styles/mixin';
-import { 인터페이스_꿀조합_선택재료 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합_재료 } from '@typings/ISandwich';
 
-function IngredientCard({ ingredient: { 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_꿀조합_선택재료 }) {
+function IngredientCard({ ingredient: { 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_꿀조합_재료 }) {
   return (
     <Card>
       <Title>{이름}</Title>

@@ -1,4 +1,4 @@
-import { 인터페이스_꿀조합 } from '../../types/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 const firstStepValidation = (나만의_조합: 인터페이스_꿀조합) => {
   const isSelectedSandwich = !!나만의_조합.베이스샌드위치;
@@ -7,8 +7,9 @@ const firstStepValidation = (나만의_조합: 인터페이스_꿀조합) => {
 
 const secondStepValidation = (나만의_조합: 인터페이스_꿀조합) => {
   const isSelectedBread = !!나만의_조합.선택재료.find(재료 => 재료.카테고리 === '빵');
-  const isToasted = !!나만의_조합.토스팅;
-  return isSelectedBread && isToasted;
+  // const isToasted = !!나만의_조합.토스팅;
+  // return isSelectedBread && isToasted;
+  return isSelectedBread;
 };
 
 const combinationVerification = (진행도: number, 나만의_조합: 인터페이스_꿀조합) => {

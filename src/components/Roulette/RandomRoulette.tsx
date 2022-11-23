@@ -8,32 +8,18 @@ import pointer from '@assets/images/pointer.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
-
 import {
   인터페이스_재료데이터,
-  // 인터페이스_랜덤재료샌드위치,
   인터페이스_꿀조합_랜덤칼로리포함,
-  인터페이스_꿀조합_랜덤,
-  인터페이스_재료목록,
-} from '../../types/ISandwich';
-
-export type BestCombination = {
-  이름: string;
-  베이스샌드위치: string;
-  빵: string;
-  치즈: string;
-  소스: string[];
-  칼로리: string;
-  속성: string[];
-  이미지: string;
-  id: string;
-};
+  인터페이스_꿀조합_랜덤2,
+  인터페이스_꿀조합_재료,
+} from '@typings/ISandwich';
 
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
-  const [sandwichData, setSandwichData] = useState<BestCombination>({
-    이름: '',
+  const [sandwichData, setSandwichData] = useState<인터페이스_꿀조합_랜덤2>({
+    꿀조합제목: '',
     베이스샌드위치: '',
     빵: '',
     치즈: '',
@@ -96,7 +82,7 @@ function RandomRoulette() {
           });
 
           // 소스 데이터 객체 3개 뽑기
-          const 소스_랜덤_재료: 인터페이스_재료목록[] = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
+          const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
 
           const 랜덤_샌드위치_인덱스 = randomNum(res1.data.length);
           const 랜덤_샌드위치_칼로리 = res1.data[랜덤_샌드위치_인덱스].재료칼로리;
@@ -112,14 +98,13 @@ function RandomRoulette() {
           console.log('랜덤_샌드위치_재료_칼로리 =>', 랜덤_샌드위치_재료_칼로리);
 
           // 소스에 대해 각각 이름, 속성, 칼로리 마다 배열 만들어서 리스팅 하기
-          소스_랜덤_재료.forEach((val: 인터페이스_재료목록, i: number) => {
+          소스_랜덤_재료.forEach((val: 인터페이스_꿀조합_재료, i: number) => {
             랜덤_소스_이름_리스트.push(val.이름);
             랜덤_소스_속성_리스트.push(val.속성 || '');
             랜덤_소스_칼로리_리스트.push(val.칼로리 || '');
           });
 
           console.log('랜덤_소스_속성_리스트 =>', 랜덤_소스_속성_리스트);
-          console.log(랜덤_소스_속성_리스트);
 
           // 랜덤 소스 속성(뱃지) 겹치는 부분 삭제
 
@@ -142,7 +127,7 @@ function RandomRoulette() {
           console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
           // ! setState
           setSandwichData({
-            이름: '',
+            꿀조합제목: '',
             베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
             ...필터링된_랜덤_재료,
             칼로리: 랜덤_샌드위치_총_칼로리,
