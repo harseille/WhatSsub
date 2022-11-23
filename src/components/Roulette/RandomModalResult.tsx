@@ -10,7 +10,6 @@ type TProps = {
   onClick: () => void;
   sandwich: 인터페이스_꿀조합_랜덤2;
 };
-// function RandomModalResult({ onClick, randomSandwich }: TProps) {
 function RandomModalResult({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
   return (
