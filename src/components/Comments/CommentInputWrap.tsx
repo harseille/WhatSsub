@@ -30,6 +30,7 @@ function CommentInputWrap() {
       };
       try {
         await 새_댓글_추가하기(댓글_정보);
+        commentInputRef.current.value = '';
       } catch (error) {
         console.error(error);
       }
@@ -38,7 +39,7 @@ function CommentInputWrap() {
 
   return (
     <Wrapper>
-      <ProfileImg />
+      <Profile>{유저정보 && <ProfileImg src={유저정보.photoURL!} alt={유저정보.displayName!} />}</Profile>
       <Form onSubmit={서브밋핸들러_댓글_쓰기}>
         <Input id="comment" maxLength={120} ref={commentInputRef} />
         <Submit type="submit" value="게시" />
@@ -62,13 +63,24 @@ const Wrapper = styled.div`
   box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
 
   ${mediaQuery} {
+    justify-content: center;
     bottom: 0;
+    height: ${changeRem(80)};
   }
 `;
 
-const ProfileImg = styled.div`
+const Profile = styled.div`
   width: ${changeRem(30)};
   height: ${changeRem(30)};
+  border-radius: 50%;
+  background: #ccc;
+
+  ${mediaQuery} {
+    width: ${changeRem(48)};
+    height: ${changeRem(48)};
+  }
+`;
+const ProfileImg = styled.img`
   border-radius: 50%;
   background: #ccc;
 `;
@@ -76,13 +88,17 @@ const ProfileImg = styled.div`
 const Form = styled.form`
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   gap: 10px;
   width: 100%;
+  ${mediaQuery} {
+    max-width: ${changeRem(1200)};
+  }
 `;
 
 const Input = styled.input`
   flex-shrink: 0;
-  flex-basis: ${`calc(100% - ${changeRem(135)})`};
+  flex-basis: ${`calc(100% - ${changeRem(80)})`};
   border: 0;
   padding: 13px;
   border-radius: 6px;

@@ -1,4 +1,6 @@
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLoggedInState } from '@state/index';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/Comments/CommentInputWrap';
 import styled from '@emotion/styled';
@@ -8,6 +10,7 @@ import useGetComments from '@hooks/useGetComments';
 function CommentsContainer() {
   const { combinationId } = useParams();
   const { comments } = useGetComments(combinationId);
+  const isLoggedIn = useRecoilValue(isLoggedInState);
 
   return (
     <Comments>
@@ -17,7 +20,7 @@ function CommentsContainer() {
         </h2>
       </CommentHeader>
       <CommentList commentList={comments} />
-      <CommentInputWrap />
+      {isLoggedIn && <CommentInputWrap />}
     </Comments>
   );
 }
