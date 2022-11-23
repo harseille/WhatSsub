@@ -15,7 +15,9 @@ function RandomModalResult({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
   return (
     <Card>
-      <CloseBtn className="close-btn" src={xBtn} alt="닫기 버튼" onClick={onClick} />
+      <CloseBtn onClick={onClick}>
+        <img src={xBtn} alt="닫기 버튼" />
+      </CloseBtn>
       <Title>⭐️오늘의 랜덤 조합⭐️</Title>
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={sandwichData} />
@@ -38,17 +40,30 @@ const Card = styled.div`
   box-sizing: border-box;
   padding: 20px 15px;
   width: ${changeRem(350)};
-  height: ${changeRem(532)};
   box-shadow: 0px 4px 5px 3px rgba(35, 35, 35, 0.5);
   border-radius: 15px;
   margin: 0 auto;
 `;
 const SandwichInfoWrapper = styled.div`
   padding-left: 18px;
+
+  div:first-of-type {
+    flex-flow: column nowrap;
+
+    div:first-of-type {
+      max-width: ${changeRem(305)};
+    }
+  }
 `;
-const CloseBtn = styled.img`
-  padding-left: 300px;
-  width: 20px;
+const CloseBtn = styled.button`
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
