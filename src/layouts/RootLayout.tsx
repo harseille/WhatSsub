@@ -33,6 +33,7 @@ const Layout = styled.div`
 const Main = styled.main`
   padding-top: 76px;
   padding-bottom: 80px;
+  background: #fafafa;
 
   ${mediaQuery} {
     padding-top: 98px;

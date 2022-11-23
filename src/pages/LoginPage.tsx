@@ -23,7 +23,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (isLoggedin) {
-      navigate('/');
+      navigate(-1);
     }
   }, [isLoggedin, navigate]);
 

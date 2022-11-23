@@ -1,8 +1,8 @@
-import { get, Query, DataSnapshot } from 'firebase/database';
+import { getDocs, Query, QuerySnapshot } from 'firebase/firestore';
 
-const dbGet = async (query: Query): Promise<DataSnapshot> => {
-  const response = await get(query);
-  return response;
+const dbGet = async (query: Query): Promise<QuerySnapshot> => {
+  const querySnapshot = await getDocs(query);
+  return querySnapshot;
 };
 
 export default dbGet;
