@@ -55,11 +55,12 @@ export interface 인터페이스_재료 {
 
 // 꿀조합
 export interface 인터페이스_샌드위치 {
+  id?: string;
   꿀조합제목: string;
   이미지: string;
   베이스샌드위치: string;
   칼로리: string;
-  뱃지리스트: 인터페이스_샌드위치뱃지리스트;
+  뱃지리스트: string[];
 }
 
 export interface 인터페이스_꿀조합 extends 인터페이스_샌드위치 {

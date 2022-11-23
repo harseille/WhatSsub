@@ -3,24 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import heart from '@assets/icons/heart.svg';
 import heartFill from '@assets/icons/heart-fill.svg';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { userLike } from '@state/User';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_샌드위치 } from '@typings/ISandwich';
-
-export const mockSandwich: 인터페이스_샌드위치 = {
-  이미지: ChickenSlice,
-  꿀조합제목: '꿀꿀마앗',
-  베이스샌드위치: '치킨 슬라이스',
-  칼로리: '265',
-  뱃지리스트: {
-    맛: ['달달', '고소'],
-    재료: ['살라미'],
-    추가사항: ['고기러버'],
-  },
-};
 
 function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
   // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요

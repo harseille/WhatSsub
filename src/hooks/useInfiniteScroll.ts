@@ -1,19 +1,20 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 
-const useInfiniteScroll = () => {
-  const [page, setPage] = useState(1);
+const useInfiniteScroll = (callback: Function) => {
+  const [isLoading, setIsLoading] = useState(true);
   const target = useRef<HTMLUListElement>(null);
 
   const ENDPOINT = 1;
 
   const observer = useMemo(
     () =>
-      new IntersectionObserver(([{ isIntersecting }]) => {
+      new IntersectionObserver(async ([{ isIntersecting }]) => {
         if (target.current === null) {
           return;
         }
         if (isIntersecting) {
-          setPage(cur => cur + 1);
+          await callback();
+          setIsLoading(false);
         }
       }),
     [target]
@@ -22,9 +23,10 @@ const useInfiniteScroll = () => {
   useEffect(() => {
     if (target?.current === null) return;
 
-    const lastTargetChild = target.current.children[target.current.children.length - ENDPOINT];
+    const lastTargetChild = target.current.children
+      ? target.current.children[target.current.children.length - ENDPOINT]
+      : target.current;
 
-    console.log(page);
     //* 불러올 정보 있는 없는지 확인 필요
     // if (page < 5) {
     console.log('구독');
@@ -41,8 +43,7 @@ const useInfiniteScroll = () => {
 
   return {
     target,
-    page,
-    setPage,
+    isLoading,
   };
 };
 
