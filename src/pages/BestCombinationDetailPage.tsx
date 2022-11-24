@@ -10,11 +10,11 @@ import { collection, getDoc, doc } from 'firebase/firestore';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { db } from '../firebase.config';
 
-const 꿀조합_데이터_가져오기 = async (꿀조합id: string | undefined) => {
+const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
   try {
     const 꿀조합_콜랙션 = collection(db, '꿀조합');
-    // const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
-    const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 'S4RLz3l4gbAN7V2z8MIy'));
+    const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
+    // const querySnapshot = await getDoc(doc(꿀조합_콜랙션, '0b9WSl5mqvnqe8FKlITg'));
 
     if (querySnapshot.exists()) {
       const 꿀조합 = querySnapshot.data();
@@ -65,7 +65,7 @@ function BestCombinationDetailPage() {
 
 export default BestCombinationDetailPage;
 
-export const loader = ({ params }: LoaderFunctionArgs) => 꿀조합_데이터_가져오기(params.combinationId);
+export const loader = ({ params }: LoaderFunctionArgs) => 꿀조합_데이터_가져오기(params.combinationId!);
 
 const Header = styled.div`
   ${flexbox('row', 'space-between', 'center')}
