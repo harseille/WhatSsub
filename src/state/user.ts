@@ -6,9 +6,7 @@ export default atom<User | null>({
   default: null,
 });
 
-export const userLike = atom<{ [key: string]: string[] }>({
+export const userLike = atom<string[]>({
   key: 'userLike',
-  default: {
-    likedSandwich: ['S1'],
-  },
+  default: [],
 });

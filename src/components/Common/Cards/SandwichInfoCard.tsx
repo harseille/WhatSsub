@@ -12,32 +12,26 @@ import { 인터페이스_샌드위치 } from '@typings/ISandwich';
 function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
   // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
   //* id 대신 임시로 꿀조합 제목 나중에 수정 필요
-  const [userData, setUserData] = useRecoilState(userLike);
+  const [userData, setUserData] = useRecoilState<string[]>(userLike);
   const navigate = useNavigate();
 
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).tagName === 'BUTTON') return;
-    navigate(`/best-combination/${sandwich.꿀조합제목}`);
+    navigate(`/best-combination/${sandwich.id}`);
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
-    setUserData(prevData => {
-      const { likedSandwich } = prevData;
+    setUserData((prevData: string[]) => {
+      if (!prevData.includes(sandwich.id!)) return [...prevData, sandwich.id];
 
-      if (!likedSandwich.includes(sandwich.꿀조합제목))
-        return { ...prevData, likedSandwich: [...likedSandwich, sandwich.꿀조합제목] };
-
-      return {
-        ...prevData,
-        likedSandwich: likedSandwich.filter(id => id !== sandwich.꿀조합제목),
-      };
+      return prevData.filter(id => id !== sandwich.id);
     });
   };
 
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.likedSandwich.includes(sandwich.꿀조합제목)} />
+      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.includes(sandwich.id!)} />
     </CardWarp>
   );
 }
