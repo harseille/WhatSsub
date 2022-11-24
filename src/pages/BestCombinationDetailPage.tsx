@@ -17,10 +17,8 @@ const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
     const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
     // const querySnapshot = await getDoc(doc(꿀조합_콜랙션, '0b9WSl5mqvnqe8FKlITg'));
 
-
     if (querySnapshot.exists()) {
       const 꿀조합 = querySnapshot.data();
-
       return 꿀조합;
     }
     console.log('꿀조합이 없습니다.!');
