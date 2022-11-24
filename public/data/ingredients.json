@@ -107,7 +107,7 @@
     "카테고리": "빵",
     "속성유무": false,
     "목록": [
-      { "id": "b1", "이름": "위트", "이미지": "/images/ingredients/bread/Wheat.png", "칼로리": "197" },
+      { "id": "b1", "이름": "위트", "이미지": "/images/ingredients/bread/Wheat.png", "칼로리": "192" },
       {
         "id": "b2",
         "이름": "파마산 오레가노",

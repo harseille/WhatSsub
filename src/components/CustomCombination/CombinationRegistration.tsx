@@ -1,12 +1,34 @@
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@state/index';
 import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
 import Button from '@components/UI/Button';
+import postCustom from '@utils/customCombination/postCustom';
+
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
-function CombinationRegistration() {
+type TProps = {
+  customCombination: 인터페이스_꿀조합;
+  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+};
+
+function CombinationRegistration(props: TProps) {
+  const [inputValue, setInputValue] = useState('');
+  const { customCombination, onChange } = props;
+  const user = useRecoilValue(userState);
+  const userInfo = { id: user?.uid, name: user?.displayName };
+
+  const 클릭핸드러_나만의_조합_등록하기 = (e: React.FormEvent) => {
+    e.preventDefault();
+    postCustom({ customCombination, onChange, inputValue, userInfo });
+    setInputValue('');
+  };
+
   return (
-    <CustomForm>
-      <MyCombinationCard />
+    <CustomForm onSubmit={클릭핸드러_나만의_조합_등록하기}>
+      <MyCombinationCard userName={user?.displayName} inputValue={inputValue} setInputValue={setInputValue} />
       <CreateCombinationButton designType="primaryGreen" width="100%" padding="15px" fontSize="16px" fontWeight="700">
         나만의 조합 만들기
       </CreateCombinationButton>

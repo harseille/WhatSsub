@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import { collection, getDoc, doc } from 'firebase/firestore';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import mediaQuery from '@styles/media-queries';
 import { db } from '../firebase.config';
 
 const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
@@ -15,6 +16,7 @@ const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
     const 꿀조합_콜랙션 = collection(db, '꿀조합');
     const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
     // const querySnapshot = await getDoc(doc(꿀조합_콜랙션, '0b9WSl5mqvnqe8FKlITg'));
+
 
     if (querySnapshot.exists()) {
       const 꿀조합 = querySnapshot.data();
@@ -44,7 +46,6 @@ function BestCombinationDetailPage() {
         <Contents>
           <SandwichInfo
             sandwich={{
-              // TODO: data의 ingredients.json과 불일치
               이미지: 꿀조합.이미지,
               꿀조합제목: 꿀조합.제목,
               베이스샌드위치: 꿀조합.베이스샌드위치,
@@ -80,6 +81,16 @@ const Header = styled.div`
     & span {
       color: ${props => props.theme.colors.primaryYellow};
       font-size: ${changeRem(24)};
+    }
+  }
+  ${mediaQuery} {
+    & h1 {
+      font-size: ${changeRem(28)};
+
+      & span {
+        color: ${props => props.theme.colors.primaryYellow};
+        font-size: ${changeRem(32)};
+      }
     }
   }
 `;

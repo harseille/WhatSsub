@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import Ingredient from '@components/CustomCombination/Ingredient';
-
+import { INGREDIENT_PATH, RECIPE_PATH } from '@constants/constants';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
@@ -12,9 +11,6 @@ import {
   인터페이스_레시피,
   인터페이스_선택된_재료,
 } from '@typings/ISandwich';
-
-const INGREDIENT_PATH = '/data/ingredients.json';
-const RECIPE_PATH = '/data/recipe.json';
 
 type TProps = {
   customCombination: 인터페이스_꿀조합;

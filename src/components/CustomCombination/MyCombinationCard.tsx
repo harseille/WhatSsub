@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '@components/UI/Button';
 
 import SandwichBL from '@assets/images/sandwich_B.L.png';
@@ -8,7 +9,17 @@ import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
 
-function MyCombinationCard() {
+type TProps = {
+  inputValue: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  userName: string | undefined | null;
+};
+
+function MyCombinationCard(props: TProps) {
+  const { setInputValue, userName, inputValue } = props;
+
+  const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+
   return (
     <Container>
       <Danzzi src={danzziTrust} alt="단찌 믿음 아이콘" />
@@ -17,14 +28,19 @@ function MyCombinationCard() {
           <img src={deleteBtn} alt="조합 삭제 버튼" />
         </DeleteBtn>
         <Text>
-          <UserName className="title">단찌</UserName>
+          <UserName className="title">{userName}</UserName>
           <span>만의 조합 완성</span>
         </Text>
         <SubTitle>이 조합으로 세계정복!!</SubTitle>
         <CardContentWrap>
           <Img src={SandwichBL} alt="샌드위치 이미지" />
           <CardInputButtonWrap>
-            <Input type="text" placeholder="왓썹의 이름은..?" />
+            <Input
+              onChange={체인지핸들러_꿀조합제목_입력하기}
+              value={inputValue}
+              type="text"
+              placeholder="왓썹의 이름은..?"
+            />
             <CreateCombinationButton
               designType="primaryGreen"
               width="100%"
@@ -60,6 +76,15 @@ const Card = styled.div`
   }
 `;
 
+const Text = styled.div`
+  text-align: center;
+  & span {
+    vertical-align: text-bottom;
+    font-weight: 700;
+    font-size: 20px;
+  }
+`;
+
 const UserName = styled.h2`
   display: inline;
   color: #fab608;
@@ -67,15 +92,10 @@ const UserName = styled.h2`
   font-size: 24px;
   padding-right: 3px;
 `;
-const Text = styled.div`
-  text-align: center;
-  & span {
-    font-weight: 700;
-    font-size: 20px;
-  }
-`;
+
 const SubTitle = styled.p`
   font-weight: 400;
+
   text-align: center;
   color: #979797;
   margin: 0;

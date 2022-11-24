@@ -27,7 +27,7 @@ export const 메뉴정보: 타입_메뉴[] = [
     이동링크: '/custom-combination',
     아이콘: customImg,
     아이콘설명: '커스텀 아이콘',
-    로그인상관여부: false,
+    로그인상관여부: true,
   },
   {
     메뉴명: '마이페이지',
@@ -43,3 +43,6 @@ export const 꿀조합_픽_초기_필터: 인터페이스_꿀조합선택페이�
   재료: [],
   추가사항: [],
 };
+
+export const INGREDIENT_PATH = '/data/ingredients.json';
+export const RECIPE_PATH = '/data/recipe.json';
