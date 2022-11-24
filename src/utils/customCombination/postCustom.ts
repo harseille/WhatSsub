@@ -62,9 +62,11 @@ const postCustom = async (props: TProps) => {
   if (!inputValue.trim()) return alert('제목을 입력해주세요');
 
   const 조합_정보 = await 조합_정리하기({ customCombination, inputValue, userInfo });
+  const 조합_등록 = await dbPush('꿀조합', 조합_정보);
 
-  dbPush('꿀조합', 조합_정보);
   체인지핸들러_나만의_조합_수정!(나만의_조합_초기값);
+
+  return 조합_등록;
 };
 
 export default postCustom;
