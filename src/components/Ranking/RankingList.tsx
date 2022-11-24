@@ -6,7 +6,6 @@ import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import { RefObject } from 'react';
 
 type TProps = {
   currentTab: string;

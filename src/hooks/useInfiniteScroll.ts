@@ -1,86 +1,52 @@
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { query, collection, getCountFromServer } from 'firebase/firestore';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { db } from '../firebase.config';
 
-const useInfiniteScroll = (callback: Function) => {
-  const [realTarget, setRealTarget] = useState<HTMLLIElement | null>(null);
+const useInfiniteScroll = (callback: Function, dataLength: number, collectionName: string) => {
+  const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const target = useRef<HTMLUListElement>(null);
-  const ENDPOINT = 1;
-
-  // const observer = useMemo(
-  //   () =>
-  //     new IntersectionObserver(
-  //       async ([{ isIntersecting }]) => {
-  //         if (target.current === null) {
-  //           return;
-  //         }
-  //         if (isIntersecting) {
-  //           setIsLoading(true);
-  //           await callback();
-  //           setIsLoading(false);
-  //           // observer.disconnect();
-  //           // console.log(observer);
-  //         }
-  //       },
-  //       { threshold: 1 }
-  //     ),
-  //   [target, callback]
-  // );
 
   useEffect(() => {
-    const lastTargetChild = target.current!.children[target.current!.children.length - ENDPOINT];
+    const getServerDataLength = async () => {
+      const querySnapshot = await getCountFromServer(query(collection(db, collectionName)));
 
-    let observer: IntersectionObserver;
-
-    if (lastTargetChild) {
-      observer = new IntersectionObserver(
-        async ([{ isIntersecting }]) => {
-          if (isIntersecting) {
-            setIsLoading(true);
-            await callback();
-            setIsLoading(false);
-          }
-        },
-        { threshold: 1 }
-      );
-
-      observer.observe(lastTargetChild);
-    }
-    return () => {
-      observer && observer.unobserve(lastTargetChild);
+      if (dataLength === querySnapshot.data().count) {
+        setHasMore(false);
+      }
     };
-  }, [target]);
+    getServerDataLength();
+  }, [dataLength, collectionName]);
+
+  const observer = useRef<IntersectionObserver | null>(null);
+  const listRef = useCallback(
+    (node: HTMLLIElement) => {
+      // if (!observer.current) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(
+        async entries => {
+          console.log(entries);
+          if (entries[0].isIntersecting) {
+            // setIsLoading(true);
+            if (hasMore) {
+              await callback();
+            }
+            // setIsLoading(false);
+          }
+          if (!hasMore) observer.current!.disconnect();
+        },
+        {
+          threshold: 1,
+        }
+      );
+      if (node) observer.current.observe(node);
+    },
+    [callback, hasMore]
+  );
 
   return {
-    target,
+    listRef,
     isLoading,
-    // setRealTarget,
   };
 };
 
 export default useInfiniteScroll;
-
-//   useEffect(() => {
-//     if (realTarget === null) return;
-
-//     const lastTargetChild = target.current!.children[target.current!.children.length - ENDPOINT];
-
-//     //* 불러올 정보 있는 없는지 확인 필요
-//     // if (page < 5) {
-//     console.log('구독');
-//     console.log(lastTargetChild);
-//     observer.observe(realTarget);
-//     // }
-
-//     return () => {
-//       if (target.current !== null && observer) {
-//         console.log('연결끊기');
-//         observer.unobserve(target.current);
-//       }
-//     };
-//   }, [realTarget]);
-
-//   return {
-//     target,
-//     isLoading,
-//     setRealTarget,
-//   };
