@@ -1,5 +1,5 @@
 // TODO: 리팩토링 필요
-const setFirebaseImageURL = (url: string) => {
+const setFirebaseImgURL = (url: string) => {
   const _url = url.split('images');
   const reg = new RegExp(/[/+]/, 'g');
   const regURL = ('images' + _url[1]).replace(reg, '%2F');
@@ -8,4 +8,4 @@ const setFirebaseImageURL = (url: string) => {
   return firebaseImageURL;
 };
 
-export default setFirebaseImageURL;
+export default setFirebaseImgURL;
