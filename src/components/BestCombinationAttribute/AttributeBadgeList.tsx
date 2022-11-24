@@ -5,7 +5,6 @@ import mediaQuery from '@styles/media-queries';
 import convertBadge from '@utils/convertBadge';
 
 function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
-  console.log(badgeList);
   const convertedBadgeList = convertBadge(badgeList);
   // convertBadge(['달달', '고소']);
 

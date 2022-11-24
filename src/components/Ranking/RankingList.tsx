@@ -6,15 +6,17 @@ import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { RefObject } from 'react';
 
 type TProps = {
   currentTab: string;
   rankingList: 인터페이스_꿀조합[] | null;
+  target: (node: HTMLLIElement) => void;
 };
 
-function RankingList({ currentTab, rankingList }: TProps) {
+function RankingList({ currentTab, rankingList, target }: TProps) {
   return (
-    <div>
+    <ul>
       {rankingList !== null &&
         rankingList.map(({ id, 꿀조합제목, 이미지, 베이스샌드위치, 뱃지리스트, 좋아요 }, i) => {
           let badgeUrl = '';
@@ -26,21 +28,23 @@ function RankingList({ currentTab, rankingList }: TProps) {
           }
 
           return (
-            <RankingCardWrapper key={id} to={`/best-combination/${id}`}>
-              {badgeUrl && <RankBadge src={badgeUrl} alt={`rank${i + 1}`} />}
-              <CombinationRankingCard
-                rank={i + 1}
-                currentTab={currentTab}
-                title={꿀조합제목}
-                imageUrl={이미지}
-                originName={베이스샌드위치}
-                badgeList={뱃지리스트}
-                like={좋아요}
-              />
-            </RankingCardWrapper>
+            <li key={id} ref={i === rankingList.length - 1 ? target : null}>
+              <RankingCardWrapper to={`/best-combination/${id}`}>
+                {badgeUrl && <RankBadge src={badgeUrl} alt={`rank${i + 1}`} />}
+                <CombinationRankingCard
+                  rank={i + 1}
+                  currentTab={currentTab}
+                  title={꿀조합제목}
+                  imageUrl={이미지}
+                  originName={베이스샌드위치}
+                  badgeList={뱃지리스트}
+                  like={좋아요}
+                />
+              </RankingCardWrapper>
+            </li>
           );
         })}
-    </div>
+    </ul>
   );
 }
 
@@ -48,6 +52,7 @@ export default RankingList;
 
 const RankingCardWrapper = styled(Link)`
   position: relative;
+  display: block;
   margin-bottom: 15px;
 `;
 
