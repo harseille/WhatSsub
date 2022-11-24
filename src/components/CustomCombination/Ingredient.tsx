@@ -1,11 +1,11 @@
 import selectIngredients from '@utils/customCombination/selectIngredients';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
 
 type TProps = {
-  customCombination: 인터페이스_꿀조합;
-  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+  customCombination: 인터페이스_생성단계_꿀조합;
+  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   IngredientInfo: 인터페이스_선택된_재료;
   isSelected: boolean;
 };

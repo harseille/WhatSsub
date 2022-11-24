@@ -33,8 +33,6 @@ function BestCombinationList({ filter }: { filter: string[] }) {
 
     const covertBCList: 인터페이스_꿀조합[] = [];
     쿼리스냅샷.forEach((doc: any) => {
-      // console.log(doc.data());
-      // const { like: 좋아요, badgeList: 뱃지리스트, ...rest } = doc.data();
       covertBCList.push({
         id: doc.id,
         ...doc.data(),
@@ -63,7 +61,7 @@ function BestCombinationList({ filter }: { filter: string[] }) {
     <ListWrap ref={target}>
       {꿀조합_목록.map(sandwich => (
         //* key 값 수정 필요
-        <SandwichInfoCard key={sandwich.꿀조합제목} sandwich={sandwich} />
+        <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
       ))}
     </ListWrap>
   );

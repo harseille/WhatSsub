@@ -7,16 +7,17 @@ import { 인터페이스_댓글_읽기 } from '@typings/IComment';
 function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {
   const {
     // comment: { 작성자이름, 내용, 작성일 },
-    comment: { 작성자이름, 작성자프로필이미지, 내용, 작성일 },
+    // comment: { 작성자이름, 작성자프로필이미지, 내용, 작성일 },
+    comment: { author, authorProfileImg, content, createdAt },
   } = props;
   return (
     <Wrapper>
       <UserInfoWrapper>
-        <Profile>{작성자프로필이미지 && <ProfileImg src={작성자프로필이미지} />}</Profile>
-        <UserName>{작성자이름}</UserName>
-        <CreatedTime>{getTimePassedBy(작성일)}</CreatedTime>
+        <Profile>{authorProfileImg && <ProfileImg src={authorProfileImg} />}</Profile>
+        <UserName>{author}</UserName>
+        <CreatedTime>{getTimePassedBy(createdAt)}</CreatedTime>
       </UserInfoWrapper>
-      <Comment>{내용}</Comment>
+      <Comment>{content}</Comment>
     </Wrapper>
   );
 }

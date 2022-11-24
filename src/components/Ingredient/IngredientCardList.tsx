@@ -1,5 +1,6 @@
 import IngredientCard from '@components/Ingredient/IngredientCard';
 import styled from '@emotion/styled';
+import mediaQuery from '@styles/media-queries';
 import { flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합_재료 } from '@typings/ISandwich';
 
@@ -25,6 +26,10 @@ const CardList = styled.ul`
 
   ${flexbox()}
   gap: 8px;
+
+  ${mediaQuery} {
+    gap: 12px;
+  }
 `;
 
 export default IngredientCardList;

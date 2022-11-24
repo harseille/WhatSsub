@@ -7,11 +7,11 @@ import postCustom from '@utils/customCombination/postCustom';
 
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
-  customCombination: 인터페이스_꿀조합;
-  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+  customCombination: 인터페이스_생성단계_꿀조합;
+  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
 };
 
 function CombinationRegistration(props: TProps) {
