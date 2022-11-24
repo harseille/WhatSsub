@@ -3,23 +3,10 @@ import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
 import SelectComponent from '@components/CustomCombination/SelectComponent';
 import Wrapper from '@components/UI/Wrapper';
 import combinationVerification from '@utils/customCombination/combinationVerification';
+import { 나만의_조합_초기값 } from '@constants/constants';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
-
-const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 = {
-  작성자id: '',
-  꿀조합제목: '',
-  작성자: '',
-  작성일: 0,
-  좋아요: 0,
-  베이스샌드위치: '',
-  이미지: '',
-  토스팅: '',
-  칼로리: '',
-  뱃지리스트: [],
-  선택재료: [],
-};
 
 function CustomPageWrap() {
   const [현재진행도, 현재진행도_수정] = useState(1);

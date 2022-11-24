@@ -1,7 +1,7 @@
 import axios from 'axios';
 import dbPush from '@api/dbPush';
 
-import { RECIPE_PATH, INGREDIENT_PATH } from '@constants/constants';
+import { RECIPE_PATH, INGREDIENT_PATH, 나만의_조합_초기값 } from '@constants/constants';
 
 import { 인터페이스_생성단계_꿀조합, 인터페이스_레시피, 인터페이스_메인재료 } from '@typings/ISandwich';
 
@@ -63,8 +63,8 @@ const postCustom = async (props: TProps) => {
 
   const 조합_정보 = await 조합_정리하기({ customCombination, inputValue, userInfo });
 
-  console.log(조합_정보);
   dbPush('꿀조합', 조합_정보);
+  체인지핸들러_나만의_조합_수정!(나만의_조합_초기값);
 };
 
 export default postCustom;
