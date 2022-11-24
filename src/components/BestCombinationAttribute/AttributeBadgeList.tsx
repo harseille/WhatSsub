@@ -5,6 +5,8 @@ import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich'
 
 function SandwichBadgeList({ badgeList }: { badgeList: 인터페이스_샌드위치뱃지리스트 }) {
   const convertedBadgeList = Object.entries(badgeList);
+  console.log('badgeList', badgeList); // ['닭고기', '돼지고기', '베이컨 추가', '향긋', '매콤']
+  console.log('convertedBadgeList', convertedBadgeList);
 
   return (
     <BadgeList>

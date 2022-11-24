@@ -103,7 +103,7 @@ function MyPage() {
     await 쿼리스냅샷.forEach(doc => {
       나만의_리스트.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
     });
-    // console.log('나만의 리스트 =>', 나만의_리스트);
+    console.log('나만의 리스트 =>', 나만의_리스트);
     setMyList(나만의_리스트);
 
     // const 유저만의_꿀조합 = 나만의_리스트.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
@@ -130,7 +130,7 @@ function MyPage() {
   // ! 데이터 받아온 후 컴포넌트를 만들게 됨으로 리팩토링 예정
   // const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
   const userCombination = 유저만의_꿀조합?.map(sandwich => (
-    <Card key={sandwich.작성자id}>
+    <Card key={sandwich.꿀조합제목}>
       <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
