@@ -42,7 +42,7 @@ function BestCombinationList({ filter }: { filter: string[] }) {
     꿀조합_목록_수정(covertBCList);
   };
 
-  const { target, isLoading } = useInfiniteScroll(fetchData);
+  const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, '꿀조합');
 
   useEffect(() => {
     // fetchData();
@@ -50,15 +50,15 @@ function BestCombinationList({ filter }: { filter: string[] }) {
 
   if (isLoading)
     return (
-      <ul ref={target}>
-        <li>Loading.....</li>
+      <ul>
+        <li ref={listRef}>Loading.....</li>
       </ul>
     );
 
   if (꿀조합_목록.length === 0) return <NotFoundBestCombinationList />;
 
   return (
-    <ListWrap ref={target}>
+    <ListWrap>
       {꿀조합_목록.map(sandwich => (
         //* key 값 수정 필요
         <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />

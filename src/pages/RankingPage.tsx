@@ -1,4 +1,4 @@
-import { useState, MouseEvent, useRef, useCallback, useEffect } from 'react';
+import { useState, MouseEvent, useEffect } from 'react';
 import Wrapper from '@components/UI/Wrapper';
 import RankingTab from '@components/Ranking/RankingTab';
 import RankingList from '@components/Ranking/RankingList';
@@ -14,12 +14,6 @@ function RankingPage() {
   const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>([]);
   const [currentTab, setCurrentTab] = useState<string>('맛잘알랭킹');
   const [key, setKey] = useState<DocumentData | null>(null);
-
-  useEffect(() => {
-    // const condition: string = currentTab === '맛잘알랭킹' ? '좋아요' : '작성일';
-
-    꿀조합_컬렉션_정렬해서_가져오기(currentTab);
-  }, [currentTab]);
 
   const 꿀조합_컬렉션_정렬해서_가져오기 = async (currentTab: string) => {
     const condition: string = currentTab === '맛잘알랭킹' ? '좋아요' : '작성일';
@@ -38,58 +32,46 @@ function RankingPage() {
     setRankingList(prev => [...prev, ...랭킹리스트]);
   };
 
-  const onClick = () => {
-    꿀조합_컬렉션_정렬해서_가져오기(currentTab);
-  };
+  const { listRef } = useInfiniteScroll(
+    꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab),
+    rankingList.length,
+    '꿀조합'
+  );
 
-  // const { target, isLoading } = useInfiniteScroll(꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab));
+  useEffect(() => {
+    꿀조합_컬렉션_정렬해서_가져오기(currentTab);
+  }, [currentTab]);
 
   const 클릭핸들러_탭_변경 = (title: string, e: MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(title);
   };
 
-  const observer = useRef<IntersectionObserver | null>(null);
-  const listRef = useCallback(
-    (node: HTMLLIElement) => {
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          꿀조합_컬렉션_정렬해서_가져오기(currentTab);
-        }
-      });
-      if (node) observer.current.observe(node);
-    },
-    [꿀조합_컬렉션_정렬해서_가져오기]
-  );
-
   // if (isLoading)
   //   return (
-  //     <ul ref={target}>
-  //       <li>Loading...</li>
+  //     <ul>
+  //       <li ref={listRef}>Loading...</li>
   //     </ul>
   //   );
 
   return (
-    <Wrapper2>
+    <RankingWrapper>
       <Wrapper>
         <RankingTab currentTab={currentTab} onClick={클릭핸들러_탭_변경} />
         <RankingList currentTab={currentTab} rankingList={rankingList} target={listRef} />
-        <button type="button" onClick={onClick}>
-          next List
-        </button>
       </Wrapper>
-    </Wrapper2>
+    </RankingWrapper>
   );
 }
 
 export default RankingPage;
 
-const Wrapper2 = styled.div`
-  background: #f9f9f9;
-  height: 100vh;
+const RankingWrapper = styled.div`
+  width: 100%;
   padding: 25px 20px;
+  background: #f9f9f9;
 
   ${mediaQuery} {
     padding-top: 35px;
+    padding-bottom: 50px;
   }
 `;

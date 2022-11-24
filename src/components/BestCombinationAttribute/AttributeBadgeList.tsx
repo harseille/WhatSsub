@@ -6,7 +6,6 @@ import convertBadge from '@utils/convertBadge';
 
 function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
   const convertedBadgeList = convertBadge(badgeList);
-  // convertBadge(['달달', '고소']);
 
   return (
     <BadgeList>

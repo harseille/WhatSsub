@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
+import { isLoggedInState, userState } from '@state/index';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
@@ -10,10 +10,18 @@ import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
 import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import dbGet from '@api/dbGet';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { User } from 'firebase/auth';
+import { AnyTxtRecord } from 'dns';
+import { db } from '../firebase.config';
 
+export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
+  id: string;
+}
 const sandwiches: 인터페이스_꿀조합[] = [
   {
-    id: 'awsdasdsadas',
+    id: 'asd123',
     작성자id: 'test1',
     꿀조합제목: '꿀꿀마앗',
     작성자: '다다',
@@ -26,7 +34,7 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'awsdasdsadas2',
+    id: 'asd124',
     작성자id: 'test2',
     꿀조합제목: '돼지위치',
     작성자: '댑',
@@ -39,14 +47,14 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    id: 'awsdasdsadas3',
+    id: 'asd1236',
     작성자id: 'test3',
     꿀조합제목: '소고기 굿굿',
+    이미지: SteakCheese,
     작성자: '다비나',
     작성일: Date.now(),
     좋아요: 52,
     베이스샌드위치: '풀드 포크드',
-    이미지: SteakCheese,
     칼로리: '355',
     뱃지리스트: ['고소', '소고기', '고기러버'],
     선택재료: [],
@@ -56,20 +64,50 @@ const sandwiches: 인터페이스_꿀조합[] = [
 function MyPage() {
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
+  const [currentTab, setCurrentTab] = useState<string>('좋아요 꿀조합');
+  const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+  const 유저정보: User | null = useRecoilValue(userState);
+
+  // db.collection('꿀조합') =>
 
   useEffect(() => {
+    const tabToggle: string = currentTab !== '좋아요 꿀조합' ? '작성일' : '좋아요';
+    꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
     }
-  }, [isLoggedin, navigate]);
+  }, [isLoggedin, navigate, currentTab]);
 
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
 
+  // const 나만의_리스트: 인터페이스_꿀조합_아이디[] = [];
+  // ? --------------------------------------------------------------------------------------------------------------------
   const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
-    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');
+    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`);
     setToggleState(사용자명_체크);
   };
+  const 꿀조합_컬렉션_탭에따라_가져오기 = async (tabToggle: string) => {
+    const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(tabToggle, 'desc'))); // tabToggle에 따라 내림차순
+
+    const 나만의_리스트: 인터페이스_꿀조합_아이디[] = [];
+    await 쿼리스냅샷.forEach(doc => {
+      나만의_리스트.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
+    });
+    console.log('나만의 리스트 =>', 나만의_리스트);
+    setMyList(나만의_리스트);
+
+    // const 유저만의_꿀조합 = 나만의_리스트.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
+    // console.log('유저만의_꿀조합 =>', 유저만의_꿀조합);
+  };
+  // ? --------------------------------------------------------------------------------------------------------------------
+
+  // console.log('나만의_리스트 =>', 나만의_리스트);
+  // console.log('sandwiches =>', sandwiches);
+  // console.log('myList =>', myList);
+
+  const 유저만의_꿀조합 = myList?.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
+  console.log('유저만의_꿀조합 =>', 유저만의_꿀조합);
 
   //! 서버에서 sort 해주면 얘도 없어질 예정
   const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
@@ -81,8 +119,9 @@ function MyPage() {
     +next.좋아요 - +prev.좋아요;
 
   // ! 데이터 받아온 후 컴포넌트를 만들게 됨으로 리팩토링 예정
-  const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.작성자id}>
+  // const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
+  const userCombination = 유저만의_꿀조합?.map(sandwich => (
+    <Card key={sandwich.꿀조합제목}>
       <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
@@ -102,7 +141,9 @@ function MyPage() {
       <Content>
         {toggleState ? (
           <div>
-            <UserTitle onClick={클릭핸들러_꿀조합_목록_변경}>단찌만의 조합</UserTitle>
+            <UserTitle onClick={클릭핸들러_꿀조합_목록_변경}>
+              <span>{유저정보?.displayName}</span>만의 조합
+            </UserTitle>
             <LikeTitle className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
               좋아요 꿀조합
             </LikeTitle>
@@ -110,7 +151,7 @@ function MyPage() {
         ) : (
           <div>
             <UserTitle onClick={클릭핸들러_꿀조합_목록_변경} style={{ color: '#6b6b6b' }}>
-              단찌만의 조합
+              <span>{유저정보?.displayName}</span>만의 조합
             </UserTitle>
             <LikeTitle style={{ color: '#252525' }} className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
               좋아요 꿀조합
@@ -155,7 +196,7 @@ const Card = styled.div`
   box-sizing: border-box;
   padding: 20px 35px;
   width: ${changeRem(370)};
-  height: ${changeRem(286)};
+  /* height: ${changeRem(286)}; */
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   margin: 20px auto 0;
