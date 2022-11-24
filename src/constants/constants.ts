@@ -2,7 +2,11 @@ import homeImg from '@assets/images/home.svg';
 import rankingImg from '@assets/images/ranking.svg';
 import customImg from '@assets/images/custom.svg';
 import myPageImg from '@assets/images/myPage.svg';
-import { 인터페이스_꿀조합선택페이지_필터, 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
+import {
+  인터페이스_꿀조합선택페이지_필터,
+  인터페이스_생성단계_꿀조합,
+  인터페이스_재료데이터,
+} from '@typings/ISandwich';
 
 type 타입_메뉴 = {
   메뉴명: string;
@@ -44,6 +48,8 @@ export const 꿀조합_픽_초기_필터: 인터페이스_꿀조합선택페이�
   추가사항: [],
 };
 
+// CustomCombinationPage 관련 상수
+
 export const INGREDIENT_PATH = '/data/ingredients.json';
 export const RECIPE_PATH = '/data/recipe.json';
 
@@ -60,3 +66,20 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
   뱃지리스트: [],
   선택재료: [],
 };
+
+export const 재료데이터_초기값: 인터페이스_재료데이터[] = [
+  { 카테고리: '', 배경색: '', 글자색: '', 속성유무: false, 목록: [] },
+];
+
+type 타입_카테고리_목록 = {
+  [key: number]: string[];
+};
+
+export const 스탭_재료_목록: 타입_카테고리_목록 = {
+  1: ['샌드위치'],
+  2: ['빵', '토스팅', '치즈'],
+  3: ['야채', '추가재료'],
+  4: ['소스'],
+};
+
+export const 필수_선택_재료 = ['샌드위치', '빵', '토스팅'];

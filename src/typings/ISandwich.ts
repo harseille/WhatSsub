@@ -81,6 +81,7 @@ export interface 인터페이스_레시피 {
   이름: string;
   재료목록: string[];
   재료칼로리: string;
+  이미지: string;
 }
 
 export interface 인터페이스_랜덤재료샌드위치 {
