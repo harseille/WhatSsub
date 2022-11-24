@@ -5,16 +5,16 @@ import CombinationRegistration from '@components/CustomCombination/CombinationRe
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
-type 타입_재료선택_속성 = {
-  customCombination: 인터페이스_꿀조합;
+type TProps = {
+  customCombination: 인터페이스_생성단계_꿀조합;
   currentStep: number;
-  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   onNextStep: () => void;
 };
 
-function SelectComponent(props: 타입_재료선택_속성) {
+function SelectComponent(props: TProps) {
   const {
     currentStep: 현재진행도,
     onNextStep: 다음_선택지로_이동하기,
@@ -34,7 +34,7 @@ function SelectComponent(props: 타입_재료선택_속성) {
           <NextStepButton currentStep={현재진행도} onNextStep={다음_선택지로_이동하기} />
         </>
       ) : (
-        <CombinationRegistration />
+        <CombinationRegistration customCombination={나만의_조합} onChange={체인지핸들러_나만의_조합_수정} />
       )}
     </SelectWrap>
   );

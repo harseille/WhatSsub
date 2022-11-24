@@ -3,27 +3,10 @@ import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
 import SelectComponent from '@components/CustomCombination/SelectComponent';
 import Wrapper from '@components/UI/Wrapper';
 import combinationVerification from '@utils/customCombination/combinationVerification';
+import { 나만의_조합_초기값 } from '@constants/constants';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-
-const 나만의_조합_초기값: 인터페이스_꿀조합 = {
-  작성자id: '',
-  꿀조합제목: '',
-  작성자: '',
-  작성일: '',
-  좋아요: '0',
-  베이스샌드위치: '',
-  이미지: '',
-  토스팅: '',
-  칼로리: '',
-  뱃지리스트: {
-    맛: [],
-    재료: [],
-    추가사항: [],
-  },
-  선택재료: [],
-};
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 function CustomPageWrap() {
   const [현재진행도, 현재진행도_수정] = useState(1);
@@ -46,7 +29,7 @@ function CustomPageWrap() {
     else alert('필수 재료 중 선택되지 않은 재료가 있습니다.');
   };
 
-  const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_꿀조합) => 나만의_조합_수정(선택한재료);
+  const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_생성단계_꿀조합) => 나만의_조합_수정(선택한재료);
   return (
     <CustomPage>
       {현재진행도 <= 4 ? (

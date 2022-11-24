@@ -43,6 +43,8 @@ export interface 인터페이스_재료정보 {
   칼로리: string;
 }
 
+export type 인터페이스_메인재료 = 인터페이스_꿀조합_재료;
+
 export interface 인터페이스_재료 {
   id?: string;
   이름: string;
@@ -59,16 +61,20 @@ export interface 인터페이스_샌드위치 {
   이미지: string;
   베이스샌드위치: string;
   칼로리: string;
-  뱃지리스트: 인터페이스_샌드위치뱃지리스트;
+  뱃지리스트: string[];
 }
 
-export interface 인터페이스_꿀조합 extends 인터페이스_샌드위치 {
+export interface 인터페이스_생성단계_꿀조합 extends 인터페이스_샌드위치 {
   작성자id: string;
   작성자: string;
-  작성일: string;
-  좋아요: string;
+  작성일: number;
+  좋아요: number;
   선택재료: 인터페이스_재료[];
   토스팅?: string;
+}
+
+export interface 인터페이스_꿀조합 extends 인터페이스_생성단계_꿀조합 {
+  id: string;
 }
 
 export interface 인터페이스_레시피 {

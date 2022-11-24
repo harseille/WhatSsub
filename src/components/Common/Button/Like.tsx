@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 
 interface 인터페이스_좋아요 {
-  count: string;
+  count: number;
 }
 
 function Like(props: 인터페이스_좋아요) {

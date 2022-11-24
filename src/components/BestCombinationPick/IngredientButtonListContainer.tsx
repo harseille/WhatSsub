@@ -2,7 +2,7 @@ import IngredientButtonList from '@components/BestCombinationAttribute/Attribute
 import refreshIcon from '@assets/icons/refresh.svg';
 import styled from '@emotion/styled';
 import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
-import 더미데이터 from '../../data/PickPageDummy';
+import 더미데이터 from '../../data/PickAttribute';
 
 type TProps = {
   filteredAttr: 인터페이스_꿀조합선택페이지_필터;
