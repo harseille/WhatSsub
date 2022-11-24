@@ -5,12 +5,11 @@ import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-// import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import { 인터페이스_꿀조합_아이디 } from '@pages/RankingPage';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   currentTab: string;
-  rankingList: 인터페이스_꿀조합_아이디[] | null;
+  rankingList: 인터페이스_꿀조합[] | null;
 };
 
 function RankingList({ currentTab, rankingList }: TProps) {

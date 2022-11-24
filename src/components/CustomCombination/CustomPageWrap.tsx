@@ -5,9 +5,9 @@ import Wrapper from '@components/UI/Wrapper';
 import combinationVerification from '@utils/customCombination/combinationVerification';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
-const 나만의_조합_초기값: 인터페이스_꿀조합 = {
+const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 = {
   작성자id: '',
   꿀조합제목: '',
   작성자: '',
@@ -42,7 +42,7 @@ function CustomPageWrap() {
     else alert('필수 재료 중 선택되지 않은 재료가 있습니다.');
   };
 
-  const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_꿀조합) => 나만의_조합_수정(선택한재료);
+  const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_생성단계_꿀조합) => 나만의_조합_수정(선택한재료);
   return (
     <CustomPage>
       {현재진행도 <= 4 ? (

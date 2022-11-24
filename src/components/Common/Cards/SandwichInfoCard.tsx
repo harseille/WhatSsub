@@ -7,9 +7,9 @@ import styled from '@emotion/styled';
 import { userLike } from '@state/User';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_샌드위치 } from '@typings/ISandwich';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
-function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
+function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_꿀조합 }) {
   // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
   //* id 대신 임시로 꿀조합 제목 나중에 수정 필요
   const [userData, setUserData] = useRecoilState<string[]>(userLike);
@@ -21,8 +21,8 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
-    setUserData((prevData: string[]) => {
-      if (!prevData.includes(sandwich.id!)) return [...prevData, sandwich.id];
+    setUserData(prevData => {
+      if (!prevData.includes(sandwich.id)) return [...prevData, sandwich.id];
 
       return prevData.filter(id => id !== sandwich.id);
     });
@@ -31,7 +31,7 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.includes(sandwich.id!)} />
+      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.includes(sandwich.id)} />
     </CardWarp>
   );
 }

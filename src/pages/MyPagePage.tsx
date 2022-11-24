@@ -13,6 +13,7 @@ import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 const sandwiches: 인터페이스_꿀조합[] = [
   {
+    id: 'awsdasdsadas',
     작성자id: 'test1',
     꿀조합제목: '꿀꿀마앗',
     작성자: '다다',
@@ -25,6 +26,7 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
+    id: 'awsdasdsadas2',
     작성자id: 'test2',
     꿀조합제목: '돼지위치',
     작성자: '댑',
@@ -37,6 +39,7 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
+    id: 'awsdasdsadas3',
     작성자id: 'test3',
     꿀조합제목: '소고기 굿굿',
     작성자: '다비나',

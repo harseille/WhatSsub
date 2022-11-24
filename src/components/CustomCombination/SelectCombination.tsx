@@ -6,16 +6,16 @@ import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
 import {
-  인터페이스_꿀조합,
+  인터페이스_생성단계_꿀조합,
   인터페이스_재료데이터,
   인터페이스_레시피,
   인터페이스_선택된_재료,
 } from '@typings/ISandwich';
 
 type TProps = {
-  customCombination: 인터페이스_꿀조합;
+  customCombination: 인터페이스_생성단계_꿀조합;
   currentStep: number;
-  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
 };
 
 type 타입_카테고리_목록 = {
