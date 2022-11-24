@@ -9,12 +9,8 @@ import dbGet from '@api/dbGet';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
-export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
-  id: string;
-}
-
 function RankingPage() {
-  const [rankingList, setRankingList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[] | null>(null);
   const [currentTab, setCurrentTab] = useState<string>('맛잘알랭킹');
 
   useEffect(() => {
@@ -25,7 +21,7 @@ function RankingPage() {
 
   const 꿀조합_컬렉션_정렬해서_가져오기 = async (condition: string) => {
     const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc')));
-    const 랭킹리스트: 인터페이스_꿀조합_아이디[] = [];
+    const 랭킹리스트: 인터페이스_꿀조합[] = [];
 
     await 쿼리스냅샷.forEach(doc => {
       랭킹리스트.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
