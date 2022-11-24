@@ -36,7 +36,7 @@ const 뱃지리스트_추가하기 = async (
 const 조합_정리하기 = async (props: TProps) => {
   const { customCombination: 나만의_조합, inputValue: 꿀조합_제목, userInfo } = props;
 
-  const today = new Date();
+  // const today = new Date();
   const 조합 = { ...나만의_조합 };
   const recipeRes = await axios.get(RECIPE_PATH);
   const recipeData: 인터페이스_레시피[] = recipeRes.data;
@@ -48,7 +48,8 @@ const 조합_정리하기 = async (props: TProps) => {
   조합.꿀조합제목 = 꿀조합_제목;
   조합.작성자 = userInfo.name as string;
   조합.작성자id = userInfo.id as string;
-  조합.작성일 = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+  // 조합.작성일 = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+  조합.작성일 = Date.now();
   조합.칼로리 = 총_칼로리.toFixed(1).toString();
 
   뱃지리스트_추가하기(조합, 나만의_조합, recipeData);

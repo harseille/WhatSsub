@@ -67,7 +67,7 @@ export interface 인터페이스_샌드위치 {
 export interface 인터페이스_생성단계_꿀조합 extends 인터페이스_샌드위치 {
   작성자id: string;
   작성자: string;
-  작성일: string;
+  작성일: number;
   좋아요: string;
   선택재료: 인터페이스_재료[];
   토스팅?: string;
