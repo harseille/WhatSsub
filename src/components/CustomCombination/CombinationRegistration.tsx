@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 import { userState } from '@state/index';
 import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
 import Button from '@components/UI/Button';
@@ -19,11 +20,13 @@ function CombinationRegistration(props: TProps) {
   const { customCombination, onChange } = props;
   const user = useRecoilValue(userState);
   const userInfo = { id: user?.uid, name: user?.displayName };
+  const navigate = useNavigate();
 
-  const 클릭핸드러_나만의_조합_등록하기 = (e: React.FormEvent) => {
+  const 클릭핸드러_나만의_조합_등록하기 = async (e: React.FormEvent) => {
     e.preventDefault();
-    postCustom({ customCombination, onChange, inputValue, userInfo });
+    const 조합_등록 = await postCustom({ customCombination, onChange, inputValue, userInfo });
     setInputValue('');
+    navigate(`/best-combination/${조합_등록?.id}`);
   };
 
   return (
