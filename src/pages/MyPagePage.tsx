@@ -10,6 +10,9 @@ import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
 import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import dbGet from '@api/dbGet';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
 const sandwiches: 인터페이스_꿀조합[] = [
   {
@@ -45,19 +48,19 @@ const sandwiches: 인터페이스_꿀조합[] = [
     선택재료: [],
   },
   {
-    작성자id: 'test3',
     꿀조합제목: '소고기 굿굿',
+    이미지: SteakCheese,
+    작성자id: 'test3',
     작성자: '다비나',
     작성일: '2022.11.017',
-    좋아요: '51',
     베이스샌드위치: '풀드 포크드',
-    이미지: SteakCheese,
     칼로리: '355',
     뱃지리스트: {
       맛: ['고소'],
       재료: ['소고기'],
       추가사항: ['고기러버'],
     },
+    좋아요: '51',
     선택재료: [],
   },
 ];
@@ -65,13 +68,18 @@ const sandwiches: 인터페이스_꿀조합[] = [
 function MyPage() {
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
+  const [currentTab, setCurrentTab] = useState<string>('좋아요 꿀조합');
+
+  // db.collection('꿀조합') =>
 
   useEffect(() => {
+    const tabToggle: string = currentTab !== '좋아요 꿀조합' ? '작성일' : '좋아요';
+    꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
     }
-  }, [isLoggedin, navigate]);
+  }, [isLoggedin, navigate, currentTab]);
 
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
 
@@ -79,6 +87,14 @@ function MyPage() {
     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');
     setToggleState(사용자명_체크);
   };
+  const 꿀조합_컬렉션_탭에따라_가져오기 = async (tabToggle: string) => {
+    const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(tabToggle, 'desc'))); // tabToggle에 따라 내림차순
+    console.log('쿼리 스냅샷 =>', 쿼리스냅샷);
+  };
+
+  // const 꿀조합_정렬해서_가져오기 = async() => {
+  //   const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(데이터에 담긴애랑 여기서 걸른 로직의 유저 변수값이 들어가야함, 'desc')));
+  // }
 
   //! 서버에서 sort 해주면 얘도 없어질 예정
   const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
@@ -164,7 +180,7 @@ const Card = styled.div`
   box-sizing: border-box;
   padding: 20px 35px;
   width: ${changeRem(370)};
-  height: ${changeRem(286)};
+  /* height: ${changeRem(286)}; */
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   margin: 20px auto 0;
