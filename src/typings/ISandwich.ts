@@ -68,7 +68,7 @@ export interface 인터페이스_생성단계_꿀조합 extends 인터페이스_
   작성자id: string;
   작성자: string;
   작성일: number;
-  좋아요: string;
+  좋아요: number;
   선택재료: 인터페이스_재료[];
   토스팅?: string;
 }

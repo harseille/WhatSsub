@@ -13,7 +13,7 @@ type TProps = {
   imageUrl: string;
   originName: string;
   badgeList: string[];
-  like: string;
+  like: number;
 };
 
 function CombinationRankingCard({
