@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
+  const [isShowModal, setIsShowModal] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
 
   const toggleFilter = (filter: string, name: string, maxNum: number) => {
@@ -15,7 +16,7 @@ const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
     }
 
     if (maxNum === filterArr.length && !filterArr.includes(name)) {
-      alert('최대 선택 개수를 초과했습니다.!!!');
+      setIsShowModal(true);
       return;
     }
 
@@ -33,7 +34,11 @@ const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
     setSelectedFilter(initFilter);
   };
 
-  return { selectedFilter, toggleFilter, initializeFilter };
+  const closeModal = () => {
+    setIsShowModal(false);
+  };
+
+  return { isShowModal, closeModal, selectedFilter, toggleFilter, initializeFilter };
 };
 
 export default useToggleFilter;
