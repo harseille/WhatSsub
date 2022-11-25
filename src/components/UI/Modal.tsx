@@ -104,7 +104,7 @@ const ModalWrap = styled.div`
 
 const Header = styled.header`
   background: ${props => props.theme.colors.primaryYellow};
-  padding: 1rem;
+  padding: 16px 32px;
   min-height: 50px;
 
   & h2 {
