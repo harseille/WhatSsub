@@ -34,7 +34,9 @@ function BestCombinationList({ filter }: { filter: string[] }) {
     꿀조합_목록_수정(convertBCList);
   };
 
-  const { listRef, isLoading } = useInfiniteScroll(fetchData, 36, '꿀조합');
+  // const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, '꿀조합');
+  const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, query(collection(db, '꿀조합')));
+
 
   useEffect(() => {
     // fetchData();

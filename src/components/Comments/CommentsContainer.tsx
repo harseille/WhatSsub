@@ -4,13 +4,13 @@ import { isLoggedInState } from '@state/index';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/Comments/CommentInputWrap';
 import styled from '@emotion/styled';
+import useComments from '@hooks/useComments';
 import { changeRem, flexbox } from '@styles/mixin';
-import useGetComments from '@hooks/useGetComments';
 import mediaQuery from '@styles/media-queries';
 
 function CommentsContainer() {
   const { combinationId } = useParams();
-  const { comments, commentsCount } = useGetComments(combinationId);
+  const { comments, commentsCount, listRef } = useComments(combinationId!);
   const isLoggedIn = useRecoilValue(isLoggedInState);
 
   return (
@@ -20,7 +20,7 @@ function CommentsContainer() {
           리뷰 <span>{commentsCount}</span>
         </h2>
       </CommentHeader>
-      <CommentList commentList={comments} />
+      <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />
       {isLoggedIn && <CommentInputWrap />}
     </Comments>
   );

@@ -32,10 +32,15 @@ function RankingPage() {
     setRankingList(prev => [...prev, ...랭킹리스트]);
   };
 
+  // const { listRef } = useInfiniteScroll(
+  //   꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab),
+  //   rankingList.length,
+  //   '꿀조합'
+  // );
   const { listRef } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab),
     rankingList.length,
-    '꿀조합'
+    query(collection(db, '꿀조합'))
   );
 
   useEffect(() => {

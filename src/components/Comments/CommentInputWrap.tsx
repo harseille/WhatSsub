@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
-import { 새_댓글_추가하기 } from '@api/index';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '@typings/IComment';
+import { 새_댓글_추가하기 } from '@utils/index';
 
 function CommentInputWrap() {
   const commentInputRef = useRef<HTMLInputElement>(null);
