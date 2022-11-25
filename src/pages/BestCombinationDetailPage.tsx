@@ -37,7 +37,7 @@ function BestCombinationDetailPage() {
       <Wrapper>
         <Header>
           <h1>
-            <span>{꿀조합.작성자_이름}</span>만의 조합
+            <span>{꿀조합.작성자}</span>만의 조합
           </h1>
           <Like count={꿀조합.좋아요} />
         </Header>
@@ -45,7 +45,7 @@ function BestCombinationDetailPage() {
           <SandwichInfo
             sandwich={{
               이미지: 꿀조합.이미지,
-              꿀조합제목: 꿀조합.제목,
+              꿀조합제목: 꿀조합.꿀조합제목,
               베이스샌드위치: 꿀조합.베이스샌드위치,
               칼로리: 꿀조합.칼로리,
               뱃지리스트: 꿀조합.뱃지리스트,
@@ -71,7 +71,7 @@ const Header = styled.div`
   height: 48px;
   background: #fff;
   position: relative;
-  padding: 0 32px 0 32px;
+  padding: 0px 32px 0px 32px;
   & h1 {
     font-weight: 700;
     font-size: ${changeRem(20)};
@@ -82,12 +82,14 @@ const Header = styled.div`
     }
   }
   ${mediaQuery} {
+    height: ${changeRem(72)};
+    padding: 0px 48px 0px 48px;
     & h1 {
       font-size: ${changeRem(28)};
 
       & span {
         color: ${props => props.theme.colors.primaryYellow};
-        font-size: ${changeRem(32)};
+        font-size: ${changeRem(36)};
       }
     }
   }

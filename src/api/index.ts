@@ -1,3 +1,4 @@
-import 새_댓글_추가하기 from './addNewComment';
+import dbGet from './dbGet';
+import dbPush from './dbPush';
 
-export { 새_댓글_추가하기 };
+export { dbGet, dbPush };

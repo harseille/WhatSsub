@@ -34,6 +34,8 @@
     "require-await": "error",
     "arrow-parens": ["error", "as-needed"], // a => {}
     "no-param-reassign": ["error", { "props": false }],
+    "react/default-props-match-prop-types": "off",
+    "react/require-default-props": "off",
     "no-unused-expressions": [
       "error",
       {
