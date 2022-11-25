@@ -3,7 +3,6 @@ import { RouterProvider } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { isLoggedInState, userState } from '@state/index';
 import { userLike } from '@state/User';
-// import dbGet from '@api/dbGet';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import router from './router';
 import { auth, db } from './firebase.config';

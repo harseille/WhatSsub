@@ -1,21 +1,40 @@
 import styled from '@emotion/styled';
+import theme from '@styles/theme';
 import { CSSProperties } from 'react';
 
 const designList = {
-  primaryGreen: `
-    background: #098D42;
-    color: #fff;
-    font-weight: 700;
-    font-size: 18px;
-  `,
-  primaryYellow: `
-    background: #FBC200;
+  primaryRed: `
+    background: ${theme.colors.primaryRed};
     color: #fff;
     font-weight: 700;
     font-size: 18px;
   `,
   primaryOrange: `
-    background: #FB8300;
+  background: ${theme.colors.primaryOrange};
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  `,
+  primaryYellow: `
+  background: ${theme.colors.primaryYellow};
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  `,
+  primaryGreen: `
+    background: ${theme.colors.primaryGreen};
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
+  primaryBlue: `
+    background: ${theme.colors.primaryBlue};
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
+  primaryPurple: `
+    background: ${theme.colors.primaryPurple};
     color: #fff;
     font-weight: 700;
     font-size: 18px;
@@ -28,8 +47,8 @@ const designList = {
   `,
   social: `
     background: #fff;
-    color: #8E8EA9;
-    border: 1px solid #8E8EA9;
+    color: ${theme.colors.gray87};
+    border: 1px solid ${theme.colors.gray87};
     font-weight: 400;
     font-size: 16px;
     & img {
@@ -38,7 +57,15 @@ const designList = {
   `,
 };
 
-export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'primaryOrange' | 'normal' | 'social';
+export type TDesignType =
+  | 'primaryRed'
+  | 'primaryOrange'
+  | 'primaryYellow'
+  | 'primaryGreen'
+  | 'primaryBlue'
+  | 'primaryPurple'
+  | 'normal'
+  | 'social';
 
 export default styled.button<
   CSSProperties & {
