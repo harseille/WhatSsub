@@ -29,17 +29,19 @@ const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery:
           if (entries[0].isIntersecting) {
             // setIsLoading(true);
             if (hasMore) {
+              console.log('실행');
               await callback();
+
+              setIsLoading(false);
             }
-            // setIsLoading(false);
           }
-          if (!hasMore) observer.current!.disconnect();
         },
         {
           threshold: 1,
         }
       );
       if (node) observer.current.observe(node);
+      if (!hasMore) observer.current!.disconnect();
     },
     [callback, hasMore]
   );

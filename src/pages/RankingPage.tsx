@@ -44,19 +44,14 @@ function RankingPage() {
   );
 
   useEffect(() => {
+    setRankingList([]);
+    setKey(null);
     꿀조합_컬렉션_정렬해서_가져오기(currentTab);
   }, [currentTab]);
 
   const 클릭핸들러_탭_변경 = (title: string, e: MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(title);
   };
-
-  // if (isLoading)
-  //   return (
-  //     <ul>
-  //       <li ref={listRef}>Loading...</li>
-  //     </ul>
-  //   );
 
   return (
     <RankingWrapper>

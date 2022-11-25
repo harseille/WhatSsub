@@ -12,6 +12,7 @@ type TProps = {
 };
 function RandomModalResult({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
+  console.log(sandwichData);
   return (
     <Card>
       <CloseBtn onClick={onClick}>
@@ -75,7 +76,6 @@ const ReturnBtn = styled.button`
   width: ${changeRem(284)};
   height: ${changeRem(50)};
   background-color: ${props => props.theme.colors.primaryYellow};
-  /* background: #fbc200; */
   border: none;
   border-radius: 3px;
   color: #fff;

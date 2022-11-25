@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@components/UI/Button';
+import setFirebaseImgURL from '@utils/setFirebaseImgURL';
 
-import SandwichBL from '@assets/images/sandwich_B.L.png';
 import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';
 
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
+import { 인터페이스_재료데이터, 인터페이스_레시피, 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   userName: string | undefined | null;
+  jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
+  customCombination: 인터페이스_생성단계_꿀조합;
 };
 
 function MyCombinationCard(props: TProps) {
-  const { setInputValue, userName, inputValue } = props;
-
+  const { setInputValue, userName, inputValue, jsonData, customCombination: 나만의_조합 } = props;
+  const [sandwichImg, setSandwichImg] = useState('');
   const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+
+  useEffect(() => {
+    setSandwichImg(
+      setFirebaseImgURL(
+        jsonData.recipeData.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string
+      )
+    );
+  }, [jsonData.recipeData, 나만의_조합.베이스샌드위치]);
 
   return (
     <Container>
@@ -33,7 +44,7 @@ function MyCombinationCard(props: TProps) {
         </Text>
         <SubTitle>이 조합으로 세계정복!!</SubTitle>
         <CardContentWrap>
-          <Img src={SandwichBL} alt="샌드위치 이미지" />
+          <Img src={sandwichImg} alt="샌드위치 이미지" />
           <CardInputButtonWrap>
             <Input
               onChange={체인지핸들러_꿀조합제목_입력하기}
@@ -161,18 +172,18 @@ const Danzzi = styled.img`
 
 const DeleteBtn = styled.button`
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 18%;
+  right: 7%;
   border: none;
   background-color: ${props => props.theme.colors.primaryGreen};
-  width: 9%;
-  height: 10%;
+  width: 8%;
+  height: 9%;
   border-radius: 5px;
   box-shadow: 0px 2px 3px #313030;
   cursor: pointer;
   ${mediaQuery} {
     top: 3%;
-    right: 1%;
+    right: 3%;
   }
 
   :active {

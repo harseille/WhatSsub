@@ -7,6 +7,7 @@ import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import {
   인터페이스_재료데이터,
@@ -117,7 +118,7 @@ function RandomRoulette() {
             .filter((val: 인터페이스_재료데이터) => 랜덤_소스_리스트.includes(val.카테고리))
             .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
 
-          // ! 소스 칼로리 포함 시켜야함
+          // 소스 칼로리
           const toNumbers = (arr: string[]) => arr.map(Number);
           const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
 
@@ -125,7 +126,7 @@ function RandomRoulette() {
             Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
           );
           console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
-          // ! setState
+          // setState
           setSandwichData({
             꿀조합제목: '',
             베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
@@ -190,31 +191,32 @@ export default RandomRoulette;
 
 const Container = styled.div`
   position: relative;
-  width: 379px;
+  width: ${changeRem(279)};
   margin: 18px auto 0;
   padding-top: 18px;
+  ${mediaQuery} {
+    width: ${changeRem(379)};
+  }
 `;
-const Roulette = styled.img`
-  /* transform: rotate(-${200}deg); */
-`;
+const Roulette = styled.img``;
 const Pointer = styled.img`
   position: absolute;
-  width: 48px;
-  height: 84px;
+  width: ${changeRem(38)};
   left: 50%;
   top: 0;
   transform: translate(-50%);
-  /* top: 18%;
-  transform: translate(-50%, -50%);
-  width: ${changeRem(30)}; */
+  ${mediaQuery} {
+    width: ${changeRem(50)};
+  }
 `;
 const StartButton = styled.img`
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: ${changeRem(80)};
+  /* height: 80px; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* top: 29%;
-  width: ${changeRem(82)}; */
+  ${mediaQuery} {
+    width: ${changeRem(99)};
+  }
 `;
