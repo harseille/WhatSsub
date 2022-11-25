@@ -190,7 +190,8 @@ export default RandomRoulette;
 
 const Container = styled.div`
   position: relative;
-  width: 379px;
+  /* width: 379px; */
+  width: 279px;
   margin: 18px auto 0;
   padding-top: 18px;
 `;
@@ -199,8 +200,8 @@ const Roulette = styled.img`
 `;
 const Pointer = styled.img`
   position: absolute;
-  width: 48px;
-  height: 84px;
+  /* width: 48px; */
+  width: 38px;
   left: 50%;
   top: 0;
   transform: translate(-50%);
