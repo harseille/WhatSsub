@@ -32,26 +32,23 @@ const DanzziLeft = styled.img`
   position: absolute;
   left: 0;
   bottom: 140px;
-  /* width: 40%; */
-  width: 175px;
+  width: ${changeRem(175)};
   z-index: 5;
 
   ${mediaQuery} {
-    /* width: 25%; */
-    width: 275px;
+    width: ${changeRem(275)};
     left: 60px;
     bottom: 85px;
   }
 `;
 const DanzziRight = styled.img`
   position: absolute;
-  /* width: 18%; */
-  width: 110px;
+  width: ${changeRem(110)};
   right: 0;
   bottom: 150px;
   z-index: 5;
   ${mediaQuery} {
-    width: 180px;
+    width: ${changeRem(180)};
     right: 60px;
     bottom: 130px;
   }
