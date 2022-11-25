@@ -68,8 +68,6 @@ const 조합_정리하기 = (props: TProps) => {
 const postCustom = async (props: TProps) => {
   const { customCombination, inputValue, userInfo, jsonData } = props;
 
-  if (!inputValue.trim()) return alert('제목을 입력해주세요');
-
   const 조합_정보 = 조합_정리하기({ customCombination, inputValue, userInfo, jsonData });
   const 조합_등록 = await dbPush('꿀조합', 조합_정보);
 

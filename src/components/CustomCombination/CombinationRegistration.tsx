@@ -24,6 +24,8 @@ function CombinationRegistration(props: TProps) {
 
   const 클릭핸드러_나만의_조합_등록하기 = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!inputValue.trim()) return alert('제목을 입력해주세요');
+
     const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo, jsonData });
     setInputValue('');
     navigate(`/best-combination/${조합_등록?.id}`);
