@@ -22,6 +22,7 @@ export default function App() {
         await setloggedInUser(_user);
         const 좋아요_리스트 = await getDoc(doc(collection(db, '좋아요'), _user.uid));
         setUserLikeUser(좋아요_리스트.data()!.좋아요_리스트);
+        console.log('좋아요리스트 =>', 좋아요_리스트.data());
       } else {
         setIsLoggedIn(false);
         setloggedInUser(null);
