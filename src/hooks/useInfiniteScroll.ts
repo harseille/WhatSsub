@@ -32,13 +32,13 @@ const useInfiniteScroll = (callback: Function, dataLength: number, collectionNam
             }
             // setIsLoading(false);
           }
-          if (!hasMore) observer.current!.disconnect();
         },
         {
           threshold: 1,
         }
       );
       if (node) observer.current.observe(node);
+      if (!hasMore) observer.current!.disconnect();
     },
     [callback, hasMore]
   );

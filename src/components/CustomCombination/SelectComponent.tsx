@@ -54,11 +54,7 @@ function SelectComponent(props: TProps) {
           <NextStepButton currentStep={현재진행도} onNextStep={다음_선택지로_이동하기} />
         </>
       ) : (
-        <CombinationRegistration
-          jsonData={{ ingredientsData, recipeData }}
-          customCombination={나만의_조합}
-          onChange={체인지핸들러_나만의_조합_수정}
-        />
+        <CombinationRegistration jsonData={{ ingredientsData, recipeData }} customCombination={나만의_조합} />
       )}
     </SelectWrap>
   );

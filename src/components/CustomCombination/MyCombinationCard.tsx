@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@components/UI/Button';
 import setFirebaseImgURL from '@utils/setFirebaseImgURL';
 
@@ -20,11 +20,16 @@ type TProps = {
 
 function MyCombinationCard(props: TProps) {
   const { setInputValue, userName, inputValue, jsonData, customCombination: 나만의_조합 } = props;
-
+  const [sandwichImg, setSandwichImg] = useState('');
   const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
-  const sandwichImg = setFirebaseImgURL(
-    jsonData.recipeData.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string
-  );
+
+  useEffect(() => {
+    setSandwichImg(
+      setFirebaseImgURL(
+        jsonData.recipeData.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string
+      )
+    );
+  }, [jsonData.recipeData, 나만의_조합.베이스샌드위치]);
 
   return (
     <Container>

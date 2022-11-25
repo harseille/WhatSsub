@@ -12,20 +12,19 @@ import { 인터페이스_생성단계_꿀조합, 인터페이스_재료데이터
 
 type TProps = {
   customCombination: 인터페이스_생성단계_꿀조합;
-  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
 };
 
 function CombinationRegistration(props: TProps) {
   const [inputValue, setInputValue] = useState('');
-  const { customCombination, onChange, jsonData } = props;
+  const { customCombination, jsonData } = props;
   const user = useRecoilValue(userState);
   const userInfo = { id: user?.uid, name: user?.displayName };
   const navigate = useNavigate();
 
   const 클릭핸드러_나만의_조합_등록하기 = async (e: React.FormEvent) => {
     e.preventDefault();
-    const 조합_등록 = await postCustom({ customCombination, onChange, inputValue, userInfo, jsonData });
+    const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo, jsonData });
     setInputValue('');
     navigate(`/best-combination/${조합_등록?.id}`);
   };
