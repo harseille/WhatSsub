@@ -1,8 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Button from '@components/UI/Button';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { useEffect, useRef } from 'react';
+import mediaQuery from '@styles/media-queries';
 
 type TProps = {
   title: string;
@@ -90,16 +91,21 @@ const BackdropWrap = styled.div`
 const ModalWrap = styled.div`
   position: fixed;
   margin: 0 auto;
-  top: 10%;
+  top: 40%;
   left: 0;
   right: 0;
-  max-width: 40%;
-  min-width: ${changeRem(200)};
+  width: 60%;
+  min-width: ${changeRem(360)};
   z-index: 100;
   overflow: hidden;
   background: #fff;
   border-radius: 12px;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+
+  ${mediaQuery} {
+    top: 10%;
+    max-width: 600px;
+  }
 `;
 
 const Header = styled.header`
