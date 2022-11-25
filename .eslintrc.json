@@ -21,6 +21,7 @@
     "no-plusplus": "off",
     "no-shadow": "off",
     "no-alert": "off",
+
     "vars-on-top": "off",
     "no-underscore-dangle": "off", // var _foo;
     "comma-dangle": "off",
@@ -34,6 +35,8 @@
     "require-await": "error",
     "arrow-parens": ["error", "as-needed"], // a => {}
     "no-param-reassign": ["error", { "props": false }],
+    "react/default-props-match-prop-types": "off",
+    "react/require-default-props": "off",
     "no-unused-expressions": [
       "error",
       {

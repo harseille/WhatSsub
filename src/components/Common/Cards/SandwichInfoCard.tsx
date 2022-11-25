@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { userState } from '@state/index';
+import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import heart from '@assets/icons/heart.svg';
@@ -11,11 +10,15 @@ import mediaQuery from '@styles/media-queries';
 import dbUpdate from '@api/dbUpdate';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { increment } from 'firebase/firestore';
+import { User } from 'firebase/auth';
 
-function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_꿀조합 }) {
-  // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
-  //* id 대신 임시로 꿀조합 제목 나중에 수정 필요
-  const userInfo = useRecoilValue(userState);
+type TProps = {
+  sandwich: 인터페이스_꿀조합;
+  userInfo: User | null;
+  toggleModal: () => void;
+};
+
+function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const navigate = useNavigate();
 
@@ -25,9 +28,9 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_꿀조합 })
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
-    if (!userInfo && confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?')) {
-      navigate('/login');
-    } else if (userInfo) {
+    if (!userInfo) {
+      toggleModal();
+    } else {
       if (좋아요한샌드위치.includes(sandwich.id)) {
         dbUpdate('좋아요', userInfo.uid, {
           좋아요_리스트: 좋아요한샌드위치.filter(id => id !== sandwich.id),
@@ -65,6 +68,12 @@ const CardWarp = styled.li`
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   background: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f7d86e;
+    box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5), 10px 5px 5px #7879706d;
+  }
 
   ${mediaQuery} {
     min-width: 90%;
@@ -87,6 +96,12 @@ const LikeBtn = styled.button<{ isLiked: boolean }>`
   height: ${changeRem(34)};
   background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
   background-color: #ffe8e0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7a9a9a3;
+    box-shadow: 3px 3px 3px #7879706d;
+  }
 
   ${mediaQuery} {
     width: ${changeRem(48)};

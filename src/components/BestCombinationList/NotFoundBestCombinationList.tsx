@@ -17,14 +17,16 @@ function NotFoundBestCombinationList() {
       </ImgWrap>
       <Desc>검색하신 샌드위치를 찾을 수 없습니다.</Desc>
       <Desc>꿀조합을 다시 선택해주세요.</Desc>
-      <Button
-        onClick={페이지_뒤로가기}
-        designType="primaryYellow"
-        width={changeRem(330)}
-        height={changeRem(50)}
-        marginTop="40px">
-        다시 찾기
-      </Button>
+      <ButtonWrap>
+        <Button
+          onClick={페이지_뒤로가기}
+          designType="primaryYellow"
+          width={changeRem(330)}
+          height={changeRem(50)}
+          marginTop="40px">
+          다시 찾기
+        </Button>
+      </ButtonWrap>
     </>
   );
 }
@@ -63,5 +65,11 @@ const Desc = styled.p`
 
   ${mediaQuery} {
     font-size: ${changeRem(18)};
+  }
+`;
+
+const ButtonWrap = styled.div`
+  & button:hover {
+    box-shadow: 5px 5px 5px #7879706d;
   }
 `;
