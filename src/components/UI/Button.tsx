@@ -14,12 +14,18 @@ const designList = {
     font-weight: 700;
     font-size: 18px;
   `,
+  primaryOrange: `
+    background: #FB8300;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
   normal: `
-  background: #dad9d9;
-  color: #787878;
-  font-weight: 700;
-  font-size: 18px;
-`,
+    background: #dad9d9;
+    color: #787878;
+    font-weight: 700;
+    font-size: 18px;
+  `,
   social: `
     background: #fff;
     color: #8E8EA9;
@@ -29,10 +35,10 @@ const designList = {
     & img {
       margin-right:8px;
     }
-    `,
+  `,
 };
 
-export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'normal' | 'social';
+export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'primaryOrange' | 'normal' | 'social';
 
 export default styled.button<
   CSSProperties & {
