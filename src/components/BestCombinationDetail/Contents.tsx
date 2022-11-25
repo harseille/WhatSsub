@@ -11,6 +11,8 @@ type TProps = {
 };
 
 function ContentsContainer({ sandwich, ingredientList }: TProps) {
+  // click하면 꿀조합을 db에서 삭제 -> 이전페이지로 redireact
+
   return (
     <Contents>
       <SandwichInfo sandwich={sandwich} />
