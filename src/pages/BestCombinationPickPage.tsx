@@ -33,6 +33,7 @@ function BestCombinationPickPage() {
   );
 }
 export default BestCombinationPickPage;
+
 const TotalContainer = styled(Wrapper)`
   ${mediaQuery} {
     ${flexbox('row', 'space-between', 'center')}
