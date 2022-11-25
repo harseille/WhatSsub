@@ -326,21 +326,21 @@
         "id": "a1",
         "이름": "더블업",
         "이미지": "/images/ingredients/additional/double.png",
-        "속성": "2배로",
+        "속성": "더블업",
         "칼로리": ""
       },
       {
         "id": "a2",
         "이름": "애그마요",
         "이미지": "/images/ingredients/main/egg_mayo.png",
-        "속성": "애그마요 추가",
+        "속성": "폭신폭신",
         "칼로리": "205"
       },
       {
         "id": "a3",
         "이름": "베이컨",
         "이미지": "/images/ingredients/main/bacon.png",
-        "속성": "베이컨 추가",
+        "속성": "고기러버",
         "칼로리": "22.9"
       },
       {
@@ -375,7 +375,7 @@
         "id": "a8",
         "이름": "오믈렛",
         "이미지": "/images/ingredients/additional/Omelet.png",
-        "속성": "더 부드럽게 더 고소하게",
+        "속성": "폭신폭신",
         "칼로리": "120"
       },
       {

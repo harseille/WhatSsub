@@ -117,7 +117,7 @@ function RandomRoulette() {
             .filter((val: 인터페이스_재료데이터) => 랜덤_소스_리스트.includes(val.카테고리))
             .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
 
-          // ! 소스 칼로리 포함 시켜야함
+          // 소스 칼로리
           const toNumbers = (arr: string[]) => arr.map(Number);
           const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
 
@@ -125,7 +125,7 @@ function RandomRoulette() {
             Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
           );
           console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
-          // ! setState
+          // setState
           setSandwichData({
             꿀조합제목: '',
             베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
