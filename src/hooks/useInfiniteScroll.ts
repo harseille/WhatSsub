@@ -28,9 +28,11 @@ const useInfiniteScroll = (callback: Function, dataLength: number, collectionNam
           if (entries[0].isIntersecting) {
             // setIsLoading(true);
             if (hasMore) {
+              console.log('실행');
               await callback();
+
+              setIsLoading(false);
             }
-            // setIsLoading(false);
           }
         },
         {

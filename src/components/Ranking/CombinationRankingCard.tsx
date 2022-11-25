@@ -1,6 +1,5 @@
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import Like from '@components/Common/Button/Like';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -29,7 +28,7 @@ function CombinationRankingCard({
     <RankingCard>
       {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
       <RankingImageWrap>
-        <img src={ChickenSlice} alt={originName} />
+        <img src={이미지} alt={originName} />
       </RankingImageWrap>
       <RankingContents>
         <Title>{이름}</Title>

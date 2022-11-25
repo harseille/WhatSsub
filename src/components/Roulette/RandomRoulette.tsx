@@ -7,6 +7,7 @@ import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
 import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import {
   인터페이스_재료데이터,
@@ -190,32 +191,32 @@ export default RandomRoulette;
 
 const Container = styled.div`
   position: relative;
-  /* width: 379px; */
-  width: 279px;
+  width: ${changeRem(279)};
   margin: 18px auto 0;
   padding-top: 18px;
+  ${mediaQuery} {
+    width: ${changeRem(379)};
+  }
 `;
-const Roulette = styled.img`
-  /* transform: rotate(-${200}deg); */
-`;
+const Roulette = styled.img``;
 const Pointer = styled.img`
   position: absolute;
-  /* width: 48px; */
-  width: 38px;
+  width: ${changeRem(38)};
   left: 50%;
   top: 0;
   transform: translate(-50%);
-  /* top: 18%;
-  transform: translate(-50%, -50%);
-  width: ${changeRem(30)}; */
+  ${mediaQuery} {
+    width: ${changeRem(50)};
+  }
 `;
 const StartButton = styled.img`
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: ${changeRem(80)};
+  /* height: 80px; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* top: 29%;
-  width: ${changeRem(82)}; */
+  ${mediaQuery} {
+    width: ${changeRem(99)};
+  }
 `;
