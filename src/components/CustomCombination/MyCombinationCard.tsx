@@ -172,18 +172,18 @@ const Danzzi = styled.img`
 
 const DeleteBtn = styled.button`
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 18%;
+  right: 7%;
   border: none;
   background-color: ${props => props.theme.colors.primaryGreen};
-  width: 9%;
-  height: 10%;
+  width: 8%;
+  height: 9%;
   border-radius: 5px;
   box-shadow: 0px 2px 3px #313030;
   cursor: pointer;
   ${mediaQuery} {
     top: 3%;
-    right: 1%;
+    right: 3%;
   }
 
   :active {

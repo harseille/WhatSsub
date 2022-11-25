@@ -55,5 +55,6 @@ const CustomPage = styled(Wrapper)`
   overflow-y: auto;
   ${mediaQuery} {
     padding: 0 36px;
+    height: calc(100vh - 110px);
   }
 `;
