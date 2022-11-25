@@ -31,4 +31,8 @@ export default NavigateListPageButton;
 const ButtonWrap = styled.div`
   position: absolute;
   bottom: 100px;
+
+  & button:hover {
+    box-shadow: 5px 5px 5px #7879706d;
+  }
 `;

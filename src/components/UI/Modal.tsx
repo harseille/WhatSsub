@@ -106,6 +106,11 @@ const ModalWrap = styled.div`
     top: 10%;
     max-width: 600px;
   }
+
+  button:hover {
+    background: ${props => props.theme.colors.primaryYellow};
+    color: #fff;
+  }
 `;
 
 const Header = styled.header`
@@ -114,7 +119,7 @@ const Header = styled.header`
   min-height: 50px;
 
   & h2 {
-    font-size: 16px;
+    font-size: 20px;
     color: white;
   }
 `;
