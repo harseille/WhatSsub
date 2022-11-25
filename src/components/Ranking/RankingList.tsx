@@ -14,8 +14,6 @@ type TProps = {
 };
 
 function RankingList({ currentTab, rankingList, target }: TProps) {
-  console.dir(target);
-
   return (
     <ul>
       {rankingList !== null &&

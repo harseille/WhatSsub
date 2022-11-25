@@ -14,6 +14,12 @@ const designList = {
     font-weight: 700;
     font-size: 18px;
   `,
+  primaryOrange: `
+    background: #FB8300;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
   social: `
     background: #fff;
     color: #8E8EA9;
@@ -26,7 +32,7 @@ const designList = {
     `,
 };
 
-export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'social';
+export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'primaryOrange' | 'social';
 
 export default styled.button<
   CSSProperties & {
