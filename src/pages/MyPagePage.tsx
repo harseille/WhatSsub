@@ -11,9 +11,9 @@ import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import dbGet from '@api/dbGet';
-import { collection, orderBy, query } from 'firebase/firestore';
+import { collection, orderBy, query, doc, getDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';
-import { AnyTxtRecord } from 'dns';
+import { userLike } from '@state/User';
 import { db } from '../firebase.config';
 
 export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
@@ -64,15 +64,16 @@ const sandwiches: 인터페이스_꿀조합[] = [
 function MyPage() {
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
+  const isUserLikeUser = useRecoilValue(userLike);
   const [currentTab, setCurrentTab] = useState<string>('좋아요 꿀조합');
   const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+  const [likedList, setLikedList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const 유저정보: User | null = useRecoilValue(userState);
-
-  // db.collection('꿀조합') =>
 
   useEffect(() => {
     const tabToggle: string = currentTab !== '좋아요 꿀조합' ? '작성일' : '좋아요';
     꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
+    console.log('로그인한 유저가 좋아요 누른 꿀조합의 id  =>', isUserLikeUser);
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
@@ -109,11 +110,14 @@ function MyPage() {
   const 유저만의_꿀조합 = myList?.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
   console.log('유저만의_꿀조합 =>', 유저만의_꿀조합);
 
+  const result = myList?.filter((user: 인터페이스_꿀조합_아이디, i: number) => user.id === isUserLikeUser[i]);
+  console.log('result =>', result);
+
   //! 서버에서 sort 해주면 얘도 없어질 예정
-  const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
-    if (prev.작성일 < next.작성일) return 1;
-    return -1;
-  };
+  // const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
+  //   if (prev.작성일 < next.작성일) return 1;
+  //   return -1;
+  // };
 
   const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
     +next.좋아요 - +prev.좋아요;
@@ -128,7 +132,7 @@ function MyPage() {
     </Card>
   ));
 
-  const likeCombination = sandwiches.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
+  const likeCombination = result?.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
     <Card key={sandwich.꿀조합제목}>
       <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
         <SandwichInfo sandwich={sandwich} />
