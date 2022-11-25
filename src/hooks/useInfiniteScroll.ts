@@ -1,21 +1,22 @@
-import { query, collection, getCountFromServer } from 'firebase/firestore';
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { db } from '../firebase.config';
+import { query, getCountFromServer, Query, DocumentData } from 'firebase/firestore';
 
-const useInfiniteScroll = (callback: Function, dataLength: number, collectionName: string) => {
+// const useInfiniteScroll = (callback: Function, dataLength: number, collectionName: string) => {
+const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery: Query<DocumentData>) => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getServerDataLength = async () => {
-      const querySnapshot = await getCountFromServer(query(collection(db, collectionName)));
+      // const querySnapshot = await getCountFromServer(query(collection(db, collectionName)));
+      const querySnapshot = await getCountFromServer(query(dbCountQuery));
 
-      if (dataLength === querySnapshot.data().count) {
+      if (dataLength >= querySnapshot.data().count) {
         setHasMore(false);
       }
     };
     getServerDataLength();
-  }, [dataLength, collectionName]);
+  }, [dataLength, dbCountQuery]);
 
   const observer = useRef<IntersectionObserver | null>(null);
   const listRef = useCallback(

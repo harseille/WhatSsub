@@ -42,7 +42,8 @@ function BestCombinationList({ filter }: { filter: string[] }) {
     꿀조합_목록_수정(covertBCList);
   };
 
-  const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, '꿀조합');
+  // const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, '꿀조합');
+  const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, query(collection(db, '꿀조합')));
 
   useEffect(() => {
     // fetchData();
