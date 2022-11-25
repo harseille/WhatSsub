@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '@components/UI/Button';
 import setFirebaseImgURL from '@utils/setFirebaseImgURL';
 
@@ -21,6 +22,8 @@ type TProps = {
 function MyCombinationCard(props: TProps) {
   const { setInputValue, userName, inputValue, jsonData, customCombination: 나만의_조합 } = props;
   const [sandwichImg, setSandwichImg] = useState('');
+  const navigate = useNavigate();
+
   const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
   useEffect(() => {
@@ -31,11 +34,17 @@ function MyCombinationCard(props: TProps) {
     );
   }, [jsonData.recipeData, 나만의_조합.베이스샌드위치]);
 
+  const 클릭핸들러_나만의_조합_취소하기 = () => {
+    // eslint-disable-next-line no-restricted-globals
+    const Delete = confirm('등록을 취소하고 홈으로 이동하시겠습니까?');
+    if (Delete) navigate('/');
+  };
+
   return (
     <Container>
       <Danzzi src={danzziTrust} alt="단찌 믿음 아이콘" />
       <Card className="card">
-        <DeleteBtn type="button">
+        <DeleteBtn onClick={클릭핸들러_나만의_조합_취소하기} type="button">
           <img src={deleteBtn} alt="조합 삭제 버튼" />
         </DeleteBtn>
         <Text>

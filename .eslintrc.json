@@ -21,6 +21,7 @@
     "no-plusplus": "off",
     "no-shadow": "off",
     "no-alert": "off",
+
     "vars-on-top": "off",
     "no-underscore-dangle": "off", // var _foo;
     "comma-dangle": "off",
