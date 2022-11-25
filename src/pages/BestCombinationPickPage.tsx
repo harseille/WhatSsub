@@ -33,12 +33,12 @@ function BestCombinationPickPage() {
   );
 }
 export default BestCombinationPickPage;
+
 const TotalContainer = styled(Wrapper)`
   ${mediaQuery} {
+    ${flexbox('row', 'space-between', 'center')}
     min-height: 750px;
     position: relative;
-    /* padding-top: 100px; */
-    ${flexbox('row', 'space-between', 'center')}
   }
 `;
 const Container = styled(Wrapper)`
