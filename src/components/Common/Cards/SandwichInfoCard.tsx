@@ -68,6 +68,12 @@ const CardWarp = styled.li`
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   background: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f7d86e;
+    box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5), 10px 5px 5px #7879706d;
+  }
 
   ${mediaQuery} {
     min-width: 90%;
@@ -90,6 +96,12 @@ const LikeBtn = styled.button<{ isLiked: boolean }>`
   height: ${changeRem(34)};
   background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
   background-color: #ffe8e0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7a9a9a3;
+    box-shadow: 3px 3px 3px #7879706d;
+  }
 
   ${mediaQuery} {
     width: ${changeRem(48)};

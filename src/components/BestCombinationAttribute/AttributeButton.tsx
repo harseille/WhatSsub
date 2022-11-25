@@ -36,4 +36,10 @@ const Button = styled.button<{ color: string }>`
   color: ${({ color }) => badgeFontColor[color]};
   background: ${({ color }) => badgeBackgroundColor[color]};
   cursor: pointer;
+
+  &:hover {
+    background: rgba(251, 194, 0, 0.8);
+    color: #fff;
+    box-shadow: 3px 3px 3px #7879706d;
+  }
 `;
