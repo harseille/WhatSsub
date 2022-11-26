@@ -31,7 +31,18 @@ const MODAL_TYPE: TModal = {
     title: '선택 가능 개수를 초과했습니다.',
     message: '해당 재료는 최대 3개까지 선택하실 수 있습니다.',
   },
+  BackEvent: {
+    title: '뒤로 가기 경고',
+    message: '뒤로 가기 시 데이터가 저장되지 않습니다. (홈으로 이동합니다)',
+  },
+  Login: {
+    title: '로그인 확인',
+    message: '로그인 이후 이용하실 수 있습니다.',
+  },
 };
+
+const ON_EVENT_TYPES = ['Delete', 'BackEvent'];
+const ON_CLOSE_TYPES = ['Login'];
 
 function CustomPageModal(props: TProps) {
   const navigate = useNavigate();
@@ -39,16 +50,17 @@ function CustomPageModal(props: TProps) {
 
   if (type === 'none') return null;
 
-  const navigateHome = () => navigate('/');
+  const onEventHandler = () => navigate('/');
+  const navigateLoginPage = () => navigate('/login');
 
   return (
     <Modal
       title={MODAL_TYPE[type].title}
       message={MODAL_TYPE[type].message}
-      onClose={closeModal}
-      cancelButtonDesignType={type === 'Delete' ? 'normal' : 'primaryGreen'}
-      isConfirm={type === 'Delete' ? '확인' : ''}
-      onEvent={type === 'Delete' ? navigateHome : () => {}}
+      onClose={ON_CLOSE_TYPES.includes(type) ? navigateLoginPage : closeModal}
+      cancelButtonDesignType={ON_EVENT_TYPES.includes(type) ? 'normal' : 'primaryGreen'}
+      isConfirm={ON_EVENT_TYPES.includes(type) ? '확인' : ''}
+      onEvent={ON_EVENT_TYPES.includes(type) ? onEventHandler : () => {}}
     />
   );
 }
