@@ -15,6 +15,7 @@ type TProps = {
   currentStep: number;
   onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   onNextStep: () => void;
+  changeModalType: (type: string) => void;
 };
 
 function SelectComponent(props: TProps) {
@@ -23,6 +24,7 @@ function SelectComponent(props: TProps) {
     onNextStep: 다음_선택지로_이동하기,
     onChange: 체인지핸들러_나만의_조합_수정,
     customCombination: 나만의_조합,
+    changeModalType,
   } = props;
 
   const [ingredientsData, setIngredientsData] = useState<인터페이스_재료데이터[]>();
@@ -49,12 +51,16 @@ function SelectComponent(props: TProps) {
             currentStep={현재진행도}
             customCombination={나만의_조합}
             onChange={체인지핸들러_나만의_조합_수정}
+            changeModalType={changeModalType}
           />
-
           <NextStepButton currentStep={현재진행도} onNextStep={다음_선택지로_이동하기} />
         </>
       ) : (
-        <CombinationRegistration jsonData={{ ingredientsData, recipeData }} customCombination={나만의_조합} />
+        <CombinationRegistration
+          jsonData={{ ingredientsData, recipeData }}
+          customCombination={나만의_조합}
+          changeModalType={changeModalType}
+        />
       )}
     </SelectWrap>
   );

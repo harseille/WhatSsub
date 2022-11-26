@@ -4,6 +4,7 @@ type TProps = {
   나만의_조합: 인터페이스_생성단계_꿀조합;
   체인지핸들러_나만의_조합_수정: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   재료정보: 인터페이스_선택된_재료;
+  changeModalType: (type: string) => void;
 };
 
 const 나만의_조합_샌드위치_수정 = (props: TProps) => {
@@ -31,7 +32,7 @@ const 나만의_조합_추가재료_수정 = (props: TProps) => {
 };
 
 const 나만의_조합_선택_재료_수정 = (props: TProps) => {
-  const { 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정: 나만의_조합_수정 } = props;
+  const { 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정: 나만의_조합_수정, changeModalType } = props;
   const isLimited = 재료정보.카테고리 === '빵' || 재료정보.카테고리 === '치즈';
 
   if (isLimited) {
@@ -51,7 +52,7 @@ const 나만의_조합_선택_재료_수정 = (props: TProps) => {
     );
     const 소스_개수 = 새로운_선택재료.filter(선택재료 => 선택재료.카테고리 === 재료정보.카테고리).length;
 
-    if (재료정보.카테고리 === '소스' && 소스_개수 >= 3) return alert('3개 이상 선택할 수 없습니다.');
+    if (재료정보.카테고리 === '소스' && 소스_개수 >= 3) return changeModalType('Limited');
 
     나만의_조합_수정({
       ...나만의_조합,

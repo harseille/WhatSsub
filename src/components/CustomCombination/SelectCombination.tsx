@@ -17,10 +17,11 @@ type TProps = {
   currentStep: number;
   onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
+  changeModalType: (type: string) => void;
 };
 
 function CustomStep(props: TProps) {
-  const { currentStep: 현재진행도, customCombination: 나만의_조합, onChange, jsonData } = props;
+  const { currentStep: 현재진행도, customCombination: 나만의_조합, onChange, jsonData, changeModalType } = props;
   const [재료데이터, 재료데이터_수정] = useState(재료데이터_초기값);
 
   useEffect(() => {
@@ -63,6 +64,7 @@ function CustomStep(props: TProps) {
                   customCombination={나만의_조합}
                   onChange={onChange}
                   key={재료정보.이름}
+                  changeModalType={changeModalType}
                 />
               ))}
           </Ingredients>

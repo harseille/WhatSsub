@@ -1,5 +1,5 @@
 import setFirebaseImgURL from '@utils/setFirebaseImgURL';
-import dbPush from '@api/dbPush';
+import { dbPush } from '@api/index';
 
 import {
   인터페이스_생성단계_꿀조합,
