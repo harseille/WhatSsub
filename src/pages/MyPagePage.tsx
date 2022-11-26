@@ -7,6 +7,7 @@ import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
 import xBtn from '@assets/images/x-btn.svg';
 import { changeRem } from '@styles/mixin';
+import { dbDelete } from '@api/index';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import dbGet from '@api/dbGet';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -26,7 +27,7 @@ function MyPage() {
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
   const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합_아이디[] | null>(null);
-  const [유저가좋아한조합, 유저가좋아한조합_수정] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+
   const 유저정보: User | null = useRecoilValue(userState);
 
   useEffect(() => {
@@ -59,28 +60,24 @@ function MyPage() {
   };
   // ? --------------------------------------------------------------------------------------------------------------------
 
-  // console.log('유저만의 수정 =>', 유저만의조합);
-  // const 유저만의_꿀조합 = myList?.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
-
-  // console.log('유저만의_꿀조합 =>', 유저만의_꿀조합);
   const 유저가_좋아요한_꿀조합 = myList?.filter(
     (user: 인터페이스_꿀조합_아이디, i: number) => user.id === isUserLikeUser[i]
   );
 
-  console.log('샌드위치데이터, myList =>', myList);
-  console.log('유저만의조합 =>', 유저만의조합);
-
-  // const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
-  //   if (prev.작성일 < next.작성일) return 1;
-  //   return -1;
-  // };
-
   const 목록에서_샌드위치_삭제하기 = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as Element;
-    console.log('삭제 클릭 =>', target.closest('li')?.id);
-    if (유저만의조합) {
-      const 삭제 = 유저만의조합.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
-      유저만의조합_수정(삭제);
+    const targetLi = target.closest('li');
+
+    if (유저만의조합 && targetLi) {
+      try {
+        dbDelete('꿀조합', targetLi.id);
+        if (유저만의조합) {
+          const 삭제 = 유저만의조합.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
+          유저만의조합_수정(삭제);
+        }
+      } catch {
+        console.log('삭제 실패');
+      }
     }
 
     유저만의조합?.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
@@ -89,10 +86,8 @@ function MyPage() {
   const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
     +next.좋아요 - +prev.좋아요;
 
-  // const userCombination = 유저만의_꿀조합?.map(sandwich => (
   const userCombination = 유저만의조합?.map(sandwich => (
     <Card key={sandwich.꿀조합제목} id={sandwich.id}>
-      {/* <RemoveBtn onClick={목록에서_샌드위치_삭제하기}> */}
       <RemoveBtn onClick={목록에서_샌드위치_삭제하기}>
         <img src={xBtn} alt="닫기 버튼" />
       </RemoveBtn>
