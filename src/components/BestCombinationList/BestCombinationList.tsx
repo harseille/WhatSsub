@@ -39,7 +39,6 @@ function BestCombinationList({ filter }: { filter: string[] }) {
   // const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, '꿀조합');
   const { listRef, isLoading } = useInfiniteScroll(fetchData, 10, query(collection(db, '꿀조합')));
 
-
   if (isLoading)
     return (
       <ul>

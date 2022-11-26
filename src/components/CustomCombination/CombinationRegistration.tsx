@@ -13,18 +13,19 @@ import { 인터페이스_생성단계_꿀조합, 인터페이스_재료데이터
 type TProps = {
   customCombination: 인터페이스_생성단계_꿀조합;
   jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
+  changeModalType: (type: string) => void;
 };
 
 function CombinationRegistration(props: TProps) {
   const [inputValue, setInputValue] = useState('');
-  const { customCombination, jsonData } = props;
+  const { customCombination, jsonData, changeModalType } = props;
   const user = useRecoilValue(userState);
   const userInfo = { id: user?.uid, name: user?.displayName };
   const navigate = useNavigate();
 
   const 클릭핸드러_나만의_조합_등록하기 = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return alert('제목을 입력해주세요');
+    if (!inputValue.trim()) return changeModalType('TitleCheck');
 
     const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo, jsonData });
     setInputValue('');
@@ -39,6 +40,7 @@ function CombinationRegistration(props: TProps) {
         setInputValue={setInputValue}
         jsonData={jsonData}
         customCombination={customCombination}
+        changeModalType={changeModalType}
       />
       <CreateCombinationButton designType="primaryGreen" width="100%" padding="15px" fontSize="16px" fontWeight="700">
         나만의 조합 만들기
