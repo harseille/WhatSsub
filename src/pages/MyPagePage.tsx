@@ -5,9 +5,11 @@ import { isLoggedInState, userState } from '@state/index';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
-import xBtn from '@assets/images/x-btn.svg';
+// import xBtn from '@assets/images/x-btn.svg';
+import deleteBtn from '@assets/icons/deleteBtn.png';
+import heartFill from '@assets/icons/heart-fill.svg';
 import { changeRem } from '@styles/mixin';
-import { dbDelete } from '@api/index';
+import { dbDelete, dbUpdate } from '@api/index';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import dbGet from '@api/dbGet';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -46,6 +48,7 @@ function MyPage() {
     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`);
     setToggleState(사용자명_체크);
   };
+
   const 꿀조합_컬렉션_탭에따라_가져오기 = async (tabToggle: string) => {
     const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(tabToggle, 'desc'))); // tabToggle에 따라 내림차순
 
@@ -89,7 +92,7 @@ function MyPage() {
   const userCombination = 유저만의조합?.map(sandwich => (
     <Card key={sandwich.꿀조합제목} id={sandwich.id}>
       <RemoveBtn onClick={목록에서_샌드위치_삭제하기}>
-        <img src={xBtn} alt="닫기 버튼" />
+        <img className="close-btn" src={deleteBtn} alt="닫기 버튼" />
       </RemoveBtn>
       <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
@@ -101,7 +104,7 @@ function MyPage() {
     // const likeCombination = 유저가좋아한조합?.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
     <Card key={sandwich.꿀조합제목}>
       <RemoveBtn>
-        <img src={xBtn} alt="닫기 버튼" />
+        <img className="heart-fill" src={heartFill} alt="닫기 버튼" />
       </RemoveBtn>
       <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
@@ -184,4 +187,13 @@ const RemoveBtn = styled.button`
   background-color: transparent;
   margin-right: 5px;
   cursor: pointer;
+  .close-btn {
+    filter: opacity(0.5) drop-shadow(0 0 0 #505050);
+    &:hover {
+      filter: opacity(0.5) drop-shadow(0 0 0 #0b0b0b);
+    }
+  }
+  .heart-fill {
+    background: url(${heartFill}) no-repeat center;
+  }
 `;
