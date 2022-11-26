@@ -1,6 +1,90 @@
 import styled from '@emotion/styled';
+import theme from '@styles/theme';
 
-const Span = styled.span<React.CSSProperties>`
+export type TDesignType =
+  | 'badgePrimaryRed'
+  | 'badgePrimaryOrange'
+  | 'badgePrimaryYellow'
+  | 'badgePrimaryGreen'
+  | 'badgePrimaryBlue'
+  | 'badgePrimaryPurple';
+// | 'normal'
+// | 'social';
+
+const designList = {
+  badgePrimaryRed: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryRed};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+  badgePrimaryOrange: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryOrange};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+  badgePrimaryYellow: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryYellow};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+  badgePrimaryGreen: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryGreen};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+  badgePrimaryBlue: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryBlue};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+  badgePrimaryPurple: `
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    background: ${theme.colors.primaryPurple};
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px;
+    border-radius: 6px;
+  `,
+};
+
+const Span = styled.span<
+  React.CSSProperties & {
+    designType?: TDesignType;
+  }
+>`
   ${({ display }) => display && `display : ${display}`};
   ${({ width }) => width && `width : ${width}`};
   ${({ height }) => height && `height : ${height}`};
@@ -35,6 +119,7 @@ const Span = styled.span<React.CSSProperties>`
   ${({ lineHeight }) => lineHeight && `line-height : ${lineHeight}`};
   ${({ boxShadow }) => boxShadow && `box-shadow : ${boxShadow}`};
   ${({ textAlign }) => textAlign && `text-align : ${textAlign}`};
+  ${({ designType }) => designType && designList[designType]};
 `;
 
 export default Span;

@@ -1,11 +1,19 @@
+import Span from '@components/UI/Span';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem, flexbox, autoMargin } from '@styles/mixin';
 import { 인터페이스_재료 } from '@typings/ISandwich';
 
-function IngredientCard({ ingredient: { id, 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_재료 }) {
+type TProps = {
+  ingredient: 인터페이스_재료;
+  toasting: string;
+};
+
+function IngredientCard({ ingredient: { id, 이름, 칼로리, 이미지, 카테고리 }, toasting }: TProps) {
   return (
     <Card key={id}>
+      {카테고리 === '추가재료' ? <Span designType="badgePrimaryGreen">추가</Span> : null}
+      {카테고리 === '빵' && toasting === '네' ? <Span designType="badgePrimaryOrange">토스팅</Span> : null}
       <Title>{이름}</Title>
       <Kcal>{칼로리}Kcal</Kcal>
       <ImgWrap>
@@ -19,6 +27,7 @@ export default IngredientCard;
 
 const Card = styled.section`
   ${flexbox('column')}
+  position: relative;
   background: ${props => props.theme.colors.grayF5};
   width: ${changeRem(88)};
   height: ${changeRem(108)};
