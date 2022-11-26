@@ -15,7 +15,7 @@ function NotFound() {
       <Header>
         <Title>404</Title>
         {isBestCombinationPage ? (
-          <SubTitle>꿀조합를 찾을 수 없습니다.</SubTitle>
+          <SubTitle>꿀조합을 찾을 수 없습니다.</SubTitle>
         ) : (
           <SubTitle>페이지를 찾을 수 없습니다.</SubTitle>
         )}

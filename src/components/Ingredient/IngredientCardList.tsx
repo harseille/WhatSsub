@@ -2,10 +2,18 @@ import IngredientCard from '@components/Ingredient/IngredientCard';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { flexbox } from '@styles/mixin';
-import { 인터페이스_꿀조합_재료 } from '@typings/ISandwich';
+import { 화면용_재료_아이디 } from '@constants/constants';
+import { 인터페이스_재료 } from '@typings/ISandwich';
 
-function IngredientCardList({ ingredientList }: { ingredientList: 인터페이스_꿀조합_재료[] }) {
-  const LiList = ingredientList.map(재료 => (
+function IngredientCardList({ ingredientList }: { ingredientList: 인터페이스_재료[] }) {
+  const sortedIngredientList = ingredientList
+    .map(재료 => ({
+      ...재료,
+      id: 화면용_재료_아이디[재료.id!],
+    }))
+    .sort((a, b) => a!.id - b!.id);
+
+  const LiList = sortedIngredientList.map(재료 => (
     <li key={재료.이름}>
       <IngredientCard ingredient={재료} />
     </li>

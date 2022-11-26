@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem, flexbox, autoMargin } from '@styles/mixin';
-import { 인터페이스_꿀조합_재료 } from '@typings/ISandwich';
+import { 인터페이스_재료 } from '@typings/ISandwich';
 
-function IngredientCard({ ingredient: { 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_꿀조합_재료 }) {
+function IngredientCard({ ingredient: { id, 이름, 칼로리, 이미지 } }: { ingredient: 인터페이스_재료 }) {
   return (
-    <Card>
+    <Card key={id}>
       <Title>{이름}</Title>
       <Kcal>{칼로리}Kcal</Kcal>
       <ImgWrap>
