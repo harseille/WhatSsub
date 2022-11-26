@@ -91,7 +91,7 @@ function MyPage() {
       <RemoveBtn onClick={목록에서_샌드위치_삭제하기}>
         <img src={xBtn} alt="닫기 버튼" />
       </RemoveBtn>
-      <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
+      <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
     </Card>
@@ -103,7 +103,7 @@ function MyPage() {
       <RemoveBtn>
         <img src={xBtn} alt="닫기 버튼" />
       </RemoveBtn>
-      <Link to={`/best-combination/${sandwich.꿀조합제목}`}>
+      <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
     </Card>
