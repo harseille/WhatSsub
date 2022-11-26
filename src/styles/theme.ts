@@ -1,9 +1,11 @@
 const theme = {
   colors: {
+    primaryRed: '#D92F20',
     primaryGreen: '#098D42',
     primaryYellow: '#FBC200',
     primaryBlue: '#01A4E3',
     primaryOrange: '#FF8300',
+    primaryPurple: '#4D006A',
     gray87: '#878787',
     grayF5: '#F5F5F5',
   },
