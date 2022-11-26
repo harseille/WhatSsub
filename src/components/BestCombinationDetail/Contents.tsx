@@ -5,16 +5,17 @@ import styled from '@emotion/styled';
 import Modal from '@components/UI/Modal';
 import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import { changeRem, flexbox } from '@styles/mixin';
-import { 인터페이스_샌드위치, 인터페이스_꿀조합_재료 } from '@typings/ISandwich';
+import { 인터페이스_샌드위치, 인터페이스_재료 } from '@typings/ISandwich';
 import { useParams } from 'react-router-dom';
 
 type TProps = {
   sandwich: 인터페이스_샌드위치;
-  ingredientList: 인터페이스_꿀조합_재료[];
+  ingredientList: 인터페이스_재료[];
   author: string;
+  toasting: string;
 };
 
-function ContentsContainer({ sandwich, ingredientList, author }: TProps) {
+function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProps) {
   const { combinationId } = useParams();
   const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
 
@@ -34,7 +35,7 @@ function ContentsContainer({ sandwich, ingredientList, author }: TProps) {
 
       <Contents>
         <SandwichInfo sandwich={sandwich} />
-        <IngredientCardList ingredientList={ingredientList} />
+        <IngredientCardList ingredientList={ingredientList} toasting={toasting} />
         {유저?.uid === author ? (
           <ButtonContainer>
             <BestCombinationDeleteButton
