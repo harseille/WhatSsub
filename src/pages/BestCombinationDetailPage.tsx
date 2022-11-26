@@ -24,6 +24,7 @@ function BestCombinationDetailPage() {
             뱃지리스트: 꿀조합.뱃지리스트,
           }}
           ingredientList={꿀조합.선택재료}
+          toasting={꿀조합.토스팅}
           author={꿀조합.작성자id}
         />
         <CommentsContainer />

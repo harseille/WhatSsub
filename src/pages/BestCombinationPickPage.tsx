@@ -21,7 +21,9 @@ function BestCombinationPickPage() {
     <TotalContainer>
       <DeskTopImage />
       <Container>
-        {isShowModal && <Modal message="최대 선택 개수를 초과했습니다." onClose={closeModal} />}
+        {isShowModal && (
+          <Modal message="최대 선택 개수를 초과했습니다." onClose={closeModal} cancelButtonDesignType="primaryGreen" />
+        )}
         <IngredientButtonListContainer
           filteredAttr={선택된_꿀조합_속성}
           toggleFilter={클릭핸들러_꿀조합_속성_토글}

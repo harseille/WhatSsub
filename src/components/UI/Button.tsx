@@ -2,6 +2,16 @@ import styled from '@emotion/styled';
 import theme from '@styles/theme';
 import { CSSProperties } from 'react';
 
+export type TDesignType =
+  | 'primaryRed'
+  | 'primaryOrange'
+  | 'primaryYellow'
+  | 'primaryGreen'
+  | 'primaryBlue'
+  | 'primaryPurple'
+  | 'normal'
+  | 'social';
+
 const designList = {
   primaryRed: `
     background: ${theme.colors.primaryRed};
@@ -56,16 +66,6 @@ const designList = {
     }
   `,
 };
-
-export type TDesignType =
-  | 'primaryRed'
-  | 'primaryOrange'
-  | 'primaryYellow'
-  | 'primaryGreen'
-  | 'primaryBlue'
-  | 'primaryPurple'
-  | 'normal'
-  | 'social';
 
 export default styled.button<
   CSSProperties & {
