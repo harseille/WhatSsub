@@ -4,14 +4,15 @@ import { Header, Contents } from '@components/BestCombinationDetail/index';
 import CommentsContainer from '@components/Comments/CommentsContainer';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { collection, getDoc, doc } from 'firebase/firestore';
+import { Suspense } from 'react';
 import { db } from '../firebase.config';
 
 function BestCombinationDetailPage() {
   // TODO: any 없애기
   const 꿀조합: 인터페이스_꿀조합 | any = useLoaderData();
 
-  if (꿀조합) {
-    return (
+  return (
+    <Suspense fallback={<p>Loading</p>}>
       <Wrapper>
         <Header author={꿀조합.작성자} like={꿀조합.좋아요} />
         <Contents
@@ -27,10 +28,8 @@ function BestCombinationDetailPage() {
         />
         <CommentsContainer />
       </Wrapper>
-    );
-  }
-  // TODO: 꿀조합 찾기 Error Fallback page 개발
-  return <div>Fallback</div>;
+    </Suspense>
+  );
 }
 
 export default BestCombinationDetailPage;
@@ -50,4 +49,13 @@ const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
   }
 };
 
-export const loader = ({ params }: LoaderFunctionArgs) => 꿀조합_데이터_가져오기(params.combinationId!);
+export const loader = ({ params }: LoaderFunctionArgs) => {
+  const 꿀조합 = 꿀조합_데이터_가져오기(params.combinationId!);
+  if (꿀조합 === undefined) {
+    throw new Response('', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+  return 꿀조합;
+};

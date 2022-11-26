@@ -7,6 +7,7 @@ import BestCombinationDetailPage, { loader as bestCombinationDetailLoader } from
 import RandomPickPage from './RandomPickPage';
 import RankingPage from './RankingPage';
 import CustomCombination from './CustomCombinationPage';
+import NotFound from './NotFound';
 
 export {
   HomePage,
@@ -19,4 +20,5 @@ export {
   RankingPage,
   CustomCombination,
   bestCombinationDetailLoader,
+  NotFound,
 };
