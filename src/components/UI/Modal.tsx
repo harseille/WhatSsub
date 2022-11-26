@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import Button from '@components/UI/Button';
+import Button, { TDesignType } from '@components/UI/Button';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -11,13 +11,23 @@ type TProps = {
   onClose: () => void;
   onEvent: () => void;
   isConfirm: string;
+  envetButtonDesignType?: TDesignType;
+  cancelButtonDesignType?: TDesignType;
 };
 
 function Backdrop({ onClose }: { onClose: () => void }) {
   return <BackdropWrap onClick={onClose} />;
 }
 
-function ModalOverlay({ title, message, onEvent, onClose, isConfirm }: TProps) {
+function ModalOverlay({
+  title,
+  message,
+  onEvent,
+  onClose,
+  isConfirm,
+  envetButtonDesignType,
+  cancelButtonDesignType,
+}: TProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -37,7 +47,7 @@ function ModalOverlay({ title, message, onEvent, onClose, isConfirm }: TProps) {
           <Button
             ref={isConfirm && buttonRef}
             onClick={onEvent}
-            designType="primaryGreen"
+            designType={envetButtonDesignType}
             width={changeRem(80)}
             height={changeRem(40)}
             borderRadius="8px">
@@ -47,7 +57,7 @@ function ModalOverlay({ title, message, onEvent, onClose, isConfirm }: TProps) {
         <Button
           ref={!isConfirm ? buttonRef : null}
           onClick={onClose}
-          designType={!isConfirm ? 'primaryGreen' : 'normal'}
+          designType={cancelButtonDesignType}
           width={changeRem(80)}
           height={changeRem(40)}
           borderRadius="8px">
@@ -58,12 +68,20 @@ function ModalOverlay({ title, message, onEvent, onClose, isConfirm }: TProps) {
   );
 }
 
-function Modal({ title, message, onClose, onEvent, isConfirm }: TProps) {
+function Modal({ title, message, onClose, onEvent, isConfirm, envetButtonDesignType, cancelButtonDesignType }: TProps) {
   return (
     <>
       {createPortal(<Backdrop onClose={onClose} />, document.getElementById('backdrop-root')!)}
       {createPortal(
-        <ModalOverlay title={title} message={message} onClose={onClose} onEvent={onEvent} isConfirm={isConfirm} />,
+        <ModalOverlay
+          title={title}
+          message={message}
+          onClose={onClose}
+          onEvent={onEvent}
+          isConfirm={isConfirm}
+          envetButtonDesignType={envetButtonDesignType}
+          cancelButtonDesignType={cancelButtonDesignType}
+        />,
         document.getElementById('modal-root')!
       )}
     </>
@@ -74,6 +92,8 @@ Modal.defaultProps = {
   title: '',
   isConfirm: '',
   onEvent: () => {},
+  envetButtonDesignType: 'primaryGreen',
+  cancelButtonDesignType: 'normal',
 };
 
 export default Modal;
@@ -99,7 +119,7 @@ const ModalWrap = styled.div`
   z-index: 100;
   overflow: hidden;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 4px;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
 
   ${mediaQuery} {
