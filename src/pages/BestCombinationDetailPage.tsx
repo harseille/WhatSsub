@@ -1,16 +1,14 @@
+import { Suspense } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import Wrapper from '@components/UI/Wrapper';
 import { Header, Contents } from '@components/BestCombinationDetail/index';
 import CommentsContainer from '@components/Comments/CommentsContainer';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { collection, getDoc, doc } from 'firebase/firestore';
-import { Suspense } from 'react';
 import { db } from '../firebase.config';
 
 function BestCombinationDetailPage() {
-  // TODO: any 없애기
-  const 꿀조합: 인터페이스_꿀조합 | any = useLoaderData();
-
+  const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Wrapper>
