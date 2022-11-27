@@ -13,7 +13,7 @@ function MyPageTab({ isSelectedTab, onClick }: TProps) {
   return (
     <div>
       <Title onClick={onClick} isSelectedTab={isSelectedTab}>
-        <span>{유저정보?.displayName}</span>만의 조합
+        <span>{유저정보?.displayName}</span>만의 꿀조합
       </Title>
       <Title onClick={onClick} isSelectedTab={!isSelectedTab}>
         좋아요 꿀조합
