@@ -3,8 +3,8 @@ import { useRecoilValue } from 'recoil';
 import { useBeforeunload } from 'react-beforeunload';
 import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
 import SelectComponent from '@components/CustomCombination/SelectComponent';
-import Wrapper from '@components/UI/Wrapper';
-import combinationVerification from '@utils/customCombination/combinationVerification';
+import Wrapper from '@components/Common/UI/Wrapper';
+import combinationVerification from '@services/customCombination/combinationVerification';
 import CustomPageModal from '@components/CustomCombination/CustomPageModal';
 import { isLoggedInState } from '@state/index';
 

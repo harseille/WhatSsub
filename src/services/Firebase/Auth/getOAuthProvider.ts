@@ -7,7 +7,7 @@ import {
   UserCredential,
 } from 'firebase/auth';
 import dbSet from '@api/dbSet';
-import { auth } from '../firebase.config';
+import { auth } from '../../../firebase.config';
 
 interface IAuthProvider {
   [key: string]: typeof GoogleAuthProvider | typeof FacebookAuthProvider;

@@ -1,4 +1,4 @@
-import Span from '@components/UI/Span';
+import Span from '@components/Common/UI/Span';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem, flexbox, autoMargin } from '@styles/mixin';

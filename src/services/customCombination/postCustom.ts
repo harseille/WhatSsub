@@ -1,4 +1,4 @@
-import setFirebaseImgURL from '@utils/setFirebaseImgURL';
+import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import { dbPush } from '@api/index';
 
 import {

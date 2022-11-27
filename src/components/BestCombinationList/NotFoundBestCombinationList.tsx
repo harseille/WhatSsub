@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '@components/UI/Button';
+import Button from '@components/Common/UI/Button';
 import cryingDanji from '@assets/images/danzzi/danzzi_crying.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';

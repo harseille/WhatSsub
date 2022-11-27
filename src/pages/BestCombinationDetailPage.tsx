@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import { Header, Contents } from '@components/BestCombinationDetail/index';
 import CommentsContainer from '@components/Comments/CommentsContainer';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';

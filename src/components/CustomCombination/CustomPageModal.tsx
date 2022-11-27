@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import Modal from '@components/UI/Modal';
+import Modal from '@components/Common/UI/Modal';
 
 type TProps = {
   type: string;

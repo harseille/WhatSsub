@@ -1,5 +1,5 @@
 import RandomRoulette from '@components/Roulette/RandomRoulette';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import danzziQuestion from '@assets/images/danzzi/danzzi_question.png';

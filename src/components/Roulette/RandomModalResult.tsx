@@ -1,9 +1,9 @@
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import SandwichInfo from '@components/Common/SandwichInfo';
 import IngredientInfo from '@components/Ingredient/IngredientInfo';
 import xBtn from '@assets/icons/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import convertRandomSandwichInfo from '@utils/convertRandomSandwichInfo';
+import convertRandomSandwichInfo from '@services/Random/convertRandomSandwichInfo';
 import { 인터페이스_꿀조합_랜덤2 } from '@typings/ISandwich';
 
 type TProps = {

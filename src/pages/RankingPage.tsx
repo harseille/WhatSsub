@@ -1,5 +1,5 @@
 import { useState, MouseEvent, useEffect } from 'react';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import RankingTab from '@components/Ranking/RankingTab';
 import RankingList from '@components/Ranking/RankingList';
 import styled from '@emotion/styled';

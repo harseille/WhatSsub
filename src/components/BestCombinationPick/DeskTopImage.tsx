@@ -14,6 +14,7 @@ export default DeskTopImage;
 
 const ImgWrap = styled.div`
   display: none;
+  min-width: 47%;
   max-width: 600px;
 
   & img {

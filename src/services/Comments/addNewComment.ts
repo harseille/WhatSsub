@@ -3,7 +3,7 @@ import dbPush from '@api/dbPush';
 
 const 새_댓글_추가하기 = async (댓글: 인터페이스_댓글_추가) => {
   try {
-    dbPush('댓글_꿀조합', {
+    await dbPush('댓글_꿀조합', {
       bestCombinationId: 댓글.꿀조합id,
       authorId: 댓글.작성자id,
       author: 댓글.작성자이름,

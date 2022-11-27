@@ -4,12 +4,12 @@ import useCheckLogin from '@hooks/useCheckLogin';
 import { collection, orderBy, query, DocumentData } from 'firebase/firestore';
 import NotFoundBestCombinationList from '@components/BestCombinationList/NotFoundBestCombinationList';
 import SandwichInfoCard from '@components/Common/Cards/SandwichInfoCard';
-import Modal from '@components/UI/Modal';
+import Modal from '@components/Common/UI/Modal';
 import dbGet from '@api/dbGet';
 import styled from '@emotion/styled';
 import { flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import 꿀조합_목록_필터링하기 from '@utils/filterBestCombinationList';
+import 꿀조합_목록_필터링하기 from '@services/BestCombinationList/filterBestCombinationList';
 // import useInfiniteScroll from '@hooks/useInfiniteScroll';
 
 import { db } from '../../firebase.config';
