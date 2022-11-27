@@ -11,7 +11,7 @@ type TProps = {
   onClose: () => void;
   onEvent: () => void;
   isConfirm: string;
-  envetButtonDesignType?: TDesignType;
+  eventButtonDesignType?: TDesignType;
   cancelButtonDesignType?: TDesignType;
 };
 
@@ -25,7 +25,7 @@ function ModalOverlay({
   onEvent,
   onClose,
   isConfirm,
-  envetButtonDesignType,
+  eventButtonDesignType,
   cancelButtonDesignType,
 }: TProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -47,7 +47,7 @@ function ModalOverlay({
           <Button
             ref={isConfirm && buttonRef}
             onClick={onEvent}
-            designType={envetButtonDesignType}
+            designType={eventButtonDesignType}
             width={changeRem(80)}
             height={changeRem(40)}
             borderRadius="8px">
@@ -68,7 +68,7 @@ function ModalOverlay({
   );
 }
 
-function Modal({ title, message, onClose, onEvent, isConfirm, envetButtonDesignType, cancelButtonDesignType }: TProps) {
+function Modal({ title, message, onClose, onEvent, isConfirm, eventButtonDesignType, cancelButtonDesignType }: TProps) {
   return (
     <>
       {createPortal(<Backdrop onClose={onClose} />, document.getElementById('backdrop-root')!)}
@@ -79,7 +79,7 @@ function Modal({ title, message, onClose, onEvent, isConfirm, envetButtonDesignT
           onClose={onClose}
           onEvent={onEvent}
           isConfirm={isConfirm}
-          envetButtonDesignType={envetButtonDesignType}
+          eventButtonDesignType={eventButtonDesignType}
           cancelButtonDesignType={cancelButtonDesignType}
         />,
         document.getElementById('modal-root')!
@@ -92,7 +92,7 @@ Modal.defaultProps = {
   title: '',
   isConfirm: '',
   onEvent: () => {},
-  envetButtonDesignType: 'primaryGreen',
+  eventButtonDesignType: 'primaryGreen',
   cancelButtonDesignType: 'normal',
 };
 
@@ -141,6 +141,7 @@ const Header = styled.header`
   & h2 {
     font-size: 20px;
     color: white;
+    text-align: center;
   }
 `;
 
