@@ -1,7 +1,7 @@
-import homeImg from '@assets/images/home.svg';
-import rankingImg from '@assets/images/ranking.svg';
-import customImg from '@assets/images/custom.svg';
-import myPageImg from '@assets/images/myPage.svg';
+import homeImg from '@assets/icons/home.svg';
+import rankingImg from '@assets/icons/ranking.svg';
+import customImg from '@assets/icons/custom.svg';
+import myPageImg from '@assets/icons/myPage.svg';
 import {
   인터페이스_꿀조합선택페이지_필터,
   인터페이스_생성단계_꿀조합,

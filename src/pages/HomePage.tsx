@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import Wrapper from '@components/UI/Wrapper';
-import homeDanji from '@assets/images/home_danji.png';
-import deco1 from '@assets/images/home_bg_left_top.svg';
-import deco2 from '@assets/images/home_bg_right_top.svg';
-import deco3 from '@assets/images/home_bg_left_bottom.svg';
-import bestLink from '@assets/images/home_link_best_combination.svg';
-import bgText from '@assets/images/home_bg_text.svg';
-import ramdomLink from '@assets/images/home_link_random.svg';
+import danzziHome from '@assets/images/danzzi/danzzi_home.png';
+import deco1 from '@assets/icons/home_bg_left_top.svg';
+import deco2 from '@assets/icons/home_bg_right_top.svg';
+import deco3 from '@assets/icons/home_bg_left_bottom.svg';
+import bestLink from '@assets/icons/home_link_best_combination.svg';
+import bgText from '@assets/icons/home_bg_text.svg';
+import ramdomLink from '@assets/icons/home_link_random.svg';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -24,7 +24,7 @@ function HomePage() {
               <StrongSpan>왔썹</StrongSpan>으로 고르자
             </TitleSpan>
           </Title>
-          <VisualImg src={homeDanji} alt="샌드위치 먹는 단지" />
+          <VisualImg src={danzziHome} alt="샌드위치 먹는 단지" />
         </Wrapper>
       </Visual>
       <Wrapper>
