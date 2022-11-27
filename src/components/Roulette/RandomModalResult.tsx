@@ -1,6 +1,6 @@
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import IngredientInfo from '@components/Ingredient/IngredientInfo';
-import xBtn from '@assets/images/x-btn.svg';
+import xBtn from '@assets/icons/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import convertRandomSandwichInfo from '@utils/convertRandomSandwichInfo';
@@ -12,7 +12,6 @@ type TProps = {
 };
 function RandomModalResult({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
-  console.log(sandwichData);
   return (
     <Card>
       <CloseBtn onClick={onClick}>

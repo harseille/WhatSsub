@@ -28,7 +28,7 @@ function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProp
           onEvent={꿀조합_삭제하기}
           onClose={모달_토글하기}
           isConfirm="삭제"
-          envetButtonDesignType="primaryRed"
+          eventButtonDesignType="primaryRed"
           cancelButtonDesignType="normal"
         />
       )}

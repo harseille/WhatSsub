@@ -1,7 +1,7 @@
-import homeImg from '@assets/images/home.svg';
-import rankingImg from '@assets/images/ranking.svg';
-import customImg from '@assets/images/custom.svg';
-import myPageImg from '@assets/images/myPage.svg';
+import homeImg from '@assets/icons/home.svg';
+import rankingImg from '@assets/icons/ranking.svg';
+import customImg from '@assets/icons/custom.svg';
+import myPageImg from '@assets/icons/myPage.svg';
 import {
   인터페이스_꿀조합선택페이지_필터,
   인터페이스_생성단계_꿀조합,
@@ -64,7 +64,72 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
   토스팅: '',
   칼로리: '',
   뱃지리스트: [],
-  선택재료: [],
+  선택재료: [
+    {
+      id: 'v1',
+      이름: '양상추',
+      이미지: '/images/ingredients/vegetable/Lettuce.png',
+      칼로리: '2.9',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v2',
+      이름: '양파',
+      이미지: '/images/ingredients/vegetable/Red_Onions.png',
+      칼로리: '2.8',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v3',
+      이름: '오이',
+      이미지: '/images/ingredients/vegetable/Cucumbers.png',
+      칼로리: '1.5',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v4',
+      이름: '올리브',
+      이미지: '/images/ingredients/vegetable/Olives.png',
+      칼로리: '3.9',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v5',
+      이름: '토마토',
+      이미지: '/images/ingredients/vegetable/Tomatoes.png',
+      칼로리: '7.7',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v6',
+      이름: '피망',
+      이미지: '/images/ingredients/vegetable/Peppers.png',
+      칼로리: '1.4',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v7',
+      이름: '피클',
+      이미지: '/images/ingredients/vegetable/Pickles.png',
+      칼로리: '0.4',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+    {
+      id: 'v8',
+      이름: '할라피뇨',
+      이미지: '/images/ingredients/vegetable/Jalapenos.png',
+      칼로리: '0.6',
+      카테고리: '야채',
+      추가재료여부: false,
+    },
+  ],
 };
 
 export const 재료데이터_초기값: 인터페이스_재료데이터[] = [

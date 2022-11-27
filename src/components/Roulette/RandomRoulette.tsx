@@ -124,7 +124,7 @@ function RandomRoulette() {
 
           const 랜덤_샌드위치_총_칼로리 = Math.floor(
             Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
-          );
+          ).toFixed(1);
           console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
           // setState
           setSandwichData({
@@ -195,7 +195,8 @@ const Container = styled.div`
   margin: 18px auto 0;
   padding-top: 18px;
   ${mediaQuery} {
-    width: ${changeRem(379)};
+    /*width: ${changeRem(379)};*/
+    width: 50%;
   }
 `;
 const Roulette = styled.img``;
@@ -206,7 +207,8 @@ const Pointer = styled.img`
   top: 0;
   transform: translate(-50%);
   ${mediaQuery} {
-    width: ${changeRem(50)};
+    /*width: ${changeRem(50)};*/
+    width: 8%;
   }
 `;
 const StartButton = styled.img`
@@ -217,6 +219,7 @@ const StartButton = styled.img`
   top: 50%;
   transform: translate(-50%, -50%);
   ${mediaQuery} {
-    width: ${changeRem(99)};
+    /*width: ${changeRem(99)};*/
+    width: 18%;
   }
 `;
