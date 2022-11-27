@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
-import heart from '@assets/icons/heart.svg';
-import heartFill from '@assets/icons/heart-fill.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -11,6 +9,7 @@ import dbUpdate from '@api/dbUpdate';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { increment } from 'firebase/firestore';
 import { User } from 'firebase/auth';
+import LikeRedBtn from '../Button/LikeRed';
 
 type TProps = {
   sandwich: 인터페이스_꿀조합;
@@ -43,7 +42,6 @@ function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
 
       좋아요한샌드위치_수정(prevData => {
         if (!prevData.includes(sandwich.id)) return [...prevData, sandwich.id];
-
         return prevData.filter(id => id !== sandwich.id);
       });
     }
@@ -52,7 +50,7 @@ function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={좋아요한샌드위치.includes(sandwich.id)} />
+      <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={좋아요한샌드위치.includes(sandwich.id)} />
     </CardWarp>
   );
 }
@@ -82,29 +80,5 @@ const CardWarp = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-`;
-
-const LikeBtn = styled.button<{ isLiked: boolean }>`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  width: ${changeRem(34)};
-  height: ${changeRem(34)};
-  background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
-  background-color: #ffe8e0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f7a9a9a3;
-    box-shadow: 3px 3px 3px #7879706d;
-  }
-
-  ${mediaQuery} {
-    width: ${changeRem(48)};
-    height: ${changeRem(48)};
   }
 `;
