@@ -3,7 +3,6 @@ import { changeRem } from '@styles/mixin';
 import { getTimePassedBy } from '@utils/index';
 import { 인터페이스_댓글_읽기 } from '@typings/IComment';
 
-// TODO: any 없애기
 function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {
   const {
     // comment: { 작성자이름, 내용, 작성일 },

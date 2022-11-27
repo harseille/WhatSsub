@@ -11,7 +11,7 @@ import {
 type 타입_메뉴 = {
   메뉴명: string;
   이동링크: string;
-  아이콘: any;
+  아이콘: string;
   아이콘설명: string;
   로그인상관여부: boolean;
 };

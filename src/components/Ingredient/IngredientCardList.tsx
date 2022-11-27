@@ -11,8 +11,6 @@ type TProps = {
 };
 
 function IngredientCardList({ ingredientList, toasting }: TProps) {
-  console.log(ingredientList);
-
   const sortedIngredientList = ingredientList
     .map(재료 => ({
       ...재료,

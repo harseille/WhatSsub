@@ -12,7 +12,7 @@ function HeaderContiner({ author, like }: Tprops) {
   return (
     <Header>
       <h1>
-        <span>{author}</span>만의 조합
+        <span>{author}</span> 만의 조합
       </h1>
       <Like count={like} />
     </Header>

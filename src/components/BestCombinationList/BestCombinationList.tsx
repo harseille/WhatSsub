@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import useCheckLogin from '@hooks/useCheckLogin';
-import { collection, orderBy, query } from 'firebase/firestore';
+import { collection, orderBy, query, DocumentData } from 'firebase/firestore';
 import NotFoundBestCombinationList from '@components/BestCombinationList/NotFoundBestCombinationList';
 import SandwichInfoCard from '@components/Common/Cards/SandwichInfoCard';
 import Modal from '@components/UI/Modal';
@@ -29,7 +29,7 @@ function BestCombinationList({ filter }: { filter: string[] }) {
     const 쿼리스냅샷 = await dbGet(꿀조합쿼리);
 
     const convertBCList: 인터페이스_꿀조합[] = [];
-    쿼리스냅샷.forEach((doc: any) => {
+    쿼리스냅샷.forEach((doc: DocumentData) => {
       convertBCList.push({
         id: doc.id,
         ...doc.data(),
