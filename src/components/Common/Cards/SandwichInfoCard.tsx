@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';

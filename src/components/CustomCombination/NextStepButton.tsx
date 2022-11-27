@@ -1,4 +1,4 @@
-import Button from '@components/UI/Button';
+import Button from '@components/Common/UI/Button';
 import styled from '@emotion/styled';
 
 type 타입_선택_버튼_속성 = {

@@ -3,8 +3,8 @@ import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { userState } from '@state/index';
 import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
-import Button from '@components/UI/Button';
-import postCustom from '@utils/customCombination/postCustom';
+import Button from '@components/Common/UI/Button';
+import postCustom from '@services/customCombination/postCustom';
 
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';

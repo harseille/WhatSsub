@@ -61,7 +61,7 @@ const useComments = (꿀조합id: string) => {
 
       const 댓글_목록: 인터페이스_댓글_읽기[] = [];
 
-      await 쿼리스냅샷.forEach(document => {
+      쿼리스냅샷.forEach(document => {
         댓글_목록.push({ 댓글id: document.id, ...JSON.parse(JSON.stringify(document.data())) });
         setKey(document);
       });

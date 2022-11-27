@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-import DimmedLayer from '@components/UI/DimmedLayer';
+import DimmedLayer from '@components/Common/UI/DimmedLayer';
 import RandomModalResult from '@components/Roulette/RandomModalResult';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
@@ -114,9 +114,9 @@ function RandomRoulette() {
           );
 
           // 소스 칼로리 배열
-          const 랜덤_소스_칼로리_배열 = res2.data
-            .filter((val: 인터페이스_재료데이터) => 랜덤_소스_리스트.includes(val.카테고리))
-            .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
+          // const 랜덤_소스_칼로리_배열 = res2.data
+          //   .filter((val: 인터페이스_재료데이터) => 랜덤_소스_리스트.includes(val.카테고리))
+          //   .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
 
           // 소스 칼로리
           const toNumbers = (arr: string[]) => arr.map(Number);
@@ -164,6 +164,7 @@ function RandomRoulette() {
   const 모달_열기 = () => {
     setIsShowModal(true);
   };
+
   const 클릭핸들러_모달_닫기 = () => {
     setIsShowModal(false);
   };

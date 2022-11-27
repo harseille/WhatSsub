@@ -1,4 +1,4 @@
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import styled from '@emotion/styled';
 import danzziSpeechLess from '@assets/images/danzzi/danzzi_speechless.png';
 import danzziQM from '@assets/images/danzzi/danzzi_QM.png';

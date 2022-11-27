@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import deleteBtn from '@assets/icons/deleteBtn.png';

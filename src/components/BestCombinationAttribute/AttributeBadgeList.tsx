@@ -2,7 +2,7 @@ import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 // import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
-import convertBadge from '@utils/convertBadge';
+import convertBadge from '@services/Attributes/convertBadge';
 
 function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
   const convertedBadgeList = convertBadge(badgeList);

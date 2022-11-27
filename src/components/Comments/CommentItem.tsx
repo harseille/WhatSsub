@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { getTimePassedBy } from '@utils/index';
+import getTimePassedBy from '@utils/getTimePassedBy';
 import { 인터페이스_댓글_읽기 } from '@typings/IComment';
 
 function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {

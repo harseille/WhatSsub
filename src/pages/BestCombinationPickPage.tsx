@@ -2,12 +2,12 @@ import useToggleFilter from '@hooks/useToggleFilter';
 import DeskTopImage from '@components/BestCombinationPick/DeskTopImage';
 import IngredientButtonListContainer from '@components/BestCombinationPick/IngredientButtonListContainer';
 import NavigateListPageButton from '@components/BestCombinationPick/NavigateListPageButton';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import { 꿀조합_픽_초기_필터 } from '@constants/constants';
 import styled from '@emotion/styled';
 import { flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import Modal from '@components/UI/Modal';
+import Modal from '@components/Common/UI/Modal';
 
 function BestCombinationPickPage() {
   const {

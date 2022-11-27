@@ -1,4 +1,4 @@
-import selectIngredients from '@utils/customCombination/selectIngredients';
+import selectIngredients from '@services/customCombination/selectIngredients';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';

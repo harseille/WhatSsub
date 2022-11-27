@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@components/UI/Button';
-import setFirebaseImgURL from '@utils/setFirebaseImgURL';
+import Button from '@components/Common/UI/Button';
+import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 
 import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';

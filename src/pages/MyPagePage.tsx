@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { isLoggedInState, userState } from '@state/index';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';

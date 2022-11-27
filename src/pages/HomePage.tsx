@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import danzziHome from '@assets/images/danzzi/danzzi_home.png';
 import deco1 from '@assets/icons/home_bg_left_top.svg';
 import deco2 from '@assets/icons/home_bg_right_top.svg';
