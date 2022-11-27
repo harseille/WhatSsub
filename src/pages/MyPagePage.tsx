@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { isLoggedInState, userState } from '@state/index';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
 import Wrapper from '@components/UI/Wrapper';
 import styled from '@emotion/styled';
-// import xBtn from '@assets/images/x-btn.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';
 import heartFill from '@assets/icons/heart-fill.svg';
+import heart from '@assets/icons/heart.svg';
 import { changeRem } from '@styles/mixin';
 import { dbDelete, dbUpdate } from '@api/index';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
@@ -15,6 +15,8 @@ import dbGet from '@api/dbGet';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
+import LikeRedBtn from '@components/Common/Button/LikeRed';
+import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import { db } from '../firebase.config';
 
 export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
@@ -22,21 +24,24 @@ export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀
 }
 
 function MyPage() {
+  // const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
-  const isUserLikeUser = useRecoilValue(userLike);
   const [currentTab, setCurrentTab] = useState<string>('좋아요 꿀조합');
   const [toggleState, setToggleState] = useState<boolean | undefined>(true);
   const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합_아이디[] | null>(null);
-
+  // const [toggleModal, setToggleModal] = useState<boolean>(true);
   const 유저정보: User | null = useRecoilValue(userState);
+  const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
+  const [삭제예정, 삭제예정_수정] = useState<string[]>([]);
 
   useEffect(() => {
     const tabToggle: string = currentTab !== '좋아요 꿀조합' ? '작성일' : '좋아요';
     꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
-    console.log('로그인한 유저가 좋아요 누른 꿀조합의 id  =>', isUserLikeUser);
-
+    // 좋아요한샌드위치_수정(isUserLikeUser);
+    console.log('로그인한 유저가 좋아요 누른 꿀조합의 id  =>', 좋아요한샌드위치);
+    console.log('좋아요한샌드위치  =>', 좋아요한샌드위치);
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
@@ -63,14 +68,13 @@ function MyPage() {
   };
   // ? --------------------------------------------------------------------------------------------------------------------
 
-  const 유저가_좋아요한_꿀조합 = myList?.filter(
-    (user: 인터페이스_꿀조합_아이디, i: number) => user.id === isUserLikeUser[i]
+  const 유저가_좋아요한_꿀조합 = myList?.filter((꿀조합: 인터페이스_꿀조합_아이디) =>
+    좋아요한샌드위치.includes(꿀조합.id)
   );
 
   const 목록에서_샌드위치_삭제하기 = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as Element;
     const targetLi = target.closest('li');
-
     if (유저만의조합 && targetLi) {
       try {
         dbDelete('꿀조합', targetLi.id);
@@ -82,8 +86,21 @@ function MyPage() {
         console.log('삭제 실패');
       }
     }
+  };
 
-    유저만의조합?.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
+  // 수정 지금 이게 통째로 읽힘 ul을 읽는 것 마냥. 클릭은 li로 됨 => '유저가_좋아요한_꿀조합'을 i로 비교하려 했던 문제 때문 => includes로 판별해야함
+  const 좋아요_버튼_수정하기 = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as Element;
+    const targetLi = target.closest('li');
+
+    if (targetLi && 유저정보 && 좋아요한샌드위치.includes(targetLi.id) && !삭제예정.includes(targetLi.id)) {
+      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi.id) });
+      삭제예정_수정(prev => [...prev, targetLi.id]);
+    } else if (targetLi && 유저정보) {
+      console.log('서버로보내줘');
+      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: [...new Set([...좋아요한샌드위치, targetLi.id])] });
+      삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi.id));
+    }
   };
 
   const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
@@ -91,9 +108,9 @@ function MyPage() {
 
   const userCombination = 유저만의조합?.map(sandwich => (
     <Card key={sandwich.꿀조합제목} id={sandwich.id}>
-      <RemoveBtn onClick={목록에서_샌드위치_삭제하기}>
+      <EditListBtn onClick={목록에서_샌드위치_삭제하기}>
         <img className="close-btn" src={deleteBtn} alt="닫기 버튼" />
-      </RemoveBtn>
+      </EditListBtn>
       <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
@@ -102,10 +119,8 @@ function MyPage() {
 
   const likeCombination = 유저가_좋아요한_꿀조합?.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
     // const likeCombination = 유저가좋아한조합?.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.꿀조합제목}>
-      <RemoveBtn>
-        <img className="heart-fill" src={heartFill} alt="닫기 버튼" />
-      </RemoveBtn>
+    <Card className={삭제예정.includes(sandwich.id) ? 'delete' : ''} key={sandwich.꿀조합제목} id={sandwich.id}>
+      <LikeRedBtn onClick={좋아요_버튼_수정하기} isLiked={!삭제예정.includes(sandwich.id)} />
       <Link to={`/best-combination/${sandwich.id}`}>
         <SandwichInfo sandwich={sandwich} />
       </Link>
@@ -177,9 +192,13 @@ const Card = styled.li`
   border-radius: 15px;
   margin: 20px auto 0;
   position: relative;
+
+  &.delete {
+    background: #e4e4e4;
+  }
 `;
 
-const RemoveBtn = styled.button`
+const EditListBtn = styled.button`
   position: absolute;
   top: 20px;
   right: 15px;
@@ -193,7 +212,10 @@ const RemoveBtn = styled.button`
       filter: opacity(0.5) drop-shadow(0 0 0 #0b0b0b);
     }
   }
-  .heart-fill {
+  &.heart-fill {
     background: url(${heartFill}) no-repeat center;
+  }
+  &.heart {
+    background: url(${heart}) no-repeat center;
   }
 `;
