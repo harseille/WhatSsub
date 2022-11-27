@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
-  const [isShowModal, setIsShowModal] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState(initFilter);
+  const [overSelectedFilter, setOverSelectedFilter] = useState<string>('');
 
   const toggleFilter = (filter: string, name: string, maxNum: number) => {
     const filterArr = selectedFilter[filter];
@@ -12,11 +12,12 @@ const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
         ...prevState,
         [filter]: [name],
       }));
+      setOverSelectedFilter('');
       return;
     }
 
     if (maxNum === filterArr.length && !filterArr.includes(name)) {
-      setIsShowModal(true);
+      setOverSelectedFilter(filter);
       return;
     }
 
@@ -28,17 +29,15 @@ const useToggleFilter = (initFilter: { [key: string]: string[] } = {}) => {
 
       return { ...prevState, [filter]: [...filterArr, name] };
     });
+    setOverSelectedFilter('');
   };
 
   const initializeFilter = () => {
     setSelectedFilter(initFilter);
+    setOverSelectedFilter('');
   };
 
-  const closeModal = () => {
-    setIsShowModal(false);
-  };
-
-  return { isShowModal, closeModal, selectedFilter, toggleFilter, initializeFilter };
+  return { selectedFilter, overSelectedFilter, toggleFilter, initializeFilter };
 };
 
 export default useToggleFilter;
