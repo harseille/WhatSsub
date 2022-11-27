@@ -6,19 +6,25 @@ import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조
 type TProps = {
   filterData: 인터페이스_꿀조합선택페이지_속성선택;
   selectedFilter: { [key: string]: string[] };
+  overSelectedFilter: string;
   onSelectFilter: (filter: string, name: string, maxNum: number) => void;
 };
 
 function IngredientButtonList({
   filterData: { 이름, 속성목록, 최대선택개수 },
   selectedFilter,
+  overSelectedFilter,
   onSelectFilter,
 }: TProps) {
   return (
     <Wrapper>
       <Title>
         {이름}
-        <TitleDes>{`(최대 ${최대선택개수}가지 선택 가능합니다.)`}</TitleDes>
+        <TitleDes overSelectedFilter={overSelectedFilter} filter={이름}>
+          {overSelectedFilter !== 이름
+            ? `( 최대 ${최대선택개수}가지 선택 가능합니다. )`
+            : ` 최대 선택 개수가 초과되었습니다. `}
+        </TitleDes>
       </Title>
       <IngredientList>
         {속성목록.map((속성: 인터페이스_꿀조합선택페이지_속성) => (
@@ -51,11 +57,12 @@ const Title = styled.h2`
   font-weight: bold;
   font-size: ${changeRem(18)};
 `;
-const TitleDes = styled.span`
+const TitleDes = styled.span<{ overSelectedFilter: string; filter: string }>`
   display: inline-block;
   margin-left: 8px;
-  color: #878787;
+  color: ${({ overSelectedFilter, filter }) => (overSelectedFilter === filter ? '#fa3450' : '#878787')};
   font-size: ${changeRem(14)};
+  transition: all 0.2s linear;
 `;
 
 const IngredientList = styled.ul`

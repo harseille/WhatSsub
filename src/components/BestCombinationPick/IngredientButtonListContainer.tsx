@@ -6,11 +6,12 @@ import 꿀조합속성 from '../../data/PickAttribute';
 
 type TProps = {
   filteredAttr: 인터페이스_꿀조합선택페이지_필터;
+  overSelectedFilter: string;
   toggleFilter: (filter: string, name: string, maxNum: number) => void;
   initializeFilter: () => void;
 };
 
-function IngredientButtonListContainer({ filteredAttr, toggleFilter, initializeFilter }: TProps) {
+function IngredientButtonListContainer({ filteredAttr, overSelectedFilter, toggleFilter, initializeFilter }: TProps) {
   return (
     <IngredientButtonListWrap>
       <RefreshButton onClick={initializeFilter}>
@@ -21,6 +22,7 @@ function IngredientButtonListContainer({ filteredAttr, toggleFilter, initializeF
           key={data.이름}
           filterData={data}
           selectedFilter={filteredAttr}
+          overSelectedFilter={overSelectedFilter}
           onSelectFilter={toggleFilter}
         />
       ))}
