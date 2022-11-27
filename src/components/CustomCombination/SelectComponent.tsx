@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import SelectCombination from '@components/CustomCombination/SelectCombination';
 import NextStepButton from '@components/CustomCombination/NextStepButton';
 import CombinationRegistration from '@components/CustomCombination/CombinationRegistration';
-import { fetchIngredients, fetchRecipe } from '@utils/fetchJson';
+import ingredients from '@data/ingredients';
+import recipe from '@data/recipe';
 
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
@@ -31,9 +32,7 @@ function SelectComponent(props: TProps) {
   const [recipeData, setRecipeData] = useState<인터페이스_레시피[]>();
 
   useEffect(() => {
-    const request = async () => {
-      const ingredients = await fetchIngredients();
-      const recipe = await fetchRecipe();
+    const request = () => {
       setIngredientsData(ingredients);
       setRecipeData(recipe);
     };
