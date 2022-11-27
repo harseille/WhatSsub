@@ -110,11 +110,10 @@ const UserName = styled.h2`
 
 const SubTitle = styled.p`
   font-weight: 400;
-
   text-align: center;
   color: #979797;
   margin: 0;
-  padding-top: 5px;
+  padding-top: 4px;
 `;
 
 const CardContentWrap = styled.div`
@@ -143,8 +142,11 @@ const CardInputButtonWrap = styled.div`
 
 const Img = styled.img`
   display: block;
-  margin: 4vw auto;
-  max-width: 66%;
+  max-width: 62%;
+  margin: 0 auto;
+  ${mediaQuery} {
+    max-width: 50%;
+  }
 `;
 
 const Input = styled.input`
@@ -176,7 +178,7 @@ const Danzzi = styled.img`
 
 const DeleteBtn = styled.button`
   position: absolute;
-  top: 18%;
+  top: 20%;
   right: 7%;
   border: none;
   background-color: ${props => props.theme.colors.primaryGreen};
@@ -196,7 +198,7 @@ const DeleteBtn = styled.button`
   }
 
   & img {
-    max-width: 100%;
+    max-width: 90%;
     vertical-align: middle;
     width: initial;
     filter: drop-shadow(1px 3px 1px #1f1f1f);
