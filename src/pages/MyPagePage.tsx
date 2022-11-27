@@ -13,15 +13,14 @@ import { collection, orderBy, query } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import { db } from '../firebase.config';
 // import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
+import { db } from '../firebase.config';
 
 export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
   id: string;
 }
 
 function MyPage() {
-  // const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
   const [toggleState, setToggleState] = useState<boolean>(true);
@@ -31,12 +30,15 @@ function MyPage() {
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const [삭제예정, 삭제예정_수정] = useState<string[]>([]);
 
+  // const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(꿀조합!);
+
   useEffect(() => {
     const tabToggle: string = toggleState ? '작성일' : '좋아요';
     꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
     // 좋아요한샌드위치_수정(isUserLikeUser);
     console.log('로그인한 유저가 좋아요 누른 꿀조합의 id  =>', 좋아요한샌드위치);
     console.log('좋아요한샌드위치  =>', 좋아요한샌드위치);
+    console.log('유저정보  =>', 유저정보);
 
     if (!isLoggedin) {
       alert('로그인 먼저');
@@ -44,7 +46,6 @@ function MyPage() {
     }
   }, [isLoggedin, navigate, toggleState]);
 
-  // ? --------------------------------------------------------------------------------------------------------------------
   const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
     const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
     setToggleState(사용자명_체크);
@@ -62,7 +63,6 @@ function MyPage() {
     setMyList(샌드위치_데이터); // 전체 데이터 리스트
     유저만의조합_수정(result); // 유저가 만든 샌드위치 데이터 리스트
   };
-  // ? --------------------------------------------------------------------------------------------------------------------
 
   const 유저가_좋아요한_꿀조합 = myList?.filter((꿀조합: 인터페이스_꿀조합_아이디) =>
     좋아요한샌드위치.includes(꿀조합.id)
