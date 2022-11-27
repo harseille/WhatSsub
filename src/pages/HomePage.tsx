@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import Wrapper from '@components/UI/Wrapper';
-import homeDanji from '@assets/images/home_danji.png';
-import deco1 from '@assets/images/home_bg_left_top.svg';
-import deco2 from '@assets/images/home_bg_right_top.svg';
-import deco3 from '@assets/images/home_bg_left_bottom.svg';
-import bestLink from '@assets/images/home_link_best_combination.svg';
-import bgText from '@assets/images/home_bg_text.svg';
-import ramdomLink from '@assets/images/home_link_random.svg';
+import danzziHome from '@assets/images/danzzi/danzzi_home.png';
+import deco1 from '@assets/icons/home_bg_left_top.svg';
+import deco2 from '@assets/icons/home_bg_right_top.svg';
+import deco3 from '@assets/icons/home_bg_left_bottom.svg';
+import bestLink from '@assets/icons/home_link_best_combination.svg';
+import bgText from '@assets/icons/home_bg_text.svg';
+import ramdomLink from '@assets/icons/home_link_random.svg';
 import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
+import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 
 function HomePage() {
@@ -24,7 +24,7 @@ function HomePage() {
               <StrongSpan>왔썹</StrongSpan>으로 고르자
             </TitleSpan>
           </Title>
-          <VisualImg src={homeDanji} alt="샌드위치 먹는 단지" />
+          <VisualImg src={danzziHome} alt="샌드위치 먹는 단지" />
         </Wrapper>
       </Visual>
       <Wrapper>
@@ -59,15 +59,38 @@ const HomeWrapper = styled.div`
 const Visual = styled.section`
   overflow: hidden;
   height: 447px;
-  padding: 30px 0 0;
   text-align: right;
   background-color: ${({ theme }) => theme.colors.primaryGreen};
-  background-image: url(${deco3}), url(${bgText});
-  background-repeat: no-repeat;
-  background-position: left 34px bottom 60px, right -30px bottom 90px;
+
+  & > div {
+    padding-top: 50px;
+    height: calc(100% - 50px);
+    background-image: url(${deco3}), url(${bgText});
+    background-repeat: no-repeat;
+    background-size: auto, 100%;
+    background-position: left 34px bottom 60px, right -30px bottom 30%;
+  }
 
   ${mediaQuery} {
-    height: 680px;
+    position: relative;
+    height: calc(100vh - 98px);
+
+    & > div {
+      position: relative;
+      height: calc(100% - 100px);
+      background-size: 20%, 80%;
+      background-position: left -5% bottom 10%, right 25px bottom 35%;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: ${({ theme }) => theme.colors.primaryYellow};
+    }
   }
 `;
 
@@ -83,14 +106,22 @@ const Title = styled.h2`
   transform: skewY(7deg);
 
   ${mediaQuery} {
-    text-align: center;
-    font-size: ${changeRem(80)};
+    width: 558px;
+    padding-top: 20px;
+    text-align: left;
+    font-size: ${changeRem(64)};
+    background-size: 23%, 10%;
+    background-position: left -8% center, right 30px top -15px;
     transform: skewY(7deg) translateY(20%);
   }
 `;
 
 const TitleSpan = styled.span`
   display: block;
+
+  &:first-of-type {
+    text-align: right;
+  }
 `;
 
 const StrongSpan = styled.span`
@@ -99,14 +130,21 @@ const StrongSpan = styled.span`
   font-weight: bold;
 
   ${mediaQuery} {
-    font-size: ${changeRem(100)};
+    font-size: ${changeRem(84)};
   }
 `;
 
 const VisualImg = styled.img`
   width: ${changeRem(280)};
-  margin-top: -15px;
   margin-right: 56px;
+
+  ${mediaQuery} {
+    position: absolute;
+    right: 30px;
+    bottom: -20%;
+    width: 35%;
+    margin: 0;
+  }
 `;
 
 const LinkGroup = styled.div`
@@ -114,7 +152,15 @@ const LinkGroup = styled.div`
   align-items: center;
   width: calc(100% - 70px);
   margin: -55px auto 0;
+
+  ${mediaQuery} {
+    ${flexbox('row', 'end', 'center')}
+    position: relative;
+    z-index: 1;
+    margin-top: -145px;
+  }
 `;
+
 const ALink = styled(Link)`
   flex-basis: 50%;
   padding: 45px 0 35px;
@@ -140,10 +186,26 @@ const ALink = styled(Link)`
       transform: translate3d(0, -50%, 0);
     }
   }
+
+  ${mediaQuery} {
+    ${flexbox('row-reverse', 'center', 'center')}
+    gap: 15px;
+    padding: 25px 0;
+    flex-basis: 374px;
+
+    &:first-of-type::after {
+      height: calc(100% - 54px)
+    }
+  }
+  }
 `;
 
 const LinkImg = styled.img`
   width: auto;
+
+  ${mediaQuery} {
+    height: 45px;
+  }
 `;
 
 const LinkTitle = styled.span`
@@ -167,6 +229,14 @@ const LinkTitle = styled.span`
     position: relative;
     z-index: 1;
   }
+
+  ${mediaQuery} {
+    font-size: ${changeRem(24)};
+
+    &::before {
+      content: none;
+    }
+  }
 `;
 
 const LinkSub = styled.span`
@@ -174,4 +244,8 @@ const LinkSub = styled.span`
   margin: 4px 0 10px;
   color: #979797;
   font-size: ${changeRem(12)};
+
+  ${mediaQuery} {
+    display: none;
+  }
 `;

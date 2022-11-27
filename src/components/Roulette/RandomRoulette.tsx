@@ -7,28 +7,37 @@ import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_재료데이터, 인터페이스_랜덤재료샌드위치 } from '../../types/ISandwich';
+import mediaQuery from '@styles/media-queries';
+import ChickenSlice from '@assets/images/Chicken_Slice.png';
+import {
+  인터페이스_재료데이터,
+  인터페이스_꿀조합_랜덤칼로리포함,
+  인터페이스_꿀조합_랜덤2,
+  인터페이스_꿀조합_재료,
+} from '@typings/ISandwich';
 
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
-  const [sandwichData, setSandwichData] = useState<인터페이스_랜덤재료샌드위치>({
-    이름: '',
+  const [sandwichData, setSandwichData] = useState<인터페이스_꿀조합_랜덤2>({
+    꿀조합제목: '',
     베이스샌드위치: '',
     빵: '',
     치즈: '',
-    소스: '',
+    소스: [],
     칼로리: '',
-    뱃지리스트: [],
+    속성: [],
+    이미지: '',
+    id: '',
   });
+
   const [random, setRandom] = useState<number>(-1);
-  const [sumNum, setSumNum] = useState<number>(0);
 
   const randomNum = (num: number) => Math.floor(Math.random() * num);
 
   // 샌드위치
   useEffect(() => {
-    console.log(sandwichData, '샌드위치 데이터');
+    console.log('샌드위치 데이터 ==> ', sandwichData);
   }, [sandwichData]);
 
   // 재료 객체 만들기
@@ -42,34 +51,91 @@ function RandomRoulette() {
       ])
       .then(
         axios.spread((res1, res2) => {
-          const wanted = ['빵', '치즈', '소스'];
-          const filter = res2.data
-            .filter((val: 인터페이스_재료데이터) => wanted.includes(val.카테고리))
-            .map((val: 인터페이스_재료데이터) => ({ [val.카테고리]: val.목록[randomNum(val.목록.length)].이름 }))
+          const 랜덤_필수재료 = ['빵', '치즈'];
+          let 랜덤_소스_리스트 = Array(3).fill(-1);
+          const kcal: number[] = [];
+          const kcalS: number[] = [];
+          const 랜덤_소스_이름_리스트: string[] = [];
+          const 랜덤_소스_칼로리_리스트: string[] = [];
+          const 랜덤_소스_속성_리스트: string[] = [];
+          const filter = res2.data.filter((val: 인터페이스_재료데이터) => 랜덤_필수재료.includes(val.카테고리));
+
+          // ! 빵, 치즈 랜덤 뽑기
+          const 필터링된_랜덤_재료 = filter
+            .map((val: 인터페이스_꿀조합_랜덤칼로리포함) => {
+              const 랜덤_인덱스 = randomNum(val.목록.length); // 빵의 개수, 치즈의 개수 안에서 랜덤
+              kcal.push(랜덤_인덱스); // 빵과 치즈에 각각 인덱스 값 넣기
+              return {
+                [val.카테고리]: val.목록[랜덤_인덱스].이름,
+              };
+            })
             .reduce((acc: { [key: string]: string }, cur: { [key: string]: string }) => ({ ...acc, ...cur }), {});
 
-          const 칼로리 = '265';
-          // const 칼로리 = res2.data
-          //   .filter((val: 인터페이스_재료데이터) => wanted[0].includes(val.카테고리))
-          //   .map((val: 인터페이스_재료데이터) => {
-          //     console.log(val.목록[randomNum(val.목록.length)].이름, filter.빵, '같은지 확인~~~~~~~~~~~~~');
-          //     // if (val.목록[randomNum(val.목록.length)].이름 === filter.빵) console.log('gg');
-          //     if (val.목록[randomNum(val.목록.length)].includes(filter.빵)) console.log('gg');
-          //   });
-          // 소스의 속성
-          // const 뱃지리스트;
+          // 카테고리에서 소스 목록 뽑기
+          const 소스_목록 = res2.data.find((val: 인터페이스_꿀조합_랜덤칼로리포함) => val.카테고리 === '소스').목록;
 
-          setSandwichData({
-            이름: '',
-            베이스샌드위치: res1.data[randomNum(res1.data.length)].이름,
-            ...filter,
-            칼로리,
-            // 뱃지리스트,
+          // 소스 인덱스 뽑기
+          랜덤_소스_리스트 = 랜덤_소스_리스트.map(_ => {
+            while (true) {
+              const 랜덤_인덱스 = randomNum(소스_목록.length);
+              if (!랜덤_소스_리스트.includes(랜덤_인덱스)) return 랜덤_인덱스;
+            }
           });
 
-          // console.log(filter, 'filter', 칼로리, '칼로리');
-          // console.log(filter.빵);
-          // console.log(칼로리);
+          // 소스 데이터 객체 3개 뽑기
+          const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
+
+          const 랜덤_샌드위치_인덱스 = randomNum(res1.data.length);
+          const 랜덤_샌드위치_칼로리 = res1.data[랜덤_샌드위치_인덱스].재료칼로리;
+
+          // 각각 빵, 치즈 칼로리 총 합
+          const 랜덤_샌드위치_재료_칼로리 = filter.reduce(
+            (acc: number, cur: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => {
+              const response = cur.목록[kcal[i]].칼로리;
+              return acc + Number(response);
+            },
+            0
+          );
+          console.log('랜덤_샌드위치_재료_칼로리 =>', 랜덤_샌드위치_재료_칼로리);
+
+          // 소스에 대해 각각 이름, 속성, 칼로리 마다 배열 만들어서 리스팅 하기
+          소스_랜덤_재료.forEach((val: 인터페이스_꿀조합_재료, i: number) => {
+            랜덤_소스_이름_리스트.push(val.이름);
+            랜덤_소스_속성_리스트.push(val.속성 || '');
+            랜덤_소스_칼로리_리스트.push(val.칼로리 || '');
+          });
+
+          console.log('랜덤_소스_속성_리스트 =>', 랜덤_소스_속성_리스트);
+
+          // 랜덤 소스 속성(뱃지) 겹치는 부분 삭제
+
+          const 랜덤_소스_뱃지리스트 = 랜덤_소스_속성_리스트.filter(
+            (v: string, i: number) => 랜덤_소스_속성_리스트.indexOf(v) === i
+          );
+
+          // 소스 칼로리 배열
+          const 랜덤_소스_칼로리_배열 = res2.data
+            .filter((val: 인터페이스_재료데이터) => 랜덤_소스_리스트.includes(val.카테고리))
+            .map((val: 인터페이스_꿀조합_랜덤칼로리포함, i: number) => val.목록[kcalS[i]].칼로리);
+
+          // 소스 칼로리
+          const toNumbers = (arr: string[]) => arr.map(Number);
+          const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
+
+          const 랜덤_샌드위치_총_칼로리 = Math.floor(
+            Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
+          ).toFixed(1);
+          console.log('랜덤_소스_뱃지리스트 =>', 랜덤_소스_뱃지리스트);
+          // setState
+          setSandwichData({
+            꿀조합제목: '',
+            베이스샌드위치: res1.data[랜덤_샌드위치_인덱스].이름,
+            ...필터링된_랜덤_재료,
+            칼로리: 랜덤_샌드위치_총_칼로리,
+            속성: 랜덤_소스_뱃지리스트,
+            이미지: ChickenSlice,
+            소스: 랜덤_소스_이름_리스트,
+          });
         })
       )
       .catch(err => console.log(err))
@@ -91,14 +157,12 @@ function RandomRoulette() {
   };
 
   const 룰렛_돌리기 = () => {
-    // console.log(sandwichData, random);
     setRandom(Math.floor(Math.random() * 17));
     룰렛_회전하기();
   };
 
   const 모달_열기 = () => {
     setIsShowModal(true);
-    // console.log(sandwichData[random].이름);
   };
   const 클릭핸들러_모달_닫기 = () => {
     setIsShowModal(false);
@@ -110,8 +174,7 @@ function RandomRoulette() {
         {isShowModal ? (
           <div>
             <DimmedLayer />
-            {/* <RandomModalResult randomSandwich={sandwichData} onClick={클릭핸들러_모달_닫기} /> */}
-            <RandomModalResult onClick={클릭핸들러_모달_닫기} />
+            <RandomModalResult sandwich={sandwichData} onClick={클릭핸들러_모달_닫기} />
           </div>
         ) : null}
       </div>
@@ -128,31 +191,35 @@ export default RandomRoulette;
 
 const Container = styled.div`
   position: relative;
-  width: 379px;
+  width: ${changeRem(279)};
   margin: 18px auto 0;
   padding-top: 18px;
+  ${mediaQuery} {
+    /*width: ${changeRem(379)};*/
+    width: 50%;
+  }
 `;
-const Roulette = styled.img`
-  /* transform: rotate(-${200}deg); */
-`;
+const Roulette = styled.img``;
 const Pointer = styled.img`
   position: absolute;
-  width: 48px;
-  height: 84px;
+  width: ${changeRem(38)};
   left: 50%;
   top: 0;
   transform: translate(-50%);
-  /* top: 18%;
-  transform: translate(-50%, -50%);
-  width: ${changeRem(30)}; */
+  ${mediaQuery} {
+    /*width: ${changeRem(50)};*/
+    width: 8%;
+  }
 `;
 const StartButton = styled.img`
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: ${changeRem(80)};
+  /* height: 80px; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* top: 29%;
-  width: ${changeRem(82)}; */
+  ${mediaQuery} {
+    /*width: ${changeRem(99)};*/
+    width: 18%;
+  }
 `;

@@ -1,46 +1,54 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { query, getCountFromServer, Query, DocumentData } from 'firebase/firestore';
 
-const useInfiniteScroll = (target: React.RefObject<HTMLUListElement>) => {
-  const [page, setPage] = useState(1);
-
-  const ENDPOINT = 1;
-
-  const observer = useMemo(
-    () =>
-      new IntersectionObserver(([{ isIntersecting }]) => {
-        if (target.current === null) {
-          return;
-        }
-        if (isIntersecting) {
-          setPage(cur => cur + 1);
-        }
-      }),
-    [target]
-  );
+// const useInfiniteScroll = (callback: Function, dataLength: number, collectionName: string) => {
+const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery: Query<DocumentData>) => {
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (target?.current === null) return;
+    const getServerDataLength = async () => {
+      // const querySnapshot = await getCountFromServer(query(collection(db, collectionName)));
+      const querySnapshot = await getCountFromServer(query(dbCountQuery));
 
-    const lastTargetChild = target.current.children[target.current.children.length - ENDPOINT];
-
-    console.log(page);
-    //* 불러올 정보 있는 없는지 확인 필요
-    // if (page < 5) {
-    console.log('구독');
-    observer.observe(lastTargetChild);
-    // }
-
-    return () => {
-      if (target.current !== null && observer) {
-        console.log('연결끊기');
-        observer.unobserve(target.current);
+      if (dataLength >= querySnapshot.data().count) {
+        setHasMore(false);
       }
     };
-  }, [target, observer]);
+    getServerDataLength();
+  }, [dataLength, dbCountQuery]);
+
+  const observer = useRef<IntersectionObserver | null>(null);
+  const listRef = useCallback(
+    (node: HTMLLIElement) => {
+      // if (!observer.current) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(
+        async entries => {
+          console.log(entries);
+          if (entries[0].isIntersecting) {
+            // setIsLoading(true);
+            if (hasMore) {
+              console.log('실행');
+              await callback();
+
+              setIsLoading(false);
+            }
+          }
+        },
+        {
+          threshold: 1,
+        }
+      );
+      if (node) observer.current.observe(node);
+      if (!hasMore) observer.current!.disconnect();
+    },
+    [callback, hasMore]
+  );
 
   return {
-    page,
-    setPage,
+    listRef,
+    isLoading,
   };
 };
 

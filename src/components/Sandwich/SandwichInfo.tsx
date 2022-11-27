@@ -1,23 +1,26 @@
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
-import { 인터페이스_샌드위치 } from '../../types/ISandwich';
+import { changeRem, flexbox } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
+import { 인터페이스_샌드위치 } from '@typings/ISandwich';
 
-function SandwichInfo({
-  sandwich: { 이미지, 이름, 베이스샌드위치, 칼로리, 뱃지리스트 },
-}: {
+type TProps = {
   sandwich: 인터페이스_샌드위치;
-}) {
+};
+
+function SandwichInfo({ sandwich: { 이미지, 꿀조합제목, 베이스샌드위치, 칼로리, 뱃지리스트 } }: TProps) {
   return (
     <InfoWrap>
       <ImgWrap>
-        <img src={이미지} alt={이름} />
+        <img src={이미지} alt={꿀조합제목} />
       </ImgWrap>
-      <SandwichName>{이름}</SandwichName>
-      <InfoSummary>
-        {베이스샌드위치} • <Kcal>{칼로리}Kcal</Kcal>
-      </InfoSummary>
-      <SandwichBadgeList badgeList={뱃지리스트} />
+      <div>
+        <SandwichName>{꿀조합제목}</SandwichName>
+        <InfoSummary>
+          {베이스샌드위치} • <Kcal>{칼로리}Kcal</Kcal>
+        </InfoSummary>
+        <SandwichBadgeList badgeList={뱃지리스트} />
+      </div>
     </InfoWrap>
   );
 }
@@ -25,13 +28,24 @@ function SandwichInfo({
 export default SandwichInfo;
 
 const InfoWrap = styled.div`
-  width: ${changeRem(305)};
+  max-width: ${changeRem(305)};
+
+  ${mediaQuery} {
+    width: 100%;
+    margin: auto 0;
+    max-width: ${changeRem(835)};
+    ${flexbox('row', 'space-between', 'center')}
+  }
 `;
 
 const ImgWrap = styled.div`
   width: ${changeRem(275)};
-  height: ${changeRem(120)};
   margin: 0 auto 15px;
+
+  ${mediaQuery} {
+    width: ${changeRem(375)};
+    margin: 0;
+  }
 
   & img {
     width: 100%;

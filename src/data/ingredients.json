@@ -66,7 +66,7 @@
         "칼로리": "207.7"
       },
       {
-        "이름": "전기구이 통닭",
+        "이름": "로티세리 치킨",
         "이미지": "/src/assets/images/ingredients/main/rotisserie.png",
         "속성": "닭고기",
         "칼로리": "118.8"
@@ -281,7 +281,7 @@
       {
         "이름": "핫 칠리",
         "이미지": "/src/assets/images/ingredients/sauce/hot_chilli.png",
-        "속성": "메콤",
+        "속성": "매콤",
         "칼로리": "41.8"
       },
       {
@@ -319,7 +319,7 @@
       {
         "이름": "베이컨",
         "이미지": "/src/assets/images/ingredients/main/bacon.png",
-        "속성": "베이컨 추가",
+        "속성": "고기 러버",
         "칼로리": "22.9"
       },
       {

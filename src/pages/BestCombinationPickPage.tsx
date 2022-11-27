@@ -1,116 +1,50 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import IngredientButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
-import Button from '@components/UI/Button';
+import useToggleFilter from '@hooks/useToggleFilter';
+import DeskTopImage from '@components/BestCombinationPick/DeskTopImage';
+import IngredientButtonListContainer from '@components/BestCombinationPick/IngredientButtonListContainer';
+import NavigateListPageButton from '@components/BestCombinationPick/NavigateListPageButton';
 import Wrapper from '@components/UI/Wrapper';
+import { 꿀조합_픽_초기_필터 } from '@constants/constants';
 import styled from '@emotion/styled';
-import refreshIcon from '@assets/icons/refresh.svg';
-import { changeRem, flexbox } from '@styles/mixin';
-import { 인터페이스_꿀조합선택페이지_필터 } from '../types/ISandwich';
-import 더미데이터 from '../data/PickPageDummy';
+import { flexbox } from '@styles/mixin';
+import mediaQuery from '@styles/media-queries';
+import Modal from '@components/UI/Modal';
 
 function BestCombinationPickPage() {
-  const navigate = useNavigate();
-
-  const initFilter: 인터페이스_꿀조합선택페이지_필터 = {
-    맛: [],
-    재료: [],
-    추가사항: [],
-  };
-
-  const [selectedFilter, setSelectedFilter] = useState(initFilter);
-
-  const 클릭핸들러_꿀조합_속성_토글 = (filter: string, name: string, maxNum: number) => {
-    const filterArr = selectedFilter[filter];
-
-    if (maxNum === 1 && !filterArr.includes(name)) {
-      setSelectedFilter(prevState => ({
-        ...prevState,
-        [filter]: [name],
-      }));
-      return;
-    }
-
-    if (maxNum === filterArr.length && !filterArr.includes(name)) {
-      alert('최대 선택 개수를 초과했습니다.!!!');
-      return;
-    }
-
-    setSelectedFilter(prevState => {
-      const filterArr: string[] = prevState[filter];
-
-      if (filterArr.includes(name))
-        return { ...prevState, [filter]: filterArr.filter((item: string) => item !== name) };
-
-      return { ...prevState, [filter]: [...filterArr, name] };
-    });
-  };
-
-  const 클릭핸들러_꿀조합_속성_초기화 = () => {
-    setSelectedFilter(initFilter);
-  };
-
-  const 꿀조합_목록_페이지로_이동하기 = () => {
-    navigate('/best-combination', { state: selectedFilter });
-  };
-
+  const {
+    isShowModal,
+    closeModal,
+    selectedFilter: 선택된_꿀조합_속성,
+    toggleFilter: 클릭핸들러_꿀조합_속성_토글,
+    initializeFilter: 클릭핸들러_꿀조합_속성_초기화,
+  } = useToggleFilter(꿀조합_픽_초기_필터);
   return (
-    <Container>
-      <IngredientButtonListWrap>
-        <RefreshButton onClick={클릭핸들러_꿀조합_속성_초기화}>
-          <img src={refreshIcon} alt="새로고침" />
-        </RefreshButton>
-        {더미데이터.map(data => (
-          <IngredientButtonList
-            key={data.제목}
-            filterData={data}
-            selectedFilter={selectedFilter}
-            onSelectFilter={클릭핸들러_꿀조합_속성_토글}
-          />
-        ))}
-      </IngredientButtonListWrap>
-      <ButtonWrap>
-        <Button
-          onClick={꿀조합_목록_페이지로_이동하기}
-          designType="primaryGreen"
-          width={changeRem(330)}
-          height={changeRem(50)}>
-          꿀 조합 보러가기
-        </Button>
-      </ButtonWrap>
-    </Container>
+    <TotalContainer>
+      <DeskTopImage />
+      <Container>
+        {isShowModal && (
+          <Modal message="최대 선택 개수를 초과했습니다." onClose={closeModal} cancelButtonDesignType="primaryGreen" />
+        )}
+        <IngredientButtonListContainer
+          filteredAttr={선택된_꿀조합_속성}
+          toggleFilter={클릭핸들러_꿀조합_속성_토글}
+          initializeFilter={클릭핸들러_꿀조합_속성_초기화}
+        />
+        <NavigateListPageButton filteredAttr={선택된_꿀조합_속성} />
+      </Container>
+    </TotalContainer>
   );
 }
-
 export default BestCombinationPickPage;
 
-const Container = styled(Wrapper)`
-  ${flexbox('column', 'space-between', 'center')};
-  padding: 26px;
-`;
-
-const IngredientButtonListWrap = styled.div`
-  position: relative;
-  padding-top: 20px;
-`;
-
-const RefreshButton = styled.button`
-  position: absolute;
-  top: -10px;
-  right: 0;
-  width: 45px;
-  height: 45px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-
-  img {
-    width: 100%;
-    height: 100%;
+const TotalContainer = styled(Wrapper)`
+  ${mediaQuery} {
+    ${flexbox('row', 'space-between', 'center')}
+    min-height: 750px;
+    position: relative;
   }
 `;
-
-const ButtonWrap = styled.div`
-  position: absolute;
-  bottom: 120px;
+const Container = styled(Wrapper)`
+  ${flexbox('column', 'space-between', 'center')};
+  max-width: 600px;
+  padding: 26px;
 `;

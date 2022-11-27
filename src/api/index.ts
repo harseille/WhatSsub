@@ -1,4 +1,7 @@
-import 댓글_목록_가져오기 from './getCommentList';
-import 새_댓글_추가하기 from './addNewComment';
+import dbGet from './dbGet';
+import dbPush from './dbPush';
+import dbSet from './dbSet';
+import dbUpdate from './dbUpdate';
+import dbDelete from './dbDelete';
 
-export { 새_댓글_추가하기, 댓글_목록_가져오기 };
+export { dbGet, dbPush, dbSet, dbUpdate, dbDelete };

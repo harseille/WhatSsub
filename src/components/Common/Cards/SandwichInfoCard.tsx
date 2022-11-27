@@ -1,30 +1,24 @@
-import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userLike } from '@state/User';
 import SandwichInfo from '@components/Sandwich/SandwichInfo';
-import heart from '@assets/icons/heart.svg';
-import heartFill from '@assets/icons/heart-fill.svg';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
 import styled from '@emotion/styled';
-import { userLike } from '@state/user';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_샌드위치 } from '../../../types/ISandwich';
+import mediaQuery from '@styles/media-queries';
+import dbUpdate from '@api/dbUpdate';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { increment } from 'firebase/firestore';
+import { User } from 'firebase/auth';
+import LikeRedBtn from '../Button/LikeRed';
 
-export const mockSandwich: 인터페이스_샌드위치 = {
-  id: 'S1',
-  이미지: ChickenSlice,
-  이름: '꿀꿀마앗',
-  베이스샌드위치: '치킨 슬라이스',
-  칼로리: '265',
-  뱃지리스트: {
-    맛: ['달달', '고소'],
-    재료: ['살라미'],
-    추가사항: ['고기러버'],
-  },
+type TProps = {
+  sandwich: 인터페이스_꿀조합;
+  userInfo: User | null;
+  toggleModal: () => void;
 };
 
-function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치 }) {
-  // Todo 임시 user데이터 atom으로 사용 나중에 수정 필요
-  const [userData, setUserData] = useRecoilState(userLike);
+function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
+  const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const navigate = useNavigate();
 
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
@@ -33,22 +27,30 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
-    setUserData(prevData => {
-      const { likedSandwich } = prevData;
+    if (!userInfo) {
+      toggleModal();
+    } else {
+      if (좋아요한샌드위치.includes(sandwich.id)) {
+        dbUpdate('좋아요', userInfo.uid, {
+          좋아요_리스트: 좋아요한샌드위치.filter(id => id !== sandwich.id),
+        });
+        dbUpdate('꿀조합', sandwich.id, { 좋아요: increment(-1) });
+      } else {
+        dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: [...좋아요한샌드위치, sandwich.id] });
+        dbUpdate('꿀조합', sandwich.id, { 좋아요: increment(1) });
+      }
 
-      if (!likedSandwich.includes(sandwich.id)) return { ...prevData, likedSandwich: [...likedSandwich, sandwich.id] };
-
-      return {
-        ...prevData,
-        likedSandwich: likedSandwich.filter(id => id !== sandwich.id),
-      };
-    });
+      좋아요한샌드위치_수정(prevData => {
+        if (!prevData.includes(sandwich.id)) return [...prevData, sandwich.id];
+        return prevData.filter(id => id !== sandwich.id);
+      });
+    }
   };
 
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeBtn onClick={클릭핸들러_좋아요_토글} isLiked={userData.likedSandwich.includes(sandwich.id)} />
+      <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={좋아요한샌드위치.includes(sandwich.id)} />
     </CardWarp>
   );
 }
@@ -56,23 +58,27 @@ function SandwichInfoCard({ sandwich }: { sandwich: 인터페이스_샌드위치
 export default SandwichInfoCard;
 
 const CardWarp = styled.li`
+  min-width: ${changeRem(370)};
+  width: 80%;
   position: relative;
   padding: 45px 25px 20px;
   max-width: ${changeRem(370)};
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
   background: #fff;
-`;
+  cursor: pointer;
 
-const LikeBtn = styled.button<{ isLiked: boolean }>`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  border: none;
-  outline: none;
-  border-radius: 50%;
-  width: ${changeRem(34)};
-  height: ${changeRem(34)};
-  background: url(${({ isLiked }) => (isLiked ? heartFill : heart)}) no-repeat center;
-  background-color: #ffe8e0;
+  &:hover {
+    background-color: #f3f7d86e;
+    box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5), 10px 5px 5px #7879706d;
+  }
+
+  ${mediaQuery} {
+    min-width: 90%;
+    min-height: ${changeRem(260)};
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;

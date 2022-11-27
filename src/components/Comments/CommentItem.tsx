@@ -1,20 +1,22 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_댓글프로퍼티 } from '../../types/IComment';
+import { getTimePassedBy } from '@utils/index';
+import { 인터페이스_댓글_읽기 } from '@typings/IComment';
 
-function CommentItem(props: { comment: 인터페이스_댓글프로퍼티 }) {
+function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {
   const {
-    comment: { 작성자이름, 내용, 작성일 },
-    // comment: { 꿀조합id, 작성자id, 작성자이름, 작성자프로필이미지, 내용, 작성일 },
+    // comment: { 작성자이름, 내용, 작성일 },
+    // comment: { 작성자이름, 작성자프로필이미지, 내용, 작성일 },
+    comment: { author, authorProfileImg, content, createdAt },
   } = props;
   return (
     <Wrapper>
       <UserInfoWrapper>
-        <ProfileImg />
-        <UserName>{작성자이름}</UserName>
-        <CreatedTime>{작성일}</CreatedTime>
+        <Profile>{authorProfileImg && <ProfileImg src={authorProfileImg} />}</Profile>
+        <UserName>{author}</UserName>
+        <CreatedTime>{getTimePassedBy(createdAt)}</CreatedTime>
       </UserInfoWrapper>
-      <Comment>{내용}</Comment>
+      <Comment>{content}</Comment>
     </Wrapper>
   );
 }
@@ -37,13 +39,18 @@ const UserInfoWrapper = styled.div`
   }
 `;
 
-const ProfileImg = styled.div`
+const Profile = styled.div`
   float: left;
+  margin-right: 8px;
+  background: #ccc;
+  border-radius: 50%;
   width: ${changeRem(40)};
   height: ${changeRem(40)};
-  margin-right: 8px;
+`;
+const ProfileImg = styled.img`
   border-radius: 50%;
-  background: #ccc;
+  width: ${changeRem(40)};
+  height: ${changeRem(40)};
 `;
 
 const UserName = styled.div`

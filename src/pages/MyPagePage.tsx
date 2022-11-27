@@ -1,131 +1,119 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { isLoggedInState } from '@state/index';
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { isLoggedInState, userState } from '@state/index';
 import Wrapper from '@components/UI/Wrapper';
+import MyPageTab from '@components/MyPage/MyPageTab';
+import UserCombinatonList from '@components/MyPage/UserCombinatonList';
+import LikeCombinationList from '@components/MyPage/LikeCombinationList';
+import { dbDelete, dbUpdate } from '@api/index';
 import styled from '@emotion/styled';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import PulledPork from '@assets/images/sandwich_Pulled-Pork+cheese.png';
-import SteakCheese from '@assets/images/sandwich_Steak-&-Cheese.png';
-import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합 } from '../types/ISandwich';
+import dbGet from '@api/dbGet';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { User } from 'firebase/auth';
+import { userLike } from '@state/User';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { db } from '../firebase.config';
+// import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 
-const sandwiches: 인터페이스_꿀조합[] = [
-  {
-    id: 'a1',
-    이름: '꿀꿀마앗',
-    작성자: '다다',
-    작성일: '2022.11.05',
-    좋아요: '44',
-    베이스샌드위치: '치킨 슬라이스',
-    이미지: ChickenSlice,
-    칼로리: '265',
-    뱃지리스트: {
-      맛: ['달달', '고소'],
-      재료: ['닭고기'],
-      추가사항: ['고기러버'],
-    },
-    선택재료: [],
-  },
-  {
-    id: 'a2',
-    이름: '돼지위치',
-    작성자: '댑',
-    작성일: '2022.11.01',
-    좋아요: '51',
-    베이스샌드위치: '풀드 포크드',
-    이미지: PulledPork,
-    칼로리: '327',
-    뱃지리스트: {
-      맛: ['달달', '고소'],
-      재료: ['돼지고기'],
-      추가사항: ['고기러버'],
-    },
-    선택재료: [],
-  },
-  {
-    id: 'a3',
-    이름: '소고기 굿굿',
-    작성자: '다비나',
-    작성일: '2022.11.017',
-    좋아요: '51',
-    베이스샌드위치: '풀드 포크드',
-    이미지: SteakCheese,
-    칼로리: '355',
-    뱃지리스트: {
-      맛: ['고소'],
-      재료: ['소고기'],
-      추가사항: ['고기러버'],
-    },
-    선택재료: [],
-  },
-];
+export interface 인터페이스_꿀조합_아이디 extends 인터페이스_꿀조합 {
+  id: string;
+}
 
 function MyPage() {
+  // const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
+  const [toggleState, setToggleState] = useState<boolean>(true);
+  const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+  const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합_아이디[] | null>(null);
+  const 유저정보: User | null = useRecoilValue(userState);
+  const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
+  const [삭제예정, 삭제예정_수정] = useState<string[]>([]);
 
   useEffect(() => {
+    const tabToggle: string = toggleState ? '작성일' : '좋아요';
+    꿀조합_컬렉션_탭에따라_가져오기(tabToggle);
+    // 좋아요한샌드위치_수정(isUserLikeUser);
+    console.log('로그인한 유저가 좋아요 누른 꿀조합의 id  =>', 좋아요한샌드위치);
+    console.log('좋아요한샌드위치  =>', 좋아요한샌드위치);
+
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
     }
-  }, [isLoggedin, navigate]);
+  }, [isLoggedin, navigate, toggleState]);
 
-  const [toggleState, setToggleState] = useState<boolean | undefined>(true);
-
+  // ? --------------------------------------------------------------------------------------------------------------------
   const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
-    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes('단찌');
+    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
     setToggleState(사용자명_체크);
   };
 
-  const 날짜_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number => {
-    if (prev.작성일 < next.작성일) return 1;
-    return -1;
+  const 꿀조합_컬렉션_탭에따라_가져오기 = async (tabToggle: string) => {
+    const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(tabToggle, 'desc'))); // tabToggle에 따라 내림차순
+
+    const 샌드위치_데이터: 인터페이스_꿀조합_아이디[] = [];
+    await 쿼리스냅샷.forEach(doc => {
+      샌드위치_데이터.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
+    });
+    const result = 샌드위치_데이터.filter((user: 인터페이스_꿀조합_아이디) => user.작성자id === 유저정보?.uid);
+    console.log('샌드위치 데이터 =>', 샌드위치_데이터);
+    setMyList(샌드위치_데이터); // 전체 데이터 리스트
+    유저만의조합_수정(result); // 유저가 만든 샌드위치 데이터 리스트
+  };
+  // ? --------------------------------------------------------------------------------------------------------------------
+
+  const 유저가_좋아요한_꿀조합 = myList?.filter((꿀조합: 인터페이스_꿀조합_아이디) =>
+    좋아요한샌드위치.includes(꿀조합.id)
+  );
+
+  const 목록에서_샌드위치_삭제하기 = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as Element;
+    const targetLi = target.closest('li');
+    if (유저만의조합 && targetLi) {
+      try {
+        dbDelete('꿀조합', targetLi.id);
+        if (유저만의조합) {
+          const 삭제 = 유저만의조합.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
+          유저만의조합_수정(삭제);
+        }
+      } catch {
+        console.log('삭제 실패');
+      }
+    }
   };
 
-  const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
-    +next.좋아요 - +prev.좋아요;
+  // 수정 지금 이게 통째로 읽힘 ul을 읽는 것 마냥. 클릭은 li로 됨 => '유저가_좋아요한_꿀조합'을 i로 비교하려 했던 문제 때문 => includes로 판별해야함
+  const 좋아요_버튼_수정하기 = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as Element;
+    const targetLi = target.closest('li');
 
-  // ! 데이터 받아온 후 컴포넌트를 만들게 됨으로 리팩토링 예정
-  const userCombination = sandwiches.sort(날짜_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.id}>
-      <Link to={`/best-combination/${sandwich.id}`}>
-        <SandwichInfo sandwich={sandwich} />
-      </Link>
-    </Card>
-  ));
-
-  const likeCombination = sandwiches.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
-    <Card key={sandwich.id}>
-      <Link to={`/best-combination/${sandwich.id}`}>
-        <SandwichInfo sandwich={sandwich} />
-      </Link>
-    </Card>
-  ));
+    if (targetLi && 유저정보 && 좋아요한샌드위치.includes(targetLi.id) && !삭제예정.includes(targetLi.id)) {
+      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi.id) });
+      삭제예정_수정(prev => [...prev, targetLi.id]);
+    } else if (targetLi && 유저정보) {
+      console.log('서버로보내줘');
+      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: [...new Set([...좋아요한샌드위치, targetLi.id])] });
+      삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi.id));
+    }
+  };
 
   return (
     <Wrapper>
       <Content>
-        {toggleState ? (
-          <div>
-            <UserTitle onClick={클릭핸들러_꿀조합_목록_변경}>단찌만의 조합</UserTitle>
-            <LikeTitle className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
-              좋아요 꿀조합
-            </LikeTitle>
-          </div>
-        ) : (
-          <div>
-            <UserTitle style={{ background: '#f5d891' }} onClick={클릭핸들러_꿀조합_목록_변경}>
-              단찌만의 조합
-            </UserTitle>
-            <LikeTitle style={{ background: '#fab608' }} className="sub-title" onClick={클릭핸들러_꿀조합_목록_변경}>
-              좋아요 꿀조합
-            </LikeTitle>
-          </div>
-        )}
-        {toggleState ? userCombination : likeCombination}
+        <MyPageTab isSelectedTab={toggleState} onClick={클릭핸들러_꿀조합_목록_변경} />
+        <ul>
+          {toggleState ? (
+            <UserCombinatonList userCombination={유저만의조합} onClick={목록에서_샌드위치_삭제하기} />
+          ) : (
+            <LikeCombinationList
+              likeCombination={유저가_좋아요한_꿀조합}
+              onClick={좋아요_버튼_수정하기}
+              deleteList={삭제예정}
+            />
+          )}
+        </ul>
       </Content>
     </Wrapper>
   );
@@ -136,39 +124,4 @@ export default MyPage;
 const Content = styled.div`
   width: 380px;
   margin: 30px auto 0;
-`;
-
-const UserTitle = styled.span`
-  text-align: left;
-  padding: 25px 15px 0 0;
-  display: inline;
-  color: #2a2a2a;
-  font-weight: 500;
-  font-size: 18px;
-  background-color: #fab608;
-  border-radius: 5px;
-  padding: 4px 6px;
-  margin-right: 10px;
-  transition: 0.3s;
-  cursor: pointer;
-`;
-const LikeTitle = styled.span`
-  font-weight: 500;
-  color: #2a2a2a;
-  border: 1px solid #f5d891;
-  background-color: #f5d891;
-  border-radius: 5px;
-  padding: 4px 6px;
-  transition: 0.3s;
-  cursor: pointer;
-`;
-
-const Card = styled.div`
-  box-sizing: border-box;
-  padding: 20px 35px;
-  width: ${changeRem(370)};
-  height: ${changeRem(286)};
-  box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
-  border-radius: 15px;
-  margin: 20px auto 0;
 `;

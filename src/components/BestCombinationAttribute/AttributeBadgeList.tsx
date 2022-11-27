@@ -1,9 +1,11 @@
 import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge';
 import styled from '@emotion/styled';
-import { 인터페이스_샌드위치뱃지리스트 } from '../../types/ISandwich';
+import mediaQuery from '@styles/media-queries';
+// import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
+import convertBadge from '@utils/convertBadge';
 
-function SandwichBadgeList({ badgeList }: { badgeList: 인터페이스_샌드위치뱃지리스트 }) {
-  const convertedBadgeList = Object.entries(badgeList);
+function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
+  const convertedBadgeList = convertBadge(badgeList);
 
   return (
     <BadgeList>
@@ -19,6 +21,9 @@ const BadgeList = styled.ul`
   flex-flow: wrap;
   margin: 0;
   gap: 8px;
+  ${mediaQuery} {
+    width: 300px;
+  }
 `;
 
 export default SandwichBadgeList;

@@ -1,13 +1,14 @@
-import selectIngredients from '@components/CustomCombination/utils/selectIngredients';
+import selectIngredients from '@utils/customCombination/selectIngredients';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합, 인터페이스_선택된_재료 } from '../../types/ISandwich';
+import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
 
 type TProps = {
-  customCombination: 인터페이스_꿀조합;
-  onChange: (선택한재료: 인터페이스_꿀조합) => void;
+  customCombination: 인터페이스_생성단계_꿀조합;
+  onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   IngredientInfo: 인터페이스_선택된_재료;
   isSelected: boolean;
+  changeModalType: (type: string) => void;
 };
 
 function Ingredient(props: TProps) {
@@ -16,9 +17,11 @@ function Ingredient(props: TProps) {
     IngredientInfo: 재료정보,
     customCombination: 나만의_조합,
     onChange: 체인지핸들러_나만의_조합_수정,
+    changeModalType,
   } = props;
 
-  const 클릭핸들러_재료_선택 = () => selectIngredients({ 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정 });
+  const 클릭핸들러_재료_선택 = () =>
+    selectIngredients({ 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정, changeModalType });
 
   const bgColor = isSelected ? '#fff5de' : '#f1f0f0';
   const color = isSelected ? '#dfa000' : '#7A7A7A';

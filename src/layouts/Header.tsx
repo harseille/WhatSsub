@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import HeaderItemsWrap from '@layouts/HeaderItemsWrap';
-import logoImg from '@assets/images/logo.svg';
+import logoImg from '@assets/icons/logo.svg';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 

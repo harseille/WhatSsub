@@ -1,32 +1,71 @@
 import styled from '@emotion/styled';
+import theme from '@styles/theme';
 import { CSSProperties } from 'react';
 
+export type TDesignType =
+  | 'primaryRed'
+  | 'primaryOrange'
+  | 'primaryYellow'
+  | 'primaryGreen'
+  | 'primaryBlue'
+  | 'primaryPurple'
+  | 'normal'
+  | 'social';
+
 const designList = {
-  primaryGreen: `
-    background: #098D42;
+  primaryRed: `
+    background: ${theme.colors.primaryRed};
     color: #fff;
     font-weight: 700;
     font-size: 18px;
   `,
+  primaryOrange: `
+  background: ${theme.colors.primaryOrange};
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  `,
   primaryYellow: `
-    background: #FBC200;
+  background: ${theme.colors.primaryYellow};
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  `,
+  primaryGreen: `
+    background: ${theme.colors.primaryGreen};
     color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
+  primaryBlue: `
+    background: ${theme.colors.primaryBlue};
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
+  primaryPurple: `
+    background: ${theme.colors.primaryPurple};
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  `,
+  normal: `
+    background: #dad9d9;
+    color: #787878;
     font-weight: 700;
     font-size: 18px;
   `,
   social: `
     background: #fff;
-    color: #8E8EA9;
-    border: 1px solid #8E8EA9;
+    color: ${theme.colors.gray87};
+    border: 1px solid ${theme.colors.gray87};
     font-weight: 400;
     font-size: 16px;
     & img {
       margin-right:8px;
     }
-    `,
+  `,
 };
-
-export type TDesignType = 'primaryGreen' | 'primaryYellow' | 'social';
 
 export default styled.button<
   CSSProperties & {
@@ -64,6 +103,8 @@ export default styled.button<
   height: ${({ height }) => height};
   line-height: ${({ lineHeight }) => lineHeight};
   width: ${({ width }) => width};
+  min-width: ${({ minWidth }) => minWidth};
+  max-width: ${({ maxWidth }) => maxWidth};
 
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
