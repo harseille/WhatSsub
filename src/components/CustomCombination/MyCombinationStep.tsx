@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import MyCombinationStepBadge from '@components/CustomCombination/MyCombinationStepBadge';
+import { PROGRESS } from '@constants/CustomCombination/constants';
 
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
@@ -10,7 +11,7 @@ interface 인터페이스_조합진행도_속성 {
   onChangeStep: (진행도: number) => void;
 }
 
-const 커스텀진행도_배열: number[] = [1, 2, 3, 4];
+const 커스텀진행도_배열 = Object.values(PROGRESS);
 
 function MyCombinationStep(props: 인터페이스_조합진행도_속성) {
   const { currentStep: 현재진행도, onChangeStep: 클릭핸들러_현재진행도_수정 } = props;
