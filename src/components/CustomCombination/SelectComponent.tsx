@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react';
-
 import SelectCombination from '@components/CustomCombination/SelectCombination';
 import NextStepButton from '@components/CustomCombination/NextStepButton';
 import CombinationRegistration from '@components/CustomCombination/CombinationRegistration';
-import ingredients from '@data/ingredients';
-import recipe from '@data/recipe';
 
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 
-import { 인터페이스_생성단계_꿀조합, 인터페이스_재료데이터, 인터페이스_레시피 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   customCombination: 인터페이스_생성단계_꿀조합;
@@ -28,25 +24,11 @@ function SelectComponent(props: TProps) {
     changeModalType,
   } = props;
 
-  const [ingredientsData, setIngredientsData] = useState<인터페이스_재료데이터[]>();
-  const [recipeData, setRecipeData] = useState<인터페이스_레시피[]>();
-
-  useEffect(() => {
-    const request = () => {
-      setIngredientsData(ingredients);
-      setRecipeData(recipe);
-    };
-    request();
-  }, []);
-
-  if (!ingredientsData || !recipeData) return null;
-
   return (
     <SelectWrap>
       {현재진행도 <= 4 ? (
         <>
           <SelectCombination
-            jsonData={{ ingredientsData, recipeData }}
             currentStep={현재진행도}
             customCombination={나만의_조합}
             onChange={체인지핸들러_나만의_조합_수정}
@@ -55,11 +37,7 @@ function SelectComponent(props: TProps) {
           <NextStepButton currentStep={현재진행도} onNextStep={다음_선택지로_이동하기} />
         </>
       ) : (
-        <CombinationRegistration
-          jsonData={{ ingredientsData, recipeData }}
-          customCombination={나만의_조합}
-          changeModalType={changeModalType}
-        />
+        <CombinationRegistration customCombination={나만의_조합} changeModalType={changeModalType} />
       )}
     </SelectWrap>
   );

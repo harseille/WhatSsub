@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
 
 import Modal from '@components/Common/UI/Modal';
 
@@ -48,7 +49,7 @@ function CustomPageModal(props: TProps) {
   const navigate = useNavigate();
   const { type, closeModal } = props;
 
-  if (type === 'none') return null;
+  if (type === MODAL_TYPE_KEYS.none) return null;
 
   const onEventHandler = () => navigate('/');
   const navigateLoginPage = () => navigate('/login');
