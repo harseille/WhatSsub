@@ -53,7 +53,7 @@ function RandomRoulette() {
     const 랜덤_소스_속성_리스트: string[] = [];
     const filter = ingredients.filter((val: 인터페이스_재료데이터) => 랜덤_필수재료.includes(val.카테고리));
 
-    // ! 빵, 치즈 랜덤 뽑기
+    // 빵, 치즈 랜덤 뽑기
     const 필터링된_랜덤_재료 = filter
       .map((val: 인터페이스_재료데이터) => {
         const 랜덤_인덱스 = randomNum(val.목록.length); // 빵의 개수, 치즈의 개수 안에서 랜덤
@@ -67,16 +67,19 @@ function RandomRoulette() {
     // 카테고리에서 소스 목록 뽑기
     const 소스_목록 = ingredients.find((val: 인터페이스_재료데이터) => val.카테고리 === '소스')!.목록;
 
-    // 소스 인덱스 뽑기
-    랜덤_소스_리스트 = 랜덤_소스_리스트.map(_ => {
-      while (true) {
-        const 랜덤_인덱스 = randomNum(소스_목록.length);
-        if (!랜덤_소스_리스트.includes(랜덤_인덱스)) return 랜덤_인덱스;
-      }
+    랜덤_소스_리스트 = 랜덤_소스_리스트.map((소스_인덱스: 인터페이스_꿀조합_재료) => {
+      const 랜덤_인덱스 = randomNum(소스_목록.length);
+      return 랜덤_인덱스;
     });
 
+    // 중복 제거
+    const 랜덤_소스_리스트_중복제거 = 랜덤_소스_리스트.filter(
+      (소스_인덱스: 인터페이스_꿀조합_재료, i: number) => 랜덤_소스_리스트.indexOf(소스_인덱스) === i
+    );
+
     // 소스 데이터 객체 3개 뽑기
-    const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트.map(randomIdx => 소스_목록[randomIdx]);
+    const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트_중복제거.map(randomIdx => 소스_목록[randomIdx]);
+    console.log('소스_랜덤_재료 =>', 소스_랜덤_재료);
 
     const 랜덤_샌드위치_인덱스 = randomNum(recipeData.length);
     const 랜덤_샌드위치_칼로리 = recipeData[랜덤_샌드위치_인덱스].재료칼로리;
@@ -93,8 +96,6 @@ function RandomRoulette() {
       랜덤_소스_속성_리스트.push(val.속성 || '');
       랜덤_소스_칼로리_리스트.push(val.칼로리 || '');
     });
-
-    // 랜덤 소스 속성(뱃지) 겹치는 부분 삭제
 
     const 랜덤_소스_뱃지리스트 = 랜덤_소스_속성_리스트.filter(
       (v: string, i: number) => 랜덤_소스_속성_리스트.indexOf(v) === i
