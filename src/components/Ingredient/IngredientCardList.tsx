@@ -33,6 +33,7 @@ const CardList = styled.ul`
   padding: 12px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  touch-action: pan-x
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
