@@ -6,9 +6,11 @@ import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';
+import Modal from '@components/Common/UI/Modal';
 import { dbDelete, dbUpdate } from '@api/index';
 import styled from '@emotion/styled';
 import dbGet from '@api/dbGet';
+import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
@@ -25,11 +27,14 @@ function MyPage() {
   const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
   const [toggleState, setToggleState] = useState<boolean>(true);
+  const [targetBestCombinationId, setTargetBestCombinationId] = useState<string | null>(null);
   const [myList, setMyList] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합_아이디[] | null>(null);
   const 유저정보: User | null = useRecoilValue(userState);
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const [삭제예정, 삭제예정_수정] = useState<string[]>([]);
+
+  const { 꿀조합_삭제하기, 모달_토글하기, isShowModal } = useDeleteBestCombination(targetBestCombinationId!);
 
   useEffect(() => {
     const tabToggle: string = toggleState ? '작성일' : '좋아요';
@@ -68,19 +73,26 @@ function MyPage() {
     좋아요한샌드위치.includes(꿀조합.id)
   );
 
-  const 목록에서_샌드위치_삭제하기 = (e: React.MouseEvent<HTMLElement>) => {
+  const 꿀조합_삭제_모달_열기 = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as Element;
     const targetLi = target.closest('li');
-    if (유저만의조합 && targetLi) {
-      try {
-        dbDelete('꿀조합', targetLi.id);
-        if (유저만의조합) {
-          const 삭제 = 유저만의조합.filter((val: 인터페이스_꿀조합_아이디) => val.id !== target.closest('li')?.id);
-          유저만의조합_수정(삭제);
-        }
-      } catch {
-        console.log('삭제 실패');
-      }
+
+    if (targetLi!.id) {
+      setTargetBestCombinationId(targetLi!.id);
+    } else {
+      setTargetBestCombinationId(null);
+    }
+    모달_토글하기();
+  };
+
+  const 목록에서_샌드위치_삭제하기 = () => {
+    try {
+      꿀조합_삭제하기();
+
+      const 삭제 = 유저만의조합!.filter((val: 인터페이스_꿀조합_아이디) => val.id !== targetBestCombinationId);
+      유저만의조합_수정(삭제);
+    } catch {
+      console.log('삭제 실패');
     }
   };
 
@@ -100,22 +112,36 @@ function MyPage() {
   };
 
   return (
-    <Wrapper>
-      <Content>
-        <MyPageTab isSelectedTab={toggleState} onClick={클릭핸들러_꿀조합_목록_변경} />
-        <ul>
-          {toggleState ? (
-            <UserCombinatonList userCombination={유저만의조합} onClick={목록에서_샌드위치_삭제하기} />
-          ) : (
-            <LikeCombinationList
-              likeCombination={유저가_좋아요한_꿀조합}
-              onClick={좋아요_버튼_수정하기}
-              deleteList={삭제예정}
-            />
-          )}
-        </ul>
-      </Content>
-    </Wrapper>
+    <>
+      {isShowModal && (
+        <Modal
+          title="🚨 작성하신 꿀조합이 사라져요 🚨"
+          message="정말로 삭제하시겠습니까?"
+          onEvent={목록에서_샌드위치_삭제하기}
+          onClose={모달_토글하기}
+          isConfirm="삭제"
+          eventButtonDesignType="primaryRed"
+          cancelButtonDesignType="normal"
+        />
+      )}
+      <Wrapper>
+        <Content>
+          <MyPageTab isSelectedTab={toggleState} onClick={클릭핸들러_꿀조합_목록_변경} />
+          <ul>
+            {toggleState ? (
+              // <UserCombinatonList userCombination={유저만의조합} onClick={목록에서_샌드위치_삭제하기} />
+              <UserCombinatonList userCombination={유저만의조합} onClick={꿀조합_삭제_모달_열기} />
+            ) : (
+              <LikeCombinationList
+                likeCombination={유저가_좋아요한_꿀조합}
+                onClick={좋아요_버튼_수정하기}
+                deleteList={삭제예정}
+              />
+            )}
+          </ul>
+        </Content>
+      </Wrapper>
+    </>
   );
 }
 

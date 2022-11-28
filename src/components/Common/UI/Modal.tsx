@@ -9,7 +9,7 @@ type TProps = {
   title: string;
   message: string;
   onClose: () => void;
-  onEvent: () => void;
+  onEvent: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isConfirm: string;
   eventButtonDesignType?: TDesignType;
   cancelButtonDesignType?: TDesignType;
