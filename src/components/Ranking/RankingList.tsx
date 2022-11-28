@@ -8,9 +8,10 @@ import getRankingList from '@api/getRankingList';
 import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
+import LoadingSandwich from '@assets/icons/loading_sandwich.svg';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { changeRem } from '@styles/mixin';
+import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { db } from '../../firebase.config';
 
@@ -38,7 +39,7 @@ function RankingList({ currentTab }: TProps) {
     }
   };
 
-  const { listRef } = useInfiniteScroll(
+  const { listRef, hasMore } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab),
     rankingList.length,
     query(collection(db, '꿀조합'))
@@ -72,6 +73,7 @@ function RankingList({ currentTab }: TProps) {
 
           return (
             <li key={id} ref={i === rankingList.length - 1 ? listRef : null}>
+              {/* <li key={id}> */}
               <RankingCardWrapper to={`/best-combination/${id}`}>
                 {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
                 {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${i + 1}`} />}
@@ -88,6 +90,14 @@ function RankingList({ currentTab }: TProps) {
             </li>
           );
         })}
+      <li />
+      {hasMore && (
+        <LoadingLi>
+          <LoadingWrapper>
+            <Loading data={LoadingSandwich} aria-label="loading" />
+          </LoadingWrapper>
+        </LoadingLi>
+      )}
     </ul>
   );
 }
@@ -129,4 +139,21 @@ const NewBadge = styled.span`
   ${mediaQuery} {
     top: -8px;
   }
+`;
+
+const LoadingLi = styled.li`
+  ${flexbox('row', 'center', 'center')}
+`;
+
+const LoadingWrapper = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(0, 141, 67, 0.1);
+  text-align: center;
+  overflow: hidden;
+`;
+
+const Loading = styled.object`
+  width: 80%;
 `;
