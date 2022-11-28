@@ -3,7 +3,6 @@ import Like from '@components/Common/Button/Like';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-// import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
 
 type TProps = {
   currentTab: string;
@@ -20,7 +19,7 @@ function CombinationRankingCard({
   rank: 순위,
   title: 이름,
   imageUrl: 이미지,
-  originName,
+  originName: 베이스샌드위치,
   badgeList: 뱃지리스트,
   like: 좋아요,
 }: TProps) {
@@ -28,7 +27,7 @@ function CombinationRankingCard({
     <RankingCard>
       {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
       <RankingImageWrap>
-        <img src={이미지} alt={originName} />
+        <img src={이미지} alt={베이스샌드위치} />
       </RankingImageWrap>
       <RankingContents>
         <Title>{이름}</Title>
@@ -51,13 +50,13 @@ const RankingCard = styled.section`
   border-radius: 20px;
   margin-bottom: 16px;
   background: #ffffff;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: ${props => `drop-shadow(${props.theme.boxShadow.type3})`};
 
   ${mediaQuery} {
     padding: 20px;
     border-radius: 10px;
     filter: none;
-    box-shadow: 0 10px 40px rgba(213, 213, 213, 0.6);
+    box-shadow: ${props => props.theme.boxShadow.type1};
   }
 `;
 
@@ -78,7 +77,7 @@ const RankingImageWrap = styled.div`
   flex-shrink: 0;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 15px 5px rgba(80, 80, 80, 0.15);
+  box-shadow: ${props => `${props.theme.boxShadow.type3}, inset ${props.theme.boxShadow.type2}`};
 
   & img {
     width: 100%;

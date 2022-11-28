@@ -18,5 +18,10 @@ declare module '@emotion/react' {
       blueBack: string;
       redBack: string;
     };
+    boxShadow: {
+      type1: string;
+      type2: string;
+      type3: string;
+    };
   }
 }
