@@ -1,15 +1,16 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
 import SandwichInfo from '@components/Common/SandwichInfo';
+import LikeRedBtn from '@components/Common/Button/LikeRed';
+import dbUpdate from '@api/dbUpdate';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import dbUpdate from '@api/dbUpdate';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { increment } from 'firebase/firestore';
 import { User } from 'firebase/auth';
-import LikeRedBtn from '../Button/LikeRed';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   sandwich: 인터페이스_꿀조합;
@@ -17,32 +18,32 @@ type TProps = {
   toggleModal: () => void;
 };
 
-function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
+function SandwichInfoCard({ sandwich, sandwich: { id }, userInfo, toggleModal }: TProps) {
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const navigate = useNavigate();
-
+  console.log(11111, id);
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).tagName === 'BUTTON') return;
-    navigate(`/best-combination/${sandwich.id}`);
+    navigate(`/best-combination/${id}`);
   };
 
   const 클릭핸들러_좋아요_토글 = () => {
     if (!userInfo) {
       toggleModal();
     } else {
-      if (좋아요한샌드위치.includes(sandwich.id)) {
+      if (좋아요한샌드위치.includes(id)) {
         dbUpdate('좋아요', userInfo.uid, {
-          좋아요_리스트: 좋아요한샌드위치.filter(id => id !== sandwich.id),
+          좋아요_리스트: 좋아요한샌드위치.filter(LikedId => LikedId !== id),
         });
-        dbUpdate('꿀조합', sandwich.id, { 좋아요: increment(-1) });
+        dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
       } else {
-        dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: [...좋아요한샌드위치, sandwich.id] });
-        dbUpdate('꿀조합', sandwich.id, { 좋아요: increment(1) });
+        dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: [...좋아요한샌드위치, id] });
+        dbUpdate('꿀조합', id, { 좋아요: increment(1) });
       }
 
-      좋아요한샌드위치_수정(prevData => {
-        if (!prevData.includes(sandwich.id)) return [...prevData, sandwich.id];
-        return prevData.filter(id => id !== sandwich.id);
+      좋아요한샌드위치_수정(prevLikedSandwich => {
+        if (!prevLikedSandwich.includes(id)) return [...prevLikedSandwich, id];
+        return prevLikedSandwich.filter(LikedId => LikedId !== id);
       });
     }
   };
@@ -50,12 +51,13 @@ function SandwichInfoCard({ sandwich, userInfo, toggleModal }: TProps) {
   return (
     <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
       <SandwichInfo sandwich={sandwich} />
-      <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={좋아요한샌드위치.includes(sandwich.id)} />
+      <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={좋아요한샌드위치.includes(id)} />
     </CardWarp>
   );
 }
 
 export default SandwichInfoCard;
+// export default React.memo(SandwichInfoCard, (prevProps, nextProps) => prevProps.sandwich.id === nextProps.sandwich.id);
 
 const CardWarp = styled.li`
   min-width: ${changeRem(370)};
