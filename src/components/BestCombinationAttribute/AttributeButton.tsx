@@ -17,9 +17,11 @@ function AttributeButton({ filter, name, max, selectedFilter, onSelectFilter }: 
   };
 
   return (
-    <Button onClick={클릭핸들러_속성버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
-      {name}
-    </Button>
+    <li>
+      <Button onClick={클릭핸들러_속성버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
+        {name}
+      </Button>
+    </li>
   );
 }
 

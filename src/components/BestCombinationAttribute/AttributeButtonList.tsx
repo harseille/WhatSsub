@@ -22,20 +22,21 @@ function AttributeButtonList({
       <AttributeListTitle filterTitle={이름} maxNum={최대선택개수} overSelectedFilter={overSelectedFilter} />
       <AttributeList>
         {속성목록.map((속성: 인터페이스_꿀조합선택페이지_속성) => (
-          <li key={속성.id}>
-            <AttributeButton
-              filter={이름}
-              name={속성.이름}
-              max={최대선택개수}
-              selectedFilter={selectedFilter}
-              onSelectFilter={onSelectFilter}
-            />
-          </li>
+          <AttributeButton
+            key={속성.id}
+            filter={이름}
+            name={속성.이름}
+            max={최대선택개수}
+            selectedFilter={selectedFilter}
+            onSelectFilter={onSelectFilter}
+          />
         ))}
       </AttributeList>
     </Wrapper>
   );
 }
+
+export default AttributeButtonList;
 
 const Wrapper = styled.div`
   padding: 20px 0;
@@ -52,5 +53,3 @@ const AttributeList = styled.ul`
   align-items: center;
   gap: 10px;
 `;
-
-export default AttributeButtonList;
