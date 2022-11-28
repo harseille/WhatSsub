@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@components/Common/UI/Button';
 import changeAttrToQueryString from '@utils/changeAttrToQueryString';
@@ -29,7 +28,7 @@ function NavigateListPageButton({ filteredAttr }: { filteredAttr: 인터페이�
   );
 }
 
-export default React.memo(NavigateListPageButton);
+export default NavigateListPageButton;
 
 const ButtonWrap = styled.div`
   position: fixed;

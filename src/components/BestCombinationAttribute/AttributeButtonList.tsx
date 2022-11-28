@@ -1,4 +1,3 @@
-import React from 'react';
 import AttributeButton from '@components/BestCombinationAttribute/AttributeButton';
 import styled from '@emotion/styled';
 import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조합선택페이지_속성선택 } from '@typings/ISandwich';

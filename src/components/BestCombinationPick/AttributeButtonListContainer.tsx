@@ -1,4 +1,3 @@
-import React from 'react';
 import AttributeButtonList from '@components/BestCombinationAttribute/AttributeButtonList';
 import styled from '@emotion/styled';
 import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
