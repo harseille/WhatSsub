@@ -1,3 +1,4 @@
+import React from 'react';
 import sandwich from '@assets/images/pick_page_desktop_sandwich.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
@@ -10,7 +11,7 @@ function DeskTopImage() {
   );
 }
 
-export default DeskTopImage;
+export default React.memo(DeskTopImage);
 
 const ImgWrap = styled.div`
   display: none;
