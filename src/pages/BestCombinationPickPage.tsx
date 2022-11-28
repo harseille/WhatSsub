@@ -1,6 +1,6 @@
 import useToggleFilter from '@hooks/useToggleFilter';
 import DeskTopImage from '@components/BestCombinationPick/DeskTopImage';
-import IngredientButtonListContainer from '@components/BestCombinationPick/IngredientButtonListContainer';
+import AttributeButtonListContainer from '@components/BestCombinationPick/AttributeButtonListContainer';
 import NavigateListPageButton from '@components/BestCombinationPick/NavigateListPageButton';
 import Wrapper from '@components/Common/UI/Wrapper';
 import { 꿀조합_픽_초기_필터 } from '@constants/constants';
@@ -20,7 +20,7 @@ function BestCombinationPickPage() {
     <TotalContainer>
       <DeskTopImage />
       <Container>
-        <IngredientButtonListContainer
+        <AttributeButtonListContainer
           filteredAttr={선택된_꿀조합_속성}
           overSelectedFilter={overSelectedFilter}
           toggleFilter={클릭핸들러_꿀조합_속성_토글}

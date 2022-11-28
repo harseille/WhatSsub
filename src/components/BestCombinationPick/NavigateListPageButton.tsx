@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@components/Common/UI/Button';
 import changeAttrToQueryString from '@utils/changeAttrToQueryString';
@@ -8,8 +9,6 @@ import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandw
 
 function NavigateListPageButton({ filteredAttr }: { filteredAttr: 인터페이스_꿀조합선택페이지_필터 }) {
   const navigate = useNavigate();
-
-  // const attr = Object.values(filteredAttr).flat();
 
   const searchParams = changeAttrToQueryString(filteredAttr);
 
@@ -30,7 +29,7 @@ function NavigateListPageButton({ filteredAttr }: { filteredAttr: 인터페이�
   );
 }
 
-export default NavigateListPageButton;
+export default React.memo(NavigateListPageButton);
 
 const ButtonWrap = styled.div`
   position: fixed;
