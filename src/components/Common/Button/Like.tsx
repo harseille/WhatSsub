@@ -46,7 +46,7 @@ const LikeContainter = styled.div`
   position: absolute;
   right: 20px;
   top: 50%;
-  transform: translate3d(0 -50%, 0);
+  transform: translate3d(0, -50%, 0);
   color: ${props => props.theme.colors.primaryGreen};
   & span {
     font-size: ${changeRem(14)};
