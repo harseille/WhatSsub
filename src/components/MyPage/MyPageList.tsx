@@ -5,9 +5,11 @@ import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';
 import { dbUpdate } from '@api/index';
 import styled from '@emotion/styled';
+import { flexbox } from '@styles/mixin';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import mediaQuery from '@styles/media-queries';
 
 type TProps = {
   isSelectedTab: boolean;
@@ -54,8 +56,11 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
 export default MyPageList;
 
 const Container = styled.div`
-  width: 380px;
-  margin: 30px auto 0;
+  ${flexbox('column', 'flex-start', 'center')}
+  margin-bottom: 10px;
+  padding: 32px;
 `;
 
-const TabContainer = styled.div``;
+const TabContainer = styled.div`
+  margin-bottom: 10px;
+`;

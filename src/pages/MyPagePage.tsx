@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
+import styled from '@emotion/styled';
 import { isLoggedInState, userState } from '@state/index';
 import getBestCombination from '@api/getBestCombination';
 import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import MyPageList from '@components/MyPage/MyPageList';
 import Modal from '@components/Common/UI/Modal';
+import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 // import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
@@ -78,11 +80,22 @@ function MyPage() {
         />
       )}
       <Wrapper>
-        <MyPageTab isSelectedTab={toggleState} onClick={클릭핸들러_꿀조합_목록_변경} />
-        <MyPageList isSelectedTab={toggleState} userCombinationList={유저만의조합} onClick={꿀조합_삭제_모달_열기} />
+        <Container>
+          <MyPageTab isSelectedTab={toggleState} onClick={클릭핸들러_꿀조합_목록_변경} />
+          <MyPageList isSelectedTab={toggleState} userCombinationList={유저만의조합} onClick={꿀조합_삭제_모달_열기} />
+        </Container>
       </Wrapper>
     </>
   );
 }
 
 export default MyPage;
+
+const Container = styled.div`
+  width: 100%;
+  padding: 25px 20px;
+  margin: 0 auto;
+  ${mediaQuery} {
+    padding-bottom: 50px;
+  }
+`;
