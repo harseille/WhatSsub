@@ -9,7 +9,6 @@ import { flexbox } from '@styles/mixin';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import mediaQuery from '@styles/media-queries';
 
 type TProps = {
   isSelectedTab: boolean;
