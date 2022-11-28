@@ -1,14 +1,16 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import deleteBtn from '@assets/icons/deleteBtn.png';
-import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
+// import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
-  userCombination: 인터페이스_꿀조합_아이디[] | null;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  userCombination: 인터페이스_꿀조합[] | null;
+  onClick: (id: string) => void;
 };
 
 function UserCombinatonList({ userCombination, onClick }: TProps) {
@@ -16,7 +18,7 @@ function UserCombinatonList({ userCombination, onClick }: TProps) {
     <ul>
       {userCombination?.map(sandwich => (
         <Card key={sandwich.꿀조합제목} id={sandwich.id}>
-          <EditListBtn onClick={onClick}>
+          <EditListBtn onClick={onClick.bind(null, sandwich.id)}>
             <img className="close-btn" src={deleteBtn} alt="닫기 버튼" />
           </EditListBtn>
           <Link to={`/best-combination/${sandwich.id}`}>

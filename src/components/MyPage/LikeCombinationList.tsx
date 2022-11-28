@@ -3,12 +3,11 @@ import LikeRedBtn from '@components/Common/Button/LikeRed';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
-  likeCombination: 인터페이스_꿀조합_아이디[] | undefined;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  likeCombination: 인터페이스_꿀조합[] | undefined;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   deleteList: string[];
 };
 
