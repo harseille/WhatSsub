@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@components/Common/UI/Button';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
+import recipe from '@data/recipe';
+import { MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
 
 import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';
@@ -8,32 +10,29 @@ import deleteBtn from '@assets/icons/deleteBtn.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
-import { 인터페이스_재료데이터, 인터페이스_레시피, 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   userName: string | undefined | null;
-  jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
   customCombination: 인터페이스_생성단계_꿀조합;
   changeModalType: (type: string) => void;
 };
 
 function MyCombinationCard(props: TProps) {
-  const { setInputValue, userName, inputValue, jsonData, customCombination: 나만의_조합, changeModalType } = props;
+  const { setInputValue, userName, inputValue, customCombination: 나만의_조합, changeModalType } = props;
   const [sandwichImg, setSandwichImg] = useState('');
 
   const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
   useEffect(() => {
     setSandwichImg(
-      setFirebaseImgURL(
-        jsonData.recipeData.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string
-      )
+      setFirebaseImgURL(recipe.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string)
     );
-  }, [jsonData.recipeData, 나만의_조합.베이스샌드위치]);
+  }, [나만의_조합.베이스샌드위치]);
 
-  const 클릭핸들러_나만의_조합_취소하기 = () => changeModalType('Delete');
+  const 클릭핸들러_나만의_조합_취소하기 = () => changeModalType(MODAL_TYPE_KEYS.Delete);
 
   return (
     <Container>
@@ -52,6 +51,9 @@ function MyCombinationCard(props: TProps) {
           <CardInputButtonWrap>
             <Input
               onChange={체인지핸들러_꿀조합제목_입력하기}
+              pattern=".{2,20}"
+              required
+              title="2 ~ 20 글자 이내로 제목을 정해주세요"
               value={inputValue}
               type="text"
               placeholder="왓썹의 이름은..?"

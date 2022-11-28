@@ -1,3 +1,4 @@
+import { PROGRESS } from '@constants/CustomCombination/constants';
 import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 const firstStepValidation = (나만의_조합: 인터페이스_생성단계_꿀조합) => {
@@ -12,9 +13,9 @@ const secondStepValidation = (나만의_조합: 인터페이스_생성단계_꿀
 };
 
 const combinationVerification = (진행도: number, 나만의_조합: 인터페이스_생성단계_꿀조합) => {
-  if (진행도 === 1) return firstStepValidation(나만의_조합);
-  if (진행도 === 2) return secondStepValidation(나만의_조합);
-  if (진행도 === 3 || 진행도 === 4) return true;
+  if (진행도 === PROGRESS.FirstStep) return firstStepValidation(나만의_조합);
+  if (진행도 === PROGRESS.SecondStep) return secondStepValidation(나만의_조합);
+  if (진행도 === PROGRESS.ThirdStep || 진행도 === PROGRESS.LastStep) return true;
   return false;
 };
 
