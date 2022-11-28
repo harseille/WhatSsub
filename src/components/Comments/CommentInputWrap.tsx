@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import 새_댓글_추가하기 from '@services/Comments/addNewComment';
+import 새_댓글_추가하기 from '@api/pushNewComment';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
 import styled from '@emotion/styled';
@@ -9,7 +9,11 @@ import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '@typings/IComment';
 
-function CommentInputWrap() {
+type TProps = {
+  getCommentListCount: Function;
+};
+
+function CommentInputWrap({ getCommentListCount }: TProps) {
   const commentInputRef = useRef<HTMLInputElement>(null);
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
@@ -30,6 +34,7 @@ function CommentInputWrap() {
       };
       try {
         await 새_댓글_추가하기(댓글_정보);
+        await getCommentListCount(combinationId);
         commentInputRef.current.value = '';
       } catch (error) {
         console.error(error);
