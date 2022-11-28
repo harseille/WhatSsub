@@ -3,31 +3,29 @@ import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { badgeFontColor, badgeBackgroundColor } from '@styles/common';
 
-function IngredientButton({
-  filter,
-  name,
-  max,
-  selectedFilter,
-  onSelectFilter,
-}: {
+type TProps = {
   filter: string;
   name: string;
   max: number;
   selectedFilter: { [key: string]: string[] };
   onSelectFilter: (filter: string, name: string, maxNum: number) => void;
-}) {
+};
+
+function AttributeButton({ filter, name, max, selectedFilter, onSelectFilter }: TProps) {
   const 클릭핸들러_속성버튼_토글 = () => {
     onSelectFilter(filter, name, max);
   };
 
   return (
-    <Button onClick={클릭핸들러_속성버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
-      {name}
-    </Button>
+    <li>
+      <Button onClick={클릭핸들러_속성버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
+        {name}
+      </Button>
+    </li>
   );
 }
 
-export default IngredientButton;
+export default AttributeButton;
 
 const Button = styled.button<{ color: string }>`
   border: 0;

@@ -1,3 +1,4 @@
+import React from 'react';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
@@ -25,7 +26,7 @@ function SandwichInfo({ sandwich: { 이미지, 꿀조합제목, 베이스샌드�
   );
 }
 
-export default SandwichInfo;
+export default React.memo(SandwichInfo);
 
 const InfoWrap = styled.div`
   max-width: ${changeRem(305)};

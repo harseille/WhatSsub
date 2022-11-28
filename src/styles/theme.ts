@@ -17,6 +17,11 @@ const theme = {
     blueBack: 'rgba(75, 105, 253, 0.1)',
     redBack: 'rgba(255, 66, 0, 0.1);',
   },
+  boxShadow: {
+    type1: '0 10px 40px rgba(213, 213, 213, 0.6)',
+    type2: '0px 4px 15px 5px rgba(80, 80, 80, 0.15)',
+    type3: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  },
 };
 
 export default theme;
