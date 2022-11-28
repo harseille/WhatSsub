@@ -9,8 +9,6 @@ const useDeleteBestCombination = (꿀조합id: string) => {
   const 유저 = useRecoilValue<User | null>(userState);
 
   const 모달_토글하기 = () => {
-    console.log('modal toggle');
-
     setIsShowModal(prev => !prev);
   };
   const 꿀조합_삭제하기 = async () => {
