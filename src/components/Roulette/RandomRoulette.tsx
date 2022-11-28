@@ -72,6 +72,7 @@ function RandomRoulette() {
       return 랜덤_인덱스;
     });
 
+    // 중복 제거
     const 랜덤_소스_리스트_중복제거 = 랜덤_소스_리스트.filter(
       (소스_인덱스: 인터페이스_꿀조합_재료, i: number) => 랜덤_소스_리스트.indexOf(소스_인덱스) === i
     );
