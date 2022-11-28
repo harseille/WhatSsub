@@ -8,18 +8,26 @@ type TProps = {
   onClick: (title: string, e: MouseEvent<HTMLButtonElement>) => void;
 };
 
+type 타입_타이틀_탭 = {
+  id: string;
+  타이틀: string;
+};
+
 function RankingTab({ currentTab: 현재탭, onClick: 클릭핸들러_탭_변경 }: TProps) {
-  const tabList: string[] = ['맛잘알랭킹', '신규조합'];
+  const 탭_리스트: 타입_타이틀_탭[] = [
+    { id: 'like__ranking__tab', 타이틀: '맛잘알랭킹' },
+    { id: 'created__at__ranking__tab', 타이틀: '신규조합' },
+  ];
 
   return (
     <TabGroup>
-      {tabList.map((title, i) => (
+      {탭_리스트.map(({ id, 타이틀 }, i) => (
         <TitleTab
-          key={`tab${i}`}
-          className={현재탭 === title ? 'on' : ''}
+          key={id}
+          className={현재탭 === 타이틀 ? 'on' : ''}
           // eslint-disable-next-line react/jsx-no-bind
-          onClick={클릭핸들러_탭_변경.bind(null, title)}>
-          {title}
+          onClick={클릭핸들러_탭_변경.bind(null, 타이틀)}>
+          {타이틀}
         </TitleTab>
       ))}
     </TabGroup>
