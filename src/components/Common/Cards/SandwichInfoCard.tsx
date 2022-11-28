@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import Modal from '@components/Common/UI/Modal';
@@ -41,6 +42,7 @@ function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
 }
 
 export default SandwichInfoCard;
+// export default React.memo(SandwichInfoCard, (prevProps, nextProps) => prevProps.sandwich.id === nextProps.sandwich.id);
 
 const CardWarp = styled.li`
   min-width: ${changeRem(370)};
