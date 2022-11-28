@@ -21,7 +21,7 @@ type TProps = {
 function SandwichInfoCard({ sandwich, sandwich: { id }, userInfo, toggleModal }: TProps) {
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const navigate = useNavigate();
-  console.log(11111, id);
+  // console.log(11111, id);
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).tagName === 'BUTTON') return;
     navigate(`/best-combination/${id}`);

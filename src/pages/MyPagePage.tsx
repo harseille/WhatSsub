@@ -101,15 +101,17 @@ function MyPage() {
     const target = e.target as Element;
     const targetLi = target.closest('li');
 
-    if (targetLi && 유저정보 && 좋아요한샌드위치.includes(targetLi.id) && !삭제예정.includes(targetLi.id)) {
-      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi.id) });
-      삭제예정_수정(prev => [...prev, targetLi.id]);
-    } else if (targetLi && 유저정보) {
+    if (좋아요한샌드위치.includes(targetLi!.id) && !삭제예정.includes(targetLi!.id)) {
+      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi!.id) });
+      삭제예정_수정(prev => [...prev, targetLi!.id]);
+      console.log('좋아요한샌드위치 =>', 좋아요한샌드위치);
+    } else {
       console.log('서버로보내줘');
-      dbUpdate('좋아요', 유저정보.uid, { 좋아요_리스트: [...new Set([...좋아요한샌드위치, targetLi.id])] });
-      삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi.id));
+      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: [...new Set([...좋아요한샌드위치, targetLi!.id])] });
+      삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi!.id));
     }
   };
+  console.log('삭제예정 =>', 삭제예정);
 
   return (
     <>
