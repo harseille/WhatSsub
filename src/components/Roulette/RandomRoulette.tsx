@@ -67,13 +67,6 @@ function RandomRoulette() {
     // 카테고리에서 소스 목록 뽑기
     const 소스_목록 = ingredients.find((val: 인터페이스_재료데이터) => val.카테고리 === '소스')!.목록;
 
-    // 소스 인덱스 뽑기
-    // 랜덤_소스_리스트 = 랜덤_소스_리스트.map(_ => {
-    //   while (true) {
-    //     const 랜덤_인덱스 = randomNum(소스_목록.length);
-    //     if (!랜덤_소스_리스트.includes(랜덤_인덱스)) return 랜덤_인덱스;
-    //   }
-    // });
     랜덤_소스_리스트 = 랜덤_소스_리스트.map((소스_인덱스: 인터페이스_꿀조합_재료) => {
       const 랜덤_인덱스 = randomNum(소스_목록.length);
       return 랜덤_인덱스;
