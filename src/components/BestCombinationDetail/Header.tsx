@@ -50,7 +50,7 @@ const Header = styled.div`
   background: #fff;
   position: relative;
   padding: ${changeRem(40)} ${changeRem(16)};
-  & h1 {
+  & h2 {
     font-weight: 700;
     font-size: ${changeRem(20)};
 
