@@ -144,7 +144,7 @@ function RandomRoulette() {
       <div>
         {isShowModal ? (
           <div>
-            <DimmedLayer />
+            <DimmedLayer onClick={클릭핸들러_모달_닫기} />
             <RandomModalResult sandwich={sandwichData} onClick={클릭핸들러_모달_닫기} />
           </div>
         ) : null}

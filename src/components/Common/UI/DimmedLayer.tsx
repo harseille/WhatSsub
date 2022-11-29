@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 
-function DimmedLayer() {
-  return <BackDrop />;
+type TProps = {
+  onClick: () => void;
+};
+
+function DimmedLayer({ onClick }: TProps) {
+  return <BackDrop onClick={onClick} />;
 }
 
 const BackDrop = styled.div`
