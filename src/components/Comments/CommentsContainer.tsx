@@ -20,8 +20,8 @@ function CommentsContainer() {
           리뷰 <span>{commentsCount}</span>
         </h2>
       </CommentHeader>
-      <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />
       {isLoggedIn && <CommentInputWrap getCommentListCount={댓글_수_가져오기} />}
+      {comments.length !== 0 && <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />}
     </Comments>
   );
 }
