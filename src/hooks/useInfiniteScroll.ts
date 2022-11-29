@@ -11,7 +11,7 @@ const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery:
 
       console.log(dataLength, querySnapshot.data().count);
 
-      if (dataLength === 0) {
+      if (dataLength !== querySnapshot.data().count) {
         setHasMore(true);
       }
       if (dataLength >= querySnapshot.data().count) {

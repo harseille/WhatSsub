@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '@typings/IComment';
+import theme from '@styles/theme';
 
 type TProps = {
   getCommentListCount: Function;
@@ -56,31 +57,31 @@ function CommentInputWrap({ getCommentListCount }: TProps) {
 export default CommentInputWrap;
 
 const Wrapper = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 80px;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
+  margin-botton: 10px;
   background: #ffffff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
+  /* box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25), 0px 4px 10px rgba(213, 213, 213, 0.25);*/
 
   ${mediaQuery} {
     justify-content: center;
     bottom: 0;
+    padding: 0px;
     height: ${changeRem(80)};
   }
 `;
 
 const Profile = styled.div`
+  display: none;
   width: ${changeRem(30)};
   height: ${changeRem(30)};
   border-radius: 50%;
   background: #ccc;
 
   ${mediaQuery} {
+    display: block;
     width: ${changeRem(48)};
     height: ${changeRem(48)};
   }
@@ -103,12 +104,16 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex-shrink: 0;
-  flex-basis: ${`calc(100% - ${changeRem(80)})`};
+  flex-basis: 100%;
   border: 0;
   padding: 13px;
   border-radius: 6px;
   background: #f5f5f5;
   font-size: ${changeRem(14)};
+
+  ${mediaQuery} {
+    flex-basis: ${`calc(100% - ${changeRem(80)})`};
+  }
 `;
 const Submit = styled.input`
   border: 0;
