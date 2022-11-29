@@ -19,8 +19,6 @@ import ingredients from '@data/ingredients';
 
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
-  const [recipeData, setRecipeData] = useState<인터페이스_레시피[]>(recipe);
-  // const [ingredientsData, setIngredientsData] = useState<인터페이스_재료데이터[]>(ingredients);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
   const [sandwichData, setSandwichData] = useState<인터페이스_꿀조합_랜덤2>({
     꿀조합제목: '',
@@ -34,6 +32,7 @@ function RandomRoulette() {
     id: '',
   });
 
+  console.log('recipe =>', recipe);
   const [random, setRandom] = useState<number>(-1);
 
   const randomNum = (num: number) => Math.floor(Math.random() * num);
@@ -42,8 +41,6 @@ function RandomRoulette() {
     // setRecipeData(recipe);
     // setIngredientsData(ingredientsData);
     if (random === -1) return;
-
-    // ? 기존 axios에서 recipe랑 ingredients 받아온 애들 (recipeData.data, ingredientsData.data)----------------------------------------
 
     const 랜덤_필수재료 = ['빵', '치즈'];
     let 랜덤_소스_리스트 = Array(3).fill(-1);
@@ -81,8 +78,8 @@ function RandomRoulette() {
     const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트_중복제거.map(randomIdx => 소스_목록[randomIdx]);
     console.log('소스_랜덤_재료 =>', 소스_랜덤_재료);
 
-    const 랜덤_샌드위치_인덱스 = randomNum(recipeData.length);
-    const 랜덤_샌드위치_칼로리 = recipeData[랜덤_샌드위치_인덱스].재료칼로리;
+    const 랜덤_샌드위치_인덱스 = randomNum(recipe.length);
+    const 랜덤_샌드위치_칼로리 = recipe[랜덤_샌드위치_인덱스].재료칼로리;
 
     // 각각 빵, 치즈 칼로리 총 합
     const 랜덤_샌드위치_재료_칼로리 = filter.reduce((acc: number, cur: 인터페이스_재료데이터, i: number) => {
@@ -105,23 +102,27 @@ function RandomRoulette() {
     const toNumbers = (arr: string[]) => arr.map(Number);
     const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
 
-    const 랜덤_샌드위치_총_칼로리 = Math.floor(
-      Number(랜덤_샌드위치_칼로리) + Number(랜덤_샌드위치_재료_칼로리) + 소스_합
+    const 랜덤_샌드위치_총_칼로리 = (
+      Number(랜덤_샌드위치_칼로리) +
+      Number(랜덤_샌드위치_재료_칼로리) +
+      소스_합
     ).toFixed(1);
+
+    console.log('소스칼로리 =>', 소스_합);
 
     // setState
     setSandwichData({
       꿀조합제목: '',
-      베이스샌드위치: recipeData[랜덤_샌드위치_인덱스].이름,
+      베이스샌드위치: recipe[랜덤_샌드위치_인덱스].이름,
       빵: 필터링된_랜덤_재료!.빵,
       치즈: 필터링된_랜덤_재료!.치즈,
       속성: 랜덤_소스_뱃지리스트,
-      이미지: ChickenSlice,
+      이미지: recipe[랜덤_샌드위치_인덱스].이미지, // 경로 물어보기
       소스: 랜덤_소스_이름_리스트,
       칼로리: 랜덤_샌드위치_총_칼로리,
       id: '',
     });
-
+    console.log('이미지 =>', recipe[랜덤_샌드위치_인덱스].이미지);
     // finally
     setTimeout(() => {
       (rouletteRef.current as HTMLImageElement).style.transform = '';
@@ -182,6 +183,7 @@ const Container = styled.div`
     width: 50%;
   }
 `;
+
 const Roulette = styled.img``;
 const Pointer = styled.img`
   position: absolute;
@@ -194,6 +196,7 @@ const Pointer = styled.img`
     width: 8%;
   }
 `;
+
 const StartButton = styled.img`
   position: absolute;
   width: ${changeRem(80)};
