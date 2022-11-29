@@ -6,8 +6,8 @@ import dbGet from './dbGet';
 const getRankingList = async (key: DocumentData | null, condition: string) => {
   try {
     const 꿀조합_쿼리스냅샷 = !key
-      ? await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), limit(10)))
-      : await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), startAfter(key), limit(10)));
+      ? await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), limit(5)))
+      : await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), startAfter(key), limit(5)));
 
     const 랭킹리스트: 인터페이스_꿀조합[] = [];
     let 마지막_키: DocumentData | null = null;
