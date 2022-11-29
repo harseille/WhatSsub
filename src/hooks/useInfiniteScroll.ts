@@ -51,6 +51,7 @@ const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery:
   return {
     listRef,
     isLoading,
+    hasMore,
   };
 };
 
