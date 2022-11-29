@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
 import dbUpdate from '@api/dbUpdate';
@@ -8,6 +8,7 @@ import useCheckLogin from './useCheckLogin';
 const useLikedBestCombination = (id: string) => {
   const { userInfo, isShowModal, toggleModal, navigateLoginPage } = useCheckLogin();
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
+  const [likeCount, setLikeCount] = useState<number>(0);
   const isLiked = 좋아요한샌드위치.includes(id);
 
   useEffect(() => {
@@ -20,8 +21,13 @@ const useLikedBestCombination = (id: string) => {
       return;
     }
 
-    if (좋아요한샌드위치.includes(id)) dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
-    else dbUpdate('꿀조합', id, { 좋아요: increment(1) });
+    if (좋아요한샌드위치.includes(id)) {
+      dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
+      setLikeCount(prev => prev - 1);
+    } else {
+      dbUpdate('꿀조합', id, { 좋아요: increment(1) });
+      setLikeCount(prev => prev + 1);
+    }
 
     좋아요한샌드위치_수정(prevData => {
       if (!prevData.includes(id)) return [...prevData, id];
@@ -29,7 +35,7 @@ const useLikedBestCombination = (id: string) => {
     });
   };
 
-  return { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글 };
+  return { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount };
 };
 
 export default useLikedBestCombination;
