@@ -31,20 +31,18 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
       dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi!.id) });
       삭제예정_수정(prev => [...prev, targetLi!.id]);
     } else {
-      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: [...new Set([...좋아요한샌드위치, targetLi!.id])] });
+      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: [...좋아요한샌드위치] });
       삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi!.id));
     }
   };
 
   return (
     <Container>
-      <TabContainer>
-        {isSelectedTab ? (
-          <UserCombinatonList userCombination={유저만의조합} onClick={onClick} />
-        ) : (
-          <LikeCombinationList likeCombination={유저만의조합} onClick={좋아요_버튼_수정하기} deleteList={삭제예정} />
-        )}
-      </TabContainer>
+      {isSelectedTab ? (
+        <UserCombinatonList userCombination={유저만의조합} onClick={onClick} />
+      ) : (
+        <LikeCombinationList likeCombination={유저만의조합} onClick={좋아요_버튼_수정하기} deleteList={삭제예정} />
+      )}
     </Container>
   );
 }
@@ -52,11 +50,5 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
 export default MyPageList;
 
 const Container = styled.div`
-  ${flexbox('column', 'flex-start', 'center')}
-  margin-bottom: 10px;
-  padding: 0 32px;
-`;
-
-const TabContainer = styled.div`
   margin-bottom: 10px;
 `;

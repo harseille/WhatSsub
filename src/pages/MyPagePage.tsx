@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import { isLoggedInState, userState } from '@state/index';
 import getBestCombination from '@api/getBestCombination';
@@ -13,6 +13,9 @@ import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
+import { userLike } from '@state/User';
+import { getDoc, doc, collection, DocumentData } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
 function MyPage() {
   const navigate = useNavigate();
@@ -21,11 +24,21 @@ function MyPage() {
   const [targetBestCombinationId, setTargetBestCombinationId] = useState<string | null>(null);
   const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합[]>([]);
   const 유저정보: User | null = useRecoilValue(userState);
+  const 좋아요한샌드위치_수정 = useSetRecoilState(userLike);
 
   const { 꿀조합_삭제하기, 모달_토글하기, isShowModal } = useDeleteBestCombination(targetBestCombinationId!);
-
+  const 좋아요한_데이터_가져오기 = async () => {
+    if (유저정보) {
+      const 좋아요한_데이터 = await getDoc(doc(collection(db, '좋아요'), 유저정보.uid));
+      const { 좋아요_리스트 } = (좋아요한_데이터 as DocumentData).data();
+      좋아요한샌드위치_수정(좋아요_리스트);
+    }
+  };
   useEffect(() => {
+    console.log('유저정보=>', 유저정보);
+    좋아요한_데이터_가져오기();
     꿀조합_받아오기(toggleState);
+
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
@@ -90,10 +103,12 @@ function MyPage() {
 export default MyPage;
 
 const Container = styled.div`
-  ${flexbox('column', 'flex-start', 'center')}
+  ${flexbox('column', 'center', 'center')};
   padding: 25px 70px;
-  margin: 0 auto;
+
   ${mediaQuery} {
-    padding-bottom: 50px;
+    max-width: 751px;
+    margin: 0 auto;
+    padding: 0 0 50px;
   }
 `;
