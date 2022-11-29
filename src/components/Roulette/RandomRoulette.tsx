@@ -4,6 +4,7 @@ import RandomModalResult from '@components/Roulette/RandomModalResult';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
+import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -117,7 +118,7 @@ function RandomRoulette() {
       빵: 필터링된_랜덤_재료!.빵,
       치즈: 필터링된_랜덤_재료!.치즈,
       속성: 랜덤_소스_뱃지리스트,
-      이미지: recipe[랜덤_샌드위치_인덱스].이미지, // 경로 물어보기
+      이미지: setFirebaseImgURL(recipe[랜덤_샌드위치_인덱스].이미지), // 경로 물어보기
       소스: 랜덤_소스_이름_리스트,
       칼로리: 랜덤_샌드위치_총_칼로리,
       id: '',
