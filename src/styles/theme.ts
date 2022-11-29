@@ -7,7 +7,7 @@ const theme = {
     primaryOrange: '#FF8300',
     primaryPurple: '#4D006A',
     gray87: '#878787',
-    grayaa: '#aaa',
+    grayDDD: '#DDD',
     grayF5: '#F5F5F5',
   },
   badgeColors: {

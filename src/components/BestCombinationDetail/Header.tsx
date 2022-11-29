@@ -49,7 +49,7 @@ const Header = styled.div`
   height: 48px;
   background: #fff;
   position: relative;
-  padding: 0px 32px 0px 32px;
+  padding: ${changeRem(40)} ${changeRem(16)};
   & h1 {
     font-weight: 700;
     font-size: ${changeRem(20)};
@@ -60,6 +60,7 @@ const Header = styled.div`
     }
   }
   ${mediaQuery} {
+    padding: ${changeRem(54)} ${changeRem(24)};
     height: ${changeRem(72)};
     padding: 0px 48px 0px 48px;
     & h1 {
