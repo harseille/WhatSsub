@@ -24,9 +24,10 @@ function MyPageTab({ isSelectedTab, onClick }: TProps) {
 
 export default MyPageTab;
 const Container = styled.div`
+  margin: 0 auto;
   display: flex;
+
   gap: 15px;
-  margin-bottom: 30px;
 `;
 
 const Title = styled.span<{ isSelectedTab: boolean }>`

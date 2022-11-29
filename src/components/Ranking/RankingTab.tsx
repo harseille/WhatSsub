@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
 import styled from '@emotion/styled';
 import { changeRem, buttonNone } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -37,7 +38,7 @@ function RankingTab() {
   );
 }
 
-export default RankingTab;
+export default React.memo(RankingTab);
 
 const TabGroup = styled.div`
   display: flex;

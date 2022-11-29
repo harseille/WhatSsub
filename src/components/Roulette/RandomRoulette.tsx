@@ -8,19 +8,14 @@ import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import {
-  인터페이스_꿀조합_랜덤2,
-  인터페이스_꿀조합_재료,
-  인터페이스_레시피,
-  인터페이스_재료데이터,
-} from '@typings/ISandwich';
+import { 인터페이스_꿀조합_랜덤2, 인터페이스_꿀조합_재료, 인터페이스_재료데이터 } from '@typings/ISandwich';
 import recipe from '@data/recipe';
 import ingredients from '@data/ingredients';
 
 function RandomRoulette() {
   const rouletteRef = useRef<HTMLImageElement>(null);
   const [isShowModal, setIsShowModal] = useState<boolean>(false);
+  const [isShowButton, setIsShowButton] = useState<boolean>(true);
   const [sandwichData, setSandwichData] = useState<인터페이스_꿀조합_랜덤2>({
     꿀조합제목: '',
     베이스샌드위치: '',
@@ -39,8 +34,6 @@ function RandomRoulette() {
   const randomNum = (num: number) => Math.floor(Math.random() * num);
   // 재료 객체 만들기
   useEffect(() => {
-    // setRecipeData(recipe);
-    // setIngredientsData(ingredientsData);
     if (random === -1) return;
 
     const 랜덤_필수재료 = ['빵', '치즈'];
@@ -109,8 +102,6 @@ function RandomRoulette() {
       소스_합
     ).toFixed(1);
 
-    console.log('소스칼로리 =>', 소스_합);
-
     // setState
     setSandwichData({
       꿀조합제목: '',
@@ -118,30 +109,36 @@ function RandomRoulette() {
       빵: 필터링된_랜덤_재료!.빵,
       치즈: 필터링된_랜덤_재료!.치즈,
       속성: 랜덤_소스_뱃지리스트,
-      이미지: setFirebaseImgURL(recipe[랜덤_샌드위치_인덱스].이미지), // 경로 물어보기
+      이미지: setFirebaseImgURL(recipe[랜덤_샌드위치_인덱스].이미지),
       소스: 랜덤_소스_이름_리스트,
       칼로리: 랜덤_샌드위치_총_칼로리,
       id: '',
     });
     console.log('이미지 =>', recipe[랜덤_샌드위치_인덱스].이미지);
-    // finally
+
     setTimeout(() => {
       (rouletteRef.current as HTMLImageElement).style.transform = '';
       (rouletteRef.current as HTMLImageElement).style.transition = '';
+      setIsShowButton(true);
       모달_열기();
     }, 3000);
   }, [random]);
 
   const 룰렛_회전하기 = () => {
+    const rouletteCurrent = rouletteRef.current as HTMLImageElement;
     const rotate = 3000;
-    (rouletteRef.current as HTMLImageElement).style.transform = `rotate(-${rotate}deg)`;
-    (rouletteRef.current as HTMLImageElement).style.transition = `4s`;
-    (rouletteRef.current as HTMLImageElement).style.transitionTimingFunction = 'ease-out';
+    rouletteCurrent.style.transform = `rotate(-${rotate}deg)`;
+    rouletteCurrent.style.transition = `4s`;
+    rouletteCurrent.style.transitionTimingFunction = 'ease-out';
     return random;
   };
 
   const 룰렛_돌리기 = () => {
+    // if (random >= 0) return;
+    // * 버튼 없애기
+    setIsShowButton(false);
     setRandom(Math.floor(Math.random() * 17));
+
     룰렛_회전하기();
   };
 
@@ -165,7 +162,7 @@ function RandomRoulette() {
       </div>
       <Container>
         <Roulette src={spinBoard} alt="룰렛" ref={rouletteRef} />
-        <StartButton src={startBtn} alt="시작 버튼" onClick={룰렛_돌리기} />
+        {isShowButton ? <StartButton src={startBtn} alt="시작 버튼" onClick={룰렛_돌리기} /> : ''}
         <Pointer src={pointer} alt="포인터" />
       </Container>
     </div>
