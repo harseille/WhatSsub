@@ -45,7 +45,6 @@ function MyPage() {
       if (toggleState) {
         샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
       }
-
       유저만의조합_수정(샌드위치_데이터);
     }
   };
@@ -58,7 +57,6 @@ function MyPage() {
   const 목록에서_샌드위치_삭제하기 = () => {
     try {
       꿀조합_삭제하기();
-
       const 삭제 = 유저만의조합!.filter((val: 인터페이스_꿀조합) => val.id !== targetBestCombinationId);
       유저만의조합_수정(삭제);
     } catch {

@@ -8,13 +8,7 @@ import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import ChickenSlice from '@assets/images/Chicken_Slice.png';
-import {
-  인터페이스_꿀조합_랜덤2,
-  인터페이스_꿀조합_재료,
-  인터페이스_레시피,
-  인터페이스_재료데이터,
-} from '@typings/ISandwich';
+import { 인터페이스_꿀조합_랜덤2, 인터페이스_꿀조합_재료, 인터페이스_재료데이터 } from '@typings/ISandwich';
 import recipe from '@data/recipe';
 import ingredients from '@data/ingredients';
 
@@ -118,13 +112,13 @@ function RandomRoulette() {
       빵: 필터링된_랜덤_재료!.빵,
       치즈: 필터링된_랜덤_재료!.치즈,
       속성: 랜덤_소스_뱃지리스트,
-      이미지: setFirebaseImgURL(recipe[랜덤_샌드위치_인덱스].이미지), // 경로 물어보기
+      이미지: setFirebaseImgURL(recipe[랜덤_샌드위치_인덱스].이미지),
       소스: 랜덤_소스_이름_리스트,
       칼로리: 랜덤_샌드위치_총_칼로리,
       id: '',
     });
     console.log('이미지 =>', recipe[랜덤_샌드위치_인덱스].이미지);
-    // finally
+
     setTimeout(() => {
       (rouletteRef.current as HTMLImageElement).style.transform = '';
       (rouletteRef.current as HTMLImageElement).style.transition = '';
