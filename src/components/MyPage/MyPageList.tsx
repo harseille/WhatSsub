@@ -35,7 +35,7 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
       삭제예정_수정(prev => prev.filter(삭제예정꿀조합 => 삭제예정꿀조합 !== targetLi!.id));
     }
   };
-
+  // comment
   return (
     <Container>
       {isSelectedTab ? (
