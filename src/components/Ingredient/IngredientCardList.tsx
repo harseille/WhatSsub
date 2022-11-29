@@ -19,7 +19,7 @@ function IngredientCardList({ ingredientList, toasting }: TProps) {
     .sort((a, b) => a!.id - b!.id);
 
   const LiList = sortedIngredientList.map(재료 => (
-    <li key={재료.이름}>
+    <li key={재료.id}>
       <IngredientCard ingredient={재료} toasting={toasting} />
     </li>
   ));
@@ -40,11 +40,7 @@ const CardList = styled.ul`
   }
 
   ${flexbox()}
-  gap: 8px;
-
-  ${mediaQuery} {
-    gap: 12px;
-  }
+  gap: 12px;
 `;
 
 export default IngredientCardList;
