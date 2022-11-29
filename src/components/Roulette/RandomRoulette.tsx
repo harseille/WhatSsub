@@ -27,62 +27,53 @@ function RandomRoulette() {
     이미지: '',
     id: '',
   });
-
-  console.log('recipe =>', recipe);
   const [random, setRandom] = useState<number>(-1);
-
   const randomNum = (num: number) => Math.floor(Math.random() * num);
-  // 재료 객체 만들기
+
   useEffect(() => {
     if (random === -1) return;
 
     const 랜덤_필수재료 = ['빵', '치즈'];
-    let 랜덤_소스_리스트 = Array(3).fill(-1);
-    const kcal: number[] = [];
+    let 랜덤_소스_인덱스_리스트 = Array(3).fill(-1);
+    const 빵_치즈_칼로리: number[] = [];
     const 랜덤_소스_이름_리스트: string[] = [];
     const 랜덤_소스_칼로리_리스트: string[] = [];
     const 랜덤_소스_속성_리스트: string[] = [];
-    const filter = ingredients.filter((val: 인터페이스_재료데이터) => 랜덤_필수재료.includes(val.카테고리));
 
-    // 빵, 치즈 랜덤 뽑기
-    const 필터링된_랜덤_재료 = filter
+    const 필수재료_카테고리 = ingredients.filter((val: 인터페이스_재료데이터) => 랜덤_필수재료.includes(val.카테고리));
+
+    // 베이스 샌드위치
+    const 랜덤_샌드위치_인덱스 = randomNum(recipe.length);
+    const 랜덤_샌드위치_칼로리 = recipe[랜덤_샌드위치_인덱스].재료칼로리;
+
+    // 빵, 치즈
+    const 필터링된_랜덤_재료 = 필수재료_카테고리
       .map((val: 인터페이스_재료데이터) => {
-        const 랜덤_인덱스 = randomNum(val.목록.length); // 빵의 개수, 치즈의 개수 안에서 랜덤
-        kcal.push(랜덤_인덱스); // 빵과 치즈에 각각 인덱스 값 넣기
+        const 랜덤_인덱스 = randomNum(val.목록.length);
+        빵_치즈_칼로리.push(랜덤_인덱스);
         return {
           [val.카테고리]: val.목록[랜덤_인덱스].이름,
         };
       })
       .reduce((acc: { [key: string]: string }, cur: { [key: string]: string }) => ({ ...acc, ...cur }), {});
 
-    // 카테고리에서 소스 목록 뽑기
-    const 소스_목록 = ingredients.find((val: 인터페이스_재료데이터) => val.카테고리 === '소스')!.목록;
-
-    랜덤_소스_리스트 = 랜덤_소스_리스트.map((소스_인덱스: 인터페이스_꿀조합_재료) => {
-      const 랜덤_인덱스 = randomNum(소스_목록.length);
+    // 소스
+    const 소스_리스트 = ingredients.find((val: 인터페이스_재료데이터) => val.카테고리 === '소스')!.목록;
+    랜덤_소스_인덱스_리스트 = 랜덤_소스_인덱스_리스트.map((소스_인덱스: 인터페이스_꿀조합_재료) => {
+      const 랜덤_인덱스 = randomNum(소스_리스트.length);
       return 랜덤_인덱스;
     });
 
-    // 중복 제거
-    const 랜덤_소스_리스트_중복제거 = 랜덤_소스_리스트.filter(
-      (소스_인덱스: 인터페이스_꿀조합_재료, i: number) => 랜덤_소스_리스트.indexOf(소스_인덱스) === i
+    const 랜덤_소스_인덱스_리스트_중복제거 = 랜덤_소스_인덱스_리스트.filter(
+      (소스_인덱스: 인터페이스_꿀조합_재료, i: number) => 랜덤_소스_인덱스_리스트.indexOf(소스_인덱스) === i
     );
 
-    // 소스 데이터 객체 3개 뽑기
-    const 소스_랜덤_재료: 인터페이스_꿀조합_재료[] = 랜덤_소스_리스트_중복제거.map(randomIdx => 소스_목록[randomIdx]);
-    console.log('소스_랜덤_재료 =>', 소스_랜덤_재료);
+    const 랜덤_소스_리스트_결과: 인터페이스_꿀조합_재료[] = 랜덤_소스_인덱스_리스트_중복제거.map(
+      randomIdx => 소스_리스트[randomIdx]
+    );
 
-    const 랜덤_샌드위치_인덱스 = randomNum(recipe.length);
-    const 랜덤_샌드위치_칼로리 = recipe[랜덤_샌드위치_인덱스].재료칼로리;
-
-    // 각각 빵, 치즈 칼로리 총 합
-    const 랜덤_샌드위치_재료_칼로리 = filter.reduce((acc: number, cur: 인터페이스_재료데이터, i: number) => {
-      const response = cur.목록[kcal[i]].칼로리;
-      return acc + Number(response);
-    }, 0);
-
-    // 소스에 대해 각각 이름, 속성, 칼로리 마다 배열 만들어서 리스팅 하기
-    소스_랜덤_재료.forEach((val: 인터페이스_꿀조합_재료, i: number) => {
+    // 소스 속성값 분류 리스팅
+    랜덤_소스_리스트_결과.forEach((val: 인터페이스_꿀조합_재료, i: number) => {
       랜덤_소스_이름_리스트.push(val.이름);
       랜덤_소스_속성_리스트.push(val.속성 || '');
       랜덤_소스_칼로리_리스트.push(val.칼로리 || '');
@@ -92,17 +83,19 @@ function RandomRoulette() {
       (v: string, i: number) => 랜덤_소스_속성_리스트.indexOf(v) === i
     );
 
-    // 소스 칼로리
+    // 칼로리 계산
+    const 빵_치즈_칼로리_합 = 필수재료_카테고리.reduce((acc: number, cur: 인터페이스_재료데이터, i: number) => {
+      const response = cur.목록[빵_치즈_칼로리[i]].칼로리;
+      return acc + Number(response);
+    }, 0);
+
     const toNumbers = (arr: string[]) => arr.map(Number);
-    const 소스_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
+    const 소스_칼로리_합 = toNumbers(랜덤_소스_칼로리_리스트).reduce((a: number, b: number) => a + b);
 
-    const 랜덤_샌드위치_총_칼로리 = (
-      Number(랜덤_샌드위치_칼로리) +
-      Number(랜덤_샌드위치_재료_칼로리) +
-      소스_합
-    ).toFixed(1);
+    const 랜덤_샌드위치_총_칼로리 = (Number(랜덤_샌드위치_칼로리) + Number(빵_치즈_칼로리_합) + 소스_칼로리_합).toFixed(
+      1
+    );
 
-    // setState
     setSandwichData({
       꿀조합제목: '',
       베이스샌드위치: recipe[랜덤_샌드위치_인덱스].이름,
@@ -114,7 +107,6 @@ function RandomRoulette() {
       칼로리: 랜덤_샌드위치_총_칼로리,
       id: '',
     });
-    console.log('이미지 =>', recipe[랜덤_샌드위치_인덱스].이미지);
 
     setTimeout(() => {
       (rouletteRef.current as HTMLImageElement).style.transform = '';
@@ -125,20 +117,17 @@ function RandomRoulette() {
   }, [random]);
 
   const 룰렛_회전하기 = () => {
-    const rouletteCurrent = rouletteRef.current as HTMLImageElement;
+    const rouletteCurrent = (rouletteRef.current as HTMLImageElement).style;
     const rotate = 3000;
-    rouletteCurrent.style.transform = `rotate(-${rotate}deg)`;
-    rouletteCurrent.style.transition = `4s`;
-    rouletteCurrent.style.transitionTimingFunction = 'ease-out';
+    rouletteCurrent.transform = `rotate(-${rotate}deg)`;
+    rouletteCurrent.transition = `4s`;
+    rouletteCurrent.transitionTimingFunction = 'ease-out';
     return random;
   };
 
   const 룰렛_돌리기 = () => {
-    // if (random >= 0) return;
-    // * 버튼 없애기
     setIsShowButton(false);
     setRandom(Math.floor(Math.random() * 17));
-
     룰렛_회전하기();
   };
 
@@ -198,7 +187,6 @@ const Pointer = styled.img`
 const StartButton = styled.img`
   position: absolute;
   width: ${changeRem(80)};
-  /* height: 80px; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
