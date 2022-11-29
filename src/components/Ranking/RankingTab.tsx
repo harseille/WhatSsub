@@ -1,27 +1,30 @@
-import { MouseEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { changeRem, buttonNone } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-
-type TProps = {
-  currentTab: string;
-  onClick: (title: string, e: MouseEvent<HTMLButtonElement>) => void;
-};
 
 type 타입_타이틀_탭 = {
   id: string;
   타이틀: string;
 };
 
-function RankingTab({ currentTab: 현재탭, onClick: 클릭핸들러_탭_변경 }: TProps) {
+function RankingTab() {
+  const navigator = useNavigate();
+  const { state } = useLocation();
+  const 현재탭: string = state || '맛잘알랭킹';
+
   const 탭_리스트: 타입_타이틀_탭[] = [
     { id: 'like__ranking__tab', 타이틀: '맛잘알랭킹' },
     { id: 'created__at__ranking__tab', 타이틀: '신규조합' },
   ];
 
+  const 클릭핸들러_탭_변경 = (title: string) => {
+    navigator(`/best-combination/ranking?currentTab=${title}`, { state: title });
+  };
+
   return (
     <TabGroup>
-      {탭_리스트.map(({ id, 타이틀 }, i) => (
+      {탭_리스트.map(({ id, 타이틀 }) => (
         <TitleTab
           key={id}
           className={현재탭 === 타이틀 ? 'on' : ''}

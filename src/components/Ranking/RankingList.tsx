@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { collection, DocumentData, query } from 'firebase/firestore';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
@@ -9,38 +8,47 @@ import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
 import LoadingSandwich from '@assets/icons/loading_sandwich.svg';
+import { useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
-import mediaQuery from '@styles/media-queries';
-import { changeRem, flexbox } from '@styles/mixin';
+import { flexbox } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import { db } from '../../firebase.config';
 
-type TProps = {
-  currentTab: string;
+type 타입_랭킹_순위_아이템 = {
+  id: number;
+  imageSrc: string;
 };
 
-const Ranking = {
-  FIRST: { id: 0, imageSrc: Rank1 },
-  SECOND: { id: 1, imageSrc: Rank2 },
-  THIRD: { id: 2, imageSrc: Rank3 },
+type 타입_랭킹_순위 = {
+  [key: string]: 타입_랭킹_순위_아이템;
 };
 
-function RankingList({ currentTab }: TProps) {
-  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>([]);
+const 랭킹_순위: 타입_랭킹_순위 = {
+  일위: { id: 0, imageSrc: Rank1 },
+  이위: { id: 1, imageSrc: Rank2 },
+  삼위: { id: 2, imageSrc: Rank3 },
+};
+
+function RankingList() {
+  const { state } = useLocation();
+  const 현재탭: string = state || '맛잘알랭킹';
   const key = useRef<DocumentData | null>(null);
+  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>([]);
 
-  const 꿀조합_컬렉션_정렬해서_가져오기 = async (currentTab: string) => {
-    const 정렬_조건: string = currentTab === '맛잘알랭킹' ? '좋아요' : '작성일';
+  const 꿀조합_컬렉션_정렬해서_가져오기 = async (현재탭: string) => {
+    const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
     const 반환값 = await getRankingList(key.current, 정렬_조건);
 
     if (반환값) {
       key.current = 반환값.마지막_키;
-      setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
+      setTimeout(() => {
+        setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
+      }, 300);
     }
   };
 
   const { listRef, hasMore } = useInfiniteScroll(
-    꿀조합_컬렉션_정렬해서_가져오기.bind(null, currentTab),
+    꿀조합_컬렉션_정렬해서_가져오기.bind(null, 현재탭),
     rankingList.length,
     query(collection(db, '꿀조합'))
   );
@@ -48,8 +56,8 @@ function RankingList({ currentTab }: TProps) {
   useEffect(() => {
     key.current = null;
     setRankingList([]);
-    꿀조합_컬렉션_정렬해서_가져오기(currentTab);
-  }, [currentTab]);
+    꿀조합_컬렉션_정렬해서_가져오기(현재탭);
+  }, [현재탭]);
 
   return (
     <ul>
@@ -58,36 +66,31 @@ function RankingList({ currentTab }: TProps) {
           let 랭킹_뱃지_이미지 = '';
           let 신규_샌드위치인가 = false;
 
-          if (currentTab === '맛잘알랭킹') {
-            const { FIRST, SECOND, THIRD } = Ranking;
-
-            if (i === FIRST.id) 랭킹_뱃지_이미지 = FIRST.imageSrc;
-            else if (i === SECOND.id) 랭킹_뱃지_이미지 = SECOND.imageSrc;
-            else if (i === THIRD.id) 랭킹_뱃지_이미지 = THIRD.imageSrc;
-          } else if (currentTab === '신규조합') {
+          if (현재탭 === '맛잘알랭킹') {
+            const 순위 = Object.keys(랭킹_순위).find(key => 랭킹_순위[key].id === i);
+            랭킹_뱃지_이미지 = 순위 ? 랭킹_순위[순위].imageSrc : '';
+          } else if (현재탭 === '신규조합') {
             const { year: 오늘_년도, month: 오늘_월, date: 오늘_일 } = getYearMonthDate(new Date());
             const { year: 작성일_년도, month: 작성일_월, date: 작성일_일 } = getYearMonthDate(new Date(작성일));
 
-            if (오늘_년도 === 작성일_년도 && 오늘_월 === 작성일_월 && 오늘_일 === 작성일_일) 신규_샌드위치인가 = true;
+            신규_샌드위치인가 = 오늘_년도 === 작성일_년도 && 오늘_월 === 작성일_월 && 오늘_일 === 작성일_일;
           }
 
           return (
-            <li key={id} ref={i === rankingList.length - 1 ? listRef : null}>
-              {/* <li key={id}> */}
-              <RankingCardWrapper to={`/best-combination/${id}`}>
-                {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
-                {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${i + 1}`} />}
-                <CombinationRankingCard
-                  rank={i + 1}
-                  currentTab={currentTab}
-                  title={꿀조합제목}
-                  imageUrl={이미지}
-                  originName={베이스샌드위치}
-                  badgeList={뱃지리스트}
-                  like={좋아요}
-                />
-              </RankingCardWrapper>
-            </li>
+            <CombinationRankingCard
+              key={id}
+              id={id}
+              listRef={i === rankingList.length - 1 ? listRef : null}
+              isNew={신규_샌드위치인가}
+              rankingImage={랭킹_뱃지_이미지}
+              rank={i + 1}
+              currentTab={현재탭}
+              title={꿀조합제목}
+              imageUrl={이미지}
+              originName={베이스샌드위치}
+              badgeList={뱃지리스트}
+              like={좋아요}
+            />
           );
         })}
       <li />
@@ -103,43 +106,6 @@ function RankingList({ currentTab }: TProps) {
 }
 
 export default RankingList;
-
-const RankingCardWrapper = styled(Link)`
-  position: relative;
-  display: block;
-  margin-bottom: 15px;
-`;
-
-const RankBadge = styled.img`
-  position: absolute;
-  right: -18px;
-  top: -28px;
-  z-index: 1;
-  width: 90px;
-
-  ${mediaQuery} {
-    width: 106px;
-    top: -40px;
-    right: -25px;
-  }
-`;
-
-const NewBadge = styled.span`
-  position: absolute;
-  top: -6px;
-  right: 20px;
-  z-index: 1;
-  padding: 3px 5px;
-  border-radius: 3px;
-  background-color: ${props => props.theme.colors.primaryYellow};
-  font-size: ${changeRem(10)};
-  font-weight: bold;
-  color: #fff;
-
-  ${mediaQuery} {
-    top: -8px;
-  }
-`;
 
 const LoadingLi = styled.li`
   ${flexbox('row', 'center', 'center')}
