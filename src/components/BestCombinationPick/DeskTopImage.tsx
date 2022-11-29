@@ -11,7 +11,7 @@ function DeskTopImage() {
   );
 }
 
-export default React.memo(DeskTopImage);
+export default DeskTopImage;
 
 const ImgWrap = styled.div`
   display: none;
