@@ -38,8 +38,8 @@ function MyCombinationCard(props: TProps) {
     <Container>
       <Danzzi src={danzziTrust} alt="단찌 믿음 아이콘" />
       <Card className="card">
-        <DeleteBtn onClick={클릭핸들러_나만의_조합_취소하기} type="button">
-          <img src={deleteBtn} alt="조합 삭제 버튼" />
+        <DeleteBtn onClick={클릭핸들러_나만의_조합_취소하기} aria-label="조합 삭제 버튼" type="button">
+          <img src={deleteBtn} alt="삭제 아이콘" />
         </DeleteBtn>
         <Text>
           <UserName className="title">{userName}</UserName>
