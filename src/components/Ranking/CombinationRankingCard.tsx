@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
+import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
+import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -33,24 +35,42 @@ function CombinationRankingCard({
   badgeList: 뱃지리스트,
   like: 좋아요,
 }: TProps) {
+  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
+    useLikedBestCombination(id);
+
+  useEffect(() => {
+    setLikeCount(좋아요);
+  }, [setLikeCount, 좋아요]);
+
   return (
-    <li ref={listRef}>
-      <RankingCardWrapper to={`/best-combination/${id}`}>
-        {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
-        {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
-        <RankingCard>
-          {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
-          <RankingImageWrap>
-            <img src={이미지} alt={베이스샌드위치} />
-          </RankingImageWrap>
-          <RankingContents>
-            <Title>{이름}</Title>
-            <RankingBadgeList badgeList={뱃지리스트} />
-            <Like count={좋아요} />
-          </RankingContents>
-        </RankingCard>
-      </RankingCardWrapper>
-    </li>
+    <>
+      {isShowModal && (
+        <Modal
+          title="로그인이 필요한 서비스입니다."
+          message="로그인 페이지로 이동하시겠습니까?"
+          onEvent={navigateLoginPage}
+          onClose={toggleModal}
+          isConfirm="이동"
+        />
+      )}
+      <li ref={listRef}>
+        <RankingCardWrapper to={`/best-combination/${id}`}>
+          {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
+          {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
+          <RankingCard>
+            {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
+            <RankingImageWrap>
+              <img src={이미지} alt={베이스샌드위치} />
+            </RankingImageWrap>
+            <RankingContents>
+              <Title>{이름}</Title>
+              <RankingBadgeList badgeList={뱃지리스트} />
+              <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글} />
+            </RankingContents>
+          </RankingCard>
+        </RankingCardWrapper>
+      </li>
+    </>
   );
 }
 
