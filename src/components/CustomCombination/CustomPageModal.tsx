@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
 
@@ -65,4 +66,4 @@ function CustomPageModal(props: TProps) {
     />
   );
 }
-export default CustomPageModal;
+export default memo(CustomPageModal);

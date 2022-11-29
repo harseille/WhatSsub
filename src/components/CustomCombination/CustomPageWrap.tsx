@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useBeforeunload } from 'react-beforeunload';
 import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
@@ -19,7 +19,7 @@ function CustomPageWrap() {
   const [나만의_조합, 나만의_조합_수정] = useState(나만의_조합_초기값);
   const isLoggedIn = useRecoilValue(isLoggedInState);
 
-  const closeModal = () => setModalType(MODAL_TYPE_KEYS.none);
+  const closeModal = useCallback(() => setModalType(MODAL_TYPE_KEYS.none), []);
   const changeModalType = (type: string) => setModalType(type);
 
   useBeforeunload(e => e.preventDefault());

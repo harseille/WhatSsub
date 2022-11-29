@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import Button from '@components/Common/UI/Button';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import recipe from '@data/recipe';
@@ -142,14 +142,14 @@ const CardInputButtonWrap = styled.div`
   }
 `;
 
-const Img = styled.img`
+const Img = memo(styled.img`
   display: block;
   max-width: 62%;
   margin: 0 auto;
   ${mediaQuery} {
     max-width: 50%;
   }
-`;
+`);
 
 const Input = styled.input`
   display: block;
@@ -170,13 +170,13 @@ const CreateCombinationButton = styled(Button)`
   }
 `;
 
-const Danzzi = styled.img`
+const Danzzi = memo(styled.img`
   position: absolute;
   width: 200px;
   left: 50%;
   transform: translate(-50%);
   z-index: 0;
-`;
+`);
 
 const DeleteBtn = styled.button`
   position: absolute;
