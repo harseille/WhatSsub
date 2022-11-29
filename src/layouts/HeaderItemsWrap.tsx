@@ -57,7 +57,7 @@ const HeaderItemsWrapComponent = styled.div`
 const HeaderLogInOut = styled.button`
   ${buttonNone};
   font-size: ${changeRem(14)};
-  color: ${props => props.theme.colors.gray87};
+  color: ${props => props.theme.colors.gray59};
   font-weight: 700;
   flex-shrink: 0;
   cursor: pointer;
@@ -104,7 +104,7 @@ const Nav = styled.nav`
 const NavItemTitle = styled.span`
   padding-top: 6px;
   font-size: ${changeRem(8)};
-  color: ${props => props.theme.colors.gray87};
+  color: ${props => props.theme.colors.gray59};
   font-weight: 700;
 
   ${mediaQuery} {

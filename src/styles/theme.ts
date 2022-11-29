@@ -6,6 +6,7 @@ const theme = {
     primaryBlue: '#01A4E3',
     primaryOrange: '#FF8300',
     primaryPurple: '#4D006A',
+    gray59: '#595959',
     gray87: '#878787',
     grayaa: '#aaa',
     grayF5: '#F5F5F5',
