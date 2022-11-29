@@ -64,11 +64,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   /* box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25), 0px 4px 10px rgba(213, 213, 213, 0.25);*/
+  border-bottom: 1px solid ${theme.colors.grayDDD};
 
   ${mediaQuery} {
     justify-content: center;
-    bottom: 0;
-    padding: 0px;
     height: ${changeRem(80)};
   }
 `;

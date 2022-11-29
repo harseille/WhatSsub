@@ -8,7 +8,7 @@ const theme = {
     primaryPurple: '#4D006A',
     gray59: '#595959',
     gray87: '#878787',
-    grayaa: '#aaa',
+    grayDDD: '#DDD',
     grayF5: '#F5F5F5',
   },
   badgeColors: {
