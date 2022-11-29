@@ -33,9 +33,9 @@ function HeaderContiner({ author, like }: Tprops) {
         />
       )}
       <Header>
-        <h1>
+        <h2>
           <span>{author}</span> 만의 조합
-        </h1>
+        </h2>
         <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글} />
       </Header>
     </>
@@ -50,7 +50,7 @@ const Header = styled.div`
   background: #fff;
   position: relative;
   padding: ${changeRem(40)} ${changeRem(16)};
-  & h1 {
+  & h2 {
     font-weight: 700;
     font-size: ${changeRem(20)};
 
