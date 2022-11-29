@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
+import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
 import deleteBtn from '@assets/icons/deleteBtn.png';
 // import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
@@ -35,7 +36,6 @@ export default UserCombinatonList;
 const Card = styled.li`
   box-sizing: border-box;
   padding: 20px 35px;
-  /* width: ${changeRem(370)}; */
   width: 100%;
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
