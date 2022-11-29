@@ -19,8 +19,8 @@ function UserCombinatonList({ userCombination, onClick }: TProps) {
     <ul>
       {userCombination?.map(sandwich => (
         <Card key={sandwich.꿀조합제목} id={sandwich.id}>
-          <EditListBtn onClick={onClick.bind(null, sandwich.id)}>
-            <img className="close-btn" src={deleteBtn} alt="닫기 버튼" />
+          <EditListBtn onClick={onClick.bind(null, sandwich.id)} aria-label="닫기 버튼">
+            <img className="close-btn" src={deleteBtn} alt="삭제 아이콘" />
           </EditListBtn>
           <Link to={`/best-combination/${sandwich.id}`}>
             <SandwichInfo sandwich={sandwich} />

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 function RefreshButton({ onClick }: { onClick: () => void }) {
   return (
-    <Refresh onClick={onClick}>
+    <Refresh onClick={onClick} aria-label="새로고침 버튼">
       <img src={refreshIcon} alt="새로고침" />
     </Refresh>
   );

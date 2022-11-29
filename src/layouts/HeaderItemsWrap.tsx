@@ -39,7 +39,7 @@ function HeaderItemsWrap() {
       {isLoggedin ? (
         <HeaderLogInOut onClick={로그아웃}>로그아웃</HeaderLogInOut>
       ) : (
-        <HeaderLogInOut>
+        <HeaderLogInOut aria-label="로그인 버튼">
           <NavLink to="/login">로그인 </NavLink>
         </HeaderLogInOut>
       )}

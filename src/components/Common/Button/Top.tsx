@@ -7,7 +7,9 @@ function Top() {
 
   return (
     <TopWrap>
-      <TopBtn onClick={scrollToTop}>TOP</TopBtn>
+      <TopBtn onClick={scrollToTop} aria-label="최상단 이동 버튼">
+        TOP
+      </TopBtn>
     </TopWrap>
   );
 }

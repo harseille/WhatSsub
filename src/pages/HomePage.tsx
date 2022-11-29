@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
 import danzziHome from '@assets/images/danzzi/danzzi_home.png';
+import danzziHomeMin from '@assets/images/danzzi/danzzi_home_min.png';
 import deco1 from '@assets/icons/home_bg_left_top.svg';
 import deco2 from '@assets/icons/home_bg_right_top.svg';
 import deco3 from '@assets/icons/home_bg_left_bottom.svg';
@@ -24,7 +25,11 @@ function HomePage() {
               <StrongSpan>왔썹</StrongSpan>으로 고르자
             </TitleSpan>
           </Title>
-          <VisualImg src={danzziHome} alt="샌드위치 먹는 단지" />
+          <VisualImg>
+            <source media="(min-width: 700px)" srcSet={danzziHome} />
+            <source media="(min-width: 0px)" srcSet={danzziHomeMin} />
+            <img src={danzziHome} alt="샌드위치 먹는 단지" />
+          </VisualImg>
         </Wrapper>
       </Visual>
       <Wrapper>
@@ -134,14 +139,15 @@ const StrongSpan = styled.span`
   }
 `;
 
-const VisualImg = styled.img`
+const VisualImg = styled.picture`
+  display: inline-block;
   width: ${changeRem(280)};
-  margin-right: 56px;
+  margin-right: 50px;
 
   ${mediaQuery} {
     position: absolute;
     right: 30px;
-    bottom: -20%;
+    bottom: -8%;
     width: 35%;
     margin: 0;
   }
@@ -194,9 +200,8 @@ const ALink = styled(Link)`
     flex-basis: 374px;
 
     &:first-of-type::after {
-      height: calc(100% - 54px)
+      height: calc(100% - 54px);
     }
-  }
   }
 `;
 

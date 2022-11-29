@@ -14,8 +14,8 @@ function RandomModalResult({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
   return (
     <Card>
-      <CloseBtn onClick={onClick}>
-        <img src={xBtn} alt="닫기 버튼" />
+      <CloseBtn onClick={onClick} aria-label="닫기 버튼">
+        <img src={xBtn} alt="x 아이콘" />
       </CloseBtn>
       <Title>⭐️오늘의 랜덤 조합⭐️</Title>
       <SandwichInfoWrapper>
