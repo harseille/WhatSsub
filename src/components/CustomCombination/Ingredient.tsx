@@ -25,6 +25,9 @@ function Ingredient(props: TProps) {
 
   const bgColor = isSelected ? '#fff5de' : '#f1f0f0';
   const color = isSelected ? '#dfa000' : '#7A7A7A';
+
+  // const bgColor = isSelected ? '#FFF5DE' : '#f1f0f0';
+  // const color = isSelected ? '#F37500' : '#4F4F4F';
   return (
     <IngredientItem onClick={클릭핸들러_재료_선택} color={color} bgColor={bgColor}>
       {재료정보.이름}
