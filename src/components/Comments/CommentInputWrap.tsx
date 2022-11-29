@@ -59,7 +59,7 @@ export default CommentInputWrap;
 const Wrapper = styled.div`
   width: 100%;
   padding: 20px;
-  margin-botton: 10px;
+  margin-bottom: 16px;
   background: #ffffff;
   display: flex;
   align-items: center;
