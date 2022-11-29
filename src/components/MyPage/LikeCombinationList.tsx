@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import LikeRedBtn from '@components/Common/Button/LikeRed';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
