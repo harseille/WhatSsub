@@ -8,6 +8,7 @@ import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import MyPageList from '@components/MyPage/MyPageList';
 import Modal from '@components/Common/UI/Modal';
+import { flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
@@ -89,8 +90,8 @@ function MyPage() {
 export default MyPage;
 
 const Container = styled.div`
-  width: 100%;
-  padding: 25px 20px;
+  ${flexbox('column', 'flex-start', 'center')}
+  padding: 25px 70px;
   margin: 0 auto;
   ${mediaQuery} {
     padding-bottom: 50px;

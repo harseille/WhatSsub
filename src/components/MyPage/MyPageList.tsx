@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';

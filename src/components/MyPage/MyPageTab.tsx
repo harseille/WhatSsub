@@ -26,12 +26,12 @@ export default MyPageTab;
 const Container = styled.div`
   margin: 0 auto;
   display: flex;
-
   gap: 15px;
 `;
 
 const Title = styled.span<{ isSelectedTab: boolean }>`
-  text-align: left;
+  /* text-align: left; */
+  text-align: center;
   display: inline;
   font-size: ${changeRem(20)};
   font-weight: bold;
