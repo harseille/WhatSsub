@@ -1,6 +1,5 @@
 import IngredientCard from '@components/Ingredient/IngredientCard';
 import styled from '@emotion/styled';
-import mediaQuery from '@styles/media-queries';
 import { flexbox } from '@styles/mixin';
 import { 화면용_재료_아이디 } from '@constants/constants';
 import { 인터페이스_재료 } from '@typings/ISandwich';

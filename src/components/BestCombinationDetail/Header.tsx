@@ -1,7 +1,11 @@
+import { useParams } from 'react-router-dom';
+import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
+import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem, flexbox } from '@styles/mixin';
+import { useEffect } from 'react';
 
 type Tprops = {
   author: string;
@@ -9,13 +13,32 @@ type Tprops = {
 };
 
 function HeaderContiner({ author, like }: Tprops) {
+  const { combinationId } = useParams();
+  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
+    useLikedBestCombination(combinationId!);
+
+  useEffect(() => {
+    setLikeCount(like);
+  }, [setLikeCount, like]);
+
   return (
-    <Header>
-      <h1>
-        <span>{author}</span> 만의 조합
-      </h1>
-      <Like count={like} />
-    </Header>
+    <>
+      {isShowModal && (
+        <Modal
+          title="로그인이 필요한 서비스입니다."
+          message="로그인 페이지로 이동하시겠습니까?"
+          onEvent={navigateLoginPage}
+          onClose={toggleModal}
+          isConfirm="이동"
+        />
+      )}
+      <Header>
+        <h1>
+          <span>{author}</span> 만의 조합
+        </h1>
+        <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글} />
+      </Header>
+    </>
   );
 }
 
