@@ -47,7 +47,7 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
   );
 }
 
-export default MyPageList;
+export default React.memo(MyPageList);
 
 const Container = styled.div`
   margin-bottom: 10px;
