@@ -8,9 +8,9 @@ import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import MyPageList from '@components/MyPage/MyPageList';
 import Modal from '@components/Common/UI/Modal';
+import { flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
-// import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 
@@ -68,7 +68,7 @@ function MyPage() {
     <>
       {isShowModal && (
         <Modal
-          title="🚨 작성하신 꿀조합이 사라져요 🚨"
+          title="🚨 좋아요 누른 꿀조합이 사라져요 🚨"
           message="정말로 삭제하시겠습니까?"
           onEvent={목록에서_샌드위치_삭제하기}
           onClose={모달_토글하기}
@@ -90,8 +90,8 @@ function MyPage() {
 export default MyPage;
 
 const Container = styled.div`
-  width: 100%;
-  padding: 25px 20px;
+  ${flexbox('column', 'flex-start', 'center')}
+  padding: 25px 70px;
   margin: 0 auto;
   ${mediaQuery} {
     padding-bottom: 50px;
