@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
@@ -45,10 +45,13 @@ function MyPage() {
     }
   }, [isLoggedin, navigate, toggleState]);
 
-  const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
-    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
-    setToggleState(사용자명_체크);
-  };
+  const 클릭핸들러_꿀조합_목록_변경 = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
+      setToggleState(사용자명_체크);
+    },
+    [toggleState]
+  );
 
   const 꿀조합_받아오기 = async (toggleState: boolean) => {
     const tabToggle: string = toggleState ? '작성일' : '좋아요';
