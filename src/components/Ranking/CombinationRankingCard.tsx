@@ -36,7 +36,7 @@ function CombinationRankingCard({
   like: 좋아요,
 }: TProps) {
   const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
-    useLikedBestCombination(id);
+    useLikedBestCombination(id); 
 
   useEffect(() => {
     setLikeCount(좋아요);
