@@ -61,7 +61,8 @@
     "react-beforeunload": "^2.5.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
-    "recoil": "^0.7.6"
+    "recoil": "^0.7.6",
+    "recoil-persist": "^4.2.0"
   },
   "lint-staged": {
     "renderer/**/*.{js,ts,jsx,tsx}": [
