@@ -3,10 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
-import mediaQuery from '@styles/media-queries';
-import { changeRem } from '@styles/mixin';
 import deleteBtn from '@assets/icons/deleteBtn.png';
-// import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {

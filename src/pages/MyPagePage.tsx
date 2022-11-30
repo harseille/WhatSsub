@@ -27,6 +27,7 @@ function MyPage() {
   const 좋아요한샌드위치_수정 = useSetRecoilState(userLike);
 
   const { 꿀조합_삭제하기, 모달_토글하기, isShowModal } = useDeleteBestCombination(targetBestCombinationId!);
+
   const 좋아요한_데이터_가져오기 = async () => {
     if (유저정보) {
       const 좋아요한_데이터 = await getDoc(doc(collection(db, '좋아요'), 유저정보.uid));
@@ -53,17 +54,20 @@ function MyPage() {
     [toggleState]
   );
 
-  const 꿀조합_받아오기 = async (toggleState: boolean) => {
-    const tabToggle: string = toggleState ? '작성일' : '좋아요';
-    let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
+  const 꿀조합_받아오기 = useCallback(
+    async (toggleState: boolean) => {
+      const tabToggle: string = toggleState ? '작성일' : '좋아요';
+      let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
 
-    if (샌드위치_데이터) {
-      if (toggleState) {
-        샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
+      if (샌드위치_데이터) {
+        if (toggleState) {
+          샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
+        }
+        유저만의조합_수정(샌드위치_데이터);
       }
-      유저만의조합_수정(샌드위치_데이터);
-    }
-  };
+    },
+    [toggleState]
+  );
 
   const 꿀조합_삭제_모달_열기 = useCallback((id: string) => {
     setTargetBestCombinationId(id);
