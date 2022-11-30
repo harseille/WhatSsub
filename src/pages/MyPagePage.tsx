@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import { isLoggedInState, userState } from '@state/index';
+import { userLike } from '@state/User';
 import getBestCombination from '@api/getBestCombination';
 import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
@@ -13,7 +14,6 @@ import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
-import { userLike } from '@state/User';
 import { getDoc, doc, collection, DocumentData } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
@@ -45,10 +45,13 @@ function MyPage() {
     }
   }, [isLoggedin, navigate, toggleState]);
 
-  const 클릭핸들러_꿀조합_목록_변경 = (e: React.MouseEvent<HTMLElement>) => {
-    const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
-    setToggleState(사용자명_체크);
-  };
+  const 클릭핸들러_꿀조합_목록_변경 = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
+      setToggleState(사용자명_체크);
+    },
+    [toggleState]
+  );
 
   const 꿀조합_받아오기 = async (toggleState: boolean) => {
     const tabToggle: string = toggleState ? '작성일' : '좋아요';
@@ -62,10 +65,10 @@ function MyPage() {
     }
   };
 
-  const 꿀조합_삭제_모달_열기 = (id: string) => {
+  const 꿀조합_삭제_모달_열기 = useCallback((id: string) => {
     setTargetBestCombinationId(id);
     모달_토글하기();
-  };
+  }, []);
 
   const 목록에서_샌드위치_삭제하기 = () => {
     try {
