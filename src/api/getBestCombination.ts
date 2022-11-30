@@ -1,21 +1,18 @@
-import dbGet from '@api/dbGet';
-import { collection, orderBy, query } from 'firebase/firestore';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import { collection, getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
-const getBestCombination = async (tabToggle: string) => {
+const getBestCombination = async (꿀조합id: string) => {
   try {
-    const 쿼리스냅샷 = await dbGet(query(collection(db, '꿀조합'), orderBy(tabToggle, 'desc'))); // tabToggle에 따라 내림차순
-
-    const 샌드위치_데이터: 인터페이스_꿀조합[] = [];
-
-    await 쿼리스냅샷.forEach(doc => {
-      샌드위치_데이터.push({ id: doc.id, ...JSON.parse(JSON.stringify(doc.data())) });
-    });
-
-    return 샌드위치_데이터;
-  } catch (e) {
-    console.log('실패');
+    const 꿀조합_콜랙션 = collection(db, '꿀조합');
+    const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
+    if (querySnapshot.exists()) {
+      const 꿀조합 = querySnapshot.data();
+      return 꿀조합;
+    }
+    console.log('꿀조합이 없습니다.!');
+  } catch (error) {
+    console.error(error);
+    console.log('꿀조합 가져오기 실패');
   }
 };
 

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import IngredientCardList from '@components/Ingredient/IngredientCardList';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import Button from '@components/Common/UI/Button';
@@ -6,7 +8,6 @@ import Modal from '@components/Common/UI/Modal';
 import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_샌드위치, 인터페이스_재료 } from '@typings/ISandwich';
-import { useNavigate, useParams } from 'react-router-dom';
 
 type TProps = {
   sandwich: 인터페이스_샌드위치;
@@ -58,7 +59,7 @@ function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProp
   );
 }
 
-export default ContentsContainer;
+export default memo(ContentsContainer);
 
 const Contents = styled.div`
   ${flexbox('column', 'flex-start', 'center')}
