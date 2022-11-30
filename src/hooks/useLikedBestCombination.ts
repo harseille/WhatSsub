@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
 import dbUpdate from '@api/dbUpdate';
@@ -15,7 +15,8 @@ const useLikedBestCombination = (id: string) => {
     if (userInfo) dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: 좋아요한샌드위치 });
   }, [userInfo, 좋아요한샌드위치]);
 
-  const 클릭핸들러_좋아요_토글 = () => {
+  const 클릭핸들러_좋아요_토글 = (e: MouseEvent) => {
+    e.preventDefault();
     if (!userInfo) {
       toggleModal();
       return;
