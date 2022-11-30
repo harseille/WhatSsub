@@ -121,7 +121,6 @@ const RankingCard = styled.section`
   position: relative;
   padding: 30px 20px;
   border-radius: 20px;
-  margin-bottom: 16px;
   background: #ffffff;
   filter: ${props => `drop-shadow(${props.theme.boxShadow.type3})`};
 
@@ -165,6 +164,26 @@ const RankingImageWrap = styled.div`
 
 const RankingContents = styled.div`
   flex-basis: calc(100% - 160px);
+
+  & > div:last-of-type {
+    flex-shrink: 0;
+
+    button {
+      width: auto;
+      height: auto;
+      padding: 5px;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    span {
+      margin-left: 3px;
+      font-size: ${changeRem(15)};
+    }
+  }
 
   ${mediaQuery} {
     flex-basis: calc(100% - 250px);
