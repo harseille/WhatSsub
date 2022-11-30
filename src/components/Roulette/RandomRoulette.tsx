@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import DimmedLayer from '@components/Common/UI/DimmedLayer';
-import RandomModalResult from '@components/Roulette/RandomModalResult';
+import RandomModal from '@components/Roulette/RandomModal';
 import spinBoard from '@assets/images/roulette.png';
 import startBtn from '@assets/images/startBtn.png';
 import pointer from '@assets/images/pointer.png';
@@ -144,8 +143,7 @@ function RandomRoulette() {
       <div>
         {isShowModal ? (
           <div>
-            <DimmedLayer onClick={클릭핸들러_모달_닫기} />
-            <RandomModalResult sandwich={sandwichData} onClick={클릭핸들러_모달_닫기} />
+            <RandomModal sandwich={sandwichData} onClick={클릭핸들러_모달_닫기} />
           </div>
         ) : null}
       </div>

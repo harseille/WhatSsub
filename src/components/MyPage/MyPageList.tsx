@@ -5,7 +5,6 @@ import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';
 import { dbUpdate } from '@api/index';
 import styled from '@emotion/styled';
-import { flexbox } from '@styles/mixin';
 import { User } from 'firebase/auth';
 import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';

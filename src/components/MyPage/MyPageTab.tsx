@@ -32,6 +32,7 @@ const Container = styled.div`
 
   ${mediaQuery} {
     width: 100%;
+    margin-top: 40px;
   }
 `;
 
