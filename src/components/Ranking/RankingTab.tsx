@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { changeRem, buttonNone } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -19,9 +19,9 @@ function RankingTab() {
     { id: 'created__at__ranking__tab', 타이틀: '신규조합' },
   ];
 
-  const 클릭핸들러_탭_변경 = (title: string) => {
+  const 클릭핸들러_탭_변경 = useCallback((title: string) => {
     navigator(`/best-combination/ranking?currentTab=${title}`, { state: title });
-  };
+  }, []);
 
   return (
     <TabGroup>
