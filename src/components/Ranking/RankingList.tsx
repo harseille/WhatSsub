@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { collection, DocumentData, query } from 'firebase/firestore';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
@@ -35,7 +35,7 @@ function RankingList() {
   const key = useRef<DocumentData | null>(null);
   const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>([]);
 
-  const 꿀조합_컬렉션_정렬해서_가져오기 = async (현재탭: string) => {
+  const 꿀조합_컬렉션_정렬해서_가져오기 = useCallback(async (현재탭: string) => {
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
     const 반환값 = await getRankingList(key.current, 정렬_조건);
 
@@ -45,7 +45,7 @@ function RankingList() {
         setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
       }, 300);
     }
-  };
+  }, []);
 
   const { listRef, hasMore } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기.bind(null, 현재탭),
