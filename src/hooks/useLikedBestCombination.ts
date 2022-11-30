@@ -36,7 +36,15 @@ const useLikedBestCombination = (id: string) => {
     });
   };
 
-  return { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount };
+  return {
+    isShowModal,
+    toggleModal,
+    navigateLoginPage,
+    isLiked,
+    클릭핸들러_좋아요_토글,
+    likeCount,
+    setLikeCount,
+  };
 };
 
 export default useLikedBestCombination;
