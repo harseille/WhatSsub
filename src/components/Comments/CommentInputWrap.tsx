@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import 새_댓글_추가하기 from '@api/pushNewComment';
@@ -54,7 +54,7 @@ function CommentInputWrap({ getCommentListCount }: TProps) {
   );
 }
 
-export default CommentInputWrap;
+export default memo(CommentInputWrap);
 
 const Wrapper = styled.div`
   width: 100%;

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import getTimePassedBy from '@utils/getTimePassedBy';
@@ -21,7 +22,7 @@ function CommentItem(props: { comment: 인터페이스_댓글_읽기 }) {
   );
 }
 
-export default CommentItem;
+export default memo(CommentItem);
 
 const Wrapper = styled.div`
   padding-top: 8px;

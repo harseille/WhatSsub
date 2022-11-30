@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 import { isLoggedInState, userState } from '@state/index';
 import { userLike } from '@state/User';
-import getBestCombination from '@api/getBestCombination';
+import getBestCombinationList from '@api/getBestCombinationList';
 import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import MyPageList from '@components/MyPage/MyPageList';
@@ -55,7 +55,7 @@ function MyPage() {
 
   const 꿀조합_받아오기 = async (toggleState: boolean) => {
     const tabToggle: string = toggleState ? '작성일' : '좋아요';
-    let 샌드위치_데이터 = await getBestCombination(tabToggle);
+    let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
 
     if (샌드위치_데이터) {
       if (toggleState) {
