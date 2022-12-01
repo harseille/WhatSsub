@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { GenerataSW } = require('workbox-webpack-plugin');
+const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -102,6 +103,7 @@ module.exports = {
     new GenerataSW({
       navigateFallback: path.publicUrlOrPath + 'index.html',
     }),
+    RefreshWebpackPlugin,
   ],
 
   devServer: {
