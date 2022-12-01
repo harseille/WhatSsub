@@ -1,15 +1,3 @@
 {
-  "routes": [{ "src": "/[^.]+", "dest": "/main.js", "status": 200 }],
-  "builds": [
-    {
-      "src": "main.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!api/.*).*)",
-      "destination": "/index.html"
-    }
-  ]
+  "routes": [{ "src": "/*", "dest": "/", "status": 200 }]
 }
