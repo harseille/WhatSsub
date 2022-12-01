@@ -1,22 +1,31 @@
+import { lazily } from 'react-lazily';
+import { Suspense } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import RootLayout from '@layouts/RootLayout';
-import {
-  BestCombinationDetailPage,
-  BestCombinationListPage,
-  BestCombinationPickPage,
+
+const {
   HomePage,
-  RandomPickPage,
-  LoginPage,
-  MyPage,
-  CustomCombination,
   RankingPage,
+  LoginPage,
+  CustomCombination,
+  BestCombinationListPage,
+  MyPage,
+  RandomPickPage,
   bestCombinationDetailLoader,
+  BestCombinationPickPage,
+  BestCombinationDetailPage,
   NotFound,
-} from '@pages/index';
+} = lazily(() => import('@pages/index'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route
+      path="/"
+      element={
+        <Suspense fallback={<div>loading...</div>}>
+          <RootLayout />
+        </Suspense>
+      }>
       <Route index element={<HomePage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="best-combination-pick" element={<BestCombinationPickPage />} />

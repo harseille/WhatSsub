@@ -97,7 +97,7 @@ module.exports = {
       patterns: [{ from: 'vercel.json' }],
     }),
     new Dotenv({
-      systemvars: true,
+      // systemvars: true,
     }),
   ],
   optimization: {
