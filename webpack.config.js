@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const { GenerataSW } = require('workbox-webpack-plugin');
 const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
@@ -60,6 +59,7 @@ module.exports = {
                 ],
               ],
             },
+            plugins: ['react-refresh/babel'],
           },
           {
             loader: 'ts-loader',
@@ -100,10 +100,7 @@ module.exports = {
     new Dotenv({
       systemvars: true,
     }),
-    new GenerataSW({
-      navigateFallback: path.publicUrlOrPath + 'index.html',
-    }),
-    RefreshWebpackPlugin,
+    new RefreshWebpackPlugin(),
   ],
 
   devServer: {
