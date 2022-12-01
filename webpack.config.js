@@ -5,8 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-// const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
 module.exports = {
   mode: 'production',
   entry: path.join(__dirname, 'src', 'index.tsx'),
@@ -36,9 +34,6 @@ module.exports = {
       '@typings': path.resolve(__dirname, 'src', 'typings'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@hooks': path.resolve(__dirname, 'src', 'hooks'),
-      // '@state': path.resolve(__dirname, 'src', 'state'),
-      // '@utils': path.resolve(__dirname, 'utils'),
-      // '@typings': path.resolve(__dirname, 'typings'),
     },
   },
 
@@ -98,7 +93,6 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    // new Dotenv(),
     new CopyPlugin({
       patterns: [{ from: 'vercel.json' }],
     }),
