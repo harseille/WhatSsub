@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const WorkboxboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
