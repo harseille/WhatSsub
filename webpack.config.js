@@ -94,10 +94,10 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new Dotenv(),
-    // new Dotenv({
-    //   systemvars: true,
-    // }),
+    // new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
 
   devServer: {
