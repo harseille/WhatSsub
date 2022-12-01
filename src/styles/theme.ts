@@ -10,6 +10,7 @@ const theme = {
     gray87: '#878787',
     grayDDD: '#DDD',
     grayF5: '#F5F5F5',
+    AccessibilityGreen: '#09622D',
   },
   badgeColors: {
     yellow: '#DFA000',
