@@ -8,9 +8,6 @@ type 타입_버튼_텍스트 = {
   [key: number]: string;
 };
 
-export const INGREDIENT_PATH = '/data/ingredients.json';
-export const RECIPE_PATH = '/data/recipe.json';
-
 export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 = {
   작성자id: '',
   꿀조합제목: '',
