@@ -23,11 +23,8 @@ function Ingredient(props: TProps) {
   const 클릭핸들러_재료_선택 = () =>
     selectIngredients({ 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정, changeModalType });
 
-  const bgColor = isSelected ? '#fff5de' : '#f1f0f0';
-  const color = isSelected ? '#dfa000' : '#7A7A7A';
-
-  // const bgColor = isSelected ? '#FFF5DE' : '#f1f0f0';
-  // const color = isSelected ? '#F37500' : '#4F4F4F';
+  const bgColor = isSelected ? '#FFF5DE' : '#f1f0f0';
+  const color = isSelected ? '#F37500' : '#4F4F4F';
   return (
     <IngredientItem onClick={클릭핸들러_재료_선택} color={color} bgColor={bgColor}>
       {재료정보.이름}

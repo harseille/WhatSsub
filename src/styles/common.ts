@@ -3,15 +3,15 @@ type TColor = {
 };
 
 export const badgeFontColor: TColor = {
-  기본: '#7A7A7A',
-  맛: '#DFA000',
+  기본: '#6B6B6B',
+  맛: '#F37500',
   재료: '#4B69FD',
   추가사항: '#FF4200',
 };
 
 export const badgeBackgroundColor: TColor = {
-  기본: 'rgba(220, 220, 220, 0.3)',
-  맛: 'rgba(252, 189, 33, 0.1)',
-  재료: 'rgba(75, 105, 253, 0.1)',
-  추가사항: 'rgba(255, 66, 0, 0.1)',
+  기본: '#F0F0F0',
+  맛: '#FFF5DE',
+  재료: '#E4E9FF',
+  추가사항: '#FFE3D9',
 };
