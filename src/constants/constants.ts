@@ -12,7 +12,6 @@ type 타입_메뉴 = {
   로그인상관여부: boolean;
 };
 export const DEFAULT_SIZE = 16;
-export const API_URL_PATH_PREFIX = '/data';
 export const 메뉴정보: 타입_메뉴[] = [
   { 메뉴명: '홈', 이동링크: '/', 아이콘: homeImg, 아이콘설명: '홈 아이콘', 로그인상관여부: false },
   {

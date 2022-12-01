@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -34,9 +34,6 @@ module.exports = {
       '@typings': path.resolve(__dirname, 'src', 'typings'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@hooks': path.resolve(__dirname, 'src', 'hooks'),
-      // '@state': path.resolve(__dirname, 'src', 'state'),
-      // '@utils': path.resolve(__dirname, 'utils'),
-      // '@typings': path.resolve(__dirname, 'typings'),
     },
   },
 
@@ -91,27 +88,24 @@ module.exports = {
   },
 
   plugins: [
-    // new webpack.ProvidePlugin({
-    //   React: 'react',
-    // }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new Dotenv(),
-
-    // new Dotenv({
-    //   systemvars: true,
-    // }),
-    // new RefreshWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [{ from: 'vercel.json' }],
+    }),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
   optimization: {
     splitChunks: {
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'js/vendor',
+          name: 'vendor',
           chunks: 'all',
         },
       },

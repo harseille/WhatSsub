@@ -75,7 +75,6 @@ const Nav = styled.nav`
   bottom: 0;
   z-index: 1;
   background: #fff;
-  /* box-shadow: 0px -2px 10px rgba(213, 213, 213, 0.25); */
   box-shadow: 0px -2px 2px #eee;
 
   ${mediaQuery} {
