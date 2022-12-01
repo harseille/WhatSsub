@@ -40,7 +40,12 @@ function CombinationRegistration(props: TProps) {
         customCombination={customCombination}
         changeModalType={changeModalType}
       />
-      <CreateCombinationButton designType="primaryGreen" width="100%" padding="15px" fontSize="16px" fontWeight="700">
+      <CreateCombinationButton
+        designType="AccessibilityGreen"
+        width="100%"
+        padding="15px"
+        fontSize="16px"
+        fontWeight="700">
         나만의 조합 만들기
       </CreateCombinationButton>
     </CustomForm>

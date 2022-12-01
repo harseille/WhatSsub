@@ -10,6 +10,7 @@ export type TDesignType =
   | 'primaryBlue'
   | 'primaryPurple'
   | 'normal'
+  | 'AccessibilityGreen'
   | 'social';
 
 const designList = {
@@ -64,6 +65,12 @@ const designList = {
     & img {
       margin-right:8px;
     }
+  `,
+  AccessibilityGreen: `
+    background: ${theme.colors.AccessibilityGreen};
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
   `,
 };
 

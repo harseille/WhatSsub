@@ -36,7 +36,7 @@ function CombinationRankingCard({
   like: 좋아요,
 }: TProps) {
   const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
-    useLikedBestCombination(id); 
+    useLikedBestCombination(id);
 
   useEffect(() => {
     setLikeCount(좋아요);
@@ -194,7 +194,7 @@ const Title = styled.h3`
   margin-bottom: 8px;
   font-weight: 600;
   font-size: ${changeRem(16)};
-  color: ${props => props.theme.colors.primaryGreen};
+  color: ${props => props.theme.colors.AccessibilityGreen};
 `;
 
 const RankingBadgeList = styled(SandwichBadgeList)`
