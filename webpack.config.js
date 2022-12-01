@@ -11,6 +11,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].[chunkhash].js',
     publicPath: '/',
     clean: true,
   },
@@ -99,12 +100,23 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
     new Dotenv(),
+
     // new Dotenv({
     //   systemvars: true,
     // }),
     // new RefreshWebpackPlugin(),
   ],
-
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'js/vendor',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   devServer: {
     hot: true,
     // static: { directory: path.resolve(__dirname, 'dist') },

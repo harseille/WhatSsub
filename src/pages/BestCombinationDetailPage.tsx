@@ -1,10 +1,14 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
-import { Header, Contents } from '@components/BestCombinationDetail/index';
-import CommentsContainer from '@components/Comments/CommentsContainer';
+// import { Header, Contents } from '@components/BestCombinationDetail/index';
+// import CommentsContainer from '@components/Comments/CommentsContainer';
 import getBestCombination from '@api/getBestCombination';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+
+const Header = lazy(() => import('@components/BestCombinationDetail/Header'));
+const Contents = lazy(() => import('@components/BestCombinationDetail/Contents'));
+const CommentsContainer = lazy(() => import('@components/Comments/CommentsContainer'));
 
 function BestCombinationDetailPage() {
   const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
