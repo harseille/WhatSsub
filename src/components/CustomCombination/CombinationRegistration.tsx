@@ -3,22 +3,21 @@ import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { userState } from '@state/index';
 import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
-import Button from '@components/UI/Button';
-import postCustom from '@utils/customCombination/postCustom';
+import Button from '@components/Common/UI/Button';
+import postCustom from '@services/customCombination/postCustom';
 
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import { 인터페이스_생성단계_꿀조합, 인터페이스_재료데이터, 인터페이스_레시피 } from '@typings/ISandwich';
+import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
   customCombination: 인터페이스_생성단계_꿀조합;
-  jsonData: { ingredientsData: 인터페이스_재료데이터[]; recipeData: 인터페이스_레시피[] };
   changeModalType: (type: string) => void;
 };
 
 function CombinationRegistration(props: TProps) {
   const [inputValue, setInputValue] = useState('');
-  const { customCombination, jsonData, changeModalType } = props;
+  const { customCombination, changeModalType } = props;
   const user = useRecoilValue(userState);
   const userInfo = { id: user?.uid, name: user?.displayName };
   const navigate = useNavigate();
@@ -27,7 +26,7 @@ function CombinationRegistration(props: TProps) {
     e.preventDefault();
     if (!inputValue.trim()) return changeModalType('TitleCheck');
 
-    const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo, jsonData });
+    const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo });
     setInputValue('');
     navigate(`/best-combination/${조합_등록?.id}`);
   };
@@ -38,7 +37,6 @@ function CombinationRegistration(props: TProps) {
         userName={user?.displayName}
         inputValue={inputValue}
         setInputValue={setInputValue}
-        jsonData={jsonData}
         customCombination={customCombination}
         changeModalType={changeModalType}
       />

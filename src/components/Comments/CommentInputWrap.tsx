@@ -1,15 +1,20 @@
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
+import 새_댓글_추가하기 from '@api/pushNewComment';
 import { userState } from '@state/index';
 import { User } from 'firebase/auth';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '@typings/IComment';
-import { 새_댓글_추가하기 } from '@utils/index';
+import theme from '@styles/theme';
 
-function CommentInputWrap() {
+type TProps = {
+  getCommentListCount: Function;
+};
+
+function CommentInputWrap({ getCommentListCount }: TProps) {
   const commentInputRef = useRef<HTMLInputElement>(null);
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
@@ -30,6 +35,7 @@ function CommentInputWrap() {
       };
       try {
         await 새_댓글_추가하기(댓글_정보);
+        await getCommentListCount(combinationId);
         commentInputRef.current.value = '';
       } catch (error) {
         console.error(error);
@@ -48,34 +54,33 @@ function CommentInputWrap() {
   );
 }
 
-export default CommentInputWrap;
+export default memo(CommentInputWrap);
 
 const Wrapper = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 80px;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
   background: #ffffff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
+  /* box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25), 0px 4px 10px rgba(213, 213, 213, 0.25);*/
+  border-bottom: 1px solid ${theme.colors.grayDDD};
 
   ${mediaQuery} {
     justify-content: center;
-    bottom: 0;
     height: ${changeRem(80)};
   }
 `;
 
 const Profile = styled.div`
+  display: none;
   width: ${changeRem(30)};
   height: ${changeRem(30)};
   border-radius: 50%;
   background: #ccc;
 
   ${mediaQuery} {
+    display: block;
     width: ${changeRem(48)};
     height: ${changeRem(48)};
   }
@@ -98,12 +103,16 @@ const Form = styled.form`
 
 const Input = styled.input`
   flex-shrink: 0;
-  flex-basis: ${`calc(100% - ${changeRem(80)})`};
+  flex-basis: 100%;
   border: 0;
   padding: 13px;
   border-radius: 6px;
   background: #f5f5f5;
   font-size: ${changeRem(14)};
+
+  ${mediaQuery} {
+    flex-basis: ${`calc(100% - ${changeRem(80)})`};
+  }
 `;
 const Submit = styled.input`
   border: 0;

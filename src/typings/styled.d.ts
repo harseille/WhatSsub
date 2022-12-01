@@ -9,6 +9,7 @@ declare module '@emotion/react' {
       primaryOrange: string;
       gray87: string;
       grayF5: string;
+      gray59: string;
     };
     badgeColors: {
       yellow: string;
@@ -17,6 +18,11 @@ declare module '@emotion/react' {
       yellowBack: string;
       blueBack: string;
       redBack: string;
+    };
+    boxShadow: {
+      type1: string;
+      type2: string;
+      type3: string;
     };
   }
 }

@@ -1,11 +1,10 @@
 import { Suspense } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
-import Wrapper from '@components/UI/Wrapper';
+import Wrapper from '@components/Common/UI/Wrapper';
 import { Header, Contents } from '@components/BestCombinationDetail/index';
 import CommentsContainer from '@components/Comments/CommentsContainer';
+import getBestCombination from '@api/getBestCombination';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-import { collection, getDoc, doc } from 'firebase/firestore';
-import { db } from '../firebase.config';
 
 function BestCombinationDetailPage() {
   const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
@@ -33,23 +32,8 @@ function BestCombinationDetailPage() {
 
 export default BestCombinationDetailPage;
 
-const 꿀조합_데이터_가져오기 = async (꿀조합id: string) => {
-  try {
-    const 꿀조합_콜랙션 = collection(db, '꿀조합');
-    const querySnapshot = await getDoc(doc(꿀조합_콜랙션, 꿀조합id));
-    if (querySnapshot.exists()) {
-      const 꿀조합 = querySnapshot.data();
-      return 꿀조합;
-    }
-    console.log('꿀조합이 없습니다.!');
-  } catch (error) {
-    console.error(error);
-    console.log('꿀조합 가져오기 실패');
-  }
-};
-
 export const loader = ({ params }: LoaderFunctionArgs) => {
-  const 꿀조합 = 꿀조합_데이터_가져오기(params.combinationId!);
+  const 꿀조합 = getBestCombination(params.combinationId!);
   if (꿀조합 === undefined) {
     throw new Response('', {
       status: 404,

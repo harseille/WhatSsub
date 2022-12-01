@@ -1,4 +1,5 @@
-import Button from '@components/UI/Button';
+import Button from '@components/Common/UI/Button';
+import { 버튼_텍스트 } from '@constants/CustomCombination/constants';
 import styled from '@emotion/styled';
 
 type 타입_선택_버튼_속성 = {
@@ -6,19 +7,8 @@ type 타입_선택_버튼_속성 = {
   onNextStep: () => void;
 };
 
-type 타입_버튼_텍스트 = {
-  [key: number]: string;
-};
-
 function NextStepButton(props: 타입_선택_버튼_속성) {
   const { currentStep: 현재진행도, onNextStep: 다음_선택지로_이동 } = props;
-
-  const 버튼_텍스트: 타입_버튼_텍스트 = {
-    1: '빵 선택하러가기',
-    2: '재료 선택하러가기',
-    3: '소스 선택하러가기',
-    4: '조합 완료',
-  };
 
   return (
     <SelectButton

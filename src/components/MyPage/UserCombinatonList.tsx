@@ -1,14 +1,14 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
+import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
 import deleteBtn from '@assets/icons/deleteBtn.png';
-import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
+import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
-  userCombination: 인터페이스_꿀조합_아이디[] | null;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
+  userCombination: 인터페이스_꿀조합[] | null;
+  onClick: (id: string) => void;
 };
 
 function UserCombinatonList({ userCombination, onClick }: TProps) {
@@ -16,8 +16,8 @@ function UserCombinatonList({ userCombination, onClick }: TProps) {
     <ul>
       {userCombination?.map(sandwich => (
         <Card key={sandwich.꿀조합제목} id={sandwich.id}>
-          <EditListBtn onClick={onClick}>
-            <img className="close-btn" src={deleteBtn} alt="닫기 버튼" />
+          <EditListBtn onClick={onClick.bind(null, sandwich.id)} aria-label="닫기 버튼">
+            <img className="close-btn" src={deleteBtn} alt="삭제 아이콘" />
           </EditListBtn>
           <Link to={`/best-combination/${sandwich.id}`}>
             <SandwichInfo sandwich={sandwich} />
@@ -33,7 +33,6 @@ export default UserCombinatonList;
 const Card = styled.li`
   box-sizing: border-box;
   padding: 20px 35px;
-  /* width: ${changeRem(370)}; */
   width: 100%;
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;

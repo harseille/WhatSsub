@@ -1,48 +1,26 @@
-import { Link } from 'react-router-dom';
-import LikeRedBtn from '@components/Common/Button/LikeRed';
-import SandwichInfo from '@components/Sandwich/SandwichInfo';
-import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
-import { 인터페이스_꿀조합_아이디 } from '@pages/MyPagePage';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
+import LikeCard from './LikeCard';
 
 type TProps = {
-  likeCombination: 인터페이스_꿀조합_아이디[] | undefined;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
-  deleteList: string[];
+  likeCombination: 인터페이스_꿀조합[] | undefined;
 };
 
-function LikeCombinationList({ likeCombination, onClick, deleteList }: TProps) {
+function LikeCombinationList({ likeCombination }: TProps) {
   const 좋아요_내림차순_꿀조합_목록 = (prev: 인터페이스_꿀조합, next: 인터페이스_꿀조합): number =>
     +next.좋아요 - +prev.좋아요;
 
   return (
     <ul>
       {likeCombination?.sort(좋아요_내림차순_꿀조합_목록).map(sandwich => (
-        <Card className={deleteList.includes(sandwich.id) ? 'delete' : ''} key={sandwich.꿀조합제목} id={sandwich.id}>
-          <LikeRedBtn onClick={onClick} isLiked={!deleteList.includes(sandwich.id)} />
-          <Link to={`/best-combination/${sandwich.id}`}>
-            <SandwichInfo sandwich={sandwich} />
-          </Link>
-        </Card>
+        <LikeCard
+          key={sandwich.꿀조합제목}
+          id={sandwich.id}
+          imgUrl={`/best-combination/${sandwich.id}`}
+          sandwich={sandwich}
+        />
       ))}
     </ul>
   );
 }
 
 export default LikeCombinationList;
-
-const Card = styled.li`
-  box-sizing: border-box;
-  padding: 20px 35px;
-  /* width: ${changeRem(370)}; */
-  width: 100%;
-  box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
-  border-radius: 15px;
-  margin: 20px auto 0;
-  position: relative;
-
-  &.delete {
-    background: #e4e4e4;
-  }
-`;

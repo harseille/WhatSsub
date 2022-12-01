@@ -108,10 +108,12 @@
       "@api/*": ["src/api/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
+      "@data/*": ["src/data/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@state/*": ["src/state/*"],
       "@styles/*": ["src/styles/*"],
+      "@services/*": ["src/services/*"],
       "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"]

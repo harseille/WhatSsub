@@ -10,7 +10,7 @@ import mediaQuery from '@styles/media-queries';
 
 function CommentsContainer() {
   const { combinationId } = useParams();
-  const { comments, commentsCount, listRef } = useComments(combinationId!);
+  const { comments, commentsCount, listRef, 댓글_수_가져오기 } = useComments(combinationId!);
   const isLoggedIn = useRecoilValue(isLoggedInState);
 
   return (
@@ -20,8 +20,8 @@ function CommentsContainer() {
           리뷰 <span>{commentsCount}</span>
         </h2>
       </CommentHeader>
-      <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />
-      {isLoggedIn && <CommentInputWrap />}
+      {isLoggedIn && <CommentInputWrap getCommentListCount={댓글_수_가져오기} />}
+      {comments.length !== 0 && <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />}
     </Comments>
   );
 }

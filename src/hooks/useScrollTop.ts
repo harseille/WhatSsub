@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
+import { debounce } from 'lodash';
 
 const useScrollTop = () => {
   const [isShowTop, setIsShowTop] = useState(false);
 
   useEffect(() => {
-    const handleShowButton = () => {
-      if (window.scrollY > 200) {
+    const handleShowButton = debounce(() => {
+      if (window.scrollY > 300) {
         setIsShowTop(true);
       } else {
         setIsShowTop(false);
       }
-    };
+    }, 100);
 
     window.addEventListener('scroll', handleShowButton);
     return () => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import sandwich from '@assets/images/pick_page_desktop_sandwich.png';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
@@ -14,6 +15,7 @@ export default DeskTopImage;
 
 const ImgWrap = styled.div`
   display: none;
+  min-width: 47%;
   max-width: 600px;
 
   & img {

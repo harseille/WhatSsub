@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import HeaderItemsWrap from '@layouts/HeaderItemsWrap';
 import logoImg from '@assets/icons/logo.svg';
@@ -19,7 +20,7 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);
 
 const HeaderWrap = styled.header`
   position: fixed;
