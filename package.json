@@ -2,7 +2,7 @@
   "name": "whatssub",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=dev webpack serve --open --mode=development",
     "build": "webpack",

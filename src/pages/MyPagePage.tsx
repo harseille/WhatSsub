@@ -27,7 +27,7 @@ function MyPage() {
   const 좋아요한샌드위치_수정 = useSetRecoilState(userLike);
 
   const { 꿀조합_삭제하기, 모달_토글하기, isShowModal } = useDeleteBestCombination(targetBestCombinationId!);
-  
+
   const 좋아요한_데이터_가져오기 = async () => {
     if (유저정보) {
       const 좋아요한_데이터 = await getDoc(doc(collection(db, '좋아요'), 유저정보.uid));
@@ -39,6 +39,7 @@ function MyPage() {
   useEffect(() => {
     console.log('유저정보=>', 유저정보);
     좋아요한_데이터_가져오기();
+    유저만의조합_수정([]);
     꿀조합_받아오기(toggleState);
 
     if (!isLoggedin) {

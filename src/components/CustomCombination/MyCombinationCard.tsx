@@ -59,7 +59,7 @@ function MyCombinationCard(props: TProps) {
               placeholder="왓썹의 이름은..?"
             />
             <CreateCombinationButton
-              designType="primaryGreen"
+              designType="AccessibilityGreen"
               width="100%"
               padding="15px"
               fontSize="16px"

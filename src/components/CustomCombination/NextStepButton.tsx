@@ -12,7 +12,7 @@ function NextStepButton(props: 타입_선택_버튼_속성) {
 
   return (
     <SelectButton
-      designType="primaryGreen"
+      designType="AccessibilityGreen"
       width="100%"
       padding="15px"
       fontSize="16px"

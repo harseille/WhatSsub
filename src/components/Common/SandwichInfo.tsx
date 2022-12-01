@@ -45,6 +45,7 @@ const ImgWrap = styled.div`
 
   ${mediaQuery} {
     width: ${changeRem(375)};
+    min-height: ${changeRem(263)};
     margin: 0;
   }
 
@@ -63,10 +64,10 @@ const SandwichName = styled.p`
 
 const InfoSummary = styled.p`
   font-weight: 500;
-  color: rgba(26, 7, 0, 0.4);
+  color: #666666;
   margin-bottom: 16px;
 `;
 
 const Kcal = styled.span`
-  color: #ffd600;
+  color: ${props => props.theme.colors.primaryYellow};
 `;

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+// const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -11,6 +11,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].[chunkhash].js',
     publicPath: '/',
     clean: true,
   },
@@ -59,7 +60,6 @@ module.exports = {
                 ],
               ],
             },
-            plugins: ['react-refresh/babel'],
           },
           {
             loader: 'ts-loader',
@@ -91,18 +91,32 @@ module.exports = {
   },
 
   plugins: [
+    // new webpack.ProvidePlugin({
+    //   React: 'react',
+    // }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    // new Dotenv(),
-    new Dotenv({
-      systemvars: true,
-    }),
-    new RefreshWebpackPlugin(),
-  ],
+    new Dotenv(),
 
+    // new Dotenv({
+    //   systemvars: true,
+    // }),
+    // new RefreshWebpackPlugin(),
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'js/vendor',
+          chunks: 'all',
+        },
+      },
+    },
+  },
   devServer: {
     hot: true,
     // static: { directory: path.resolve(__dirname, 'dist') },

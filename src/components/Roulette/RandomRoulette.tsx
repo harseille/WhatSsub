@@ -164,8 +164,8 @@ const Container = styled.div`
   margin: 18px auto 0;
   padding-top: 18px;
   ${mediaQuery} {
-    /*width: ${changeRem(379)};*/
-    width: 50%;
+    width: ${changeRem(379)};
+    /* width: 50%; */
   }
 `;
 
@@ -177,8 +177,8 @@ const Pointer = styled.img`
   top: 0;
   transform: translate(-50%);
   ${mediaQuery} {
-    /*width: ${changeRem(50)};*/
-    width: 8%;
+    width: ${changeRem(50)};
+    /* width: 8%; */
   }
 `;
 
@@ -189,7 +189,7 @@ const StartButton = styled.img`
   top: 50%;
   transform: translate(-50%, -50%);
   ${mediaQuery} {
-    /*width: ${changeRem(99)};*/
-    width: 18%;
+    width: ${changeRem(99)};
+    /* width: 18%; */
   }
 `;
