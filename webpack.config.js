@@ -91,6 +91,9 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
     }),
