@@ -1,5 +1,6 @@
+import { Suspense, lazy } from 'react';
+import loadable from '@loadable/component';
 import { lazily } from 'react-lazily';
-import { Suspense } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import RootLayout from '@layouts/RootLayout';
 import { bestCombinationDetailLoader } from '@pages/index';
@@ -11,11 +12,13 @@ const {
   CustomCombination,
   BestCombinationListPage,
   MyPage,
-  RandomPickPage,
-  BestCombinationPickPage,
+  // RandomPickPage,
+  // BestCombinationPickPage,
   BestCombinationDetailPage,
   NotFound,
 } = lazily(() => import('@pages/index'));
+const RandomPickPage = loadable(() => import('@pages/RandomPickPage'));
+const { BestCombinationPickPage } = lazily(() => import('@pages/index'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
