@@ -2,12 +2,12 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { collection, DocumentData, query } from 'firebase/firestore';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
+import LoadingSpinner from '@components/Common/LoadingSpinner';
 import getYearMonthDate from '@utils/getYearMonthDate';
 import getRankingList from '@api/getRankingList';
 import Rank1 from '@assets/images/rankingBadge/rank_1.png';
 import Rank2 from '@assets/images/rankingBadge/rank_2.png';
 import Rank3 from '@assets/images/rankingBadge/rank_3.png';
-import LoadingSandwich from '@assets/icons/loading_sandwich.svg';
 import { useLocation } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { flexbox } from '@styles/mixin';
@@ -96,9 +96,7 @@ function RankingList() {
       <li />
       {hasMore && (
         <LoadingLi>
-          <LoadingWrapper>
-            <Loading data={LoadingSandwich} aria-label="loading" />
-          </LoadingWrapper>
+          <LoadingSpinner />
         </LoadingLi>
       )}
     </ul>
@@ -109,17 +107,4 @@ export default RankingList;
 
 const LoadingLi = styled.li`
   ${flexbox('row', 'center', 'center')}
-`;
-
-const LoadingWrapper = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: rgba(0, 141, 67, 0.1);
-  text-align: center;
-  overflow: hidden;
-`;
-
-const Loading = styled.object`
-  width: 80%;
 `;
