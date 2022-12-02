@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect } from 'react';
 import Ingredient from '@components/CustomCombination/Ingredient';
 import {
   스탭_재료_목록,
@@ -85,10 +85,10 @@ const CustomStepWrap = styled.div`
 `;
 const IngredientsSection = styled.section``;
 
-const IngredientTitle = memo(styled.h3`
+const IngredientTitle = styled.h3`
   font-size: ${changeRem(18)};
   font-weight: bold;
-`);
+`;
 
 const Ingredients = styled.ul`
   display: flex;
