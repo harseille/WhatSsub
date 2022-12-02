@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from 'react';
 import RandomModal from '@components/Roulette/RandomModal';
-import spinBoard from '@assets/images/roulette.png';
-import startBtn from '@assets/images/startBtn.png';
-import pointer from '@assets/images/pointer.png';
+import spinBoard from '@assets/images/roulette.webp';
+import startBtn from '@assets/images/startBtn.webp';
+import pointer from '@assets/images/pointer.webp';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
