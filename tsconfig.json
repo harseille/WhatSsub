@@ -3,6 +3,7 @@
     "target": "ES5",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
+    "module": "ESNext",
     "moduleResolution": "node",
     "typeRoots": ["node_modules/@types", "src/types"],
     "allowJs": true,
