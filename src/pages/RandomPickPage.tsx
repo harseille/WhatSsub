@@ -41,7 +41,7 @@ const DanzziContainer = styled.div`
   position: absolute;
   bottom: 250px;
   transform: translateX(-5%);
-  z-index: 10;
+  z-index: 5;
   ${mediaQuery} {
     bottom: 80px;
   }
