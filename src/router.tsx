@@ -2,6 +2,7 @@ import { lazily } from 'react-lazily';
 import { Suspense } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import RootLayout from '@layouts/RootLayout';
+import { bestCombinationDetailLoader } from '@pages/index';
 
 const {
   HomePage,
@@ -11,7 +12,6 @@ const {
   BestCombinationListPage,
   MyPage,
   RandomPickPage,
-  bestCombinationDetailLoader,
   BestCombinationPickPage,
   BestCombinationDetailPage,
   NotFound,
