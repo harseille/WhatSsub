@@ -33,21 +33,16 @@ module.exports = {
         react: {
           name: 'js/react',
           test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
-          priority: 50,
+          priority: 30,
           enforce: true,
           chunks: 'all',
         },
         firebase: {
           name: 'js/firebase',
           test: /(?<!node_modules.*)[\\/]node_modules[\\/](@firebase)[\\/]/,
-          priority: 40,
+          priority: 20,
           enforce: true,
           chunks: 'all',
-        },
-        commons: {
-          name: 'js/commons',
-          minChunks: 1, // entry points length
-          priority: 20,
         },
       },
     },
