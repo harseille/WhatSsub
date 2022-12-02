@@ -1,7 +1,7 @@
 import Wrapper from '@components/Common/UI/Wrapper';
 import styled from '@emotion/styled';
-import danzziSpeechLess from '@assets/images/danzzi/danzzi_speechless.png';
-import danzziQM from '@assets/images/danzzi/danzzi_QM.png';
+import danzziSpeechLess from '@assets/images/danzzi/danzzi_speechless.webp';
+import danzziQM from '@assets/images/danzzi/danzzi_QM.webp';
 import { changeRem, flexbox } from '@styles/mixin';
 import { useLocation } from 'react-router-dom';
 import theme from '@styles/theme';

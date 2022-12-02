@@ -1,5 +1,5 @@
 import React from 'react';
-import sandwich from '@assets/images/pick_page_desktop_sandwich.png';
+import sandwich from '@assets/images/pick_page_desktop_sandwich.webp';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 

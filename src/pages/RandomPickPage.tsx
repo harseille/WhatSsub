@@ -2,8 +2,8 @@ import RandomRoulette from '@components/Roulette/RandomRoulette';
 import Wrapper from '@components/Common/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
-import danzziQuestion from '@assets/images/danzzi/danzzi_question.png';
-import danzziUniform from '@assets/images/danzzi/danzzi_uniform.png';
+import danzziQuestion from '@assets/images/danzzi/danzzi_question.webp';
+import danzziUniform from '@assets/images/danzzi/danzzi_uniform.webp';
 import mediaQuery from '@styles/media-queries';
 
 function RandomPickPage() {
