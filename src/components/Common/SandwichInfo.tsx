@@ -41,6 +41,7 @@ const InfoWrap = styled.div`
 
 const ImgWrap = styled.div`
   width: ${changeRem(275)};
+  min-height: ${changeRem(193)};
   margin: 0 auto 15px;
 
   ${mediaQuery} {
