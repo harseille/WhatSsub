@@ -159,6 +159,7 @@ function RandomRoulette() {
 export default RandomRoulette;
 
 const Container = styled.div`
+  z-index: 6;
   position: relative;
   width: ${changeRem(279)};
   margin: 18px auto 0;
