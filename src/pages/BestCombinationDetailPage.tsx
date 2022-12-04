@@ -1,36 +1,32 @@
-import { Suspense, lazy } from 'react';
+import { lazy } from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
-// import { Header, Contents } from '@components/BestCombinationDetail/index';
-// import CommentsContainer from '@components/Comments/CommentsContainer';
+import { Header } from '@components/BestCombinationDetail/index';
+import CommentsContainer from '@components/Comments/CommentsContainer';
 import getBestCombination from '@api/getBestCombination';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
-const Header = lazy(() => import('@components/BestCombinationDetail/Header'));
 const Contents = lazy(() => import('@components/BestCombinationDetail/Contents'));
-const CommentsContainer = lazy(() => import('@components/Comments/CommentsContainer'));
 
 function BestCombinationDetailPage() {
   const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
   return (
-    <Suspense fallback={<p>Loading</p>}>
-      <Wrapper>
-        <Header author={꿀조합.작성자} like={꿀조합.좋아요} />
-        <Contents
-          sandwich={{
-            이미지: 꿀조합.이미지,
-            꿀조합제목: 꿀조합.꿀조합제목,
-            베이스샌드위치: 꿀조합.베이스샌드위치,
-            칼로리: 꿀조합.칼로리,
-            뱃지리스트: 꿀조합.뱃지리스트,
-          }}
-          ingredientList={꿀조합.선택재료}
-          toasting={꿀조합.토스팅}
-          author={꿀조합.작성자id}
-        />
-        <CommentsContainer />
-      </Wrapper>
-    </Suspense>
+    <Wrapper>
+      <Header author={꿀조합.작성자} like={꿀조합.좋아요} />
+      <Contents
+        sandwich={{
+          이미지: 꿀조합.이미지,
+          꿀조합제목: 꿀조합.꿀조합제목,
+          베이스샌드위치: 꿀조합.베이스샌드위치,
+          칼로리: 꿀조합.칼로리,
+          뱃지리스트: 꿀조합.뱃지리스트,
+        }}
+        ingredientList={꿀조합.선택재료}
+        toasting={꿀조합.토스팅}
+        author={꿀조합.작성자id}
+      />
+      <CommentsContainer />
+    </Wrapper>
   );
 }
 

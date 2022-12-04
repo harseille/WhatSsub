@@ -119,30 +119,79 @@ https://what-ssub.vercel.app/
 
 ### 🛠️ 역할 분담
 
+#### 공통
+
+- 서비스 기획
+- Figma 컴포넌트 디자인 및 마크업 개발
+- 페이지별 반응형 UI 제공
+- Webpack 설정 및 최적화
+- Firebase Auth(구글, 페이스북), FireStore, Storage 연동
+- vercel 배포 및 프로젝트 최적화
+
 #### 김다빈
 
-- 1
-- 2
+- 랜덤 룰렛 페이지
+  - 애니메이션으로 룰렛 회전 기능 개발
+  - 랜덤으로 재료를 선택하여 샌드위치 추천 알고리즘 개발
+  - 랜덤 재료 팝업 모달 개발
+- 마이페이지
+  - Firestore query를 사용한 꿀조합 작성자 별 꿀조합 리스트 제공
+  - 로그인한 사용자 기준 좋아요한 꿀조합 리스트 제공
+  - 좋아요한 꿀조합 리스트 좋아요 변경 시 삭제대기 상태로 관리
 
 #### 박준하
 
-- 1
-- 2
+- 꿀조합 상세페이지
+  - react-router-v6.4 loader 적용
+  - 동시성 제어를 고려한 꿀조합 삭제 기능 개발
+  - Intl API 활용한 좋아요 수 utils 개발
+  - 애니메이션을 적용한 SVG like 버튼 개발
+- 댓글 기능
+  - 댓글 추가 기능 개발
+  - Firestore Query를 사용한 댓글 정렬
+  - Firestore onSnapshot를 활용한 실시간 업데이트 기능 개발
+  - 댓글 무한스크롤 기능 개발
+- 로그인 페이지
+  - Firebase OAuth custom hook 개발
+  - recoil, recoil-persist를 활용한 로그인 정보 전역 상태관리
+  - 로그인 여부에 따른 layout header 변경 처리 기능 개발
+- 재사용 가능한 버튼, 뱃지 공통 컴포넌트 개발
 
 #### 정세훈
 
-- 1
-- 2
+- 커스텀 페이지
+  - 페이지 마크업 & 스타일
+  - 선택한 재료로 커스텀 기능(서버에 post)
+- 전체 레이아웃
+  - pc 및 mobile 용 헤더, 메뉴 제작
+- recipe, ingredients 데이터 생성
+- 이미지 최적화
+- seo 최적화
+- 접근성 최적화
+- react-router 적용
 
 #### 최원오
 
-- 1
-- 2
+- 꿀조합 선택 페이지
+  - 꿀조합 속성 필터링 Custom hook으로 관리
+  - 선택한 속성 Query String으로 리스트페이지 전달
+- 꿀조합 리스트 페이지
+  - 전달받은 선택한 속성으로 필터링하여 꿀조합 리스트 제공
+  - 좋아요 기능 Custom hook으로 관리
+- Scroll Top
+  - lodash-es의 debounce 메서드를 활용한 custom hook으로 관리
+- 공통 Modal 컴포넌트
+  - createPortal로 Modal과 Backdrop 제공
+  - Confirm 과 Alert 으로 사용가능하도록 범용성을 고려하여 제작
 
 #### 황도은
 
-- 1
-- 2
+- 메인 디자이너 & 피그마 장인 & 총무 & BTS 팬
+- 랭킹리스트
+  - 메뉴탭에 따라 꿀조합 데이터를 필터링하여 리스트 제공 (좋아요 순, 최신 순)
+  - 꿀조합 리스트 제공 시 InterSection Observer API를 이용한 무한 스크롤 적용
+  - Sorting된 꿀조합 랭킹 뱃지 기능 개발
+  - 당일 기준 꿀조합 new 뱃지 추가 기능 개발
 
 ---
 
@@ -246,14 +295,19 @@ https://what-ssub.vercel.app/
 <div id="4"></div>
 <br />
 
-## 🚨 이슈 및 해결 방법 (문서 작성 후 링크 연결 예정)
+## 🚨 이슈 및 해결 방법
 
 - env 환경변수
-- 한글 컨벤션
-- Firebase Realtime에서 FireStore로 변경
+  - [server setting env error](https://github.com/harseille/WhatSsub/issues/86)
 - 무한스크롤
+  - [custom hook](https://github.com/harseille/WhatSsub/issues/142)
+  - [ranking page](https://github.com/harseille/WhatSsub/issues/259)
+  - [comment list](https://github.com/harseille/WhatSsub/issues/202)
 - vercel 배포
+  - [vercel root 설정](https://github.com/harseille/WhatSsub/issues/304)
 - 최적화
+  - [Tree-shaking](https://github.com/harseille/WhatSsub/issues/306)
+  - [code splitting](https://github.com/harseille/WhatSsub/issues/305)
 
 ---
 
@@ -265,4 +319,4 @@ https://what-ssub.vercel.app/
 
 <br />
 
-보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로
+<p>보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로</p>
