@@ -34,15 +34,20 @@ function NotFoundBestCombinationList() {
 export default NotFoundBestCombinationList;
 
 const ImgWrap = styled.div`
-  max-width: 250px;
+  max-width: ${changeRem(250)};
 
   & img {
     width: 100%;
     height: 100%;
+    min-height: ${changeRem(251)};
   }
 
   ${mediaQuery} {
-    min-width: 350px;
+    min-width: ${changeRem(350)};
+
+    & img {
+      min-height: ${changeRem(351)};
+    }
   }
 `;
 
