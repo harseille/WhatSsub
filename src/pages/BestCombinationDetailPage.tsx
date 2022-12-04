@@ -12,6 +12,7 @@ const CommentsContainer = lazy(() => import('@components/Comments/CommentsContai
 
 function BestCombinationDetailPage() {
   const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
+  console.log(꿀조합, 'dsfsd');
   return (
     <Suspense fallback={<p>Loading</p>}>
       <Wrapper>
