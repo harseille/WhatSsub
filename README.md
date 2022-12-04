@@ -1,8 +1,14 @@
-![로고](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b39fda9-f2e5-4bca-92d9-019546593ea5/Group_34925_%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T092634Z&X-Amz-Expires=86400&X-Amz-Signature=0a699120c02b586de84b63c23836c7acea065d3eb9914dca864f0b2f21ba398d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Group%252034925%2520%282%29.png%22&x-id=GetObject)
+![로고](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2Flogo.png?alt=media&token=db5bcc4c-7fdc-4168-94d8-79fbc37b46e9)
 
 <br />
 
-## 🗃️목차
+## 📬 배포 주소
+
+https://what-ssub.vercel.app/
+
+---
+
+## 🗃️ 목차
 
 1. [**개요**](#1)
 2. [**아키 텍쳐**](#2)
@@ -43,24 +49,30 @@
 ### 💡 프로젝트 기획
 
 - 브레인스토밍
-  ![브레인스토밍_이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/17006918-ebac-4f48-b45e-97db4ba7013b/%EB%B8%8C%EB%A0%88%EC%9D%B8%EC%8A%A4%ED%86%A0%EB%B0%8D.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T083901Z&X-Amz-Expires=86400&X-Amz-Signature=c27348282822410fb5b23668226766d80c160ad658810c99759847e06b8bc157&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EB%25B8%258C%25EB%25A0%2588%25EC%259D%25B8%25EC%258A%25A4%25ED%2586%25A0%25EB%25B0%258D.png%22&x-id=GetObject)
-
-- 디자인: [새 탭에서 열기][figma wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
-- BDD(Behaviour-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7)
-- SDD(Schema-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201)
-- 네이밍 컨벤션: 한글 변수 사용: [새 탭에서 열기][집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae)
-- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b)
-- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues)
+  ![브레인스토밍_이미지](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2F%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%A9%E1%84%86%E1%85%B5%E1%86%BC.png?alt=media&token=43ad9466-84d2-4836-9ac6-725f43f27d2c)
 
 ### 기획
 
-### 팀원소개
-- 디자인: <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
-- BDD(Behaviour-Driven-Development): <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
-- SDD(Schema-Driven-Development): <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
-- 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
-- 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
-- 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+<ul>
+ <li>디자인: 
+ <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
+ </li>
+ <li>BDD(Behaviour-Driven-Development): 
+ <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
+ </li>
+ <li>SDD(Schema-Driven-Development): 
+ <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
+ </li>
+<li>네이밍 컨벤션: 한글 변수 사용: 
+<a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
+</li>
+ <li>형상관리: 
+ <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
+ </li>
+ <li>이슈관리: 
+ <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+ </li>
+</ul>
 
 <br />
 
@@ -107,30 +119,79 @@
 
 ### 🛠️ 역할 분담
 
+#### 공통
+
+- 서비스 기획
+- Figma 컴포넌트 디자인 및 마크업 개발
+- 페이지별 반응형 UI 제공
+- Webpack 설정 및 최적화
+- Firebase Auth(구글, 페이스북), FireStore, Storage 연동
+- vercel 배포 및 프로젝트 최적화
+
 #### 김다빈
 
-- 1
-- 2
+- 랜덤 룰렛 페이지
+  - 애니메이션으로 룰렛 회전 기능 개발
+  - 랜덤으로 재료를 선택하여 샌드위치 추천 알고리즘 개발
+  - 랜덤 재료 팝업 모달 개발
+- 마이페이지
+  - Firestore query를 사용한 꿀조합 작성자 별 꿀조합 리스트 제공
+  - 로그인한 사용자 기준 좋아요한 꿀조합 리스트 제공
+  - 좋아요한 꿀조합 리스트 좋아요 변경 시 삭제대기 상태로 관리
 
 #### 박준하
 
-- 1
-- 2
+- 꿀조합 상세페이지
+  - react-router-v6.4 loader 적용
+  - 동시성 제어를 고려한 꿀조합 삭제 기능 개발
+  - Intl API 활용한 좋아요 수 utils 개발
+  - 애니메이션을 적용한 SVG like 버튼 개발
+- 댓글 기능
+  - 댓글 추가 기능 개발
+  - Firestore Query를 사용한 댓글 정렬
+  - Firestore onSnapshot를 활용한 실시간 업데이트 기능 개발
+  - 댓글 무한스크롤 기능 개발
+- 로그인 페이지
+  - Firebase OAuth custom hook 개발
+  - recoil, recoil-persist를 활용한 로그인 정보 전역 상태관리
+  - 로그인 여부에 따른 layout header 변경 처리 기능 개발
+- 재사용 가능한 버튼, 뱃지 공통 컴포넌트 개발
 
 #### 정세훈
 
-- 1
-- 2
+- 커스텀 페이지
+  - 페이지 마크업 & 스타일
+  - 선택한 재료로 커스텀 기능(서버에 post)
+- 전체 레이아웃
+  - pc 및 mobile 용 헤더, 메뉴 제작
+- recipe, ingredients 데이터 생성
+- 이미지 최적화
+- seo 최적화
+- 접근성 최적화
+- react-router 적용
 
 #### 최원오
 
-- 1
-- 2
+- 꿀조합 선택 페이지
+  - 꿀조합 속성 필터링 Custom hook으로 관리
+  - 선택한 속성 Query String으로 리스트페이지 전달
+- 꿀조합 리스트 페이지
+  - 전달받은 선택한 속성으로 필터링하여 꿀조합 리스트 제공
+  - 좋아요 기능 Custom hook으로 관리
+- Scroll Top
+  - lodash-es의 debounce 메서드를 활용한 custom hook으로 관리
+- 공통 Modal 컴포넌트
+  - createPortal로 Modal과 Backdrop 제공
+  - Confirm 과 Alert 으로 사용가능하도록 범용성을 고려하여 제작
 
 #### 황도은
 
-- 1
-- 2
+- 메인 디자이너 & 피그마 장인 & 총무 & BTS 팬
+- 랭킹리스트
+  - 메뉴탭에 따라 꿀조합 데이터를 필터링하여 리스트 제공 (좋아요 순, 최신 순)
+  - 꿀조합 리스트 제공 시 InterSection Observer API를 이용한 무한 스크롤 적용
+  - Sorting된 꿀조합 랭킹 뱃지 기능 개발
+  - 당일 기준 꿀조합 new 뱃지 추가 기능 개발
 
 ---
 
@@ -150,24 +211,26 @@
 │   └── 📂 images
 ├── 📂 components
 │   ├── 📂 BestCombinationAttribute
+│   ├── 📂 BestCombinationDetail
+│   ├── 📂 BestCombinationList
+│   ├── 📂 BestCombinationPick
 │   ├── 📂 Comments
 │   ├── 📂 Common
-│   │   ├── 📂 Button
-│   │   └── 📂 Cards
 │   ├── 📂 CustomCombination
 │   ├── 📂 Ingredient
+│   ├── 📂 Login
+│   ├── 📂 MyPage
 │   ├── 📂 Ranking
-│   ├── 📂 Roulette
-│   ├── 📂 Sandwich
-│   └── 📂 UI
+│   └── 📂 Roulette
 ├── 📂 constants
 ├── 📂 data
 ├── 📂 hooks
 ├── 📂 layouts
 ├── 📂 pages
+├── 📂 services
 ├── 📂 state
 ├── 📂 styles
-├── 📂 types
+├── 📂 typings
 └── 📂 utils
 ```
 
@@ -210,7 +273,7 @@
 
 ### 🌊 프로세스 플로우
 
-![flow.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7d665171-c683-4d32-81e6-2e065fd68297/process_flow.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T084118Z&X-Amz-Expires=86400&X-Amz-Signature=303000ca20512c2b2108b87da84299489966b080b94b36cb82c86d4d88549226&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22process%2520flow.png%22&x-id=GetObject)
+![flow.png](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2Fprocess%20flow%201.png?alt=media&token=e1f878a0-cd6b-41bf-9291-af967a91f6a1)
 
 <br />
 
@@ -232,12 +295,19 @@
 <div id="4"></div>
 <br />
 
-## 🚨 이슈 및 해결 방법 (문서 작성 후 링크 연결 예정)
+## 🚨 이슈 및 해결 방법
 
 - env 환경변수
-- 한글 컨벤션
-- recoil: mutable
-- useRef: mutableRef
+  - [server setting env error](https://github.com/harseille/WhatSsub/issues/86)
+- 무한스크롤
+  - [custom hook](https://github.com/harseille/WhatSsub/issues/142)
+  - [ranking page](https://github.com/harseille/WhatSsub/issues/259)
+  - [comment list](https://github.com/harseille/WhatSsub/issues/202)
+- vercel 배포
+  - [vercel root 설정](https://github.com/harseille/WhatSsub/issues/304)
+- 최적화
+  - [Tree-shaking](https://github.com/harseille/WhatSsub/issues/306)
+  - [code splitting](https://github.com/harseille/WhatSsub/issues/305)
 
 ---
 
@@ -249,4 +319,4 @@
 
 <br />
 
-보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로
+<p>보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로</p>

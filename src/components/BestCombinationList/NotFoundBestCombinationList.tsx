@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '@components/Common/UI/Button';
-import cryingDanji from '@assets/images/danzzi/danzzi_crying.png';
+import cryingDanji from '@assets/images/danzzi/danzzi_crying.webp';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';

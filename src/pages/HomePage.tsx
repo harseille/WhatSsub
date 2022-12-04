@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
-import danzziHome from '@assets/images/danzzi/danzzi_home.png';
-import danzziHomeMin from '@assets/images/danzzi/danzzi_home_min.png';
+import danzziHome from '@assets/images/danzzi/danzzi_home.webp';
+import danzziHomeMin from '@assets/images/danzzi/danzzi_home_min.webp';
 import deco1 from '@assets/icons/home_bg_left_top.svg';
 import deco2 from '@assets/icons/home_bg_right_top.svg';
 import deco3 from '@assets/icons/home_bg_left_bottom.svg';

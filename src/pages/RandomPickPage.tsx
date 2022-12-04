@@ -2,8 +2,8 @@ import RandomRoulette from '@components/Roulette/RandomRoulette';
 import Wrapper from '@components/Common/UI/Wrapper';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
-import danzziQuestion from '@assets/images/danzzi/danzzi_question.png';
-import danzziUniform from '@assets/images/danzzi/danzzi_uniform.png';
+import danzziQuestion from '@assets/images/danzzi/danzzi_question.webp';
+import danzziUniform from '@assets/images/danzzi/danzzi_uniform.webp';
 import mediaQuery from '@styles/media-queries';
 
 function RandomPickPage() {
@@ -39,16 +39,18 @@ const Title = styled.div`
 const DanzziContainer = styled.div`
   ${flexbox('row', 'center', 'center')};
   position: absolute;
-  bottom: 250px;
+  /* bottom: 250px; */
+  bottom: 15%;
   transform: translateX(-5%);
-  z-index: 5;
+  z-index: 1;
   ${mediaQuery} {
     bottom: 80px;
   }
 `;
 
 const DanzziLeft = styled.img`
-  margin-right: 200px;
+  /* margin-right: 260px; */
+  margin-right: 50%;
   bottom: 200px;
   width: ${changeRem(175)};
 
@@ -56,6 +58,7 @@ const DanzziLeft = styled.img`
     width: ${changeRem(275)};
     left: 60px;
     bottom: 85px;
+    margin-right: 400px;
   }
 `;
 const DanzziRight = styled.img`
