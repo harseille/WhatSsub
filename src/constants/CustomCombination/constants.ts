@@ -23,7 +23,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v1',
       이름: '양상추',
-      이미지: '/images/ingredients/vegetable/Lettuce.png',
+      이미지: '/images/ingredients/vegetable/Lettuce.webp',
       칼로리: '2.9',
       카테고리: '야채',
       추가재료여부: false,
@@ -31,7 +31,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v2',
       이름: '양파',
-      이미지: '/images/ingredients/vegetable/Red_Onions.png',
+      이미지: '/images/ingredients/vegetable/Red_Onions.webp',
       칼로리: '2.8',
       카테고리: '야채',
       추가재료여부: false,
@@ -39,7 +39,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v3',
       이름: '오이',
-      이미지: '/images/ingredients/vegetable/Cucumbers.png',
+      이미지: '/images/ingredients/vegetable/Cucumbers.webp',
       칼로리: '1.5',
       카테고리: '야채',
       추가재료여부: false,
@@ -47,7 +47,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v4',
       이름: '올리브',
-      이미지: '/images/ingredients/vegetable/Olives.png',
+      이미지: '/images/ingredients/vegetable/Olives.webp',
       칼로리: '3.9',
       카테고리: '야채',
       추가재료여부: false,
@@ -55,7 +55,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v5',
       이름: '토마토',
-      이미지: '/images/ingredients/vegetable/Tomatoes.png',
+      이미지: '/images/ingredients/vegetable/Tomatoes.webp',
       칼로리: '7.7',
       카테고리: '야채',
       추가재료여부: false,
@@ -63,7 +63,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v6',
       이름: '피망',
-      이미지: '/images/ingredients/vegetable/Peppers.png',
+      이미지: '/images/ingredients/vegetable/Peppers.webp',
       칼로리: '1.4',
       카테고리: '야채',
       추가재료여부: false,
@@ -71,7 +71,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v7',
       이름: '피클',
-      이미지: '/images/ingredients/vegetable/Pickles.png',
+      이미지: '/images/ingredients/vegetable/Pickles.webp',
       칼로리: '0.4',
       카테고리: '야채',
       추가재료여부: false,
@@ -79,7 +79,7 @@ export const 나만의_조합_초기값: 인터페이스_생성단계_꿀조합 
     {
       id: 'v8',
       이름: '할라피뇨',
-      이미지: '/images/ingredients/vegetable/Jalapenos.png',
+      이미지: '/images/ingredients/vegetable/Jalapenos.webp',
       칼로리: '0.6',
       카테고리: '야채',
       추가재료여부: false,
