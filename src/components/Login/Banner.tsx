@@ -1,6 +1,6 @@
 import Span from '@components/Common/UI/Span';
 import Wrapper from '@components/Common/UI/Wrapper';
-import danzziAnnung from '@assets/images/danzzi/danzzi_annung1.webp';
+import danzziAnnung from '@assets/images/danzzi/danzzi_annung.webp';
 import confettiGreen from '@assets/icons/confetti_green.svg';
 import confettiOrange from '@assets/icons/confetti_orange.svg';
 import confettiYellow from '@assets/icons/confetti_yellow.svg';
