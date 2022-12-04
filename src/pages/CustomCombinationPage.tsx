@@ -1,13 +1,9 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 
 const CustomPageWrap = lazy(() => import('@components/CustomCombination/CustomPageWrap'));
 
 function CustomCombination() {
-  return (
-    <Suspense fallback={<div>loading...</div>}>
-      <CustomPageWrap />;
-    </Suspense>
-  );
+  return <CustomPageWrap />;
 }
 
 export default CustomCombination;
