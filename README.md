@@ -1,8 +1,14 @@
-![로고](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8b39fda9-f2e5-4bca-92d9-019546593ea5/Group_34925_%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T092634Z&X-Amz-Expires=86400&X-Amz-Signature=0a699120c02b586de84b63c23836c7acea065d3eb9914dca864f0b2f21ba398d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Group%252034925%2520%282%29.png%22&x-id=GetObject)
+![로고](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2Flogo.png?alt=media&token=db5bcc4c-7fdc-4168-94d8-79fbc37b46e9)
 
 <br />
 
-## 🗃️목차
+## 📬 배포 주소
+
+https://what-ssub.vercel.app/
+
+---
+
+## 🗃️ 목차
 
 1. [**개요**](#1)
 2. [**아키 텍쳐**](#2)
@@ -43,24 +49,30 @@
 ### 💡 프로젝트 기획
 
 - 브레인스토밍
-  ![브레인스토밍_이미지](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/17006918-ebac-4f48-b45e-97db4ba7013b/%EB%B8%8C%EB%A0%88%EC%9D%B8%EC%8A%A4%ED%86%A0%EB%B0%8D.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T083901Z&X-Amz-Expires=86400&X-Amz-Signature=c27348282822410fb5b23668226766d80c160ad658810c99759847e06b8bc157&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22%25EB%25B8%258C%25EB%25A0%2588%25EC%259D%25B8%25EC%258A%25A4%25ED%2586%25A0%25EB%25B0%258D.png%22&x-id=GetObject)
-
-- 디자인: [새 탭에서 열기][figma wireframe](https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0)
-- BDD(Behaviour-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7)
-- SDD(Schema-Driven-Development): [새 탭에서 열기][노션링크](https://www.notion.so/aaa724aa166c4c2b96392264fa700201)
-- 네이밍 컨벤션: 한글 변수 사용: [새 탭에서 열기][집현전 프로젝트(한글 네이밍)](https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae)
-- 형상관리: [github-flow, gitmoji](https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b)
-- 이슈관리: [github-issue](https://github.com/harseille/WhatSsub/issues)
+  ![브레인스토밍_이미지](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2F%E1%84%87%E1%85%B3%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%89%E1%85%B3%E1%84%90%E1%85%A9%E1%84%86%E1%85%B5%E1%86%BC.png?alt=media&token=43ad9466-84d2-4836-9ac6-725f43f27d2c)
 
 ### 기획
 
-### 팀원소개
-- 디자인: <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
-- BDD(Behaviour-Driven-Development): <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
-- SDD(Schema-Driven-Development): <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
-- 네이밍 컨벤션: 한글 변수 사용: <a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
-- 형상관리: <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
-- 이슈관리: <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+<ul>
+ <li>디자인: 
+ <a href="https://www.figma.com/file/eI2jrYfrVIDJlrbklrjJnN/Be-Real-FE-Dev?node-id=33%3A6&t=688n15HxUHCp3Dx8-0" target="_blank">Figma Wireframe</a>
+ </li>
+ <li>BDD(Behaviour-Driven-Development): 
+ <a href="https://www.notion.so/Tasks-BDD-32ee18c200aa42249f328571cc2394d7" target="_blank">노션링크</a>
+ </li>
+ <li>SDD(Schema-Driven-Development): 
+ <a href="https://www.notion.so/aaa724aa166c4c2b96392264fa700201" target="_blank">노션링크</a>
+ </li>
+<li>네이밍 컨벤션: 한글 변수 사용: 
+<a href="https://www.notion.so/daaf58b9e2fa48048ff98c858253bfae" target="_blank">노션링크</a>
+</li>
+ <li>형상관리: 
+ <a href="https://absorbed-leek-405.notion.site/Git-Convention-f451556383d943789d64d7c55029872b" target="_blank">노션링크</a>
+ </li>
+ <li>이슈관리: 
+ <a href="https://github.com/harseille/WhatSsub/issues" target="_blank">github-issue</a>
+ </li>
+</ul>
 
 <br />
 
@@ -150,24 +162,26 @@
 │   └── 📂 images
 ├── 📂 components
 │   ├── 📂 BestCombinationAttribute
+│   ├── 📂 BestCombinationDetail
+│   ├── 📂 BestCombinationList
+│   ├── 📂 BestCombinationPick
 │   ├── 📂 Comments
 │   ├── 📂 Common
-│   │   ├── 📂 Button
-│   │   └── 📂 Cards
 │   ├── 📂 CustomCombination
 │   ├── 📂 Ingredient
+│   ├── 📂 Login
+│   ├── 📂 MyPage
 │   ├── 📂 Ranking
-│   ├── 📂 Roulette
-│   ├── 📂 Sandwich
-│   └── 📂 UI
+│   └── 📂 Roulette
 ├── 📂 constants
 ├── 📂 data
 ├── 📂 hooks
 ├── 📂 layouts
 ├── 📂 pages
+├── 📂 services
 ├── 📂 state
 ├── 📂 styles
-├── 📂 types
+├── 📂 typings
 └── 📂 utils
 ```
 
@@ -210,7 +224,7 @@
 
 ### 🌊 프로세스 플로우
 
-![flow.png](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/7d665171-c683-4d32-81e6-2e065fd68297/process_flow.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221120%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221120T084118Z&X-Amz-Expires=86400&X-Amz-Signature=303000ca20512c2b2108b87da84299489966b080b94b36cb82c86d4d88549226&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22process%2520flow.png%22&x-id=GetObject)
+![flow.png](https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Fetc%2Fprocess%20flow%201.png?alt=media&token=e1f878a0-cd6b-41bf-9291-af967a91f6a1)
 
 <br />
 
@@ -236,8 +250,10 @@
 
 - env 환경변수
 - 한글 컨벤션
-- recoil: mutable
-- useRef: mutableRef
+- Firebase Realtime에서 FireStore로 변경
+- 무한스크롤
+- vercel 배포
+- 최적화
 
 ---
 
