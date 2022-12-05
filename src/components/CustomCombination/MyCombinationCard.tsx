@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef, ForwardedRef } from 'react';
 import Button from '@components/Common/UI/Button';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import recipe from '@data/recipe';
@@ -13,18 +13,14 @@ import { changeRem } from '@styles/mixin';
 import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
-  inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
   userName: string | undefined | null;
   customCombination: 인터페이스_생성단계_꿀조합;
   changeModalType: (type: string) => void;
 };
 
-function MyCombinationCard(props: TProps) {
-  const { setInputValue, userName, inputValue, customCombination: 나만의_조합, changeModalType } = props;
+function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElement>) {
+  const { userName, customCombination: 나만의_조합, changeModalType } = props;
   const [sandwichImg, setSandwichImg] = useState('');
-
-  const 체인지핸들러_꿀조합제목_입력하기 = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
   useEffect(() => {
     setSandwichImg(
@@ -50,11 +46,10 @@ function MyCombinationCard(props: TProps) {
           <Img src={sandwichImg} alt="샌드위치 이미지" />
           <CardInputButtonWrap>
             <Input
-              onChange={체인지핸들러_꿀조합제목_입력하기}
+              ref={inputRef}
               pattern=".{2,20}"
               required
               title="2 ~ 20 글자 이내로 제목을 정해주세요"
-              value={inputValue}
               type="text"
               placeholder="왓썹의 이름은..?"
             />
@@ -73,7 +68,7 @@ function MyCombinationCard(props: TProps) {
   );
 }
 
-export default MyCombinationCard;
+export default forwardRef(MyCombinationCard);
 
 const Container = styled.div`
   position: relative;

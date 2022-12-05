@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { userState } from '@state/index';
@@ -16,18 +16,21 @@ type TProps = {
 };
 
 function CombinationRegistration(props: TProps) {
-  const [inputValue, setInputValue] = useState('');
   const { customCombination, changeModalType } = props;
   const user = useRecoilValue(userState);
   const userInfo = { id: user?.uid, name: user?.displayName };
   const navigate = useNavigate();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const 클릭핸드러_나만의_조합_등록하기 = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return changeModalType('TitleCheck');
 
-    const 조합_등록 = await postCustom({ customCombination, inputValue, userInfo });
-    setInputValue('');
+    if (!inputRef.current?.value.trim()) {
+      (inputRef.current as HTMLInputElement).value = '';
+      return changeModalType('TitleCheck');
+    }
+
+    const 조합_등록 = await postCustom({ customCombination, value: inputRef.current.value, userInfo });
     navigate(`/best-combination/${조합_등록?.id}`);
   };
 
@@ -35,8 +38,7 @@ function CombinationRegistration(props: TProps) {
     <CustomForm onSubmit={클릭핸드러_나만의_조합_등록하기}>
       <MyCombinationCard
         userName={user?.displayName}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
+        ref={inputRef}
         customCombination={customCombination}
         changeModalType={changeModalType}
       />
