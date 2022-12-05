@@ -125,15 +125,16 @@ function RandomRoulette() {
   };
 
   const 룰렛_돌리기 = () => {
+    const 랜덤숫자 = Math.floor(Math.random() * 17);
+    if (random === 랜덤숫자) return;
     setIsShowButton(false);
-    setRandom(Math.floor(Math.random() * 17));
+    setRandom(랜덤숫자);
     룰렛_회전하기();
   };
 
   const 모달_열기 = () => {
     setIsShowModal(true);
   };
-
   const 클릭핸들러_모달_닫기 = () => {
     setIsShowModal(false);
   };
