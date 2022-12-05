@@ -107,4 +107,9 @@ export default RankingList;
 
 const LoadingLi = styled.li`
   ${flexbox('row', 'center', 'center')}
+
+  & div {
+    position: static;
+    transform: translate(0, 0);
+  }
 `;
