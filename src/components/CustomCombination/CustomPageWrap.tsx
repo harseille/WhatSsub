@@ -17,7 +17,16 @@ function CustomPageWrap() {
   const [modalType, setModalType] = useState('none');
   const [현재진행도, 현재진행도_수정] = useState(PROGRESS.FirstStep);
   const [나만의_조합, 나만의_조합_수정] = useState(나만의_조합_초기값);
+  const [변경될_진행도, 변경될_진행도_수정] = useState(PROGRESS.FirstStep);
   const isLoggedIn = useRecoilValue(isLoggedInState);
+
+  if (현재진행도 !== 변경될_진행도) {
+    if (combinationVerification(현재진행도, 나만의_조합)) 현재진행도_수정(변경될_진행도);
+    else {
+      setModalType(MODAL_TYPE_KEYS.Required);
+      변경될_진행도_수정(현재진행도);
+    }
+  }
 
   const closeModal = useCallback(() => setModalType(MODAL_TYPE_KEYS.none), []);
   const changeModalType = (type: string) => setModalType(type);
@@ -40,16 +49,17 @@ function CustomPageWrap() {
     };
   }, [isLoggedIn]);
 
-  const 클릭핸들러_현재진행도_수정 = (진행도: number) => {
-    if (진행도 === 현재진행도) return;
-
-    if (현재진행도 < 진행도) {
-      if (combinationVerification(현재진행도, 나만의_조합)) 현재진행도_수정(진행도);
-      else setModalType(MODAL_TYPE_KEYS.Required);
-    } else {
-      현재진행도_수정(진행도);
-    }
-  };
+  const 클릭핸들러_현재진행도_수정 = useCallback(
+    (진행도: number) => {
+      if (진행도 === 현재진행도) return;
+      if (현재진행도 < 진행도) 변경될_진행도_수정(진행도);
+      else {
+        현재진행도_수정(진행도);
+        변경될_진행도_수정(진행도);
+      }
+    },
+    [현재진행도]
+  );
 
   const 다음_선택지로_이동하기 = () => {
     if (현재진행도 > PROGRESS.LastStep) return;
