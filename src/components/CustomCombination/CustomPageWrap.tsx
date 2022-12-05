@@ -63,8 +63,7 @@ function CustomPageWrap() {
 
   const 다음_선택지로_이동하기 = () => {
     if (현재진행도 > PROGRESS.LastStep) return;
-    if (combinationVerification(현재진행도, 나만의_조합)) 현재진행도_수정(진행도 => 진행도 + 1);
-    else setModalType(MODAL_TYPE_KEYS.Required);
+    변경될_진행도_수정(변경될_진행도 => 변경될_진행도 + 1);
   };
 
   const 체인지핸들러_나만의_조합_수정 = (선택한재료: 인터페이스_생성단계_꿀조합) => 나만의_조합_수정(선택한재료);
