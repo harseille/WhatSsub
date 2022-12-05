@@ -37,13 +37,11 @@ function RankingList() {
 
   const 꿀조합_컬렉션_정렬해서_가져오기 = useCallback(async (현재탭: string) => {
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
-    const 반환값 = await getRankingList(key.current, 정렬_조건);
+    const 반환값 = await getRankingList(key.current, 정렬_조건, 10);
 
     if (반환값) {
       key.current = 반환값.마지막_키;
-      setTimeout(() => {
-        setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
-      }, 300);
+      setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
     }
   }, []);
 

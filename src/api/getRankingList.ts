@@ -3,11 +3,11 @@ import { collection, DocumentData, limit, orderBy, query, startAfter } from 'fir
 import { db } from '../firebase.config';
 import dbGet from './dbGet';
 
-const getRankingList = async (key: DocumentData | null, condition: string) => {
+const getRankingList = async (key: DocumentData | null, condition: string, limitCount: number) => {
   try {
     const 꿀조합_쿼리스냅샷 = !key
-      ? await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), limit(5)))
-      : await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), startAfter(key), limit(5)));
+      ? await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), limit(limitCount)))
+      : await dbGet(query(collection(db, '꿀조합'), orderBy(condition, 'desc'), startAfter(key), limit(limitCount)));
 
     const 랭킹리스트: 인터페이스_꿀조합[] = [];
     let 마지막_키: DocumentData | null = null;

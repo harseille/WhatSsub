@@ -80,6 +80,11 @@ const RankingCardWrapper = styled(Link)`
   position: relative;
   display: block;
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate(-5px, -5px);
+  }
 `;
 
 const RankBadge = styled.img`
