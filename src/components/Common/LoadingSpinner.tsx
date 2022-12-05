@@ -12,6 +12,10 @@ function LoadingSpinner() {
 export default LoadingSpinner;
 
 const LoadingWrapper = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
   width: 80px;
   height: 80px;
   border-radius: 50%;

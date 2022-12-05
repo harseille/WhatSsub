@@ -8,7 +8,7 @@ import { 인터페이스_생성단계_꿀조합, 인터페이스_메인재료 } 
 
 type TProps = {
   customCombination: 인터페이스_생성단계_꿀조합;
-  inputValue: string;
+  value: string;
   userInfo: { id: string | undefined; name: string | null | undefined };
 };
 
@@ -30,7 +30,7 @@ const 뱃지리스트_추가하기 = (조합: 인터페이스_생성단계_꿀�
 };
 
 const 조합_정리하기 = (props: TProps) => {
-  const { customCombination: 나만의_조합, inputValue: 꿀조합_제목, userInfo } = props;
+  const { customCombination: 나만의_조합, value: 꿀조합_제목, userInfo } = props;
 
   const 조합 = { ...나만의_조합 };
 
@@ -57,9 +57,9 @@ const 조합_정리하기 = (props: TProps) => {
 };
 
 const postCustom = async (props: TProps) => {
-  const { customCombination, inputValue, userInfo } = props;
+  const { customCombination, value, userInfo } = props;
 
-  const 조합_정보 = 조합_정리하기({ customCombination, inputValue, userInfo });
+  const 조합_정보 = 조합_정리하기({ customCombination, value, userInfo });
   const 조합_등록 = await dbPush('꿀조합', 조합_정보);
 
   return 조합_등록;

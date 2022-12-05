@@ -24,11 +24,7 @@ function BestCombinationList() {
 
   return (
     <>
-      {isLoading && (
-        <LoadingWrap>
-          <LoadingSpinner />
-        </LoadingWrap>
-      )}
+      {isLoading && <LoadingSpinner />}
       <ListWrap>
         {꿀조합_목록?.map(sandwich => (
           <SandwichInfoCard key={sandwich.id} sandwich={sandwich} />
@@ -45,10 +41,4 @@ const ListWrap = styled.ul`
   display: flex;
   ${flexbox('column', 'center', 'center')}
   gap: 16px;
-`;
-
-const LoadingWrap = styled.div`
-  position: fixed;
-  top: 50%;
-  transform: translate(0, -50%);
 `;

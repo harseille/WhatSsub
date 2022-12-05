@@ -5,6 +5,7 @@ import { PROGRESS } from '@constants/CustomCombination/constants';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
+import react from 'react';
 
 type TProps = {
   currentStep: number;
@@ -32,7 +33,7 @@ function MyCombinationStep(props: TProps) {
   );
 }
 
-export default MyCombinationStep;
+export default react.memo(MyCombinationStep);
 
 const CombinationStageWrap = styled.div`
   display: flex;

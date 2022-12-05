@@ -1,12 +1,15 @@
-import React from 'react';
+import ProgressiveImage from 'react-progressive-graceful-image';
 import sandwich from '@assets/images/pick_page_desktop_sandwich.webp';
+import tinySandwich from '@assets/images/resize/Resize_pick_page_desktop_sandwich.webp';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 
 function DeskTopImage() {
   return (
     <ImgWrap>
-      <img src={sandwich} alt="샌드위치" />
+      <ProgressiveImage src={sandwich} placeholder={tinySandwich}>
+        {(src, loading) => <img style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt="샌드위치" />}
+      </ProgressiveImage>
     </ImgWrap>
   );
 }
