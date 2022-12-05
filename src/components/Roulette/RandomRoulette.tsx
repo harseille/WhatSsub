@@ -1,8 +1,12 @@
 import { useRef, useState, useEffect } from 'react';
+import ProgressiveImage from 'react-progressive-graceful-image';
 import RandomModal from '@components/Roulette/RandomModal';
 import spinBoard from '@assets/images/roulette.webp';
 import startBtn from '@assets/images/startBtn.webp';
 import pointer from '@assets/images/pointer.webp';
+import tinySpinBoard from '@assets/images/resize/Resize_roulette.webp';
+import tinyStartBtn from '@assets/images/resize/Resize_startBtn.webp';
+import tinyPointer from '@assets/images/resize/Resize_pointer.webp';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
@@ -149,9 +153,28 @@ function RandomRoulette() {
         ) : null}
       </div>
       <Container>
-        <Roulette src={spinBoard} alt="룰렛" ref={rouletteRef} />
-        {isShowButton ? <StartButton src={startBtn} alt="시작 버튼" onClick={룰렛_돌리기} /> : ''}
-        <Pointer src={pointer} alt="포인터" />
+        <ProgressiveImage src={spinBoard} placeholder={tinySpinBoard}>
+          {(src, loading) => (
+            <Roulette style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt="룰렛" ref={rouletteRef} />
+          )}
+        </ProgressiveImage>
+        {isShowButton ? (
+          <ProgressiveImage src={startBtn} placeholder={tinyStartBtn}>
+            {(src, loading) => (
+              <StartButton
+                style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }}
+                src={src}
+                alt="시작 버튼"
+                onClick={룰렛_돌리기}
+              />
+            )}
+          </ProgressiveImage>
+        ) : (
+          ''
+        )}
+        <ProgressiveImage src={pointer} placeholder={tinyPointer}>
+          {(src, loading) => <Pointer style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt="포인터" />}
+        </ProgressiveImage>
       </Container>
     </div>
   );
