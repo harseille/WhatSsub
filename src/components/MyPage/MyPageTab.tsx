@@ -37,9 +37,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.span<{ isSelectedTab: boolean }>`
-  font-size: ${changeRem(20)};
+  font-size: ${changeRem(16)};
   font-weight: bold;
   color: ${({ isSelectedTab }) => (isSelectedTab ? '#252525' : '#6b6b6b')};
   border-radius: 5px;
   cursor: pointer;
+  ${mediaQuery} {
+    font-size: ${changeRem(20)};
+  }
 `;
