@@ -9,7 +9,7 @@ function Header() {
   return (
     <HeaderWrap>
       <HeaderInner>
-        <h1>
+        <h1 className="logo">
           <NavLink to="/">
             <img src={logoImg} alt="logo이미지" />
           </NavLink>
@@ -36,6 +36,16 @@ const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   transition: all 0.5s;
+
+  & .logo {
+    display: flex;
+    align-items: center;
+
+    & img {
+      display: block;
+      height: 100%;
+    }
+  }
 
   ${mediaQuery} {
     padding: 24px 36px;
