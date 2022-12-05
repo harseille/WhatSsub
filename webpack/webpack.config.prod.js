@@ -21,7 +21,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new CopyPlugin({
-      patterns: [{ from: 'vercel.json' }],
+      patterns: [{ from: 'vercel.json' }, { from: 'public/robots.txt' }],
     }),
     new Dotenv({
       systemvars: true,
