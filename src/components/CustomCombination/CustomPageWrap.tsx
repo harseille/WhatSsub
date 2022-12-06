@@ -40,13 +40,10 @@ function CustomPageWrap() {
       window.history.pushState(null, '', window.location.href);
       changeModalType(MODAL_TYPE_KEYS.BackEvent);
     };
-
     window.history.pushState(null, '', window.location.href);
     window.addEventListener('popstate', preventGoBack);
 
-    return () => {
-      window.removeEventListener('popstate', preventGoBack);
-    };
+    return () => window.removeEventListener('popstate', preventGoBack);
   }, [isLoggedIn]);
 
   const 클릭핸들러_현재진행도_수정 = useCallback(

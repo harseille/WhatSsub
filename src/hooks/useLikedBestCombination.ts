@@ -9,35 +9,64 @@ const useLikedBestCombination = (id: string) => {
   const { userInfo, isShowModal, toggleModal, navigateLoginPage } = useCheckLogin();
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const [likeCount, setLikeCount] = useState<number>(0);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const isLiked = 좋아요한샌드위치.includes(id);
 
   useEffect(() => {
     if (userInfo) dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: 좋아요한샌드위치 });
-  }, [userInfo, 좋아요한샌드위치]);
+    console.log('likeCount', likeCount);
+    console.log(좋아요한샌드위치);
+    setIsPlaying(false);
+  }, [userInfo, 좋아요한샌드위치, likeCount]);
 
-  const 클릭핸들러_좋아요_토글 = (status: string, e: MouseEvent) => {
+  const 클릭핸들러_좋아요_토글 = async (status: string, e: MouseEvent) => {
     e.preventDefault();
+
+    // if (isPlaying) {
+    //   console.log('기다려!!!!!!!!');
+    //   return;
+    // }
+
     if (!userInfo) {
       toggleModal();
       return;
     }
 
+    setIsPlaying(true);
     if (좋아요한샌드위치.includes(id)) {
-      dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
+      await dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
       setLikeCount(prev => prev - 1);
     } else {
-      dbUpdate('꿀조합', id, { 좋아요: increment(1) });
+      await dbUpdate('꿀조합', id, { 좋아요: increment(1) });
       setLikeCount(prev => prev + 1);
     }
 
     if (status !== 'pending') {
+      console.log('실행');
       좋아요한샌드위치_수정(prevData => {
         if (!prevData.includes(id)) return [...prevData, id];
         return prevData.filter(likedId => likedId !== id);
       });
     }
-  };
+    // await runTransaction(db, async transaction => {
+    // setIsPlaying(true);
+    // if (좋아요한샌드위치.includes(id)) {
+    //   await transaction.update('꿀조합', id, { 좋아요: increment(-1) });
+    //   setLikeCount(prev => prev - 1);
+    // } else {
+    //   await dbUpdate('꿀조합', id, { 좋아요: increment(1) });
+    //   setLikeCount(prev => prev + 1);
+    // }
 
+    // if (status !== 'pending') {
+    //   console.log('실행');
+    //   좋아요한샌드위치_수정(prevData => {
+    //     if (!prevData.includes(id)) return [...prevData, id];
+    //     return prevData.filter(likedId => likedId !== id);
+    //   });
+    // }
+    // })
+  };
   return {
     isShowModal,
     toggleModal,

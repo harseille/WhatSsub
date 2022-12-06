@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import styled from '@emotion/styled';
 import { isLoggedInState, userState } from '@state/index';
 import { userLike } from '@state/User';
 import getBestCombinationList from '@api/getBestCombinationList';
@@ -9,6 +8,7 @@ import Wrapper from '@components/Common/UI/Wrapper';
 import MyPageTab from '@components/MyPage/MyPageTab';
 import MyPageList from '@components/MyPage/MyPageList';
 import Modal from '@components/Common/UI/Modal';
+import styled from '@emotion/styled';
 import { flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
@@ -37,9 +37,6 @@ function MyPage() {
   };
 
   useEffect(() => {
-    console.log('유저정보=>', 유저정보);
-    console.log('유저만의조합=>', 유저만의조합);
-
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');

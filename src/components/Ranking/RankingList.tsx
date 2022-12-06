@@ -49,36 +49,35 @@ function RankingList() {
   }, []);
 
   const 리스트_재정렬 = async (id: string, likeCount: number, isIncreasing: boolean) => {
-    const 좋아요 = likeCount + (isIncreasing ? 1 : -1);
-    const target: 인터페이스_꿀조합 = rankingList.find(ranking => ranking.id === id) as 인터페이스_꿀조합;
-    const filteredList: 인터페이스_꿀조합[] = rankingList.filter(ranking => ranking.id !== id);
+    // const target: 인터페이스_꿀조합 = rankingList.find(ranking => ranking.id === id) as 인터페이스_꿀조합;
+    // const filteredList: 인터페이스_꿀조합[] = rankingList.filter(ranking => ranking.id !== id);
 
-    if (isIncreasing) {
-      const insertedIdx: number = filteredList.findIndex(ranking => ranking.좋아요 <= 좋아요);
-      window.scrollTo({ left: 0, top: insertedIdx * 120, behavior: 'smooth' });
-      setTimeout(() => {
-        setRankingList([
-          ...filteredList.slice(0, insertedIdx),
-          { ...target, 좋아요 },
-          ...filteredList.slice(insertedIdx),
-        ]);
-      }, 300);
+    // if (isIncreasing) {
+    //   const insertedIdx: number = filteredList.findIndex(ranking => ranking.좋아요 <= likeCount);
+    //   // window.scrollTo({ left: 0, top: insertedIdx * 120, behavior: 'smooth' });
+    //   setTimeout(() => {
+    //     setRankingList([
+    //       ...filteredList.slice(0, insertedIdx),
+    //       { ...target, 좋아요: likeCount },
+    //       ...filteredList.slice(insertedIdx),
+    //     ]);
+    //   }, 300);
 
-      return;
-    }
+    //   return;
+    // }
 
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
     const 반환값 = await getRankingList(null, 정렬_조건, rankingList.length);
 
     if (반환값) {
       key.current = 반환값.마지막_키;
-      const idx = 반환값.랭킹리스트.findIndex(ranking => ranking.id === id);
-      const insertedIdx = idx === -1 ? rankingList.length - 1 : idx;
+      // const idx = 반환값.랭킹리스트.findIndex(ranking => ranking.id === id);
+      // const insertedIdx = idx === -1 ? rankingList.length - 1 : idx;
+      setRankingList([...반환값.랭킹리스트]);
 
-      setTimeout(() => {
-        setRankingList([...반환값.랭킹리스트]);
-        setPosition(insertedIdx);
-      }, 300);
+      // setTimeout(() => {
+      //   // setPosition(insertedIdx);
+      // }, 300);
     }
   };
 
@@ -89,7 +88,7 @@ function RankingList() {
   );
 
   useEffect(() => {
-    window.scrollTo({ left: 0, top: position * 120 + 300, behavior: 'smooth' });
+    // window.scrollTo({ left: 0, top: position * 120 + 300, behavior: 'smooth' });
   }, [position]);
 
   useEffect(() => {

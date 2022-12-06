@@ -24,7 +24,7 @@ export default RootLayout;
 
 const Layout = styled.div`
   position: relative;
-  min-width: 375px;
+  min-width: 360px;
   min-height: 667px;
   height: 100vh;
   background: #fafafa;

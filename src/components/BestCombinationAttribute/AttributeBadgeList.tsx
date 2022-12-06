@@ -1,16 +1,15 @@
 import IngredientBadge from '@components/BestCombinationAttribute/AttributeBadge';
+import convertBadge from '@services/Attributes/convertBadge';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-// import { 인터페이스_샌드위치뱃지리스트 } from '@typings/ISandwich';
-import convertBadge from '@services/Attributes/convertBadge';
 
 function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
-  const convertedBadgeList = convertBadge(badgeList);
+  const 변환된_뱃지_리스트 = convertBadge(badgeList);
 
   return (
     <BadgeList>
-      {convertedBadgeList.map(([filter, badgeList]) =>
-        badgeList.map((badge: string) => <IngredientBadge key={badge} filter={filter} item={badge} />)
+      {변환된_뱃지_리스트.map(([카테고리, 뱃지_리스트]) =>
+        뱃지_리스트.map((뱃지: string) => <IngredientBadge key={뱃지} category={카테고리} name={뱃지} />)
       )}
     </BadgeList>
   );

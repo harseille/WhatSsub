@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
-import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem, flexbox } from '@styles/mixin';

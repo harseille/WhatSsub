@@ -9,7 +9,7 @@ import { flexbox } from '@styles/mixin';
 function AttributePick() {
   const {
     selectedFilter: 선택된_꿀조합_속성,
-    overSelectedFilter,
+    overSelectedFilter: 최대_선택_개수_초과_속성,
     toggleFilter: 클릭핸들러_꿀조합_속성_토글,
     initializeFilter: 클릭핸들러_꿀조합_속성_초기화,
   } = useToggleFilter(꿀조합_픽_초기_필터);
@@ -17,12 +17,12 @@ function AttributePick() {
   return (
     <Container>
       <AttributeButtonListContainer
-        filteredAttr={선택된_꿀조합_속성}
-        overSelectedFilter={overSelectedFilter}
-        toggleFilter={클릭핸들러_꿀조합_속성_토글}
-        initializeFilter={클릭핸들러_꿀조합_속성_초기화}
+        filteredAttribute={선택된_꿀조합_속성}
+        overSelectedAttribute={최대_선택_개수_초과_속성}
+        toggleAttribute={클릭핸들러_꿀조합_속성_토글}
+        initializeAttribute={클릭핸들러_꿀조합_속성_초기화}
       />
-      <NavigateListPageButton filteredAttr={선택된_꿀조합_속성} />
+      <NavigateListPageButton filteredAttribute={선택된_꿀조합_속성} />
     </Container>
   );
 }
