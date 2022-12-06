@@ -21,7 +21,14 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new CopyPlugin({
-      patterns: [{ from: 'vercel.json' }, { from: 'public/robots.txt' }],
+      patterns: [
+        { from: 'vercel.json' },
+        { from: 'public/robots.txt' },
+        { from: 'public/maskable_icon.png' },
+        { from: 'public/manifest.json' },
+        { from: 'public/pwabuilder-sw.js' },
+        { from: 'public/offline.html' },
+      ],
     }),
     new Dotenv({
       systemvars: true,
