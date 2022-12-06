@@ -9,7 +9,7 @@
   "short_name": "WhatSsub",
   "start_url": "https://what-ssub.vercel.app/",
   "theme_color": "#ffffff",
-  "categories": [],
+  "categories": ["recommend", "community"],
   "screenshots": [
     {
       "src": "../src/assets/screenshot/screenshot1.jpg",
@@ -38,7 +38,7 @@
   ],
   "icons": [
     {
-      "src": "../src/assets/icons/icon.jpg"
+      "src": "../src/assets/icons/maskable_icon.png"
     }
   ],
   "shortcuts": [],
