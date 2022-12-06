@@ -1,5 +1,7 @@
 import React from 'react';
+import ProgressiveImage from 'react-progressive-graceful-image';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
+import convertProgressiveSandwichImage from '@utils/convertProgressiveSandwichImage';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -13,7 +15,9 @@ function SandwichInfo({ sandwich: { 이미지, 꿀조합제목, 베이스샌드�
   return (
     <InfoWrap>
       <ImgWrap>
-        <img src={이미지} alt={꿀조합제목} />
+        <ProgressiveImage src={이미지} placeholder={convertProgressiveSandwichImage(베이스샌드위치)}>
+          {(src, loading) => <img style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt={꿀조합제목} />}
+        </ProgressiveImage>
       </ImgWrap>
       <div>
         <SandwichName>{꿀조합제목}</SandwichName>

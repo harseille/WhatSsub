@@ -1,4 +1,4 @@
-import { useRef, memo } from 'react';
+import React, { useRef, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import 새_댓글_추가하기 from '@api/pushNewComment';
@@ -15,13 +15,12 @@ type TProps = {
 };
 
 function CommentInputWrap({ getCommentListCount }: TProps) {
-  const commentInputRef = useRef<HTMLInputElement>(null);
+  const commentInputRef = useRef<HTMLTextAreaElement>(null);
   const { combinationId } = useParams();
   const 유저정보: User | null = useRecoilValue(userState);
 
-  const 서브밋핸들러_댓글_쓰기 = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const 댓글내용 = commentInputRef.current?.value;
+  const 댓글_입력 = async (combinationId: string) => {
+    const 댓글내용 = commentInputRef.current?.value.trim();
     if (!유저정보) alert('로그인 후 댓글을 작성할 수 있습니다.');
     else if (!댓글내용) alert('댓글을 입력해주세요.');
     else if (유저정보 && 댓글내용 && combinationId) {
@@ -30,31 +29,48 @@ function CommentInputWrap({ getCommentListCount }: TProps) {
         작성자id: 유저정보.uid,
         작성자이름: 유저정보.displayName,
         작성자프로필이미지: 유저정보.photoURL,
-        내용: commentInputRef.current?.value,
+        내용: 댓글내용,
         작성일: Date.now(),
       };
       try {
         await 새_댓글_추가하기(댓글_정보);
         await getCommentListCount(combinationId);
-        commentInputRef.current.value = '';
+        commentInputRef.current!.value = '';
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     }
+  };
+
+  const 키다운핸들러_댓글_입력 = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.nativeEvent.isComposing) {
+      return;
+    }
+    if (e.key === 'Enter' && e.shiftKey) {
+      return;
+    }
+    if (e.key === 'Enter') {
+      댓글_입력(combinationId!);
+    }
+  };
+
+  const 클릭핸들러_댓글_입력 = (e: React.MouseEvent<HTMLInputElement>) => {
+    댓글_입력(combinationId!);
   };
 
   return (
     <Wrapper>
       <Profile>{유저정보 && <ProfileImg src={유저정보.photoURL!} alt={유저정보.displayName!} />}</Profile>
-      <Form onSubmit={서브밋핸들러_댓글_쓰기}>
-        <Input id="comment" maxLength={120} ref={commentInputRef} />
-        <Submit type="submit" value="게시" />
+      <Form>
+        <Label htmlFor="comment">댓글</Label>
+        <Input id="comment" maxLength={500} ref={commentInputRef} onKeyDown={키다운핸들러_댓글_입력} />
+        <Submit type="button" value="게시" onClick={클릭핸들러_댓글_입력} />
       </Form>
     </Wrapper>
   );
 }
 
-export default memo(CommentInputWrap);
+export default CommentInputWrap;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -68,7 +84,6 @@ const Wrapper = styled.div`
 
   ${mediaQuery} {
     justify-content: center;
-    height: ${changeRem(80)};
   }
 `;
 
@@ -88,6 +103,13 @@ const Profile = styled.div`
 const ProfileImg = styled.img`
   border-radius: 50%;
   background: #ccc;
+  width: ${changeRem(30)};
+  height: ${changeRem(30)};
+
+  ${mediaQuery} {
+    width: ${changeRem(48)};
+    height: ${changeRem(48)};
+  }
 `;
 
 const Form = styled.form`
@@ -101,7 +123,11 @@ const Form = styled.form`
   }
 `;
 
-const Input = styled.input`
+const Label = styled.label`
+  display: none;
+`;
+
+const Input = styled.textarea`
   flex-shrink: 0;
   flex-basis: 100%;
   border: 0;
@@ -109,6 +135,10 @@ const Input = styled.input`
   border-radius: 6px;
   background: #f5f5f5;
   font-size: ${changeRem(14)};
+  resize: none;
+  &:focus {
+    outline-color: ${theme.colors.primaryYellow};
+  }
 
   ${mediaQuery} {
     flex-basis: ${`calc(100% - ${changeRem(80)})`};
@@ -116,10 +146,10 @@ const Input = styled.input`
 `;
 const Submit = styled.input`
   border: 0;
-  flex-basis: ${changeRem(40)};
   flex-shrink: 0;
   background: transparent;
   color: ${props => props.theme.colors.primaryBlue};
-  font-size: ${changeRem(14)};
+  font-size: ${changeRem(18)};
   font-weight: bold;
+  cursor: pointer;
 `;

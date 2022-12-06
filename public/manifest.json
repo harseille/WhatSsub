@@ -1,0 +1,75 @@
+{
+  "background_color": "#ffffff",
+  "description": "서브웨이 선택이 어려울 땐 왓썹 을 이용하세요 서브웨이의 꿀 조합을 공유하며 랜덤으로 메뉴를 추천받을 수 있습니다.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "WhatSsub",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "WhatSsub",
+  "start_url": "https://what-ssub.vercel.app/",
+  "theme_color": "#ffffff",
+  "categories": ["food", "productivity"],
+  "screenshots": [
+    {
+      "src": "../src/assets/screenshot/screenshot1.jpg",
+      "sizes": "414x844",
+      "type": "image/jpg",
+      "platform": "wide"
+    },
+    {
+      "src": "../src/assets/screenshot/screenshot2.jpg",
+      "sizes": "414x844",
+      "type": "image/jpg",
+      "platform": "wide"
+    },
+    {
+      "src": "../src/assets/screenshot/screenshot3.jpg",
+      "sizes": "414x844",
+      "type": "image/jpg",
+      "platform": "wide"
+    },
+    {
+      "src": "../src/assets/screenshot/screenshot4.jpg",
+      "sizes": "414x844",
+      "type": "image/jpg",
+      "platform": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/dist/icons/android/android-launchericon-48-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/android/android-launchericon-96-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/ios/50.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/ios/100.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/android/android-launchericon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [],
+  "lang": "ko",
+  "iarc_rating_id": "all"
+}

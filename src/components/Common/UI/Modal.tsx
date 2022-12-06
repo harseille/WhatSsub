@@ -54,15 +54,16 @@ function ModalOverlay({
             {isConfirm}
           </Button>
         )}
-        <Button
+        <ModalButton
           ref={!isConfirm ? buttonRef : null}
           onClick={onClose}
           designType={cancelButtonDesignType}
+          className={isConfirm ? 'cancel' : ''}
           width={changeRem(80)}
           height={changeRem(40)}
           borderRadius="8px">
           {!isConfirm ? '확인' : '취소'}
-        </Button>
+        </ModalButton>
       </ButtonWrap>
     </ModalWrap>
   );
@@ -154,4 +155,10 @@ const ButtonWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 4px;
+`;
+
+const ModalButton = styled(Button)`
+  &.cancel:hover {
+    background-color: ${props => props.theme.colors.gray87};
+  }
 `;
