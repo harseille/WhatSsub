@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { userState } from '@state/index';
+import toBeDelete from '@state/pending';
+import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import { dbUpdate } from '@api/index';
-import { User } from 'firebase/auth';
 import LikeRedBtn from '@components/Common/Button/LikeRed';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import styled from '@emotion/styled';
-import { 인터페이스_샌드위치 } from '@typings/ISandwich';
-import useLikedBestCombination from '@hooks/useLikedBestCombination';
-import pendingState from '@state/pending';
+import { 인터페이스_샌드위치_아이디 } from '@typings/ISandwich';
+import { User } from 'firebase/auth';
 
 type TProps = {
   id: string;
@@ -17,43 +17,36 @@ type TProps = {
   sandwich: 인터페이스_샌드위치_아이디;
 };
 
-interface 인터페이스_샌드위치_아이디 extends 인터페이스_샌드위치 {
-  id: string;
-}
-
 function LikeCard({ id, imgUrl, sandwich: sandwichData }: TProps) {
   const 유저정보: User | null = useRecoilValue(userState);
-  // const [삭제대기, 삭제대기_수정] = useState<string[]>([]);
-  const [pending, setPending] = useRecoilState<string[]>(pendingState);
+  const [삭제될_꿀조합, 삭제될_꿀조합_수정] = useRecoilState<string[]>(toBeDelete);
   const { 클릭핸들러_좋아요_토글, 좋아요한샌드위치, 좋아요한샌드위치_수정 } = useLikedBestCombination(id);
 
   const 좋아요_버튼_수정하기 = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const targetLi = (e.target as HTMLButtonElement).closest('li');
+    const target = (e.target as HTMLButtonElement).closest('li');
 
-    if (좋아요한샌드위치.includes(targetLi!.id) && !pending.includes(targetLi!.id)) {
-      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== targetLi!.id) });
-      setPending(prev => [...prev, targetLi!.id]);
-      클릭핸들러_좋아요_토글('pending', e);
+    if (좋아요한샌드위치.includes(target!.id) && !삭제될_꿀조합.includes(target!.id)) {
+      dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: 좋아요한샌드위치.filter(id => id !== target!.id) });
+      삭제될_꿀조합_수정(prev => [...prev, target!.id]);
     } else {
       dbUpdate('좋아요', 유저정보!.uid, { 좋아요_리스트: [...좋아요한샌드위치] });
-      setPending(prev => prev.filter(삭제대기꿀조합 => 삭제대기꿀조합 !== targetLi!.id));
-      클릭핸들러_좋아요_토글('pending', e);
+      삭제될_꿀조합_수정(prev => prev.filter(삭제될_꿀조합 => 삭제될_꿀조합 !== target!.id));
     }
+    클릭핸들러_좋아요_토글('pending', e);
   };
 
   const navigate = useNavigate();
 
   const onClickLink = () => {
     navigate(imgUrl);
-    if (!pending) return;
-    좋아요한샌드위치_수정(prevData => prevData.filter(prev => !pending.includes(prev)));
-    console.log('pendingStatus', pending);
+    if (!삭제될_꿀조합) return;
+    좋아요한샌드위치_수정(prevData => prevData.filter(prev => !삭제될_꿀조합.includes(prev)));
   };
 
   return (
     <div>
-      <Card className={pending.includes(sandwichData.id) ? 'delete' : ''} id={id}>
-        <LikeRedBtn onClick={좋아요_버튼_수정하기} isLiked={!pending.includes(sandwichData.id)} />
+      <Card className={삭제될_꿀조합.includes(sandwichData.id) ? 'delete' : ''} id={id}>
+        <LikeRedBtn onClick={좋아요_버튼_수정하기} isLiked={!삭제될_꿀조합.includes(sandwichData.id)} />
         <Button onClick={onClickLink}>
           <SandwichInfo sandwich={sandwichData} />
         </Button>

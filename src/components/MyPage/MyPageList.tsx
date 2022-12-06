@@ -1,9 +1,9 @@
-import React from 'react';
+import { memo } from 'react';
 import { useRecoilValue } from 'recoil';
+import { userLike } from '@state/User';
 import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';
 import styled from '@emotion/styled';
-import { userLike } from '@state/User';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
@@ -29,8 +29,7 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
   );
 }
 
-// export default React.memo(MyPageList);
-export default React.memo(MyPageList);
+export default memo(MyPageList);
 
 const Container = styled.div`
   margin-bottom: 10px;

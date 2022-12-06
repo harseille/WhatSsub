@@ -6,7 +6,11 @@ import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
 
-function NavigateListPageButton({ filteredAttribute }: { filteredAttribute: 인터페이스_꿀조합선택페이지_필터 }) {
+type TProps = {
+  filteredAttribute: 인터페이스_꿀조합선택페이지_필터;
+};
+
+function NavigateListPageButton({ filteredAttribute }: TProps) {
   const navigate = useNavigate();
 
   const searchParams = changeAttrToQueryString(filteredAttribute);

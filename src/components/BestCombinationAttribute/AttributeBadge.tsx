@@ -1,7 +1,12 @@
 import { badgeFontColor, badgeBackgroundColor } from '@styles/common';
 import styled from '@emotion/styled';
 
-function IngredientBadge({ category, name }: { category: string; name: string }) {
+type TProps = {
+  category: string;
+  name: string;
+};
+
+function IngredientBadge({ category, name }: TProps) {
   return (
     <li>
       <IngredientBadgeBox color={category}>{name}</IngredientBadgeBox>

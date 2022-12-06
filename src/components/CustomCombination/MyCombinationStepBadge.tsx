@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-
-const MobileSize: number = 28;
-const DesktopSize: number = 34;
+import { MobileSize, DesktopSize } from '@constants/CustomCombination/constants';
 
 type 타입_속성 = {
   currentStep: number;
@@ -16,16 +14,17 @@ const MyCombinationStepBadge = styled.span<타입_속성>`
   height: ${changeRem(MobileSize)};
   border-radius: 50%;
   border: 3px solid;
-  border-color: ${props => (props.currentStep >= props.children ? '#fbc200' : '#EEEEEE')};
-  background: ${props => (props.currentStep >= props.children ? '#098d42' : '#EEEEEE')};
-  color: ${props => (props.currentStep >= props.children ? '#fff' : '#B1B1B1')};
+  border-color: ${({ currentStep, children, theme }) =>
+    currentStep >= children ? theme.colors.primaryYellow : theme.colors.grayEEE};
+  background: ${({ currentStep, children, theme }) =>
+    currentStep >= children ? theme.colors.primaryGreen : theme.colors.grayEEE};
+  color: ${({ currentStep, children, theme }) => (currentStep >= children ? theme.colors.white : '#B1B1B1')};
   font-size: ${changeRem(10)};
   font-weight: bold;
   line-height: ${MobileSize - 6}px;
   text-align: center;
   cursor: pointer;
   transition: all 0.6s;
-  /* box-sizing: content-box; */
 
   ${mediaQuery} {
     width: ${changeRem(DesktopSize)};

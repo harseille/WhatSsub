@@ -8,26 +8,23 @@ import {
 } from '@constants/CustomCombination/constants';
 import ingredients from '@data/ingredients';
 import recipe from '@data/recipe';
-
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-
 import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
 
 type TProps = {
-  customCombination: 인터페이스_생성단계_꿀조합;
   currentStep: number;
+  customCombination: 인터페이스_생성단계_꿀조합;
   onChange: (선택한재료: 인터페이스_생성단계_꿀조합) => void;
   changeModalType: (type: string) => void;
 };
 
-function CustomStep(props: TProps) {
-  const { currentStep: 현재진행도, customCombination: 나만의_조합, onChange, changeModalType } = props;
+function CustomStep({ currentStep: 현재진행도, customCombination: 나만의_조합, onChange, changeModalType }: TProps) {
   const [재료데이터, 재료데이터_수정] = useState(재료데이터_초기값);
 
   useEffect(() => {
-    const ingredientsData = ingredients.filter(data => data.카테고리 !== 재료_카테고리.샌드위치);
-    const additionalData = [
+    const 재료데이터 = ingredients.filter(data => data.카테고리 !== 재료_카테고리.샌드위치);
+    const 추가재료 = [
       { 카테고리: 재료_카테고리.토스팅, 목록: [{ 이름: '네' }, { 이름: '아니요' }] },
       {
         카테고리: 재료_카테고리.샌드위치,
@@ -35,10 +32,10 @@ function CustomStep(props: TProps) {
       },
     ];
 
-    재료데이터_수정([...ingredientsData, ...additionalData]);
+    재료데이터_수정([...재료데이터, ...추가재료]);
   }, []);
 
-  const isSelected = (재료정보: 인터페이스_선택된_재료) => {
+  const 선택재료_확인하기 = (재료정보: 인터페이스_선택된_재료) => {
     if (재료정보.카테고리 === 재료_카테고리.샌드위치) return 나만의_조합.베이스샌드위치 === 재료정보.이름;
     if (재료정보.카테고리 === 재료_카테고리.토스팅) return 나만의_조합.토스팅 === 재료정보.이름;
     return !!나만의_조합.선택재료.find(
@@ -61,7 +58,7 @@ function CustomStep(props: TProps) {
               ?.목록.map(재료정보 => (
                 <Ingredient
                   IngredientInfo={{ ...재료정보, 카테고리 }}
-                  isSelected={isSelected({ ...재료정보, 카테고리 })}
+                  isSelected={선택재료_확인하기({ ...재료정보, 카테고리 })}
                   customCombination={나만의_조합}
                   onChange={onChange}
                   key={재료정보.이름}

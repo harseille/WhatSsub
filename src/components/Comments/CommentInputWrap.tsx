@@ -1,14 +1,13 @@
-import React, { useRef, memo } from 'react';
+import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import 새_댓글_추가하기 from '@api/pushNewComment';
 import { userState } from '@state/index';
-import { User } from 'firebase/auth';
 import styled from '@emotion/styled';
-import { changeRem } from '@styles/mixin';
+import { changeRem, flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { 인터페이스_댓글_추가 } from '@typings/IComment';
-import theme from '@styles/theme';
+import { User } from 'firebase/auth';
 
 type TProps = {
   getCommentListCount: Function;
@@ -76,11 +75,9 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 20px;
   margin-bottom: 16px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  /* box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25), 0px 4px 10px rgba(213, 213, 213, 0.25);*/
-  border-bottom: 1px solid ${theme.colors.grayDDD};
+  background: ${({ theme }) => theme.colors.white};
+  ${flexbox('row', undefined, 'center')}
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grayDDD};
 
   ${mediaQuery} {
     justify-content: center;
@@ -113,9 +110,7 @@ const ProfileImg = styled.img`
 `;
 
 const Form = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  ${flexbox('row', 'space-evenly', 'center')};
   gap: 10px;
   width: 100%;
   ${mediaQuery} {
@@ -137,7 +132,7 @@ const Input = styled.textarea`
   font-size: ${changeRem(14)};
   resize: none;
   &:focus {
-    outline-color: ${theme.colors.primaryYellow};
+    outline-color: ${({ theme }) => theme.colors.primaryYellow};
   }
 
   ${mediaQuery} {
@@ -148,7 +143,7 @@ const Submit = styled.input`
   border: 0;
   flex-shrink: 0;
   background: transparent;
-  color: ${props => props.theme.colors.primaryBlue};
+  color: ${({ theme }) => theme.colors.primaryBlue};
   font-size: ${changeRem(18)};
   font-weight: bold;
   cursor: pointer;

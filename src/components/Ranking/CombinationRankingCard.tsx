@@ -1,7 +1,6 @@
-import React, { useEffect, MouseEvent, useCallback } from 'react';
+import { useEffect, MouseEvent, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { User } from 'firebase/auth';
 import { userState } from '@state/index';
 import { userLike } from '@state/User';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
@@ -11,6 +10,7 @@ import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
+import { User } from 'firebase/auth';
 
 type TProps = {
   id: string;
@@ -92,7 +92,7 @@ function CombinationRankingCard({
   );
 }
 
-export default React.memo(CombinationRankingCard);
+export default memo(CombinationRankingCard);
 
 const RankingCardWrapper = styled(Link)`
   position: relative;
@@ -126,10 +126,10 @@ const NewBadge = styled.span`
   z-index: 1;
   padding: 3px 5px;
   border-radius: 3px;
-  background-color: ${props => props.theme.colors.primaryYellow};
+  background-color: ${({ theme }) => theme.colors.primaryYellow};
   font-size: ${changeRem(10)};
   font-weight: bold;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
 
   ${mediaQuery} {
     top: -8px;
@@ -144,14 +144,14 @@ const RankingCard = styled.section`
   position: relative;
   padding: 30px 20px;
   border-radius: 20px;
-  background: #ffffff;
-  filter: ${props => `drop-shadow(${props.theme.boxShadow.type3})`};
+  background: ${({ theme }) => theme.colors.white};
+  filter: ${({ theme }) => `drop-shadow(${theme.boxShadow.type3})`};
 
   ${mediaQuery} {
     padding: 20px;
     border-radius: 10px;
     filter: none;
-    box-shadow: ${props => props.theme.boxShadow.type1};
+    box-shadow: ${({ theme }) => theme.boxShadow.type1};
   }
 `;
 
@@ -171,8 +171,8 @@ const RankingImageWrap = styled.div`
   height: ${changeRem(80)};
   flex-shrink: 0;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: ${props => `${props.theme.boxShadow.type3}, inset ${props.theme.boxShadow.type2}`};
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => `${theme.boxShadow.type3}, inset ${theme.boxShadow.type2}`};
 
   & img {
     width: 100%;
@@ -217,7 +217,7 @@ const Title = styled.h3`
   margin-bottom: 8px;
   font-weight: 600;
   font-size: ${changeRem(16)};
-  color: ${props => props.theme.colors.AccessibilityGreen};
+  color: ${({ theme }) => theme.colors.AccessibilityGreen};
 `;
 
 const RankingBadgeList = styled(SandwichBadgeList)`

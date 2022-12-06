@@ -1,12 +1,10 @@
 import React, { useEffect, useState, forwardRef, ForwardedRef } from 'react';
-import Button from '@components/Common/UI/Button';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
-import recipe from '@data/recipe';
+import Button from '@components/Common/UI/Button';
 import { MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
-
+import recipe from '@data/recipe';
 import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';
-
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
@@ -18,12 +16,14 @@ type TProps = {
   changeModalType: (type: string) => void;
 };
 
-function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElement>) {
-  const { userName, customCombination: 나만의_조합, changeModalType } = props;
-  const [sandwichImg, setSandwichImg] = useState('');
+function MyCombinationCard(
+  { userName, customCombination: 나만의_조합, changeModalType }: TProps,
+  inputRef: ForwardedRef<HTMLInputElement>
+) {
+  const [샌드위치이미지, 샌드위치이미지_수정] = useState('');
 
   useEffect(() => {
-    setSandwichImg(
+    샌드위치이미지_수정(
       setFirebaseImgURL(recipe.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string)
     );
   }, [나만의_조합.베이스샌드위치]);
@@ -43,7 +43,7 @@ function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElemen
         </Text>
         <SubTitle>이 조합으로 세계정복!!</SubTitle>
         <CardContentWrap>
-          <Img src={sandwichImg} alt="샌드위치 이미지" />
+          <Img src={샌드위치이미지} alt="샌드위치 이미지" />
           <CardInputButtonWrap>
             <Input
               ref={inputRef}
@@ -79,7 +79,7 @@ const Card = styled.div`
   margin: 152px auto 10px;
   width: 100%;
   padding: 20px 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 15px;
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
 
@@ -141,8 +141,11 @@ const Img = styled.img`
   display: block;
   max-width: 62%;
   margin: 0 auto;
+  min-width: ${changeRem(193)};
+  min-height: ${changeRem(136)};
   ${mediaQuery} {
     max-width: 50%;
+    min-height: ${changeRem(332)};
   }
 `;
 
@@ -178,7 +181,7 @@ const DeleteBtn = styled.button`
   top: 20%;
   right: 7%;
   border: none;
-  background-color: ${props => props.theme.colors.primaryGreen};
+  background-color: ${({ theme }) => theme.colors.primaryGreen};
   width: 8%;
   height: 9%;
   border-radius: 5px;

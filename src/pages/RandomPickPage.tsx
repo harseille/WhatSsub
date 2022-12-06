@@ -77,7 +77,7 @@ const Text = styled.div`
   font-size: 20px;
   font-weight: 400;
   padding: 40px;
-  color: #fff;
+  background: ${({ theme }) => theme.colors.white};
   background-color: ${props => props.theme.colors.AccessibilityGreen};
   height: ${changeRem(110)};
   text-align: center;

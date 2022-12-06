@@ -2,12 +2,12 @@ import { useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { userState } from '@state/index';
+import postCustom from '@services/customCombination/postCustom';
 import MyCombinationCard from '@components/CustomCombination/MyCombinationCard';
 import Button from '@components/Common/UI/Button';
-import postCustom from '@services/customCombination/postCustom';
-
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
+import { flexbox } from '@styles/mixin';
 import { 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
@@ -57,10 +57,8 @@ function CombinationRegistration(props: TProps) {
 export default CombinationRegistration;
 
 const CustomForm = styled.form`
-  display: flex;
+  ${flexbox('column', 'space-between')}
   flex-grow: 1;
-  flex-direction: column;
-  justify-content: space-between;
 `;
 
 const CreateCombinationButton = styled(Button)`

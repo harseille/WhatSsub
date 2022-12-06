@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import IngredientCardList from '@components/Ingredient/IngredientCardList';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import Button from '@components/Common/UI/Button';
-import styled from '@emotion/styled';
 import Modal from '@components/Common/UI/Modal';
-import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
+import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_샌드위치, 인터페이스_재료 } from '@typings/ISandwich';
 
@@ -63,7 +63,7 @@ export default memo(ContentsContainer);
 
 const Contents = styled.div`
   ${flexbox('column', 'flex-start', 'center')}
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   margin-bottom: 10px;
   padding: 32px;
 `;

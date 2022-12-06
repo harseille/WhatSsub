@@ -64,7 +64,8 @@
     "no-case-declarations": 2,
     "@typescript-eslint/no-empty-interface": 2,
     "import/no-unresolved": "off",
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/jsx-no-bind": ["error", { "allowBind": true, "allowArrowFunctions": true }]
   },
   "settings": {
     "import/resolver": {
@@ -73,11 +74,4 @@
       }
     }
   }
-  "react/jsx-no-bind": [<enabled>, {
-  "ignoreDOMComponents": <boolean> || false,
-  "ignoreRefs": <boolean> || false,
-  "allowArrowFunctions": <boolean> || false,
-  "allowFunctions": <boolean> || false,
-  "allowBind": <boolean> || false
-}]
 }
