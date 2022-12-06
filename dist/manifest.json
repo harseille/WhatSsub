@@ -39,23 +39,34 @@
   "icons": [
     {
       "src": "/dist/icons/android/android-launchericon-48-48.png",
-      "sizes": "48x48"
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
       "src": "/dist/icons/android/android-launchericon-96-96.png",
-      "sizes": "96x96"
+      "sizes": "96x96",
+      "type": "image/png"
     },
     {
       "src": "/dist/icons/ios/50.png",
-      "sizes": "50x50"
+      "sizes": "50x50",
+      "type": "image/png"
     },
     {
       "src": "/dist/icons/ios/100.png",
-      "sizes": "100x100"
+      "sizes": "100x100",
+      "type": "image/png"
     },
     {
       "src": "/dist/icons/android/android-launchericon-144-144.png",
-      "sizes": "any"
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/dist/icons/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "shortcuts": [],
