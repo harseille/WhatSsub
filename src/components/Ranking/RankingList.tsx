@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, RefObject } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { collection, DocumentData, query } from 'firebase/firestore';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
