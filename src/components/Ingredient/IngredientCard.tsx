@@ -1,3 +1,5 @@
+import convertProgressiveIngredientImage from '@utils/convertProgressiveIngredientImage';
+import ProgressiveImage from 'react-progressive-graceful-image';
 import Span from '@components/Common/UI/Span';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
@@ -17,7 +19,10 @@ function IngredientCard({ ingredient: { id, 이름, 칼로리, 이미지, 카테
       <Title>{이름}</Title>
       <Kcal>{칼로리}Kcal</Kcal>
       <ImgWrap>
-        <img src={이미지} alt={이름} />
+        <ProgressiveImage src={이미지 as string} placeholder={convertProgressiveIngredientImage(이름)}>
+          {(src, loading) => <img style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt={이름} />}
+        </ProgressiveImage>
+        {/* <img src={이미지} alt={이름} /> */}
       </ImgWrap>
     </Card>
   );
