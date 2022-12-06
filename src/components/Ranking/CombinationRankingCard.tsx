@@ -1,4 +1,4 @@
-import React, { useEffect, MouseEvent, useCallback, RefObject, useRef } from 'react';
+import React, { useEffect, MouseEvent, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { User } from 'firebase/auth';
@@ -51,9 +51,9 @@ function CombinationRankingCard({
   }, [setLikeCount, 좋아요]);
 
   const 좋아요_토글 = useCallback(
-    async (e: MouseEvent) => {
+    (e: MouseEvent) => {
       const isIncreasing = !좋아요한_샌드위치.includes(id);
-      await 클릭핸들러_좋아요_토글('fulfilled', e);
+      클릭핸들러_좋아요_토글('fulfilled', e);
 
       if (유저) 리스트_재정렬(id, likeCount, isIncreasing);
     },
@@ -83,7 +83,7 @@ function CombinationRankingCard({
             <RankingContents>
               <Title>{이름}</Title>
               <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={likeCount} isLiked={isLiked} onClick={좋아요_토글} />
+              <Like count={좋아요} isLiked={isLiked} onClick={좋아요_토글} />
             </RankingContents>
           </RankingCard>
         </RankingCardWrapper>

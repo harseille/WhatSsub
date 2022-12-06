@@ -45,7 +45,7 @@ export default SandwichInfoCard;
 // export default React.memo(SandwichInfoCard, (prevProps, nextProps) => prevProps.sandwich.id === nextProps.sandwich.id);
 
 const CardWarp = styled.li`
-  min-width: ${changeRem(370)};
+  min-width: ${changeRem(340)};
   width: 80%;
   position: relative;
   padding: 45px 25px 20px;

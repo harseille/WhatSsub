@@ -185,34 +185,33 @@ export default RandomRoulette;
 const Container = styled.div`
   z-index: 6;
   position: relative;
-  width: ${changeRem(279)};
+  width: 50%;
   margin: 18px auto 0;
   padding-top: 18px;
   ${mediaQuery} {
     width: ${changeRem(379)};
-    /* width: 50%; */
   }
 `;
 
 const Roulette = styled.img``;
 const Pointer = styled.img`
   position: absolute;
-  width: ${changeRem(38)};
+  width: 15%;
   left: 50%;
   top: 0;
   transform: translate(-50%);
   ${mediaQuery} {
     width: ${changeRem(50)};
-    /* width: 8%; */
   }
 `;
 
 const StartButton = styled.img`
   position: absolute;
-  width: ${changeRem(80)};
+  width: 30%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
   ${mediaQuery} {
     width: ${changeRem(99)};
     /* width: 18%; */

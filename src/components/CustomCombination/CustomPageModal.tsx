@@ -52,7 +52,8 @@ function CustomPageModal(props: TProps) {
 
   if (type === MODAL_TYPE_KEYS.none) return null;
 
-  const onEventHandler = () => navigate('/');
+  const onEventHandler = () => window.history.go(-2);
+
   const navigateLoginPage = () => navigate('/login');
 
   return (

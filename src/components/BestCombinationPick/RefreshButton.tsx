@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import refreshIcon from '@assets/icons/refresh.svg';
 import styled from '@emotion/styled';
 
@@ -10,7 +10,7 @@ function RefreshButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-export default React.memo(RefreshButton);
+export default memo(RefreshButton);
 
 const Refresh = styled.button`
   position: absolute;

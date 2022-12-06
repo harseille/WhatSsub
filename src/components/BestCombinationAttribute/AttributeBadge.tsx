@@ -1,10 +1,10 @@
 import { badgeFontColor, badgeBackgroundColor } from '@styles/common';
 import styled from '@emotion/styled';
 
-function IngredientBadge({ filter, item }: { filter: string; item: string }) {
+function IngredientBadge({ category, name }: { category: string; name: string }) {
   return (
     <li>
-      <IngredientBadgeBox color={filter}>{item}</IngredientBadgeBox>
+      <IngredientBadgeBox color={category}>{name}</IngredientBadgeBox>
     </li>
   );
 }

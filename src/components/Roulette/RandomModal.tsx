@@ -95,4 +95,5 @@ const ReturnBtn = styled.button`
   border-radius: 3px;
   color: #fff;
   font-weight: 300;
+  cursor: pointer;
 `;
