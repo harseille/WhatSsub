@@ -169,6 +169,7 @@ https://what-ssub.vercel.app/
 - seo 최적화
 - 접근성 최적화
 - react-router 적용
+- google & naver에 프로젝트 url 등록
 
 #### 최원오
 
