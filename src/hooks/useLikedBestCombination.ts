@@ -15,7 +15,7 @@ const useLikedBestCombination = (id: string) => {
     if (userInfo) dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: 좋아요한샌드위치 });
   }, [userInfo, 좋아요한샌드위치]);
 
-  const 클릭핸들러_좋아요_토글 = (e: MouseEvent) => {
+  const 클릭핸들러_좋아요_토글 = (status: string, e: MouseEvent) => {
     e.preventDefault();
     if (!userInfo) {
       toggleModal();
@@ -30,10 +30,12 @@ const useLikedBestCombination = (id: string) => {
       setLikeCount(prev => prev + 1);
     }
 
-    좋아요한샌드위치_수정(prevData => {
-      if (!prevData.includes(id)) return [...prevData, id];
-      return prevData.filter(likedId => likedId !== id);
-    });
+    if (status !== 'pending') {
+      좋아요한샌드위치_수정(prevData => {
+        if (!prevData.includes(id)) return [...prevData, id];
+        return prevData.filter(likedId => likedId !== id);
+      });
+    }
   };
 
   return {
@@ -44,6 +46,8 @@ const useLikedBestCombination = (id: string) => {
     클릭핸들러_좋아요_토글,
     likeCount,
     setLikeCount,
+    좋아요한샌드위치,
+    좋아요한샌드위치_수정,
   };
 };
 

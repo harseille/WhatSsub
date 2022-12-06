@@ -35,7 +35,7 @@ function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
       )}
       <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
         <SandwichInfo sandwich={sandwich} />
-        <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={isLiked} />
+        <LikeRedBtn onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} isLiked={isLiked} />
       </CardWarp>
     </>
   );

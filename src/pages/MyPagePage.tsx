@@ -38,13 +38,15 @@ function MyPage() {
 
   useEffect(() => {
     console.log('유저정보=>', 유저정보);
-    좋아요한_데이터_가져오기();
-    유저만의조합_수정([]);
-    꿀조합_받아오기(toggleState);
+    console.log('유저만의조합=>', 유저만의조합);
 
     if (!isLoggedin) {
       alert('로그인 먼저');
       navigate('/login');
+    } else {
+      좋아요한_데이터_가져오기();
+      유저만의조합_수정([]);
+      꿀조합_받아오기(toggleState);
     }
   }, [isLoggedin, navigate, toggleState]);
 
@@ -56,17 +58,20 @@ function MyPage() {
     [toggleState]
   );
 
-  const 꿀조합_받아오기 = useCallback(async (toggleState: boolean) => {
-    const tabToggle: string = toggleState ? '작성일' : '좋아요';
-    let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
+  const 꿀조합_받아오기 = useCallback(
+    async (toggleState: boolean) => {
+      const tabToggle: string = toggleState ? '작성일' : '좋아요';
+      let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
 
-    if (샌드위치_데이터) {
-      if (toggleState) {
-        샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
+      if (샌드위치_데이터) {
+        if (toggleState) {
+          샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
+        }
+        유저만의조합_수정(샌드위치_데이터);
       }
-      유저만의조합_수정(샌드위치_데이터);
-    }
-  }, []);
+    },
+    [유저만의조합]
+  );
 
   const 꿀조합_삭제_모달_열기 = useCallback((id: string) => {
     setTargetBestCombinationId(id);
