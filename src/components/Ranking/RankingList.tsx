@@ -2,10 +2,10 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { collection, DocumentData, query } from 'firebase/firestore';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
-import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
-import LoadingSpinner from '@components/Common/LoadingSpinner';
 import getYearMonthDate from '@utils/getYearMonthDate';
 import getRankingList from '@api/getRankingList';
+import CombinationRankingCard from '@components/Ranking/CombinationRankingCard';
+import LoadingSpinner from '@components/Common/LoadingSpinner';
 import Rank1 from '@assets/images/rankingBadge/rank_1.webp';
 import Rank2 from '@assets/images/rankingBadge/rank_2.webp';
 import Rank3 from '@assets/images/rankingBadge/rank_3.webp';
@@ -33,17 +33,17 @@ function RankingList() {
   const { state } = useLocation();
   const 현재탭: string = state || '맛잘알랭킹';
   const key = useRef<DocumentData | null>(null);
-  const [rankingList, setRankingList] = useState<인터페이스_꿀조합[]>([]);
-  const [position, setPosition] = useState<number>(-1);
+  const [랭킹리스트, 랭킹리스트_수정] = useState<인터페이스_꿀조합[]>([]);
+  // const [position, setPosition] = useState<number>(-1);
 
   const 꿀조합_컬렉션_정렬해서_가져오기 = useCallback(async (현재탭: String) => {
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
-    const 반환값 = await getRankingList(key.current, 정렬_조건, 10);
+    const 랭킹리스트_정보 = await getRankingList(key.current, 정렬_조건, 10);
 
-    if (반환값) {
-      key.current = 반환값.마지막_키;
+    if (랭킹리스트_정보) {
+      key.current = 랭킹리스트_정보.마지막_키;
       setTimeout(() => {
-        setRankingList(prev => [...prev, ...반환값.랭킹리스트]);
+        랭킹리스트_수정(prev => [...prev, ...랭킹리스트_정보.랭킹리스트]);
       }, 100);
     }
   }, []);
@@ -67,13 +67,13 @@ function RankingList() {
     // }
 
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
-    const 반환값 = await getRankingList(null, 정렬_조건, rankingList.length);
+    const 랭킹리스트_정보 = await getRankingList(null, 정렬_조건, 랭킹리스트.length);
 
-    if (반환값) {
-      key.current = 반환값.마지막_키;
+    if (랭킹리스트_정보) {
+      key.current = 랭킹리스트_정보.마지막_키;
       // const idx = 반환값.랭킹리스트.findIndex(ranking => ranking.id === id);
       // const insertedIdx = idx === -1 ? rankingList.length - 1 : idx;
-      setRankingList([...반환값.랭킹리스트]);
+      랭킹리스트_수정([...랭킹리스트_정보.랭킹리스트]);
 
       // setTimeout(() => {
       //   // setPosition(insertedIdx);
@@ -83,24 +83,24 @@ function RankingList() {
 
   const { listRef, hasMore } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기.bind(null, 현재탭),
-    rankingList.length,
+    랭킹리스트.length,
     query(collection(db, '꿀조합'))
   );
 
-  useEffect(() => {
-    // window.scrollTo({ left: 0, top: position * 120 + 300, behavior: 'smooth' });
-  }, [position]);
+  // useEffect(() => {
+  //   // window.scrollTo({ left: 0, top: position * 120 + 300, behavior: 'smooth' });
+  // }, [position]);
 
   useEffect(() => {
     key.current = null;
-    setRankingList([]);
+    랭킹리스트_수정([]);
     꿀조합_컬렉션_정렬해서_가져오기(현재탭);
   }, [현재탭]);
 
   return (
     <ul>
-      {rankingList.length > 0 &&
-        rankingList.map(({ id, 꿀조합제목, 이미지, 베이스샌드위치, 작성일, 뱃지리스트, 좋아요 }, i) => {
+      {랭킹리스트.length > 0 &&
+        랭킹리스트.map(({ id, 꿀조합제목, 이미지, 베이스샌드위치, 작성일, 뱃지리스트, 좋아요 }, i) => {
           let 랭킹_뱃지_이미지 = '';
           let 신규_샌드위치인가 = false;
 
@@ -118,7 +118,7 @@ function RankingList() {
             <CombinationRankingCard
               key={id}
               id={id}
-              listRef={i === rankingList.length - 1 ? listRef : null}
+              listRef={i === 랭킹리스트.length - 1 ? listRef : null}
               isNew={신규_샌드위치인가}
               rankingImage={랭킹_뱃지_이미지}
               rank={i + 1}

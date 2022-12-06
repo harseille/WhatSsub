@@ -74,7 +74,7 @@ const Nav = styled.nav`
   left: 0;
   bottom: 0;
   z-index: 1;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px -2px 2px #eee;
 
   ${mediaQuery} {

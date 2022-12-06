@@ -15,7 +15,7 @@ type TProps = {
   cancelButtonDesignType?: TDesignType;
 };
 
-function Backdrop({ onClose }: { onClose: () => void }) {
+export function Backdrop({ onClose }: { onClose: () => void }) {
   return <BackdropWrap onClick={onClose} />;
 }
 
@@ -119,7 +119,7 @@ const ModalWrap = styled.div`
   min-width: ${changeRem(360)};
   z-index: 100;
   overflow: hidden;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 4px;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.3);
 
@@ -130,7 +130,7 @@ const ModalWrap = styled.div`
 
   button:hover {
     background: ${props => props.theme.colors.primaryYellow};
-    color: #fff;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 

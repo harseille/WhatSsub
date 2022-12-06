@@ -6,7 +6,6 @@ import confettiOrange from '@assets/icons/confetti_orange.svg';
 import confettiYellow from '@assets/icons/confetti_yellow.svg';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
-import theme from '@styles/theme';
 import { autoMargin, changeRem } from '@styles/mixin';
 
 function BannerContainer() {
@@ -15,11 +14,11 @@ function BannerContainer() {
       <Visual>
         <Title>
           <Span display="block">
-            여러분의 <Span color={theme.colors.primaryGreen}>왔</Span>
-            <Span color={theme.colors.primaryYellow}>썹</Span>
+            여러분의 <GreenSpan>왔</GreenSpan>
+            <YellowSpan>썹</YellowSpan>
           </Span>
           <Span>
-            <Span color={theme.colors.primaryYellow}>꿀조합</Span>을 공유해보세요.
+            <YellowSpan>꿀조합</YellowSpan>을 공유해보세요.
           </Span>
         </Title>
         <VisualImg src={danzziAnnung} alt="안눙이라고 말하는 단찌" />
@@ -70,4 +69,11 @@ const VisualImg = styled.img`
   ${mediaQuery} {
     width: ${changeRem(280)};
   }
+`;
+
+const GreenSpan = styled(Span)`
+  color: ${({ theme }) => theme.colors.primaryGreen};
+`;
+const YellowSpan = styled(Span)`
+  color: ${({ theme }) => theme.colors.primaryYellow};
 `;

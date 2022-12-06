@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import Modal from '@components/Common/UI/Modal';
@@ -42,7 +41,6 @@ function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
 }
 
 export default SandwichInfoCard;
-// export default React.memo(SandwichInfoCard, (prevProps, nextProps) => prevProps.sandwich.id === nextProps.sandwich.id);
 
 const CardWarp = styled.li`
   min-width: ${changeRem(340)};
@@ -52,7 +50,7 @@ const CardWarp = styled.li`
   max-width: ${changeRem(370)};
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
   &:hover {

@@ -36,7 +36,7 @@ function HeaderContiner({ author, like }: Tprops) {
         <h2>
           <span>{author}</span> 만의 조합
         </h2>
-        <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글.bind(null, 'fullfilled')} />
+        <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} />
       </Header>
     </>
   );
@@ -47,7 +47,7 @@ export default HeaderContiner;
 const Header = styled.div`
   ${flexbox('row', 'space-between', 'center')}
   height: 48px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   position: relative;
   padding: ${changeRem(40)} ${changeRem(16)};
   & h2 {

@@ -1,6 +1,6 @@
+import getOAuthProvider from '@services/Firebase/Auth/getOAuthProvider';
 import Button from '@components/Common/UI/Button';
 import Wrapper from '@components/Common/UI/Wrapper';
-import getOAuthProvider from '@services/Firebase/Auth/getOAuthProvider';
 import iconFacebook from '@assets/icons/facebook.svg';
 import iconGmail from '@assets/icons/gmail.svg';
 import styled from '@emotion/styled';

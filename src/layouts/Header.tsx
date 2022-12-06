@@ -27,7 +27,7 @@ const HeaderWrap = styled.header`
   width: 100%;
   z-index: 3;
   min-width: 35px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 2px 2px #eee;
 `;
 

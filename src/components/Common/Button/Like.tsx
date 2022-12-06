@@ -1,8 +1,7 @@
+import likeCountLntl from '@utils/likeCountIntl';
 import Button from '@components/Common/UI/Button';
 import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
-import likeCountLntl from '@utils/likeCountIntl';
-import theme from '@styles/theme';
 
 type TProps = {
   count: number;
@@ -50,8 +49,8 @@ const LikeButton = styled(Button)<{ isLiked: boolean }>`
     overflow: visible;
   }
 
-  fill: ${({ isLiked }) => (isLiked ? theme.colors.primaryYellow : 'transparent')};
-  stroke: ${({ isLiked }) => (isLiked ? theme.colors.primaryYellow : theme.colors.primaryGreen)};
+  fill: ${({ isLiked, theme }) => (isLiked ? theme.colors.primaryYellow : 'transparent')};
+  stroke: ${({ isLiked, theme }) => (isLiked ? theme.colors.primaryYellow : theme.colors.primaryGreen)};
   stroke-width: 40;
 
   path {
@@ -85,8 +84,7 @@ const LikeButton = styled(Button)<{ isLiked: boolean }>`
       transform: scale(1);
     }
     80% {
-      fill: var(--pink);
-      fill: ${theme.colors.primaryYellow};
+      fill: ${({ theme }) => theme.colors.primaryYellow};
       transform: scale(1.1);
     }
     90% {

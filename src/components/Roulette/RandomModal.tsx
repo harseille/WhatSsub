@@ -1,21 +1,18 @@
 import { createPortal } from 'react-dom';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import IngredientInfo from '@components/Ingredient/IngredientInfo';
+import Button from '@components/Common/UI/Button';
+import { Backdrop } from '@components/Common/UI/Modal';
+import convertRandomSandwichInfo from '@services/Random/convertRandomSandwichInfo';
 import xBtn from '@assets/icons/x-btn.svg';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
-import convertRandomSandwichInfo from '@services/Random/convertRandomSandwichInfo';
-import { 인터페이스_꿀조합_랜덤2 } from '@typings/ISandwich';
-import DimmedLayer from '@components/Common/UI/DimmedLayer';
+import { 인터페이스_꿀조합_랜덤_룰렛 } from '@typings/ISandwich';
 
 type TProps = {
   onClick: () => void;
-  sandwich: 인터페이스_꿀조합_랜덤2;
+  sandwich: 인터페이스_꿀조합_랜덤_룰렛;
 };
-
-function BackDrop({ onClick }: { onClick: () => void }) {
-  return <DimmedLayer onClick={onClick} />;
-}
 
 function ModalOverlay({ onClick, sandwich }: TProps) {
   const { sandwich: sandwichData, ingredientInfo } = convertRandomSandwichInfo(sandwich);
@@ -28,7 +25,9 @@ function ModalOverlay({ onClick, sandwich }: TProps) {
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={sandwichData} />
         <IngredientInfo ingredientList={ingredientInfo} />
-        <ReturnBtn onClick={onClick}>다시 돌리러 가기</ReturnBtn>
+        <Button onClick={onClick} designType="primaryYellow" minWidth={changeRem(284)} height={changeRem(50)}>
+          다시 돌리러 가기
+        </Button>
       </SandwichInfoWrapper>
     </Card>
   );
@@ -37,7 +36,7 @@ function ModalOverlay({ onClick, sandwich }: TProps) {
 function RandomModal({ onClick, sandwich }: TProps) {
   return (
     <>
-      {createPortal(<BackDrop onClick={onClick} />, document.getElementById('backdrop-root')!)}
+      {createPortal(<Backdrop onClose={onClick} />, document.getElementById('backdrop-root')!)}
       {createPortal(<ModalOverlay onClick={onClick} sandwich={sandwich} />, document.getElementById('modal-root')!)}
     </>
   );
@@ -46,7 +45,7 @@ function RandomModal({ onClick, sandwich }: TProps) {
 export default RandomModal;
 
 const Card = styled.div`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
   z-index: 10;
   position: fixed;
   left: 50%;
@@ -86,14 +85,4 @@ const Title = styled.div`
   text-align: center;
   font-size: 24px;
   font-weight: 700;
-`;
-const ReturnBtn = styled.button`
-  width: ${changeRem(284)};
-  height: ${changeRem(50)};
-  background-color: ${props => props.theme.colors.primaryYellow};
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-  font-weight: 300;
-  cursor: pointer;
 `;

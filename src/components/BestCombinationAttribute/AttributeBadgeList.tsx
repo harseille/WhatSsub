@@ -3,7 +3,9 @@ import convertBadge from '@services/Attributes/convertBadge';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 
-function SandwichBadgeList({ badgeList }: { badgeList: string[] }) {
+type Tprops = { badgeList: string[] };
+
+function SandwichBadgeList({ badgeList }: Tprops) {
   const 변환된_뱃지_리스트 = convertBadge(badgeList);
 
   return (
