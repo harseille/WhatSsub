@@ -24,10 +24,10 @@ module.exports = {
       patterns: [
         { from: 'vercel.json' },
         { from: 'public/robots.txt' },
-        { from: 'public/maskable_icon.png' },
         { from: 'public/manifest.json' },
         { from: 'public/pwabuilder-sw.js' },
         { from: 'public/offline.html' },
+        { from: 'public/icons' },
       ],
     }),
     new Dotenv({
