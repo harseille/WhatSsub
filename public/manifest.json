@@ -30,7 +30,7 @@
       "platform": "wide"
     },
     {
-      "src": "../src/assets/screenshot/screenshot4.png",
+      "src": "../src/assets/screenshot/screenshot4.jpg",
       "sizes": "414x844",
       "type": "image/jpg",
       "platform": "wide"
@@ -38,7 +38,7 @@
   ],
   "icons": [
     {
-      "src": "https://firebasestorage.googleapis.com/v0/b/whatssub-fce96.appspot.com/o/images%2Flogo%2Flogo.svg?alt=media&amp;token=1889cd49-1be0-4244-994c-3b5cba44d8b2"
+      "src": "../src/assets/icons/icon.jpg"
     }
   ],
   "shortcuts": [],
