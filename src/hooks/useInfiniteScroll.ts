@@ -9,7 +9,7 @@ const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery:
     const getServerDataLength = async () => {
       const querySnapshot = await getCountFromServer(query(dbCountQuery));
 
-      console.log(dataLength, querySnapshot.data().count);
+      // console.log(dataLength, querySnapshot.data().count);
 
       if (dataLength !== querySnapshot.data().count) {
         setHasMore(true);
@@ -27,11 +27,11 @@ const useInfiniteScroll = (callback: Function, dataLength: number, dbCountQuery:
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(
         async entries => {
-          console.log(entries);
+          // console.log(entries);
           if (entries[0].isIntersecting) {
             // setIsLoading(true);
             if (hasMore) {
-              console.log('실행');
+              // console.log('실행');
               await callback();
 
               setIsLoading(false);

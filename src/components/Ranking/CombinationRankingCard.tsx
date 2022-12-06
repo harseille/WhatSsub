@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, MouseEvent, useCallback, RefObject, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { User } from 'firebase/auth';
+import { userState } from '@state/index';
+import { userLike } from '@state/User';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
@@ -20,6 +24,7 @@ type TProps = {
   originName: string;
   badgeList: string[];
   like: number;
+  rearrangeList: (id: string, likeCount: number, isIncreasing: boolean) => void;
 };
 
 function CombinationRankingCard({
@@ -34,13 +39,26 @@ function CombinationRankingCard({
   originName: 베이스샌드위치,
   badgeList: 뱃지리스트,
   like: 좋아요,
+  rearrangeList: 리스트_재정렬,
 }: TProps) {
   const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
     useLikedBestCombination(id);
+  const 유저 = useRecoilValue<User | null>(userState);
+  const 좋아요한_샌드위치 = useRecoilValue(userLike);
 
   useEffect(() => {
     setLikeCount(좋아요);
   }, [setLikeCount, 좋아요]);
+
+  const 좋아요_토글 = useCallback(
+    async (e: MouseEvent) => {
+      const isIncreasing = !좋아요한_샌드위치.includes(id);
+      await 클릭핸들러_좋아요_토글(e);
+
+      if (유저) 리스트_재정렬(id, likeCount, isIncreasing);
+    },
+    [id, likeCount]
+  );
 
   return (
     <>
@@ -65,7 +83,7 @@ function CombinationRankingCard({
             <RankingContents>
               <Title>{이름}</Title>
               <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글} />
+              <Like count={likeCount} isLiked={isLiked} onClick={좋아요_토글} />
             </RankingContents>
           </RankingCard>
         </RankingCardWrapper>
@@ -80,19 +98,24 @@ const RankingCardWrapper = styled(Link)`
   position: relative;
   display: block;
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate3d(-5px, -5px, 0);
+  }
 `;
 
 const RankBadge = styled.img`
   position: absolute;
-  right: -18px;
-  top: -28px;
+  right: -5px;
+  top: -10px;
   z-index: 1;
-  width: 90px;
+  width: ${changeRem(60)};
 
   ${mediaQuery} {
-    width: 106px;
-    top: -40px;
-    right: -25px;
+    width: ${changeRem(80)};
+    top: -35px;
+    right: -10px;
   }
 `;
 
