@@ -53,7 +53,7 @@ function CombinationRankingCard({
   const 좋아요_토글 = useCallback(
     async (e: MouseEvent) => {
       const isIncreasing = !좋아요한_샌드위치.includes(id);
-      await 클릭핸들러_좋아요_토글(e);
+      await 클릭핸들러_좋아요_토글('fulfilled', e);
 
       if (유저) 리스트_재정렬(id, likeCount, isIncreasing);
     },
@@ -83,7 +83,7 @@ function CombinationRankingCard({
             <RankingContents>
               <Title>{이름}</Title>
               <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} />
+              <Like count={likeCount} isLiked={isLiked} onClick={좋아요_토글} />
             </RankingContents>
           </RankingCard>
         </RankingCardWrapper>
