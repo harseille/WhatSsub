@@ -29,6 +29,7 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
   );
 }
 
+// export default React.memo(MyPageList);
 export default React.memo(MyPageList);
 
 const Container = styled.div`

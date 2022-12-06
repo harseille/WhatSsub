@@ -10,7 +10,7 @@ const Contents = lazy(() => import('@components/BestCombinationDetail/Contents')
 
 function BestCombinationDetailPage() {
   const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
-  console.log(꿀조합, 'dsfsd');
+
   return (
     <Wrapper>
       <Header author={꿀조합.작성자} like={꿀조합.좋아요} />

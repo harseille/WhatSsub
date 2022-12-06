@@ -65,7 +65,7 @@ function CombinationRankingCard({
             <RankingContents>
               <Title>{이름}</Title>
               <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글} />
+              <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} />
             </RankingContents>
           </RankingCard>
         </RankingCardWrapper>
