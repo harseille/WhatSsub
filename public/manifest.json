@@ -9,7 +9,7 @@
   "short_name": "WhatSsub",
   "start_url": "https://what-ssub.vercel.app/",
   "theme_color": "#ffffff",
-  "categories": ["recommend", "community"],
+  "categories": ["food", "productivity"],
   "screenshots": [
     {
       "src": "../src/assets/screenshot/screenshot1.jpg",
@@ -38,7 +38,24 @@
   ],
   "icons": [
     {
-      "src": "../src/assets/icons/maskable_icon.png"
+      "src": "/dist/icons/android/android-launchericon-48-48.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/dist/icons/android/android-launchericon-96-96.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/dist/icons/ios/50.png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "/dist/icons/ios/100.png",
+      "sizes": "100x100"
+    },
+    {
+      "src": "/dist/icons/android/android-launchericon-144-144.png",
+      "sizes": "any"
     }
   ],
   "shortcuts": [],
