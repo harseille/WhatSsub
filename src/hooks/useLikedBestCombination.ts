@@ -1,23 +1,23 @@
 import { useState, useEffect, MouseEvent } from 'react';
 import { useRecoilState } from 'recoil';
 import { userLike } from '@state/User';
-import dbUpdate from '@api/dbUpdate';
 import { increment } from 'firebase/firestore';
+import dbUpdate from '@api/dbUpdate';
 import useCheckLogin from './useCheckLogin';
 
 const useLikedBestCombination = (id: string) => {
   const { userInfo, isShowModal, toggleModal, navigateLoginPage } = useCheckLogin();
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
-  const [likeCount, setLikeCount] = useState<number>(0);
+  const [좋아요_개수, 좋아요_개수_수정] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const isLiked = 좋아요한샌드위치.includes(id);
+  const 좋아요한_샌드위치인가 = 좋아요한샌드위치.includes(id);
 
   useEffect(() => {
     if (userInfo) dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: 좋아요한샌드위치 });
-    console.log('likeCount', likeCount);
+    console.log('likeCount', 좋아요_개수);
     console.log(좋아요한샌드위치);
     setIsPlaying(false);
-  }, [userInfo, 좋아요한샌드위치, likeCount]);
+  }, [userInfo, 좋아요한샌드위치, 좋아요_개수]);
 
   const 클릭핸들러_좋아요_토글 = async (status: string, e: MouseEvent) => {
     e.preventDefault();
@@ -35,10 +35,10 @@ const useLikedBestCombination = (id: string) => {
     setIsPlaying(true);
     if (좋아요한샌드위치.includes(id)) {
       await dbUpdate('꿀조합', id, { 좋아요: increment(-1) });
-      setLikeCount(prev => prev - 1);
+      좋아요_개수_수정(prev => prev - 1);
     } else {
       await dbUpdate('꿀조합', id, { 좋아요: increment(1) });
-      setLikeCount(prev => prev + 1);
+      좋아요_개수_수정(prev => prev + 1);
     }
 
     if (status !== 'pending') {
@@ -71,10 +71,10 @@ const useLikedBestCombination = (id: string) => {
     isShowModal,
     toggleModal,
     navigateLoginPage,
-    isLiked,
+    좋아요한_샌드위치인가,
     클릭핸들러_좋아요_토글,
-    likeCount,
-    setLikeCount,
+    좋아요_개수,
+    좋아요_개수_수정,
     좋아요한샌드위치,
     좋아요한샌드위치_수정,
   };

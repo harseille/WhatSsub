@@ -41,23 +41,30 @@ function CombinationRankingCard({
   like: 좋아요,
   rearrangeList: 리스트_재정렬,
 }: TProps) {
-  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
-    useLikedBestCombination(id);
-  const 유저 = useRecoilValue<User | null>(userState);
+  const {
+    isShowModal,
+    toggleModal,
+    navigateLoginPage,
+    좋아요한_샌드위치인가,
+    클릭핸들러_좋아요_토글,
+    좋아요_개수,
+    좋아요_개수_수정,
+  } = useLikedBestCombination(id);
+  const 유저정보 = useRecoilValue<User | null>(userState);
   const 좋아요한_샌드위치 = useRecoilValue(userLike);
 
   useEffect(() => {
-    setLikeCount(좋아요);
-  }, [setLikeCount, 좋아요]);
+    좋아요_개수_수정(좋아요);
+  }, [좋아요_개수_수정, 좋아요]);
 
   const 좋아요_토글 = useCallback(
     (e: MouseEvent) => {
       const isIncreasing = !좋아요한_샌드위치.includes(id);
       클릭핸들러_좋아요_토글('fulfilled', e);
 
-      if (유저) 리스트_재정렬(id, likeCount, isIncreasing);
+      if (유저정보) 리스트_재정렬(id, 좋아요_개수, isIncreasing);
     },
-    [id, likeCount]
+    [id, 좋아요_개수]
   );
 
   return (
@@ -83,7 +90,7 @@ function CombinationRankingCard({
             <RankingContents>
               <Title>{이름}</Title>
               <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={좋아요} isLiked={isLiked} onClick={좋아요_토글} />
+              <Like count={좋아요} isLiked={좋아요한_샌드위치인가} onClick={좋아요_토글} />
             </RankingContents>
           </RankingCard>
         </RankingCardWrapper>

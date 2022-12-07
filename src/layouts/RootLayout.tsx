@@ -1,4 +1,5 @@
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import useScrollTop from '@hooks/useScrollTop';
 import Header from '@layouts/Header';
 import Top from '@components/Common/Button/Top';
@@ -8,9 +9,15 @@ import mediaQuery from '@styles/media-queries';
 function RootLayout() {
   const { isShowTop } = useScrollTop();
 
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Layout>
-      <ScrollRestoration />
+      {/* <ScrollRestoration /> */}
       <Header />
       <Main>
         <Outlet />

@@ -40,7 +40,6 @@ const getOAuthProvider = (bender: string) => async (e: React.MouseEvent) => {
     getUserLike(result);
   } catch (error) {
     console.error(error);
-    alert('로그인 실패했습니다. 다시 시도해주세요');
   }
 };
 

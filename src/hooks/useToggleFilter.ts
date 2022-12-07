@@ -25,8 +25,9 @@ const useToggleFilter = (initFilter: { [key: string]: string[] }) => {
       setSelectedFilter(prevState => {
         const filterArr: string[] = prevState[filter];
 
-        if (filterArr.includes(name))
+        if (filterArr.includes(name)) {
           return { ...prevState, [filter]: filterArr.filter((item: string) => item !== name) };
+        }
 
         return { ...prevState, [filter]: [...filterArr, name] };
       });

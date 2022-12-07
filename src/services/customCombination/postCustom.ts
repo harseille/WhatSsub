@@ -3,34 +3,33 @@ import { dbPush } from '@api/index';
 import ingredients from '@data/ingredients';
 import recipe from '@data/recipe';
 import { 재료_카테고리 } from '@constants/CustomCombination/constants';
-
 import { 인터페이스_생성단계_꿀조합, 인터페이스_메인재료 } from '@typings/ISandwich';
 
-type TProps = {
+type TArgument = {
   customCombination: 인터페이스_생성단계_꿀조합;
   value: string;
   userInfo: { id: string | undefined; name: string | null | undefined };
 };
 
-const 뱃지리스트_추가하기 = (조합: 인터페이스_생성단계_꿀조합, 나만의_조합: 인터페이스_생성단계_꿀조합) => {
+const 뱃지리스트_추가하기 = (꿀조합: 인터페이스_생성단계_꿀조합, 나만의_조합: 인터페이스_생성단계_꿀조합) => {
   const 전체_메인재료_목록: 인터페이스_메인재료[] = ingredients[0].목록;
 
-  const 메인재료 = recipe.find(레시피 => 레시피.이름 === 조합.베이스샌드위치)?.재료목록 as string[];
+  const 메인재료 = recipe.find(레시피 => 레시피.이름 === 꿀조합.베이스샌드위치)?.재료목록 as string[];
   const 재료_뱃지 = 메인재료.map(메인재료 => 전체_메인재료_목록.find(재료 => 재료.이름 === 메인재료)?.속성);
 
-  조합.뱃지리스트 = [...new Set(재료_뱃지)] as string[];
+  꿀조합.뱃지리스트 = [...new Set(재료_뱃지)] as string[];
 
   나만의_조합.선택재료.map(재료 => {
-    if (재료.카테고리 === 재료_카테고리.추가재료 && !조합.뱃지리스트.includes(재료.속성 as string))
-      조합.뱃지리스트.push(재료.속성 as string);
-    else if (재료.카테고리 === 재료_카테고리.소스 && !조합.뱃지리스트.includes(재료.속성 as string))
-      조합.뱃지리스트.push(재료.속성 as string);
+    if (재료.카테고리 === 재료_카테고리.추가재료 && !꿀조합.뱃지리스트.includes(재료.속성 as string))
+      꿀조합.뱃지리스트.push(재료.속성 as string);
+    else if (재료.카테고리 === 재료_카테고리.소스 && !꿀조합.뱃지리스트.includes(재료.속성 as string))
+      꿀조합.뱃지리스트.push(재료.속성 as string);
     return undefined;
   });
 };
 
-const 조합_정리하기 = (props: TProps) => {
-  const { customCombination: 나만의_조합, value: 꿀조합_제목, userInfo } = props;
+const 조합_정리하기 = (args: TArgument) => {
+  const { customCombination: 나만의_조합, value: 꿀조합_제목, userInfo } = args;
 
   const 조합 = { ...나만의_조합 };
 
@@ -56,8 +55,8 @@ const 조합_정리하기 = (props: TProps) => {
   return 조합;
 };
 
-const postCustom = async (props: TProps) => {
-  const { customCombination, value, userInfo } = props;
+const 꿀조합_등록하기 = async (args: TArgument) => {
+  const { customCombination, value, userInfo } = args;
 
   const 조합_정보 = 조합_정리하기({ customCombination, value, userInfo });
   const 조합_등록 = await dbPush('꿀조합', 조합_정보);
@@ -65,4 +64,4 @@ const postCustom = async (props: TProps) => {
   return 조합_등록;
 };
 
-export default postCustom;
+export default 꿀조합_등록하기;
