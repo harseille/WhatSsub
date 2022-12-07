@@ -6,7 +6,7 @@ function IngredientInfo({ ingredientList }: { ingredientList: 인터페이스_�
   const 재료_조합_리스트 = ingredientList.map(재료 => (
     <li key={재료.id}>
       <p>
-        <span>{재료.카테고리}</span>
+        <span>{재료.카테고리}: </span>
         {Array.isArray(재료.이름) ? <span>{재료.이름.join(', ')}</span> : <span>{재료.이름}</span>}
       </p>
     </li>
