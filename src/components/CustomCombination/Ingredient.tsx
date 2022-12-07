@@ -1,4 +1,4 @@
-import selectIngredients from '@services/customCombination/selectIngredients';
+import 재료선택하기 from '@services/customCombination/selectIngredients';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
@@ -19,7 +19,7 @@ function Ingredient({
   changeModalType,
 }: TProps) {
   const 클릭핸들러_재료_선택 = () =>
-    selectIngredients({ 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정, changeModalType });
+    재료선택하기({ 재료정보, 나만의_조합, 체인지핸들러_나만의_조합_수정, changeModalType });
 
   const bgColor = isSelected ? '#FFF5DE' : '#f1f0f0';
   const color = isSelected ? '#F37500' : '#4F4F4F';

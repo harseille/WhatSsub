@@ -13,7 +13,8 @@ type TProps = {
 };
 
 function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
-  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글 } = useLikedBestCombination(id);
+  const { isShowModal, toggleModal, navigateLoginPage, 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글 } =
+    useLikedBestCombination(id);
   const navigate = useNavigate();
 
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
@@ -34,7 +35,7 @@ function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
       )}
       <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
         <SandwichInfo sandwich={sandwich} />
-        <LikeRedBtn onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} isLiked={isLiked} />
+        <LikeRedBtn onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} isLiked={좋아요한_샌드위치인가} />
       </CardWarp>
     </>
   );

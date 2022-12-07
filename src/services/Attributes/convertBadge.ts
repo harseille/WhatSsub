@@ -1,5 +1,5 @@
+import 꿀조합속성 from '@data/PickAttribute';
 import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
-import 꿀조합속성 from '../../data/PickAttribute';
 
 const 속성카테고리 = Object.fromEntries(꿀조합속성.map(뱃지 => [뱃지.이름, 뱃지.속성목록.map(속성 => 속성.이름)]));
 

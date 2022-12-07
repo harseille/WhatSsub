@@ -1,15 +1,31 @@
-import { lazy } from 'react';
-import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
 import { Header } from '@components/BestCombinationDetail/index';
+import Contents from '@components/BestCombinationDetail/Contents';
 import CommentsContainer from '@components/Comments/CommentsContainer';
 import getBestCombination from '@api/getBestCombination';
-import { 인터페이스_꿀조합 } from '@typings/ISandwich';
-
-const Contents = lazy(() => import('@components/BestCombinationDetail/Contents'));
+import { DocumentData } from 'firebase/firestore';
+import { 나만의_조합_초기값 } from '@constants/CustomCombination/constants';
 
 function BestCombinationDetailPage() {
-  const 꿀조합 = useLoaderData() as 인터페이스_꿀조합;
+  const [꿀조합, 꿀조합_수정] = useState<DocumentData>(나만의_조합_초기값);
+  const { combinationId } = useParams();
+
+  const 꿀조합_가져오기 = async (꿀조합id: string) => {
+    const 꿀조합 = await getBestCombination(꿀조합id);
+    if (꿀조합 === undefined) {
+      throw new Response('', {
+        status: 404,
+        statusText: 'Not Found',
+      });
+    }
+    꿀조합_수정(꿀조합);
+  };
+
+  useEffect(() => {
+    꿀조합_가져오기(combinationId!);
+  }, [combinationId]);
 
   return (
     <Wrapper>
@@ -32,14 +48,3 @@ function BestCombinationDetailPage() {
 }
 
 export default BestCombinationDetailPage;
-
-export const loader = ({ params }: LoaderFunctionArgs) => {
-  const 꿀조합 = getBestCombination(params.combinationId!);
-  if (꿀조합 === undefined) {
-    throw new Response('', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
-  return 꿀조합;
-};

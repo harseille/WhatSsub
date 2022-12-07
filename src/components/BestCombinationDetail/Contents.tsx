@@ -18,7 +18,7 @@ type TProps = {
 
 function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProps) {
   const { combinationId } = useParams();
-  const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
+  const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저정보 } = useDeleteBestCombination(combinationId!);
 
   const navigate = useNavigate();
   const 꿀조합_상세_페이지_꿀조합_삭제하기 = () => {
@@ -43,7 +43,7 @@ function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProp
       <Contents>
         <SandwichInfo sandwich={sandwich} />
         <IngredientCardList ingredientList={ingredientList} toasting={toasting} />
-        {유저?.uid === author ? (
+        {유저정보?.uid === author ? (
           <ButtonContainer>
             <BestCombinationDeleteButton
               designType="primaryOrange"

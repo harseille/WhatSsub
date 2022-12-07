@@ -1,4 +1,3 @@
-// TODO: 리팩토링 필요
 const setFirebaseImgURL = (url: string) => {
   const _url = url.split('images');
   const reg = /[/+]/g;

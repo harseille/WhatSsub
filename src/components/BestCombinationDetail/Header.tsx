@@ -14,12 +14,19 @@ type Tprops = {
 
 function HeaderContiner({ author, like }: Tprops) {
   const { combinationId } = useParams();
-  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
-    useLikedBestCombination(combinationId!);
+  const {
+    isShowModal,
+    toggleModal,
+    navigateLoginPage,
+    좋아요한_샌드위치인가,
+    클릭핸들러_좋아요_토글,
+    좋아요_개수,
+    좋아요_개수_수정,
+  } = useLikedBestCombination(combinationId!);
 
   useEffect(() => {
-    setLikeCount(like);
-  }, [setLikeCount, like]);
+    좋아요_개수_수정(like);
+  }, [좋아요_개수_수정, like]);
 
   return (
     <>
@@ -36,7 +43,11 @@ function HeaderContiner({ author, like }: Tprops) {
         <h2>
           <span>{author}</span> 만의 조합
         </h2>
-        <Like count={likeCount} isLiked={isLiked} onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} />
+        <Like
+          count={좋아요_개수}
+          isLiked={좋아요한_샌드위치인가}
+          onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')}
+        />
       </Header>
     </>
   );

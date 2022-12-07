@@ -18,8 +18,8 @@ module.exports = {
     historyApiFallback: true,
     port: 3000,
   },
-  // plugins: [new Dotenv(), new BundleAnalyzerPlugin()],
-  plugins: [new Dotenv()],
+  plugins: [new Dotenv(), new BundleAnalyzerPlugin()],
+  // plugins: [new Dotenv()],
   optimization: {
     splitChunks: {
       cacheGroups: {
