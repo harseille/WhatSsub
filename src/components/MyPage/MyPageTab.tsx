@@ -12,6 +12,7 @@ type TProps = {
 };
 function MyPageTab({ isSelectedTab, onClick }: TProps) {
   const 유저정보: User | null = useRecoilValue(userState);
+  console.log(isSelectedTab);
   return (
     <Container>
       <Title onClick={onClick} isSelectedTab={isSelectedTab}>
