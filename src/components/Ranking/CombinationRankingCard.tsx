@@ -1,6 +1,6 @@
 import { useEffect, MouseEvent, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { userLike } from '@state/User';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
@@ -11,6 +11,7 @@ import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
+import isPlaying from '@state/isPlaying';
 
 type TProps = {
   id: string;
@@ -24,7 +25,7 @@ type TProps = {
   originName: string;
   badgeList: string[];
   like: number;
-  rearrangeList: (id: string, likeCount: number, isIncreasing: boolean) => void;
+  rearrangeList: (id: string, isIncreasing: boolean) => void;
 };
 
 function CombinationRankingCard({
@@ -47,24 +48,29 @@ function CombinationRankingCard({
     navigateLoginPage,
     좋아요한_샌드위치인가,
     클릭핸들러_좋아요_토글,
-    좋아요_개수,
     좋아요_개수_수정,
   } = useLikedBestCombination(id);
   const 유저정보 = useRecoilValue<User | null>(userState);
   const 좋아요한_샌드위치 = useRecoilValue(userLike);
+  const [작동하는가, 작동하는가_수정] = useRecoilState(isPlaying);
 
   useEffect(() => {
     좋아요_개수_수정(좋아요);
   }, [좋아요_개수_수정, 좋아요]);
 
   const 좋아요_토글 = useCallback(
-    (e: MouseEvent) => {
-      const isIncreasing = !좋아요한_샌드위치.includes(id);
-      클릭핸들러_좋아요_토글('fulfilled', e);
+    async (e: MouseEvent) => {
+      e.preventDefault();
 
-      if (유저정보) 리스트_재정렬(id, 좋아요_개수, isIncreasing);
+      if (작동하는가) return;
+      작동하는가_수정(true);
+
+      const 좋아요_개수_증가하는가 = !좋아요한_샌드위치.includes(id);
+      await 클릭핸들러_좋아요_토글('fulfilled', e);
+
+      if (유저정보) 리스트_재정렬(id, 좋아요_개수_증가하는가);
     },
-    [id, 좋아요_개수]
+    [id, 작동하는가]
   );
 
   return (
