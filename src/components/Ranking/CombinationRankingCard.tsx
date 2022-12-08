@@ -1,8 +1,8 @@
-import { useEffect, MouseEvent, useCallback, memo } from 'react';
+import { MouseEvent, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
-import { userLike } from '@state/User';
+import isPlaying from '@state/isPlaying';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import Like from '@components/Common/Button/Like';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
@@ -11,8 +11,6 @@ import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 import isPlaying from '@state/isPlaying';
-import dbUpdate from '@api/dbUpdate';
-import { increment } from 'firebase/firestore';
 
 type TProps = {
   id: string;

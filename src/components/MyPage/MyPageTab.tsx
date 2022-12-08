@@ -12,6 +12,7 @@ type TProps = {
 };
 function MyPageTab({ isSelectedTab, onClick }: TProps) {
   const 유저정보: User | null = useRecoilValue(userState);
+  console.log(isSelectedTab);
   return (
     <Container>
       <Title onClick={onClick} isSelectedTab={isSelectedTab}>
@@ -35,7 +36,9 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.span<{ isSelectedTab: boolean }>`
+const Title = styled.button<{ isSelectedTab: boolean }>`
+  border: none;
+  backgoround-color: transparent;
   font-size: ${changeRem(16)};
   font-weight: bold;
   color: ${({ isSelectedTab, theme }) => (isSelectedTab ? theme.colors.black25 : theme.colors.black6b)};

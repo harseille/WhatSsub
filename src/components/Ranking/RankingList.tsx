@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import { collection, query } from 'firebase/firestore';
+import isPlaying from '@state/isPlaying';
 import useSetRankingList from '@hooks/useSetRankingList';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import useCheckLogin from '@hooks/useCheckLogin';
@@ -36,13 +38,12 @@ function RankingList() {
   const { isShowModal, toggleModal, navigateLoginPage } = useCheckLogin();
   const {
     key,
-    타이머_셋하기,
-    타이머_멈추기,
     랭킹리스트,
     랭킹리스트_수정,
     꿀조합_컬렉션_정렬해서_가져오기,
     리스트_재정렬,
   } = useSetRankingList(현재탭);
+
   const { listRef, hasMore } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기,
     랭킹리스트.length,
@@ -53,6 +54,7 @@ function RankingList() {
     key.current = null;
     랭킹리스트_수정([]);
     꿀조합_컬렉션_정렬해서_가져오기();
+    작동하는가_수정(false);
   }, [현재탭]);
 
   return (

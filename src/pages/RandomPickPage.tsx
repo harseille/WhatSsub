@@ -10,7 +10,7 @@ function RandomPickPage() {
   return (
     <Wrapper>
       <Container>
-        <Title>랜덤 조합 룰렛</Title>
+        <Title tabIndex={0}>랜덤 조합 룰렛</Title>
         <RandomRoulette />
         <DanzziContainer>
           <DanzziLeft src={danzziQuestion} alt="캐릭터 단찌 왼쪽" />

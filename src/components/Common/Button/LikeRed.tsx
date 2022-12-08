@@ -10,7 +10,6 @@ const LikeRedBtn = styled.button<{ isLiked: boolean }>`
   top: 16px;
   right: 16px;
   border: none;
-  outline: none;
   border-radius: 50%;
   width: ${changeRem(34)};
   height: ${changeRem(34)};

@@ -183,16 +183,18 @@ https://what-ssub.vercel.app/
   - lodash-es의 debounce 메서드를 활용한 custom hook으로 관리
 - 공통 Modal 컴포넌트
   - createPortal로 Modal과 Backdrop 제공
-  - Confirm 과 Alert 으로 사용가능하도록 범용성을 고려하여 제작
+  - Confirm 과 Alert 으로 사용가능하도록 범용성을 고려하여 개발
+- Progressive 이미지 제공으로 UX 개선
 
 #### 황도은
 
-- 메인 디자이너 & 피그마 장인 & 총무 & BTS 팬
+- 메인 디자인 총무
 - 랭킹리스트
   - 메뉴탭에 따라 꿀조합 데이터를 필터링하여 리스트 제공 (좋아요 순, 최신 순)
   - 꿀조합 리스트 제공 시 InterSection Observer API를 이용한 무한 스크롤 적용
   - Sorting된 꿀조합 랭킹 뱃지 기능 개발
   - 당일 기준 꿀조합 new 뱃지 추가 기능 개발
+  - 폴링 방식으로 랭킹 리스트 순위 업데이트
 
 ---
 
@@ -320,4 +322,11 @@ https://what-ssub.vercel.app/
 
 <br />
 
-<p>보다 자세한 회고는 <a href="https://www.notion.so/69cf2d64c62749808891a83a552d4528" target="_blank">여기</a>로</p>
+<p>개인별 회고는 아래를 참고해주세요</p>
+<ul>
+<li><a href="https://velog.io/@dadak/React-%EC%99%94%EC%8D%B9-%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0%EB%A1%9D" target="_blank">김다빈</a></li>
+<li><a href="https://velog.io/@dessin/%ED%9A%8C%EA%B3%A0%EB%A1%9D-React-TypeScript-Recoil%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%84%9C%EB%B8%8C%EC%9B%A8%EC%9D%B4-%EA%BF%80%EC%A1%B0%ED%95%A9-%EC%B6%94%EC%B2%9C-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8" target="_blank">박준하</a></li>
+<li><a href="https://working-gruyere-a9e.notion.site/c2b0789c3ab649998b9402bf69aa1a31" target="_blank">정세훈</a></li>
+<li><a href="https://velog.io/@o1_choi/WhatSsub-%ED%9A%8C%EA%B3%A0" target="_blank">최원오</a></li>
+<li><a href="https://velog.io/@dee0518/%EC%99%94%EC%8D%B9-%EB%A7%88%EB%AC%B4%EB%A6%AC-%ED%9A%8C%EA%B3%A0" target="_blank">황도은</a></li>
+</ul>

@@ -35,7 +35,6 @@ const TopBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: 50%;
-  outline: none;
   cursor: pointer;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
 

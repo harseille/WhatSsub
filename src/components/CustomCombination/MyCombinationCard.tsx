@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useEffect, useState, forwardRef, ForwardedRef } from 'react';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
 import Button from '@components/Common/UI/Button';
@@ -32,6 +33,10 @@ function MyCombinationCard(
 
   return (
     <Container>
+      <h2 tabIndex={0} className="sr-only">
+        지금까지 선택한 재료를 모두에게 공유하는 나만의 조합 만들기 페이지입니다. 만드신 샌드위치의 이름을 정하고 나만의
+        조합 만들기 버튼을 선택해 주세요.
+      </h2>
       <Danzzi src={danzziTrust} alt="단찌 믿음 아이콘" />
       <Card className="card">
         <DeleteBtn onClick={클릭핸들러_나만의_조합_취소하기} aria-label="조합 삭제 버튼" type="button">
@@ -51,7 +56,7 @@ function MyCombinationCard(
               required
               title="2 ~ 20 글자 이내로 제목을 정해주세요"
               type="text"
-              placeholder="왓썹의 이름은..?"
+              placeholder="왔썹의 이름은..?"
             />
             <CreateCombinationButton
               designType="AccessibilityGreen"
@@ -145,7 +150,7 @@ const Img = styled.img`
   min-height: ${changeRem(136)};
   ${mediaQuery} {
     max-width: 50%;
-    min-height: ${changeRem(332)};
+    min-height: ${changeRem(230)};
   }
 `;
 
