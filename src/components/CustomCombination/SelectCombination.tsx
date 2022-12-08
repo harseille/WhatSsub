@@ -49,7 +49,15 @@ function CustomStep({ currentStep: 현재진행도, customCombination: 나만의
     <CustomStepWrap>
       {스탭_재료_목록[현재진행도].map(카테고리 => (
         <IngredientsSection key={카테고리}>
-          <IngredientTitle>
+          <IngredientTitle
+            tabIndex={0}
+            aria-label={
+              필수_선택_재료.find(필수재료 => 필수재료 === 카테고리 || 카테고리 === 재료_카테고리.야채)
+                ? 카테고리 === 재료_카테고리.야채
+                  ? 카테고리 + ' 의 경우 뺴고 싶은 경우 선택해 주세요. 기본적으로 전체 야채가 선택되어 있습니다.'
+                  : 카테고리 + '선택 목록입니다. 해당 재료는 필수 선택 재료로 반드시 선택해 주셔야 합니다.'
+                : 카테고리 + ' 선택 목록입니다'
+            }>
             {필수_선택_재료.find(필수재료 => 필수재료 === 카테고리) ? 카테고리 + '*' : 카테고리}
           </IngredientTitle>
           <Ingredients>

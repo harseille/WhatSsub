@@ -25,7 +25,7 @@ function Ingredient({
   const color = isSelected ? '#F37500' : '#4F4F4F';
   return (
     <IngredientItem onClick={클릭핸들러_재료_선택} color={color} bgColor={bgColor}>
-      {재료정보.이름}
+      <button type="button">{재료정보.이름}</button>
     </IngredientItem>
   );
 }
@@ -43,4 +43,10 @@ const IngredientItem = styled.li<타입_속성>`
   padding: 4px 20px;
   border-radius: 15px;
   cursor: pointer;
+
+  & button {
+    border: none;
+    color: inherit;
+    background-color: inherit;
+  }
 `;
