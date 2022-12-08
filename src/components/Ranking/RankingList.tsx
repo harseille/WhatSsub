@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import { collection, query } from 'firebase/firestore';
+import isPlaying from '@state/isPlaying';
 import useSetRankingList from '@hooks/useSetRankingList';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
 import getYearMonthDate from '@utils/getYearMonthDate';
@@ -31,6 +33,7 @@ const 랭킹_순위: 타입_랭킹_순위 = {
 function RankingList() {
   const { state } = useLocation();
   const 현재탭: string = state || '맛잘알랭킹';
+  const 작동하는가_수정 = useSetRecoilState(isPlaying);
   const { key, 랭킹리스트, 랭킹리스트_수정, 꿀조합_컬렉션_정렬해서_가져오기, 리스트_재정렬 } =
     useSetRankingList(현재탭);
   const { listRef, hasMore } = useInfiniteScroll(
@@ -43,6 +46,7 @@ function RankingList() {
     key.current = null;
     랭킹리스트_수정([]);
     꿀조합_컬렉션_정렬해서_가져오기();
+    작동하는가_수정(false);
   }, [현재탭]);
 
   return (

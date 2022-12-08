@@ -56,7 +56,7 @@ function MyCombinationCard(
               required
               title="2 ~ 20 글자 이내로 제목을 정해주세요"
               type="text"
-              placeholder="왓썹의 이름은..?"
+              placeholder="왔썹의 이름은..?"
             />
             <CreateCombinationButton
               designType="AccessibilityGreen"
@@ -150,7 +150,7 @@ const Img = styled.img`
   min-height: ${changeRem(136)};
   ${mediaQuery} {
     max-width: 50%;
-    min-height: ${changeRem(332)};
+    min-height: ${changeRem(230)};
   }
 `;
 

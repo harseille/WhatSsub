@@ -126,6 +126,7 @@ function RandomRoulette() {
   const 룰렛_돌리기 = () => {
     const 랜덤결과 = Math.floor(Math.random() * 17);
     if (랜덤번호 === 랜덤결과) return;
+
     setIsShowButton(false);
     랜덤번호_수정(랜덤결과);
     룰렛_회전하기();
@@ -150,13 +151,20 @@ function RandomRoulette() {
       <Container>
         <ProgressiveImage src={spinBoard} placeholder={tinySpinBoard}>
           {(src, loading) => (
-            <Roulette style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt="룰렛" ref={rouletteRef} />
+            <Roulette
+              tabIndex={0}
+              style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }}
+              src={src}
+              alt="룰렛"
+              ref={rouletteRef}
+            />
           )}
         </ProgressiveImage>
         {isShowButton ? (
           <ProgressiveImage src={startBtn} placeholder={tinyStartBtn}>
             {(src, loading) => (
               <StartButton
+                tabIndex={0}
                 style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }}
                 src={src}
                 alt="시작 버튼"

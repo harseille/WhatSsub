@@ -34,6 +34,9 @@ html,
     text-decoration: none;
     color: inherit;
   }
+  button {
+    outline: focus-visible;
+  }
   .sr-only {
     overflow: hidden;
     position: absolute !important;

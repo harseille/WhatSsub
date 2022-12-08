@@ -115,9 +115,4 @@ export default styled.button<
 
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  :focus {
-    outline: 0;
-    -webkit-appearance: none;
-  }
 `;
