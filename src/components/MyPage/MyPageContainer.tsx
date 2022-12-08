@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoggedInState, userState } from '@state/index';
 import { userLike } from '@state/User';
@@ -17,13 +17,14 @@ import { getDoc, doc, collection, DocumentData } from 'firebase/firestore';
 import { db } from '../../firebase.config';
 
 function MyPageContainer() {
-  const navigate = useNavigate();
   const isLoggedin = useRecoilValue(isLoggedInState);
-  const [toggleState, setToggleState] = useState<boolean>(true);
   const [targetBestCombinationId, setTargetBestCombinationId] = useState<string | null>(null);
   const [유저만의조합, 유저만의조합_수정] = useState<인터페이스_꿀조합[]>([]);
   const 유저정보: User | null = useRecoilValue(userState);
   const 좋아요한샌드위치_수정 = useSetRecoilState(userLike);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const toggleState = state !== '좋아요한꿀조합';
 
   const { 꿀조합_삭제하기, 모달_토글하기, isShowModal } = useDeleteBestCombination(targetBestCombinationId!);
 
@@ -49,24 +50,29 @@ function MyPageContainer() {
   const 클릭핸들러_꿀조합_목록_변경 = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       const 사용자명_체크 = (e.target as HTMLSpanElement).textContent?.includes(`${유저정보?.displayName}`)!;
-      setToggleState(사용자명_체크);
+      if (사용자명_체크) {
+        navigate(`/MyPage?currentTab=${유저정보?.displayName}만의꿀조합`, {
+          state: `${유저정보?.displayName}만의 조합`,
+        });
+      } else {
+        navigate(`/MyPage?currentTab=좋아요한꿀조합`, {
+          state: '좋아요한꿀조합',
+        });
+      }
     },
-    [toggleState]
+    [유저정보]
   );
 
   const 꿀조합_받아오기 = useCallback(
     async (toggleState: boolean) => {
       const tabToggle: string = toggleState ? '작성일' : '좋아요';
-      let 샌드위치_데이터 = await getBestCombinationList(tabToggle);
+      const 샌드위치_데이터 = await getBestCombinationList(tabToggle);
 
       if (샌드위치_데이터) {
-        if (toggleState) {
-          샌드위치_데이터 = 샌드위치_데이터.filter((user: 인터페이스_꿀조합) => user.작성자id === 유저정보?.uid);
-        }
         유저만의조합_수정(샌드위치_데이터);
       }
     },
-    [유저만의조합]
+    [유저만의조합, toggleState]
   );
 
   const 꿀조합_삭제_모달_열기 = useCallback((id: string) => {
