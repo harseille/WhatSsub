@@ -34,6 +34,9 @@ html,
     text-decoration: none;
     color: inherit;
   }
+  button {
+    outline: focus-visible;
+  }
 `;
 
 export default globalStyle;

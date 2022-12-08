@@ -24,6 +24,7 @@ const useSetRankingList = (현재탭: string) => {
 
   const 리스트_재정렬 = async (id: string, 좋아요_개수_증가하는가: boolean) => {
     const 정렬_조건: string = 현재탭 === '맛잘알랭킹' ? '좋아요' : '작성일';
+    console.log('리스트_재정렬');
 
     if (정렬_조건 === '작성일') {
       랭킹리스트_수정(prev =>
@@ -51,7 +52,7 @@ const useSetRankingList = (현재탭: string) => {
         랭킹리스트_수정([...랭킹리스트_정보.랭킹리스트]);
       }
     }
-
+    console.log('랭킹');
     작동하는가_수정(false);
   };
 

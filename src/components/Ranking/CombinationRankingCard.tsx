@@ -2,6 +2,7 @@ import { useEffect, MouseEvent, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
+import isPlaying from '@state/isPlaying';
 import { userLike } from '@state/User';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
 import Modal from '@components/Common/UI/Modal';
@@ -11,7 +12,6 @@ import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
-import isPlaying from '@state/isPlaying';
 
 type TProps = {
   id: string;
@@ -56,12 +56,13 @@ function CombinationRankingCard({
 
   useEffect(() => {
     좋아요_개수_수정(좋아요);
+    console.log(작동하는가);
   }, [좋아요_개수_수정, 좋아요]);
 
   const 좋아요_토글 = useCallback(
     async (e: MouseEvent) => {
       e.preventDefault();
-
+      console.log(작동하는가);
       if (작동하는가) return;
       작동하는가_수정(true);
 

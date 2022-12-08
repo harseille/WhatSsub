@@ -40,8 +40,6 @@ const Card = styled.section`
   height: ${changeRem(108)};
   border-radius: ${changeRem(8)};
   text-align: center;
-
-  ${mediaQuery} {
     width: ${changeRem(88 * 1.2)};
     height: ${changeRem(108 * 1.2)};
   }
