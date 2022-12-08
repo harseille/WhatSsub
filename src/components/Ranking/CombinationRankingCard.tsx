@@ -11,6 +11,8 @@ import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
 import isPlaying from '@state/isPlaying';
+import dbUpdate from '@api/dbUpdate';
+import { increment } from 'firebase/firestore';
 
 type TProps = {
   id: string;
@@ -24,7 +26,7 @@ type TProps = {
   originName: string;
   badgeList: string[];
   like: number;
-  rearrangeList: (id: string, isIncreasing: boolean) => void;
+  rearrangeList: (id: string, delta: number) => void;
   openModal: () => void;
 };
 
@@ -43,18 +45,14 @@ function CombinationRankingCard({
   rearrangeList: 리스트_재정렬,
   openModal,
 }: TProps) {
-  const { 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글, 좋아요_개수_수정 } = useLikedBestCombination(id);
   const 유저정보 = useRecoilValue<User | null>(userState);
-  const 좋아요한_샌드위치 = useRecoilValue(userLike);
+  const { 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글 } = useLikedBestCombination(id);
   const [작동하는가, 작동하는가_수정] = useRecoilState(isPlaying);
 
-  useEffect(() => {
-    좋아요_개수_수정(좋아요);
-  }, [좋아요_개수_수정, 좋아요]);
-
   const 좋아요_토글 = useCallback(
-    (e: MouseEvent) => {
+    async (e: MouseEvent) => {
       e.preventDefault();
+
       if (!유저정보) {
         openModal();
         return;
@@ -63,11 +61,10 @@ function CombinationRankingCard({
       if (작동하는가) return;
       작동하는가_수정(true);
 
-      const 좋아요_개수_증가하는가 = !좋아요한_샌드위치.includes(id);
-      클릭핸들러_좋아요_토글('fulfilled', e);
-      리스트_재정렬(id, 좋아요_개수_증가하는가);
+      const delta = (await 클릭핸들러_좋아요_토글('fulfilled', e)) as number;
+      리스트_재정렬(id, delta);
     },
-    [id, 작동하는가]
+    [작동하는가]
   );
 
   return (
