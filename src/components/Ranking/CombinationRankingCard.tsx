@@ -4,7 +4,6 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
 import { userLike } from '@state/User';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
-import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
@@ -26,6 +25,7 @@ type TProps = {
   badgeList: string[];
   like: number;
   rearrangeList: (id: string, isIncreasing: boolean) => void;
+  openModal: () => void;
 };
 
 function CombinationRankingCard({
@@ -41,15 +41,9 @@ function CombinationRankingCard({
   badgeList: 뱃지리스트,
   like: 좋아요,
   rearrangeList: 리스트_재정렬,
+  openModal,
 }: TProps) {
-  const {
-    isShowModal,
-    toggleModal,
-    navigateLoginPage,
-    좋아요한_샌드위치인가,
-    클릭핸들러_좋아요_토글,
-    좋아요_개수_수정,
-  } = useLikedBestCombination(id);
+  const { 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글, 좋아요_개수_수정 } = useLikedBestCombination(id);
   const 유저정보 = useRecoilValue<User | null>(userState);
   const 좋아요한_샌드위치 = useRecoilValue(userLike);
   const [작동하는가, 작동하는가_수정] = useRecoilState(isPlaying);
@@ -59,49 +53,41 @@ function CombinationRankingCard({
   }, [좋아요_개수_수정, 좋아요]);
 
   const 좋아요_토글 = useCallback(
-    async (e: MouseEvent) => {
+    (e: MouseEvent) => {
       e.preventDefault();
+      if (!유저정보) {
+        openModal();
+        return;
+      }
 
       if (작동하는가) return;
       작동하는가_수정(true);
 
       const 좋아요_개수_증가하는가 = !좋아요한_샌드위치.includes(id);
-      await 클릭핸들러_좋아요_토글('fulfilled', e);
-
-      if (유저정보) 리스트_재정렬(id, 좋아요_개수_증가하는가);
+      클릭핸들러_좋아요_토글('fulfilled', e);
+      리스트_재정렬(id, 좋아요_개수_증가하는가);
     },
     [id, 작동하는가]
   );
 
   return (
-    <>
-      {isShowModal && (
-        <Modal
-          title="로그인이 필요한 서비스입니다."
-          message="로그인 페이지로 이동하시겠습니까?"
-          onEvent={navigateLoginPage}
-          onClose={toggleModal}
-          isConfirm="이동"
-        />
-      )}
-      <li ref={listRef}>
-        <RankingCardWrapper to={`/best-combination/${id}`}>
-          {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
-          {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
-          <RankingCard>
-            {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
-            <RankingImageWrap>
-              <img src={이미지} alt={베이스샌드위치} />
-            </RankingImageWrap>
-            <RankingContents>
-              <Title>{이름}</Title>
-              <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={좋아요} isLiked={좋아요한_샌드위치인가} onClick={좋아요_토글} />
-            </RankingContents>
-          </RankingCard>
-        </RankingCardWrapper>
-      </li>
-    </>
+    <li ref={listRef}>
+      <RankingCardWrapper to={`/best-combination/${id}`}>
+        {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
+        {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
+        <RankingCard>
+          {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
+          <RankingImageWrap>
+            <img src={이미지} alt={베이스샌드위치} />
+          </RankingImageWrap>
+          <RankingContents>
+            <Title>{이름}</Title>
+            <RankingBadgeList badgeList={뱃지리스트} />
+            <Like count={좋아요} isLiked={좋아요한_샌드위치인가} onClick={좋아요_토글} />
+          </RankingContents>
+        </RankingCard>
+      </RankingCardWrapper>
+    </li>
   );
 }
 
