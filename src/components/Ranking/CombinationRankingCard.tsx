@@ -10,7 +10,6 @@ import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 import { User } from 'firebase/auth';
-import isPlaying from '@state/isPlaying';
 
 type TProps = {
   id: string;
