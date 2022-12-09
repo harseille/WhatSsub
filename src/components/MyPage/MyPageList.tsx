@@ -17,7 +17,6 @@ type TProps = {
 function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
   const 유저정보: User | null = useRecoilValue(userState);
   const 좋아요한샌드위치: string[] = useRecoilValue(userLike);
-  console.log('userCombinationList', userCombinationList);
   const 유저만의조합 = isSelectedTab
     ? userCombinationList.filter((꿀조합: 인터페이스_꿀조합) => 꿀조합.작성자id === 유저정보?.uid)
     : userCombinationList.filter((꿀조합: 인터페이스_꿀조합) => 좋아요한샌드위치.includes(꿀조합.id));
