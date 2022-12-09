@@ -36,13 +36,9 @@ function RankingList() {
   const { state } = useLocation();
   const 현재탭: string = state || '맛잘알랭킹';
   const { isShowModal, toggleModal, navigateLoginPage } = useCheckLogin();
-  const {
-    key,
-    랭킹리스트,
-    랭킹리스트_수정,
-    꿀조합_컬렉션_정렬해서_가져오기,
-    리스트_재정렬,
-  } = useSetRankingList(현재탭);
+  const 작동하는가_수정 = useSetRecoilState(isPlaying);
+  const { key, 랭킹리스트, 랭킹리스트_수정, 꿀조합_컬렉션_정렬해서_가져오기, 리스트_재정렬 } =
+    useSetRankingList(현재탭);
 
   const { listRef, hasMore } = useInfiniteScroll(
     꿀조합_컬렉션_정렬해서_가져오기,
