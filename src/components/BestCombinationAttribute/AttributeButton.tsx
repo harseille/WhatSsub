@@ -42,7 +42,7 @@ const Button = styled.button<{ color: string }>`
 
   ${mediaQuery} {
     &:hover {
-      background: rgba(251, 194, 0, 0.8);
+      background: rgb(251, 194, 0);
       color: ${({ theme }) => theme.colors.white};
     }
   }

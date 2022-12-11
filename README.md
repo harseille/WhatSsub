@@ -142,7 +142,6 @@ https://what-ssub.vercel.app/
 #### 박준하
 
 - 꿀조합 상세페이지
-  - react-router-v6.4 loader 적용
   - 동시성 제어를 고려한 꿀조합 삭제 기능 개발
   - Intl API 활용한 좋아요 수 utils 개발
   - 애니메이션을 적용한 SVG like 버튼 개발
@@ -169,7 +168,7 @@ https://what-ssub.vercel.app/
 - seo 최적화
 - 접근성 최적화
 - react-router 적용
-- google & naver에 프로젝트 url 등록
+- google & naver에 사이트 등록
 
 #### 최원오
 
@@ -188,7 +187,7 @@ https://what-ssub.vercel.app/
 
 #### 황도은
 
-- 메인 디자인 총무
+- 메인 디자인
 - 랭킹리스트
   - 메뉴탭에 따라 꿀조합 데이터를 필터링하여 리스트 제공 (좋아요 순, 최신 순)
   - 꿀조합 리스트 제공 시 InterSection Observer API를 이용한 무한 스크롤 적용

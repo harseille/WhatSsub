@@ -17,8 +17,8 @@ import 참치 from '@assets/images/resize/sandwich/Resize_Tuna.webp';
 import 에그마요 from '@assets/images/resize/sandwich/Resize_EggMayo.webp';
 import 베지 from '@assets/images/resize/sandwich/Resize_VeggieDelite.webp';
 
-const convertProgressiveSandwichImage = (ingredient: string) => {
-  switch (ingredient) {
+const convertProgressiveSandwichImage = (baseSandwich: string) => {
+  switch (baseSandwich) {
     case '스파이시 바비큐':
       return 스파이시_바비큐;
     case 'K-바비큐':

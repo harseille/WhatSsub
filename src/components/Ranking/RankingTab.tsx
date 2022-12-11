@@ -22,7 +22,6 @@ function RankingTab() {
   const 클릭핸들러_탭_변경 = useCallback(
     (title: string) => {
       navigate(`/best-combination/ranking?currentTab=${title}`, { state: title });
-      console.log(state);
     },
     [navigate]
   );

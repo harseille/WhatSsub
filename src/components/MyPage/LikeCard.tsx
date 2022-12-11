@@ -41,6 +41,7 @@ function LikeCard({ id, imgUrl, sandwich: sandwichData }: TProps) {
     navigate(imgUrl);
     if (!삭제될_꿀조합) return;
     좋아요한샌드위치_수정(prevData => prevData.filter(prev => !삭제될_꿀조합.includes(prev)));
+    삭제될_꿀조합_수정([]);
   };
 
   return (
@@ -65,9 +66,14 @@ const Card = styled.li`
   border-radius: 15px;
   margin: 20px auto 0;
   position: relative;
+  transition: transform 0.3s ease;
 
   &.delete {
     background: #e4e4e4;
+  }
+
+  &:hover {
+    transform: translate3d(-5px, -5px, 0);
   }
 `;
 

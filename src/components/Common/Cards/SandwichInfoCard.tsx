@@ -53,10 +53,12 @@ const CardWarp = styled.li`
   border-radius: 15px;
   background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
+  transition: transform 0.3s ease;
 
   &:hover {
     background-color: #f3f7d86e;
     box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5), 10px 5px 5px #7879706d;
+    transform: translate3d(-5px, -5px, 0);
   }
 
   ${mediaQuery} {
