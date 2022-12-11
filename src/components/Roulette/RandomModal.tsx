@@ -21,7 +21,7 @@ function ModalOverlay({ onClick, sandwich }: TProps) {
       <CloseBtn onClick={onClick} aria-label="닫기 버튼">
         <img src={xBtn} alt="x 아이콘" />
       </CloseBtn>
-      <Title>⭐️오늘의 랜덤 조합⭐️</Title>
+      <Title>⭐️ 오늘의 랜덤 조합 ⭐️</Title>
       <SandwichInfoWrapper>
         <SandwichInfo sandwich={sandwichData} />
         <IngredientInfo ingredientList={ingredientInfo} />

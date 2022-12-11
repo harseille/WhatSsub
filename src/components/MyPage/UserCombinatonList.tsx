@@ -36,6 +36,11 @@ const Card = styled.li`
   border-radius: 15px;
   margin: 20px auto 0;
   position: relative;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate3d(-5px, -5px, 0);
+  }
 
   &.delete {
     background: #e4e4e4;

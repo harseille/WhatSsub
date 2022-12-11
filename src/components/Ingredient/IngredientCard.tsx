@@ -16,14 +16,19 @@ function IngredientCard({ ingredient: { id, 이름, 칼로리, 이미지, 카테
   return (
     <Card key={id}>
       {카테고리 === 재료_카테고리.추가재료 ? <Span designType="badgePrimaryGreen">추가</Span> : null}
-      {카테고리 === 재료_카테고리.빵 && toasting === 재료_카테고리.토스팅 ? (
-        <Span designType="badgePrimaryOrange">토스팅</Span>
-      ) : null}
+      {카테고리 === 재료_카테고리.빵 && toasting === '네' ? <Span designType="badgePrimaryOrange">토스팅</Span> : null}
       <Title>{이름}</Title>
       <Kcal>{칼로리}Kcal</Kcal>
       <ImgWrap>
         <ProgressiveImage src={이미지 as string} placeholder={convertProgressiveIngredientImage(이름)}>
-          {(src, loading) => <img style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }} src={src} alt={이름} />}
+          {(src, loading) => (
+            <img
+              style={{ filter: loading ? 'blur(4px)' : 'blur(0)' }}
+              src={src}
+              alt={이름}
+              referrerPolicy="no-referrer"
+            />
+          )}
         </ProgressiveImage>
       </ImgWrap>
     </Card>

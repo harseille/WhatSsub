@@ -6,14 +6,16 @@ import Contents from '@components/BestCombinationDetail/Contents';
 import CommentsContainer from '@components/Comments/CommentsContainer';
 import getBestCombination from '@api/getBestCombination';
 import { DocumentData } from 'firebase/firestore';
-import { 나만의_조합_초기값 } from '@constants/CustomCombination/constants';
+import { 꿀조합_초기값 } from '@constants/constants';
 
 function BestCombinationDetailPage() {
-  const [꿀조합, 꿀조합_수정] = useState<DocumentData>(나만의_조합_초기값);
+  const [꿀조합, 꿀조합_수정] = useState<DocumentData>(꿀조합_초기값);
   const { combinationId } = useParams();
 
   const 꿀조합_가져오기 = async (꿀조합id: string) => {
     const 꿀조합 = await getBestCombination(꿀조합id);
+    console.log(꿀조합);
+
     if (꿀조합 === undefined) {
       throw new Response('', {
         status: 404,

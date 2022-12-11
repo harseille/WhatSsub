@@ -2,6 +2,7 @@ import 재료선택하기 from '@services/customCombination/selectIngredients';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import { 인터페이스_생성단계_꿀조합, 인터페이스_선택된_재료 } from '@typings/ISandwich';
+import mediaQuery from '@styles/media-queries';
 
 type TProps = {
   isSelected: boolean;
@@ -48,5 +49,17 @@ const IngredientItem = styled.li<타입_속성>`
     border: none;
     color: inherit;
     background-color: inherit;
+  cursor: pointer;
+
   }
+
+  &:hover {
+    box-shadow: 3px 3px 3px #7879706d;
+  }
+
+  ${mediaQuery} {
+    &:hover {
+      background: rgb(251, 194, 0);
+      color: ${({ theme }) => theme.colors.white};
+    }
 `;

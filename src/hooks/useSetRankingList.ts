@@ -97,7 +97,7 @@ const useSetRankingList = (현재탭: string) => {
         });
       }
     }
-    console.log('랭킹');
+
     작동하는가_수정(false);
   };
 
