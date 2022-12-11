@@ -28,6 +28,7 @@ module.exports = {
         { from: 'public/pwabuilder-sw.js' },
         { from: 'public/offline.html' },
         { from: 'public/icons' },
+        { from: 'public/sitemap.xml' },
       ],
     }),
     new Dotenv({
