@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, MouseEvent, KeyboardEvent } from 'react';
 import ProgressiveImage from 'react-progressive-graceful-image';
 import RandomModal from '@components/Roulette/RandomModal';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
@@ -123,7 +123,8 @@ function RandomRoulette() {
     return 랜덤번호;
   };
 
-  const 룰렛_돌리기 = () => {
+  const 룰렛_돌리기 = (e: MouseEvent | KeyboardEvent<HTMLImageElement>) => {
+    if (e.type === 'keyup' && (e as KeyboardEvent).key !== 'Enter') return;
     const 랜덤결과 = Math.floor(Math.random() * 17);
     if (랜덤번호 === 랜덤결과) return;
 
@@ -169,6 +170,7 @@ function RandomRoulette() {
                 src={src}
                 alt="시작 버튼"
                 onClick={룰렛_돌리기}
+                onKeyUp={룰렛_돌리기}
               />
             )}
           </ProgressiveImage>
