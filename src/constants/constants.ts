@@ -2,7 +2,7 @@ import homeImg from '@assets/icons/home.svg';
 import rankingImg from '@assets/icons/ranking.svg';
 import customImg from '@assets/icons/custom.svg';
 import myPageImg from '@assets/icons/myPage.svg';
-import { 인터페이스_꿀조합선택페이지_필터 } from '@typings/ISandwich';
+import { 인터페이스_꿀조합선택페이지_필터, 인터페이스_생성단계_꿀조합 } from '@typings/ISandwich';
 
 type 타입_메뉴 = {
   메뉴명: string;
@@ -36,6 +36,20 @@ export const 메뉴정보: 타입_메뉴[] = [
     로그인상관여부: true,
   },
 ];
+
+export const 꿀조합_초기값: 인터페이스_생성단계_꿀조합 = {
+  작성자id: '',
+  꿀조합제목: '',
+  작성자: '',
+  작성일: 0,
+  좋아요: 0,
+  베이스샌드위치: '',
+  이미지: '',
+  토스팅: '',
+  칼로리: '',
+  뱃지리스트: [],
+  선택재료: [],
+};
 
 export const 꿀조합_픽_초기_필터: 인터페이스_꿀조합선택페이지_필터 = {
   맛: [],

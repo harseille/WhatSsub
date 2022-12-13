@@ -5,15 +5,13 @@ import { 메뉴정보 } from '@constants/constants';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import mediaQuery from '@styles/media-queries';
-import { changeRem, buttonNone } from '@styles/mixin';
+import { changeRem, buttonNone, flexbox } from '@styles/mixin';
 import { auth } from '../firebase.config';
 
 function HeaderItemsWrap() {
   const isLoggedin = useRecoilValue(isLoggedInState);
 
-  const 로그아웃 = () => {
-    auth.signOut();
-  };
+  const 로그아웃 = () => auth.signOut();
 
   return (
     <HeaderItemsWrapComponent>
@@ -57,7 +55,7 @@ const HeaderItemsWrapComponent = styled.div`
 const HeaderLogInOut = styled.button`
   ${buttonNone};
   font-size: ${changeRem(14)};
-  color: ${props => props.theme.colors.gray59};
+  color: ${({ theme }) => theme.colors.gray59};
   font-weight: 700;
   flex-shrink: 0;
   cursor: pointer;
@@ -74,7 +72,7 @@ const Nav = styled.nav`
   left: 0;
   bottom: 0;
   z-index: 1;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: 0px -2px 2px #eee;
 
   ${mediaQuery} {
@@ -84,9 +82,7 @@ const Nav = styled.nav`
   }
 
   & ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    ${flexbox('row', 'space-around', 'center')};
 
     ${mediaQuery} {
       & li {
@@ -103,7 +99,7 @@ const Nav = styled.nav`
 const NavItemTitle = styled.span`
   padding-top: 6px;
   font-size: ${changeRem(8)};
-  color: ${props => props.theme.colors.gray59};
+  color: ${({ theme }) => theme.colors.gray59};
   font-weight: 700;
 
   ${mediaQuery} {
@@ -122,7 +118,5 @@ const NavItemImg = styled.img`
 `;
 
 const 링크스타일 = `  
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
+  ${flexbox('column-reverse', undefined, 'center')};
 `;

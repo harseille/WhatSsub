@@ -16,37 +16,37 @@ export type TDesignType =
 const designList = {
   primaryRed: `
     background: ${theme.colors.primaryRed};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 700;
     font-size: 18px;
   `,
   primaryOrange: `
   background: ${theme.colors.primaryOrange};
-  color: #fff;
+  color: ${theme.colors.white};
   font-weight: 700;
   font-size: 18px;
   `,
   primaryYellow: `
   background: ${theme.colors.primaryYellow};
-  color: #fff;
+  color: ${theme.colors.white};
   font-weight: 700;
   font-size: 18px;
   `,
   primaryGreen: `
     background: ${theme.colors.primaryGreen};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 700;
     font-size: 18px;
   `,
   primaryBlue: `
     background: ${theme.colors.primaryBlue};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 700;
     font-size: 18px;
   `,
   primaryPurple: `
     background: ${theme.colors.primaryPurple};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 700;
     font-size: 18px;
   `,
@@ -57,7 +57,7 @@ const designList = {
     font-size: 18px;
   `,
   social: `
-    background: #fff;
+    background: ${theme.colors.white};
     color: ${theme.colors.gray87};
     border: 1px solid ${theme.colors.gray87};
     font-weight: 400;
@@ -68,7 +68,7 @@ const designList = {
   `,
   AccessibilityGreen: `
     background: ${theme.colors.AccessibilityGreen};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 700;
     font-size: 18px;
   `,
@@ -115,9 +115,4 @@ export default styled.button<
 
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-  :focus {
-    outline: 0;
-    -webkit-appearance: none;
-  }
 `;

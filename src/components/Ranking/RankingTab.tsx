@@ -1,5 +1,5 @@
+import { useCallback, memo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { changeRem, buttonNone } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
@@ -10,7 +10,7 @@ type 타입_타이틀_탭 = {
 };
 
 function RankingTab() {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const { state } = useLocation();
   const 현재탭: string = state || '맛잘알랭킹';
 
@@ -19,18 +19,17 @@ function RankingTab() {
     { id: 'created__at__ranking__tab', 타이틀: '신규조합' },
   ];
 
-  const 클릭핸들러_탭_변경 = useCallback((title: string) => {
-    navigator(`/best-combination/ranking?currentTab=${title}`, { state: title });
-  }, []);
+  const 클릭핸들러_탭_변경 = useCallback(
+    (title: string) => {
+      navigate(`/best-combination/ranking?currentTab=${title}`, { state: title });
+    },
+    [navigate]
+  );
 
   return (
     <TabGroup>
       {탭_리스트.map(({ id, 타이틀 }) => (
-        <TitleTab
-          key={id}
-          className={현재탭 === 타이틀 ? 'on' : ''}
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={클릭핸들러_탭_변경.bind(null, 타이틀)}>
+        <TitleTab key={id} className={현재탭 === 타이틀 ? 'on' : ''} onClick={클릭핸들러_탭_변경.bind(null, 타이틀)}>
           {타이틀}
         </TitleTab>
       ))}
@@ -38,7 +37,7 @@ function RankingTab() {
   );
 }
 
-export default React.memo(RankingTab);
+export default memo(RankingTab);
 
 const TabGroup = styled.div`
   display: flex;
@@ -50,11 +49,11 @@ const TitleTab = styled.button`
   ${buttonNone}
   font-size: ${changeRem(20)};
   font-weight: bold;
-  color: #6b6b6b;
+  color: ${({ theme }) => theme.colors.black6b};
   cursor: pointer;
 
   &.on {
-    color: #252525;
+    color: ${({ theme }) => theme.colors.black25};
   }
 
   ${mediaQuery} {

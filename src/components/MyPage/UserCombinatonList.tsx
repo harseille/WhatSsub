@@ -1,9 +1,7 @@
-/* eslint-disable react/jsx-no-bind */
-import React from 'react';
 import { Link } from 'react-router-dom';
 import SandwichInfo from '@components/Common/SandwichInfo';
-import styled from '@emotion/styled';
 import deleteBtn from '@assets/icons/deleteBtn.png';
+import styled from '@emotion/styled';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
@@ -38,6 +36,11 @@ const Card = styled.li`
   border-radius: 15px;
   margin: 20px auto 0;
   position: relative;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate3d(-5px, -5px, 0);
+  }
 
   &.delete {
     background: #e4e4e4;

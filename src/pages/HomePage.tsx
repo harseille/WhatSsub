@@ -101,7 +101,7 @@ const Visual = styled.section`
 
 const Title = styled.h2`
   padding: 0 45px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${changeRem(36)};
   font-weight: 400;
   text-align: right;
@@ -171,7 +171,7 @@ const ALink = styled(Link)`
   flex-basis: 50%;
   padding: 45px 0 35px;
   border-radius: 0 0 30px 0;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   font-weight: bold;
   text-align: center;
   text-decoration: none;

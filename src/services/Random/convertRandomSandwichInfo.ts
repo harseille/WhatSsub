@@ -1,6 +1,6 @@
-import { 인터페이스_꿀조합_랜덤2 } from '@typings/ISandwich';
+import { 인터페이스_꿀조합_랜덤_룰렛 } from '@typings/ISandwich';
 
-const convertRandomSandwichInfo = (sandwichData: 인터페이스_꿀조합_랜덤2) => {
+const convertRandomSandwichInfo = (sandwichData: 인터페이스_꿀조합_랜덤_룰렛) => {
   const { 꿀조합제목, 베이스샌드위치, 빵, 소스, 치즈, 칼로리, 속성, 이미지 } = sandwichData;
 
   const sandwich = {
@@ -16,7 +16,7 @@ const convertRandomSandwichInfo = (sandwichData: 인터페이스_꿀조합_랜�
       id: 'a1',
       카테고리: '빵',
       이름: 빵,
-      칼로리: '265',
+      칼로리: '칼로리',
       추가재료여부: true,
     },
     {

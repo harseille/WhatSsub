@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import heart from '@assets/icons/heart.svg';
 import heartFill from '@assets/icons/heart-fill.svg';
 import styled from '@emotion/styled';
@@ -10,7 +10,6 @@ const LikeRedBtn = styled.button<{ isLiked: boolean }>`
   top: 16px;
   right: 16px;
   border: none;
-  outline: none;
   border-radius: 50%;
   width: ${changeRem(34)};
   height: ${changeRem(34)};
@@ -29,4 +28,4 @@ const LikeRedBtn = styled.button<{ isLiked: boolean }>`
   }
 `;
 
-export default React.memo(LikeRedBtn, (prevIsLiked, nextIsLiked) => prevIsLiked.isLiked === nextIsLiked.isLiked);
+export default memo(LikeRedBtn, (prevProps, nextProps) => prevProps.isLiked === nextProps.isLiked);

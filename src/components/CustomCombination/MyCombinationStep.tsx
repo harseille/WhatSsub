@@ -1,22 +1,16 @@
-/* eslint-disable react/jsx-no-bind */
+import { memo } from 'react';
 import MyCombinationStepBadge from '@components/CustomCombination/MyCombinationStepBadge';
-import { PROGRESS } from '@constants/CustomCombination/constants';
-
+import { 커스텀진행도_배열 } from '@constants/CustomCombination/constants';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
-import react from 'react';
 
 type TProps = {
   currentStep: number;
   onChangeStep: (진행도: number) => void;
 };
 
-const 커스텀진행도_배열 = Object.values(PROGRESS);
-
-function MyCombinationStep(props: TProps) {
-  const { currentStep: 현재진행도, onChangeStep: 클릭핸들러_현재진행도_수정 } = props;
-
+function MyCombinationStep({ currentStep: 현재진행도, onChangeStep: 클릭핸들러_현재진행도_수정 }: TProps) {
   return (
     <CombinationStageWrap>
       <CombinationStepTitle>나만의 조합</CombinationStepTitle>
@@ -33,7 +27,7 @@ function MyCombinationStep(props: TProps) {
   );
 }
 
-export default react.memo(MyCombinationStep);
+export default memo(MyCombinationStep);
 
 const CombinationStageWrap = styled.div`
   display: flex;
@@ -83,9 +77,9 @@ const CombinationStepList = styled.ol<타입_진행도_리스트_속성>`
     }
   }
 
-  & li:nth-of-type(n + 2):nth-of-type(-n + ${props => props.currentStep}) span::before {
+  & li:nth-of-type(n + 2):nth-of-type(-n + ${({ currentStep }) => currentStep}) span::before {
     content: '';
-    background-color: #fbc200;
+    background-color: ${({ theme }) => theme.colors.primaryYellow};
     transition: all 0.3s;
   }
 `;

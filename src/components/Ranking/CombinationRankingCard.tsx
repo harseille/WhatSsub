@@ -1,16 +1,15 @@
-import React, { useEffect, MouseEvent, useCallback, RefObject, useRef } from 'react';
+import { MouseEvent, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { User } from 'firebase/auth';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
-import { userLike } from '@state/User';
+import isPlaying from '@state/isPlaying';
 import SandwichBadgeList from '@components/BestCombinationAttribute/AttributeBadgeList';
-import Modal from '@components/Common/UI/Modal';
 import Like from '@components/Common/Button/Like';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import styled from '@emotion/styled';
 import { flexbox, changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
+import { User } from 'firebase/auth';
 
 type TProps = {
   id: string;
@@ -24,7 +23,8 @@ type TProps = {
   originName: string;
   badgeList: string[];
   like: number;
-  rearrangeList: (id: string, likeCount: number, isIncreasing: boolean) => void;
+  rearrangeList: (id: string, delta: number) => void;
+  openModal: () => void;
 };
 
 function CombinationRankingCard({
@@ -40,59 +40,52 @@ function CombinationRankingCard({
   badgeList: 뱃지리스트,
   like: 좋아요,
   rearrangeList: 리스트_재정렬,
+  openModal,
 }: TProps) {
-  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글, likeCount, setLikeCount } =
-    useLikedBestCombination(id);
-  const 유저 = useRecoilValue<User | null>(userState);
-  const 좋아요한_샌드위치 = useRecoilValue(userLike);
-
-  useEffect(() => {
-    setLikeCount(좋아요);
-  }, [setLikeCount, 좋아요]);
+  const 유저정보 = useRecoilValue<User | null>(userState);
+  const { 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글 } = useLikedBestCombination(id);
+  const [작동하는가, 작동하는가_수정] = useRecoilState(isPlaying);
 
   const 좋아요_토글 = useCallback(
     async (e: MouseEvent) => {
-      const isIncreasing = !좋아요한_샌드위치.includes(id);
-      await 클릭핸들러_좋아요_토글(e);
+      e.preventDefault();
 
-      if (유저) 리스트_재정렬(id, likeCount, isIncreasing);
+      if (!유저정보) {
+        openModal();
+        return;
+      }
+
+      if (작동하는가) return;
+      작동하는가_수정(true);
+
+      const delta = (await 클릭핸들러_좋아요_토글('fulfilled', e)) as number;
+      리스트_재정렬(id, delta);
     },
-    [id, likeCount]
+    [작동하는가]
   );
 
   return (
-    <>
-      {isShowModal && (
-        <Modal
-          title="로그인이 필요한 서비스입니다."
-          message="로그인 페이지로 이동하시겠습니까?"
-          onEvent={navigateLoginPage}
-          onClose={toggleModal}
-          isConfirm="이동"
-        />
-      )}
-      <li ref={listRef}>
-        <RankingCardWrapper to={`/best-combination/${id}`}>
-          {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
-          {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
-          <RankingCard>
-            {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
-            <RankingImageWrap>
-              <img src={이미지} alt={베이스샌드위치} />
-            </RankingImageWrap>
-            <RankingContents>
-              <Title>{이름}</Title>
-              <RankingBadgeList badgeList={뱃지리스트} />
-              <Like count={likeCount} isLiked={isLiked} onClick={좋아요_토글} />
-            </RankingContents>
-          </RankingCard>
-        </RankingCardWrapper>
-      </li>
-    </>
+    <li ref={listRef}>
+      <RankingCardWrapper to={`/best-combination/${id}`}>
+        {신규_샌드위치인가 && <NewBadge>NEW</NewBadge>}
+        {랭킹_뱃지_이미지 && <RankBadge src={랭킹_뱃지_이미지} alt={`rank${순위}`} />}
+        <RankingCard>
+          {현재탭 === '맛잘알랭킹' && <Rank>{순위}</Rank>}
+          <RankingImageWrap>
+            <img src={이미지} alt={베이스샌드위치} />
+          </RankingImageWrap>
+          <RankingContents>
+            <Title>{이름}</Title>
+            <RankingBadgeList badgeList={뱃지리스트} />
+            <Like count={좋아요} isLiked={좋아요한_샌드위치인가} onClick={좋아요_토글} />
+          </RankingContents>
+        </RankingCard>
+      </RankingCardWrapper>
+    </li>
   );
 }
 
-export default React.memo(CombinationRankingCard);
+export default memo(CombinationRankingCard);
 
 const RankingCardWrapper = styled(Link)`
   position: relative;
@@ -126,10 +119,10 @@ const NewBadge = styled.span`
   z-index: 1;
   padding: 3px 5px;
   border-radius: 3px;
-  background-color: ${props => props.theme.colors.primaryYellow};
+  background-color: ${({ theme }) => theme.colors.primaryYellow};
   font-size: ${changeRem(10)};
   font-weight: bold;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
 
   ${mediaQuery} {
     top: -8px;
@@ -144,14 +137,14 @@ const RankingCard = styled.section`
   position: relative;
   padding: 30px 20px;
   border-radius: 20px;
-  background: #ffffff;
-  filter: ${props => `drop-shadow(${props.theme.boxShadow.type3})`};
+  background: ${({ theme }) => theme.colors.white};
+  filter: ${({ theme }) => `drop-shadow(${theme.boxShadow.type3})`};
 
   ${mediaQuery} {
     padding: 20px;
     border-radius: 10px;
     filter: none;
-    box-shadow: ${props => props.theme.boxShadow.type1};
+    box-shadow: ${({ theme }) => theme.boxShadow.type1};
   }
 `;
 
@@ -171,8 +164,8 @@ const RankingImageWrap = styled.div`
   height: ${changeRem(80)};
   flex-shrink: 0;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: ${props => `${props.theme.boxShadow.type3}, inset ${props.theme.boxShadow.type2}`};
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => `${theme.boxShadow.type3}, inset ${theme.boxShadow.type2}`};
 
   & img {
     width: 100%;
@@ -217,7 +210,7 @@ const Title = styled.h3`
   margin-bottom: 8px;
   font-weight: 600;
   font-size: ${changeRem(16)};
-  color: ${props => props.theme.colors.AccessibilityGreen};
+  color: ${({ theme }) => theme.colors.AccessibilityGreen};
 `;
 
 const RankingBadgeList = styled(SandwichBadgeList)`

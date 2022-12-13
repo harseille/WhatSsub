@@ -32,16 +32,15 @@ const TopBtn = styled.button`
   font-size: 12px;
   padding: 12px 8px;
   background-color: #181818;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: 50%;
-  outline: none;
   cursor: pointer;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
 
   &:hover {
-    color: ${props => props.theme.colors.primaryGreen};
-    background-color: ${props => props.theme.colors.primaryYellow};
+    color: ${({ theme }) => theme.colors.primaryGreen};
+    background-color: ${({ theme }) => theme.colors.primaryYellow};
   }
 
   ${mediaQuery} {

@@ -2,14 +2,12 @@ import Button from '@components/Common/UI/Button';
 import { 버튼_텍스트 } from '@constants/CustomCombination/constants';
 import styled from '@emotion/styled';
 
-type 타입_선택_버튼_속성 = {
+type TProps = {
   currentStep: number;
   onNextStep: () => void;
 };
 
-function NextStepButton(props: 타입_선택_버튼_속성) {
-  const { currentStep: 현재진행도, onNextStep: 다음_선택지로_이동 } = props;
-
+function NextStepButton({ currentStep: 현재진행도, onNextStep: 다음_선택지로_이동 }: TProps) {
   return (
     <SelectButton
       designType="AccessibilityGreen"

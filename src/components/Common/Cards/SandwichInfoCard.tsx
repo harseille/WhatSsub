@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLikedBestCombination from '@hooks/useLikedBestCombination';
 import Modal from '@components/Common/UI/Modal';
@@ -14,7 +13,8 @@ type TProps = {
 };
 
 function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
-  const { isShowModal, toggleModal, navigateLoginPage, isLiked, 클릭핸들러_좋아요_토글 } = useLikedBestCombination(id);
+  const { isShowModal, toggleModal, navigateLoginPage, 좋아요한_샌드위치인가, 클릭핸들러_좋아요_토글 } =
+    useLikedBestCombination(id);
   const navigate = useNavigate();
 
   const 꿀조합_상세_페이지로_이동하기 = (e: React.MouseEvent) => {
@@ -35,29 +35,30 @@ function SandwichInfoCard({ sandwich, sandwich: { id } }: TProps) {
       )}
       <CardWarp role="link" onClick={꿀조합_상세_페이지로_이동하기}>
         <SandwichInfo sandwich={sandwich} />
-        <LikeRedBtn onClick={클릭핸들러_좋아요_토글} isLiked={isLiked} />
+        <LikeRedBtn onClick={클릭핸들러_좋아요_토글.bind(null, 'fulfilled')} isLiked={좋아요한_샌드위치인가} />
       </CardWarp>
     </>
   );
 }
 
 export default SandwichInfoCard;
-// export default React.memo(SandwichInfoCard, (prevProps, nextProps) => prevProps.sandwich.id === nextProps.sandwich.id);
 
 const CardWarp = styled.li`
-  min-width: ${changeRem(370)};
+  min-width: ${changeRem(340)};
   width: 80%;
   position: relative;
   padding: 45px 25px 20px;
   max-width: ${changeRem(370)};
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
   border-radius: 15px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
+  transition: transform 0.3s ease;
 
   &:hover {
     background-color: #f3f7d86e;
     box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5), 10px 5px 5px #7879706d;
+    transform: translate3d(-5px, -5px, 0);
   }
 
   ${mediaQuery} {

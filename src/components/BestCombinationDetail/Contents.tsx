@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
 import IngredientCardList from '@components/Ingredient/IngredientCardList';
 import SandwichInfo from '@components/Common/SandwichInfo';
 import Button from '@components/Common/UI/Button';
-import styled from '@emotion/styled';
 import Modal from '@components/Common/UI/Modal';
-import useDeleteBestCombination from '@hooks/useDeleteBestCombination';
+import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
 import { 인터페이스_샌드위치, 인터페이스_재료 } from '@typings/ISandwich';
 
@@ -18,7 +18,7 @@ type TProps = {
 
 function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProps) {
   const { combinationId } = useParams();
-  const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저 } = useDeleteBestCombination(combinationId!);
+  const { 모달_토글하기, 꿀조합_삭제하기, isShowModal, 유저정보 } = useDeleteBestCombination(combinationId!);
 
   const navigate = useNavigate();
   const 꿀조합_상세_페이지_꿀조합_삭제하기 = () => {
@@ -43,7 +43,7 @@ function ContentsContainer({ sandwich, ingredientList, author, toasting }: TProp
       <Contents>
         <SandwichInfo sandwich={sandwich} />
         <IngredientCardList ingredientList={ingredientList} toasting={toasting} />
-        {유저?.uid === author ? (
+        {유저정보?.uid === author ? (
           <ButtonContainer>
             <BestCombinationDeleteButton
               designType="primaryOrange"
@@ -63,7 +63,7 @@ export default memo(ContentsContainer);
 
 const Contents = styled.div`
   ${flexbox('column', 'flex-start', 'center')}
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   margin-bottom: 10px;
   padding: 32px;
 `;

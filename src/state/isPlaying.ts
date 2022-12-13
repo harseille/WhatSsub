@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export default atom<boolean | null>({
-  key: 'modal',
+export default atom<boolean>({
+  key: 'isPlaying',
   default: false,
 });

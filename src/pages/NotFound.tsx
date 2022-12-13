@@ -1,10 +1,9 @@
+import { useLocation } from 'react-router-dom';
 import Wrapper from '@components/Common/UI/Wrapper';
-import styled from '@emotion/styled';
 import danzziSpeechLess from '@assets/images/danzzi/danzzi_speechless.webp';
 import danzziQM from '@assets/images/danzzi/danzzi_QM.webp';
+import styled from '@emotion/styled';
 import { changeRem, flexbox } from '@styles/mixin';
-import { useLocation } from 'react-router-dom';
-import theme from '@styles/theme';
 
 function NotFound() {
   const location = useLocation();
@@ -41,7 +40,7 @@ const Title = styled.h1`
   font-size: ${changeRem(60)};
   font-weight: 700;
   margin-top: ${changeRem(80)};
-  color: ${theme.colors.gray87};
+  color: ${({ theme }) => theme.colors.gray87};
 `;
 
 const SubTitle = styled.h2`

@@ -7,18 +7,18 @@ type TProps = {
   filter: string;
   name: string;
   max: number;
-  selectedFilter: { [key: string]: string[] };
-  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
+  selectedAttribute: { [key: string]: string[] };
+  onSelectAttribute: (filter: string, name: string, maxNum: number) => void;
 };
 
-function AttributeButton({ filter, name, max, selectedFilter, onSelectFilter }: TProps) {
+function AttributeButton({ filter, name, max, selectedAttribute, onSelectAttribute }: TProps) {
   const 클릭핸들러_속성버튼_토글 = () => {
-    onSelectFilter(filter, name, max);
+    onSelectAttribute(filter, name, max);
   };
 
   return (
     <li>
-      <Button onClick={클릭핸들러_속성버튼_토글} color={selectedFilter[filter].includes(name) ? filter : '기본'}>
+      <Button onClick={클릭핸들러_속성버튼_토글} color={selectedAttribute[filter].includes(name) ? filter : '기본'}>
         {name}
       </Button>
     </li>
@@ -42,8 +42,8 @@ const Button = styled.button<{ color: string }>`
 
   ${mediaQuery} {
     &:hover {
-      background: rgba(251, 194, 0, 0.8);
-      color: #fff;
+      background: rgb(251, 194, 0);
+      color: ${({ theme }) => theme.colors.white};
     }
   }
 `;

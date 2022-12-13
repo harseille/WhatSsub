@@ -1,20 +1,20 @@
 import RandomRoulette from '@components/Roulette/RandomRoulette';
 import Wrapper from '@components/Common/UI/Wrapper';
-import styled from '@emotion/styled';
-import { changeRem, flexbox } from '@styles/mixin';
 import danzziQuestion from '@assets/images/danzzi/danzzi_question.webp';
 import danzziUniform from '@assets/images/danzzi/danzzi_uniform.webp';
+import styled from '@emotion/styled';
+import { changeRem, flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 
 function RandomPickPage() {
   return (
     <Wrapper>
       <Container>
-        <Title>랜덤 조합 룰렛</Title>
+        <Title tabIndex={0}>랜덤 조합 룰렛</Title>
         <RandomRoulette />
         <DanzziContainer>
           <DanzziLeft src={danzziQuestion} alt="캐릭터 단찌 왼쪽" />
-          <DanzziRight src={danzziUniform} alt="캐릭터 단찌 오르쪽" />
+          <DanzziRight src={danzziUniform} alt="캐릭터 단찌 오른쪽" />
         </DanzziContainer>
         <Text>돌려돌려 돌림판~</Text>
       </Container>
@@ -37,30 +37,28 @@ const Title = styled.div`
 `;
 
 const DanzziContainer = styled.div`
-  ${flexbox('row', 'center', 'center')};
-  position: absolute;
-  /* bottom: 250px; */
-  bottom: 15%;
-  transform: translateX(-5%);
-  z-index: 1;
+  display: none;
+
   ${mediaQuery} {
+    ${flexbox('row', 'space-evenly', 'center')};
+    z-index: 1;
+    position: absolute;
+    width: 100%;
     bottom: 80px;
   }
 `;
 
 const DanzziLeft = styled.img`
-  /* margin-right: 260px; */
-  margin-right: 50%;
-  bottom: 200px;
   width: ${changeRem(175)};
+  bottom: 200px;
 
   ${mediaQuery} {
     width: ${changeRem(275)};
     left: 60px;
     bottom: 85px;
-    margin-right: 400px;
   }
 `;
+
 const DanzziRight = styled.img`
   width: ${changeRem(110)};
   ${mediaQuery} {
@@ -79,7 +77,7 @@ const Text = styled.div`
   font-size: 20px;
   font-weight: 400;
   padding: 40px;
-  color: #fff;
+  background: ${({ theme }) => theme.colors.white};
   background-color: ${props => props.theme.colors.AccessibilityGreen};
   height: ${changeRem(110)};
   text-align: center;

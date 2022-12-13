@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRecoilValue } from 'recoil';
 import { useBeforeunload } from 'react-beforeunload';
+import { isLoggedInState } from '@state/index';
+import combinationVerification from '@services/customCombination/combinationVerification';
 import MyCombinationStep from '@components/CustomCombination/MyCombinationStep';
 import SelectComponent from '@components/CustomCombination/SelectComponent';
-import Wrapper from '@components/Common/UI/Wrapper';
-import combinationVerification from '@services/customCombination/combinationVerification';
 import CustomPageModal from '@components/CustomCombination/CustomPageModal';
-import { isLoggedInState } from '@state/index';
-
+import Wrapper from '@components/Common/UI/Wrapper';
 import { 나만의_조합_초기값, PROGRESS, MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
@@ -36,17 +35,14 @@ function CustomPageWrap() {
   useEffect(() => {
     if (!isLoggedIn) setModalType(MODAL_TYPE_KEYS.Login);
 
-    const preventGoBack = () => {
+    const 뒤로가기_경고 = () => {
       window.history.pushState(null, '', window.location.href);
       changeModalType(MODAL_TYPE_KEYS.BackEvent);
     };
-
     window.history.pushState(null, '', window.location.href);
-    window.addEventListener('popstate', preventGoBack);
+    window.addEventListener('popstate', 뒤로가기_경고);
 
-    return () => {
-      window.removeEventListener('popstate', preventGoBack);
-    };
+    return () => window.removeEventListener('popstate', 뒤로가기_경고);
   }, [isLoggedIn]);
 
   const 클릭핸들러_현재진행도_수정 = useCallback(

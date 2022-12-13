@@ -1,27 +1,27 @@
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { isLoggedInState } from '@state/index';
+import useComments from '@hooks/useComments';
 import CommentList from '@components/Comments/CommentList';
 import CommentInputWrap from '@components/Comments/CommentInputWrap';
 import styled from '@emotion/styled';
-import useComments from '@hooks/useComments';
 import { changeRem, flexbox } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
 
 function CommentsContainer() {
   const { combinationId } = useParams();
-  const { comments, commentsCount, listRef, 댓글_수_가져오기 } = useComments(combinationId!);
+  const { 댓글_목록, 댓글_개수, listRef, 댓글_수_가져오기 } = useComments(combinationId!);
   const isLoggedIn = useRecoilValue(isLoggedInState);
 
   return (
     <Comments>
       <CommentHeader>
         <h2>
-          리뷰 <span>{commentsCount}</span>
+          리뷰 <span>{댓글_개수}</span>
         </h2>
       </CommentHeader>
       {isLoggedIn && <CommentInputWrap getCommentListCount={댓글_수_가져오기} />}
-      {comments.length !== 0 && <CommentList commentList={comments} commentsCount={commentsCount} target={listRef} />}
+      {댓글_목록.length !== 0 && <CommentList commentList={댓글_목록} target={listRef} />}
     </Comments>
   );
 }
@@ -29,7 +29,7 @@ function CommentsContainer() {
 export default CommentsContainer;
 
 const Comments = styled.div`
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
   padding: 0 32px;
   padding-bottom: ${changeRem(60)};
   box-shadow: 0px -4px 10px rgba(213, 213, 213, 0.25);
@@ -50,7 +50,7 @@ const CommentHeader = styled.div`
     font-size: ${changeRem(14)};
 
     & span {
-      color: ${props => props.theme.colors.primaryYellow};
+      color: ${({ theme }) => theme.colors.primaryYellow};
     }
   }
 `;

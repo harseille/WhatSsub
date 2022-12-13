@@ -1,9 +1,11 @@
-import React from 'react';
+import { memo } from 'react';
 import { useRecoilValue } from 'recoil';
+import { userLike } from '@state/User';
+import { userState } from '@state/index';
 import UserCombinatonList from '@components/MyPage/UserCombinatonList';
 import LikeCombinationList from '@components/MyPage/LikeCombinationList';
 import styled from '@emotion/styled';
-import { userLike } from '@state/User';
+import { User } from 'firebase/auth';
 import { 인터페이스_꿀조합 } from '@typings/ISandwich';
 
 type TProps = {
@@ -13,9 +15,10 @@ type TProps = {
 };
 
 function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
+  const 유저정보: User | null = useRecoilValue(userState);
   const 좋아요한샌드위치: string[] = useRecoilValue(userLike);
   const 유저만의조합 = isSelectedTab
-    ? userCombinationList
+    ? userCombinationList.filter((꿀조합: 인터페이스_꿀조합) => 꿀조합.작성자id === 유저정보?.uid)
     : userCombinationList.filter((꿀조합: 인터페이스_꿀조합) => 좋아요한샌드위치.includes(꿀조합.id));
 
   return (
@@ -29,7 +32,7 @@ function MyPageList({ isSelectedTab, userCombinationList, onClick }: TProps) {
   );
 }
 
-export default React.memo(MyPageList);
+export default memo(MyPageList);
 
 const Container = styled.div`
   margin-bottom: 10px;

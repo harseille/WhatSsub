@@ -1,8 +1,12 @@
-import React from 'react';
+import { memo } from 'react';
 import refreshIcon from '@assets/icons/refresh.svg';
 import styled from '@emotion/styled';
 
-function RefreshButton({ onClick }: { onClick: () => void }) {
+type TProps = {
+  onClick: () => void;
+};
+
+function RefreshButton({ onClick }: TProps) {
   return (
     <Refresh onClick={onClick} aria-label="새로고침 버튼">
       <img src={refreshIcon} alt="새로고침" />
@@ -10,7 +14,7 @@ function RefreshButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-export default React.memo(RefreshButton);
+export default memo(RefreshButton);
 
 const Refresh = styled.button`
   position: absolute;

@@ -17,7 +17,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryRed};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;
@@ -28,7 +28,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryOrange};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;
@@ -39,7 +39,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryYellow};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;
@@ -50,7 +50,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryGreen};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;
@@ -61,7 +61,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryBlue};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;
@@ -72,7 +72,7 @@ const designList = {
     right: -12px;
     top: -12px;
     background: ${theme.colors.primaryPurple};
-    color: #fff;
+    color: ${theme.colors.white};
     font-weight: 400;
     font-size: 14px;
     padding: 6px;

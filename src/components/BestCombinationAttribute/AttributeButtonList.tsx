@@ -4,21 +4,21 @@ import { 인터페이스_꿀조합선택페이지_속성, 인터페이스_꿀조
 import AttributeListTitle from './AttributeListTitle';
 
 type TProps = {
-  filterData: 인터페이스_꿀조합선택페이지_속성선택;
-  selectedFilter: { [key: string]: string[] };
-  overSelectedFilter: string;
-  onSelectFilter: (filter: string, name: string, maxNum: number) => void;
+  attributeData: 인터페이스_꿀조합선택페이지_속성선택;
+  selectedAttribute: { [key: string]: string[] };
+  overSelectedAttribute: string;
+  onSelectAttribute: (filter: string, name: string, maxNum: number) => void;
 };
 
 function AttributeButtonList({
-  filterData: { 이름, 속성목록, 최대선택개수 },
-  selectedFilter,
-  overSelectedFilter,
-  onSelectFilter,
+  attributeData: { 이름, 속성목록, 최대선택개수 },
+  selectedAttribute,
+  overSelectedAttribute,
+  onSelectAttribute,
 }: TProps) {
   return (
     <Wrapper>
-      <AttributeListTitle filterTitle={이름} maxNum={최대선택개수} overSelectedFilter={overSelectedFilter} />
+      <AttributeListTitle filterTitle={이름} maxNum={최대선택개수} overSelectedAttribute={overSelectedAttribute} />
       <AttributeList>
         {속성목록.map((속성: 인터페이스_꿀조합선택페이지_속성) => (
           <AttributeButton
@@ -26,8 +26,8 @@ function AttributeButtonList({
             filter={이름}
             name={속성.이름}
             max={최대선택개수}
-            selectedFilter={selectedFilter}
-            onSelectFilter={onSelectFilter}
+            selectedAttribute={selectedAttribute}
+            onSelectAttribute={onSelectAttribute}
           />
         ))}
       </AttributeList>

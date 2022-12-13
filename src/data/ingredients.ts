@@ -331,7 +331,7 @@ const ingredients = [
       },
       {
         id: 'a2',
-        이름: '애그마요',
+        이름: '에그마요',
         이미지: '/images/ingredients/main/egg_mayo.webp',
         속성: '폭신폭신',
         칼로리: '205',

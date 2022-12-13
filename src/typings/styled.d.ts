@@ -10,6 +10,11 @@ declare module '@emotion/react' {
       gray87: string;
       grayF5: string;
       gray59: string;
+      grayDDD: string;
+      grayEEE: string;
+      white: string;
+      black25: string;
+      black6b: string;
       AccessibilityGreen: string;
     };
     badgeColors: {

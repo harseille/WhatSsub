@@ -1,12 +1,11 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useEffect, useState, forwardRef, ForwardedRef } from 'react';
-import Button from '@components/Common/UI/Button';
 import setFirebaseImgURL from '@services/Firebase/setFirebaseImgURL';
-import recipe from '@data/recipe';
+import Button from '@components/Common/UI/Button';
 import { MODAL_TYPE_KEYS } from '@constants/CustomCombination/constants';
-
+import recipe from '@data/recipe';
 import danzziTrust from '@assets//images/danzzi/danzzi_trust.svg';
 import deleteBtn from '@assets/icons/deleteBtn.png';
-
 import styled from '@emotion/styled';
 import mediaQuery from '@styles/media-queries';
 import { changeRem } from '@styles/mixin';
@@ -18,12 +17,14 @@ type TProps = {
   changeModalType: (type: string) => void;
 };
 
-function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElement>) {
-  const { userName, customCombination: 나만의_조합, changeModalType } = props;
-  const [sandwichImg, setSandwichImg] = useState('');
+function MyCombinationCard(
+  { userName, customCombination: 나만의_조합, changeModalType }: TProps,
+  inputRef: ForwardedRef<HTMLInputElement>
+) {
+  const [샌드위치이미지, 샌드위치이미지_수정] = useState('');
 
   useEffect(() => {
-    setSandwichImg(
+    샌드위치이미지_수정(
       setFirebaseImgURL(recipe.find(레시피 => 레시피.이름 === 나만의_조합.베이스샌드위치)?.이미지 as string)
     );
   }, [나만의_조합.베이스샌드위치]);
@@ -32,6 +33,10 @@ function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElemen
 
   return (
     <Container>
+      <h2 tabIndex={0} className="sr-only">
+        지금까지 선택한 재료를 모두에게 공유하는 나만의 조합 만들기 페이지입니다. 만드신 샌드위치의 이름을 정하고 나만의
+        조합 만들기 버튼을 선택해 주세요.
+      </h2>
       <Danzzi src={danzziTrust} alt="단찌 믿음 아이콘" />
       <Card className="card">
         <DeleteBtn onClick={클릭핸들러_나만의_조합_취소하기} aria-label="조합 삭제 버튼" type="button">
@@ -43,7 +48,7 @@ function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElemen
         </Text>
         <SubTitle>이 조합으로 세계정복!!</SubTitle>
         <CardContentWrap>
-          <Img src={sandwichImg} alt="샌드위치 이미지" />
+          <Img src={샌드위치이미지} alt="샌드위치 이미지" />
           <CardInputButtonWrap>
             <Input
               ref={inputRef}
@@ -51,7 +56,7 @@ function MyCombinationCard(props: TProps, inputRef: ForwardedRef<HTMLInputElemen
               required
               title="2 ~ 20 글자 이내로 제목을 정해주세요"
               type="text"
-              placeholder="왓썹의 이름은..?"
+              placeholder="왔썹의 이름은..?"
             />
             <CreateCombinationButton
               designType="AccessibilityGreen"
@@ -79,7 +84,7 @@ const Card = styled.div`
   margin: 152px auto 10px;
   width: 100%;
   padding: 20px 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 15px;
   box-shadow: 0px 4px 5px 3px rgba(194, 194, 194, 0.5);
 
@@ -141,8 +146,11 @@ const Img = styled.img`
   display: block;
   max-width: 62%;
   margin: 0 auto;
+  min-width: ${changeRem(193)};
+  min-height: ${changeRem(136)};
   ${mediaQuery} {
     max-width: 50%;
+    min-height: ${changeRem(230)};
   }
 `;
 
@@ -178,7 +186,7 @@ const DeleteBtn = styled.button`
   top: 20%;
   right: 7%;
   border: none;
-  background-color: ${props => props.theme.colors.primaryGreen};
+  background-color: ${({ theme }) => theme.colors.primaryGreen};
   width: 8%;
   height: 9%;
   border-radius: 5px;

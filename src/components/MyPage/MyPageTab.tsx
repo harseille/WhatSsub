@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@state/index';
-import { User } from 'firebase/auth';
 import styled from '@emotion/styled';
 import { changeRem } from '@styles/mixin';
 import mediaQuery from '@styles/media-queries';
+import { User } from 'firebase/auth';
 
 type TProps = {
   isSelectedTab: boolean;
@@ -24,22 +24,23 @@ function MyPageTab({ isSelectedTab, onClick }: TProps) {
   );
 }
 
-export default React.memo(MyPageTab);
+export default memo(MyPageTab);
 
 const Container = styled.div`
   display: flex;
   gap: 15px;
-
   ${mediaQuery} {
     width: 100%;
     margin-top: 40px;
   }
 `;
 
-const Title = styled.span<{ isSelectedTab: boolean }>`
+const Title = styled.button<{ isSelectedTab: boolean }>`
+  border: none;
+  background-color: transparent;
   font-size: ${changeRem(16)};
   font-weight: bold;
-  color: ${({ isSelectedTab }) => (isSelectedTab ? '#252525' : '#6b6b6b')};
+  color: ${({ isSelectedTab, theme }) => (isSelectedTab ? theme.colors.black25 : theme.colors.black6b)};
   border-radius: 5px;
   cursor: pointer;
   ${mediaQuery} {

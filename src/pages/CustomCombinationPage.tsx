@@ -1,6 +1,4 @@
-import { lazy } from 'react';
-
-const CustomPageWrap = lazy(() => import('@components/CustomCombination/CustomPageWrap'));
+import CustomPageWrap from '@components/CustomCombination/CustomPageWrap';
 
 function CustomCombination() {
   return <CustomPageWrap />;

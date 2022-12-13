@@ -57,13 +57,15 @@
     ], // prettier의 printWidth 옵션 대신 사용
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "jsx-a11y/label-has-associated-control": [2, { "labelAttributes": ["htmlFor"] }],
     "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never", "js": "never" }],
     "@typescript-eslint/no-unused-vars": 2,
     "no-empty-pattern": 2,
     "no-case-declarations": 2,
     "@typescript-eslint/no-empty-interface": 2,
     "import/no-unresolved": "off",
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/jsx-no-bind": ["error", { "allowBind": true, "allowArrowFunctions": true }]
   },
   "settings": {
     "import/resolver": {
