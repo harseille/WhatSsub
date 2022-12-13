@@ -29,6 +29,7 @@ module.exports = {
         { from: 'public/offline.html' },
         { from: 'public/icons' },
         { from: 'public/sitemap.xml' },
+        { from: 'public/favicon.ico' },
       ],
     }),
     new Dotenv({
