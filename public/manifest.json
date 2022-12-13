@@ -48,6 +48,11 @@
       "type": "image/png"
     },
     {
+      "src": "/icons/android/android-launchericon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
       "src": "/icons/ios/50.png",
       "sizes": "50x50",
       "type": "image/png"
@@ -55,11 +60,6 @@
     {
       "src": "/icons/ios/100.png",
       "sizes": "100x100",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/android/android-launchericon-144-144.png",
-      "sizes": "144x144",
       "type": "image/png"
     },
     {
