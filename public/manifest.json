@@ -12,25 +12,25 @@
   "categories": ["food", "productivity"],
   "screenshots": [
     {
-      "src": "../src/assets/screenshot/screenshot1.jpg",
+      "src": "/screenshot/screenshot1.jpg",
       "sizes": "414x844",
       "type": "image/jpg",
       "platform": "wide"
     },
     {
-      "src": "../src/assets/screenshot/screenshot2.jpg",
+      "src": "/screenshot/screenshot2.jpg",
       "sizes": "414x844",
       "type": "image/jpg",
       "platform": "wide"
     },
     {
-      "src": "../src/assets/screenshot/screenshot3.jpg",
+      "src": "/screenshot/screenshot3.jpg",
       "sizes": "414x844",
       "type": "image/jpg",
       "platform": "wide"
     },
     {
-      "src": "../src/assets/screenshot/screenshot4.jpg",
+      "src": "/screenshot/screenshot4.jpg",
       "sizes": "414x844",
       "type": "image/jpg",
       "platform": "wide"
