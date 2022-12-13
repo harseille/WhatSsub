@@ -45,12 +45,10 @@ const InfoWrap = styled.div`
 
 const ImgWrap = styled.div`
   width: ${changeRem(275)};
-  min-height: ${changeRem(197)};
   margin: 0 auto 15px;
 
   ${mediaQuery} {
     width: ${changeRem(375)};
-    min-height: ${changeRem(267)};
     margin: 0;
   }
 
