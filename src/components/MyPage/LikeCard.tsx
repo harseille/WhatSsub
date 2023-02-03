@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { userState } from '@state/index';
@@ -43,6 +43,8 @@ function LikeCard({ id, imgUrl, sandwich: sandwichData }: TProps) {
     좋아요한샌드위치_수정(prevData => prevData.filter(prev => !삭제될_꿀조합.includes(prev)));
     삭제될_꿀조합_수정([]);
   };
+
+  useEffect(() => {}, []);
 
   return (
     <div>

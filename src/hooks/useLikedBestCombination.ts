@@ -1,8 +1,9 @@
 import { useState, useEffect, MouseEvent } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { userLike } from '@state/User';
 import { increment } from 'firebase/firestore';
 import dbUpdate from '@api/dbUpdate';
+import pending from '@state/pending';
 import useCheckLogin from './useCheckLogin';
 
 const useLikedBestCombination = (id: string) => {
@@ -10,6 +11,7 @@ const useLikedBestCombination = (id: string) => {
   const [좋아요한샌드위치, 좋아요한샌드위치_수정] = useRecoilState<string[]>(userLike);
   const [좋아요_개수, 좋아요_개수_수정] = useState<number>(0);
   const 좋아요한_샌드위치인가 = 좋아요한샌드위치.includes(id);
+  const 삭제대기중인가 = useRecoilValue(pending).includes(id);
 
   useEffect(() => {
     if (userInfo) dbUpdate('좋아요', userInfo.uid, { 좋아요_리스트: 좋아요한샌드위치 });
@@ -21,7 +23,10 @@ const useLikedBestCombination = (id: string) => {
       return;
     }
 
-    const delta = 좋아요한_샌드위치인가 ? -1 : 1;
+    let delta = 좋아요한_샌드위치인가 ? -1 : 1;
+
+    if (status === 'pending' && 삭제대기중인가) delta = 1;
+
     await dbUpdate('꿀조합', id, { 좋아요: increment(delta) });
     좋아요_개수_수정(prev => prev + delta);
 
